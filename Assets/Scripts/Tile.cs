@@ -39,6 +39,7 @@ public class Tile : MonoBehaviour {
             
             // Add this closest grid cell to the closestGridCells array
             closestGridCells[i] = currentCell;
+            
             //Debug.Log(currentCell.GetComponent<GridCell>().xIndex + ", " + currentCell.GetComponent<GridCell>().yIndex);
         }
 

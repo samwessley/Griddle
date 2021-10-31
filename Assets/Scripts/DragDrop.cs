@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler {
 
@@ -18,7 +19,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     public void OnPointerDown(PointerEventData eventData) {
 
-        rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y + 100);
+        rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y + 200);
+        transform.localScale = new Vector3(1.1f, 1.1f, 1);
     }
 
     public void OnDrag(PointerEventData eventData) {
@@ -26,6 +28,9 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     }
 
     public void OnPointerUp(PointerEventData eventData) {
+
+        // Reset the scale back to normal
+        transform.localScale = new Vector3(1, 1, 1);
 
         Tile tile = transform.gameObject.GetComponent<Tile>();
 

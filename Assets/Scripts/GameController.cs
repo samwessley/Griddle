@@ -12,23 +12,23 @@ public class GameController : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         PopulateCellGrid();
-        LoadLevelData(GameManager.GM.currentLevel);
+        LoadLevelData(GameManager.Instance.currentLevel);
         LoadTiles();
     }
 
     private void PopulateCellGrid() {
         
-        for(int i = 0; i < 12; i++) {
-            for (int j = 0; j < 12; j++) {
+        for(int y = 0; y < 12; y++) {
+            for (int x = 0; x < 12; x++) {
 
                 // Find the cell in the grid and get its GridCell component
-                GridCell cell = GameObject.Find("GridCell " + i + "," + j).gameObject.GetComponent<GridCell>();
+                GridCell cell = GameObject.Find("GridCell " + x + "," + y).gameObject.GetComponent<GridCell>();
 
                 // Set the appropriate index in cellGrid to this cell
-                cellGrid[j,i] = cell;
+                cellGrid[x,y] = cell;
 
                 // Set the cell's coordinate properties
-                cell.SetCoordinates(j,i);
+                cell.SetCoordinates(x,y);
             }
         }
     }
@@ -39,22 +39,22 @@ public class GameController : MonoBehaviour {
         int [,] data = new int[12,12];
 
         // Retrieve the 2-dimensional array of level data from the 3D array of levels data
-        for(int i = 0; i < 12; i++) {
-            for (int j = 0; j < 12; j++) {
+        for(int y = 0; y < 12; y++) {
+            for (int x = 0; x < 12; x++) {
 
-                data[i,j] = GameManager.GM.levelBoardData[levelToLoadIndex,i,j];
+                data[x,y] = GameManager.Instance.levelBoardData[levelToLoadIndex,y,x];
             }
         }
 
         // Populate cellGrid according to level data retrieved from levels data matrix
-        for(int i = 0; i < 12; i++) {
-            for (int j = 0; j < 12; j++) {
+        for(int y = 0; y < 12; y++) {
+            for (int x = 0; x < 12; x++) {
 
                 // Set the appropriate cell's status to the specification in data matrix
-                cellGrid[i,j].SetState(data[i,j]);
+                cellGrid[x,y].SetState(data[x,y]);
 
                 // Update the cell's image
-                cellGrid[i,j].UpdateImage();
+                cellGrid[x,y].UpdateImage();
             }
         }
     }

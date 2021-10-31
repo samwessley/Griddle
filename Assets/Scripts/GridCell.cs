@@ -9,7 +9,7 @@ public class GridCell : MonoBehaviour {
     public int xIndex;
     public int yIndex;
 
-    public bool isBarrier;
+    public bool isBarrier = false;
     private bool isCorrect;
     public bool isOccupied = false;
 
@@ -20,7 +20,7 @@ public class GridCell : MonoBehaviour {
     private Color barrierColor = new Color(35f/255f,63f/255f,69f/255f);
     private Color occupiedColor = new Color(171f/255f,9f/255f,96f/255f);
 
-    void Start() {
+    void Awake() {
         cellImage = GetComponent<Image>();
 
         UpdateImage();
