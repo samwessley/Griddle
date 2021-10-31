@@ -24,7 +24,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
         TileCell[] tileCells = transform.gameObject.GetComponentsInChildren<TileCell>();
         foreach (TileCell tileCell in tileCells) {
-            tileCell.SetSortingLayer(13);
+            tileCell.SetSortingLayer(14);
         }
     }
 
