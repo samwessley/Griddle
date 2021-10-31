@@ -20,7 +20,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     public void OnPointerDown(PointerEventData eventData) {
 
         rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y + 200);
-        transform.localScale = new Vector3(1.1f, 1.1f, 1);
+        transform.localScale = new Vector3(1.2f, 1.2f, 1);
     }
 
     public void OnDrag(PointerEventData eventData) {

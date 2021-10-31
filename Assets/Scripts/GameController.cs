@@ -1,19 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
+
+    [SerializeField] GameObject levelNumber = null;
 
     private GridCell[,] cellGrid = new GridCell[12,12];
     private int boardSize;
 
     private Tile[] tiles;
 
-    // Start is called before the first frame update
-    void Start() {
+    private void Awake() {
         PopulateCellGrid();
+        LevelSetup();
+    }
+
+    public void LevelSetup() {
         LoadLevelData(GameManager.Instance.currentLevel);
         LoadTiles();
+        SetLevelNumber(GameManager.Instance.currentLevel);
     }
 
     private void PopulateCellGrid() {
@@ -67,5 +74,9 @@ public class GameController : MonoBehaviour {
         for (int i = 0; i < objects.Length; i++) {
             tiles[i] = objects[i].GetComponent<Tile>();
         }
+    }
+    
+    private void SetLevelNumber(int level) {
+        levelNumber.GetComponent<Text>().text = level.ToString();
     }
 }
