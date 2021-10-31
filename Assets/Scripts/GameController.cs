@@ -12,7 +12,7 @@ public class GameController : MonoBehaviour {
 
     private Tile[] tiles;
 
-    private void Awake() {
+    private void Start() {
         PopulateCellGrid();
         LevelSetup();
     }

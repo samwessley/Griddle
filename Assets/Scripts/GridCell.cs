@@ -21,18 +21,16 @@ public class GridCell : MonoBehaviour {
     private Color occupiedColor = new Color(171f/255f,9f/255f,96f/255f);
 
     void Awake() {
-        cellImage = GetComponent<Image>();
-
         UpdateImage();
     }
 
     public void UpdateImage() {
 
         if (isBarrier) {
-            cellImage.sprite = null;
-            cellImage.color = barrierColor;
+            GetComponent<Image>();.sprite = null;
+            GetComponent<Image>();.color = barrierColor;
         } else if (isOccupied) {
-            cellImage.color = occupiedColor;
+            GetComponent<Image>();.color = occupiedColor;
         }
     }
 
