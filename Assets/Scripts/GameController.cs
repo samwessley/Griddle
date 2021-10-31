@@ -53,7 +53,7 @@ public class GameController : MonoBehaviour {
             }
         }
 
-        // Populate cellGrid according to level data retrieved from levels data matrix
+        // Populate cellGrid according to level data retrieved from levels board data matrix
         for(int y = 0; y < 12; y++) {
             for (int x = 0; x < 12; x++) {
 
