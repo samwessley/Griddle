@@ -2171,7 +2171,7 @@ Canvas:
   m_RenderMode: 1
   m_Camera: {fileID: 1467977371}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
@@ -12027,6 +12027,8 @@ GameObject:
   - component: {fileID: 1660679273}
   - component: {fileID: 1660679271}
   - component: {fileID: 1660679270}
+  - component: {fileID: 1660679272}
+  - component: {fileID: 1660679275}
   m_Layer: 5
   m_Name: Tile
   m_TagString: Untagged
@@ -12094,6 +12096,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xOffset: -45
   yOffset: 0
+--- !u!223 &1660679272
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660679268}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 13
+  m_TargetDisplay: 0
 --- !u!114 &1660679273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12132,6 +12155,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1660679268}
   m_CullTransparentMesh: 1
+--- !u!114 &1660679275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1660679268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1001 &1706890893
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14695,6 +14735,8 @@ GameObject:
   - component: {fileID: 1997712638}
   - component: {fileID: 1997712636}
   - component: {fileID: 1997712634}
+  - component: {fileID: 1997712635}
+  - component: {fileID: 1997712637}
   m_Layer: 5
   m_Name: Tile (1)
   m_TagString: Untagged
@@ -14748,6 +14790,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 90, y: 90}
   m_EdgeRadius: 0
+--- !u!223 &1997712635
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997712632}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 13
+  m_TargetDisplay: 0
 --- !u!114 &1997712636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14762,6 +14825,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xOffset: 45
   yOffset: 0
+--- !u!114 &1997712637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997712632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!114 &1997712638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16322,6 +16402,10 @@ PrefabInstance:
     - target: {fileID: 66234856546312219, guid: e15a13e641b7c43aaa1796832fb2fc61, type: 3}
       propertyPath: m_Name
       value: GridCell 0,0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6175142103450888135, guid: e15a13e641b7c43aaa1796832fb2fc61, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e15a13e641b7c43aaa1796832fb2fc61, type: 3}

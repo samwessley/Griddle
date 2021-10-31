@@ -36,6 +36,7 @@ public class GameController : MonoBehaviour {
 
                 // Set the cell's coordinate properties
                 cell.SetCoordinates(x,y);
+                cell.SetSortingLayer();
             }
         }
     }

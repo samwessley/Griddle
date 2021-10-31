@@ -21,6 +21,11 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
         rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y + 200);
         transform.localScale = new Vector3(1.2f, 1.2f, 1);
+
+        TileCell[] tileCells = transform.gameObject.GetComponentsInChildren<TileCell>();
+        foreach (TileCell tileCell in tileCells) {
+            tileCell.SetSortingLayer(13);
+        }
     }
 
     public void OnDrag(PointerEventData eventData) {
@@ -54,6 +59,21 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
         // Set the tile location to the average location of all the grid cells under it
         tile.GetComponent<RectTransform>().anchoredPosition = new Vector2(centerX, centerY);
+
+        // Set the sorting layer of the tile to the appropriate level based on where it is on the board
+        int maxSortingOrder = 1;
+
+        // Loop through all the closest grid cells to the tile to find the maximum sorting layer
+        foreach(Transform cell in closestGridCells) {
+            if (cell.GetComponent<Canvas>().sortingOrder > maxSortingOrder)
+                maxSortingOrder = cell.GetComponent<Canvas>().sortingOrder;
+        }
+
+        // Set each tileCell's sorting layer to this maximum sorting layer
+        TileCell[] tileCells = tile.GetComponentsInChildren<TileCell>();
+        foreach (TileCell tileCell in tileCells) {
+            tileCell.SetSortingLayer(maxSortingOrder + 1);
+        }
 
         // Now check if the tile is covering any barrier or occupied cells, and if so, cancel placement
         if (closestGridCells != null) {

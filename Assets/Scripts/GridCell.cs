@@ -24,6 +24,11 @@ public class GridCell : MonoBehaviour {
         UpdateImage();
     }
 
+    public void SetSortingLayer() {
+        Canvas canvas = gameObject.GetComponent<Canvas>();
+        canvas.sortingOrder = yIndex + 1;
+    }
+
     public void UpdateImage() {
 
         if (isBarrier) {
@@ -38,6 +43,9 @@ public class GridCell : MonoBehaviour {
             Image childObj = this.gameObject.transform.GetChild(0).GetComponent<Image>();
             childObj.sprite = Resources.Load<Sprite>("Sprites/Tile");
             childObj.color = new Color(1,1,1,1);
+
+            Canvas canvas = gameObject.GetComponent<Canvas>();
+            canvas.sortingOrder += 1;
         }
     }
 

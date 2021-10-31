@@ -7,9 +7,6 @@ public class TileCell : MonoBehaviour {
     public float xOffset;
     public float yOffset;
 
-    private void Awake() {
-    }
-
     public List<Transform> GetTouchingCells() {
         List<Transform> touchingCells = new List<Transform>();
         RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, Vector2.zero);
@@ -21,5 +18,10 @@ public class TileCell : MonoBehaviour {
         }
 
         return touchingCells;
+    }
+
+    public void SetSortingLayer(int layer) {
+        Canvas canvas = gameObject.GetComponent<Canvas>();
+        canvas.sortingOrder = layer;
     }
 }
