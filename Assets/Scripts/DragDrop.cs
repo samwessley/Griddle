@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IDropHandler {
+public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler {
 
     [SerializeField] private Canvas canvas;
 
@@ -11,33 +11,61 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     private CanvasGroup canvasGroup;
 
     private void Awake() {
+
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
     }
 
-    public void OnBeginDrag(PointerEventData eventData) {
-        canvasGroup.blocksRaycasts = false;
-        canvasGroup.alpha = .8f;
+    public void OnPointerDown(PointerEventData eventData) {
+
+        rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y + 100);
     }
 
     public void OnDrag(PointerEventData eventData) {
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 
-    public void OnEndDrag(PointerEventData eventData) {
-        canvasGroup.blocksRaycasts = true;
-        canvasGroup.alpha = 1f;
-    }
+    public void OnPointerUp(PointerEventData eventData) {
 
-    public void OnDrop(PointerEventData eventData) {
+        Tile tile = transform.gameObject.GetComponent<Tile>();
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.zero);
-        Debug.Log("drop");
-        if (hit.collider == null) {
-            transform.gameObject.GetComponent<Tile>().CancelPlacement();
+        // First check that the tile is touching the grid. If not, cancel placement and return
+        if (tile.GetClosestCellsArray() == null) {
+            tile.CancelPlacement();
+            return;
+        }
+
+        Transform[] closestGridCells = tile.GetClosestCellsArray();
+        var totalX = 0f;
+        var totalY = 0f;
+        
+        // Get the average/center location of all the grid cells under the tile
+        foreach(Transform gridCell in closestGridCells) {
+            totalX += gridCell.gameObject.GetComponent<RectTransform>().anchoredPosition.x;
+            totalY += gridCell.gameObject.GetComponent<RectTransform>().anchoredPosition.y;
+        }
+        var centerX = totalX / closestGridCells.Length;
+        var centerY = totalY / closestGridCells.Length;
+
+        // Set the tile location to the average location of all the grid cells under it
+        tile.GetComponent<RectTransform>().anchoredPosition = new Vector2(centerX, centerY);
+
+        // Now check if the tile is covering any barrier or occupied cells, and if so, cancel placement
+        if (closestGridCells != null) {
+            if (TilePlacedOverOccupiedOrBarrierGridCells(closestGridCells)) {
+                tile.CancelPlacement();
+            }
+        } else {
+            tile.CancelPlacement();
         }
     }
 
-    public void OnPointerDown(PointerEventData eventData) {
+    private bool TilePlacedOverOccupiedOrBarrierGridCells(Transform[] closestCells) {
+        for (int i = 0; i < closestCells.Length; i++) {
+            if (closestCells[i].GetComponent<GridCell>().isOccupied || closestCells[i].GetComponent<GridCell>().isBarrier) {
+                return true;
+            }
+        }
+        return false;
     }
 }

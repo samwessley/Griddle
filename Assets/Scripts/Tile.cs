@@ -20,9 +20,12 @@ public class Tile : MonoBehaviour {
         // Loop through all the grid cells touching every tile cell in the tile and determine which are closest,
         // then add the closest ones to the closestGridCells array
         for (int i = 0; i < tileCells.Length; i++) {
+            // First check that the tile is touching at least one grid cell to prevent index out of bounds error
+            if (tileCells[i].GetTouchingCells().Count == 0)
+                return null;
+            
             // Get all grid cells touching the tile cell
             List<Transform> touchingCells = tileCells[i].GetTouchingCells();
-            Debug.Log(touchingCells.Count);
             var currentCell = touchingCells[0];
             var distance = Vector2.Distance(tileCells[i].transform.position, touchingCells[0].position);
 
@@ -36,7 +39,7 @@ public class Tile : MonoBehaviour {
             
             // Add this closest grid cell to the closestGridCells array
             closestGridCells[i] = currentCell;
-            Debug.Log(currentCell.GetComponent<GridCell>().xIndex + ", " + currentCell.GetComponent<GridCell>().yIndex);
+            //Debug.Log(currentCell.GetComponent<GridCell>().xIndex + ", " + currentCell.GetComponent<GridCell>().yIndex);
         }
 
         return closestGridCells;

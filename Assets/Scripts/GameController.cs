@@ -67,7 +67,5 @@ public class GameController : MonoBehaviour {
         for (int i = 0; i < objects.Length; i++) {
             tiles[i] = objects[i].GetComponent<Tile>();
         }
-
-        Debug.Log(tiles.Length);
     }
 }

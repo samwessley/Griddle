@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour {
     public int currentLevel;
     public int[,,] levelBoardData = new int[2,12,12];
 
-
     void Awake() {
 
         // Set a singleton instance of the GameManager object, and if one already exists, destroy it.
