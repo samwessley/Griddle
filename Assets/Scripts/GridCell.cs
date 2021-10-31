@@ -16,7 +16,6 @@ public class GridCell : MonoBehaviour {
     private bool isValid;
     private bool isInvalid;
 
-    private Image cellImage;
     private Color barrierColor = new Color(35f/255f,63f/255f,69f/255f);
     private Color occupiedColor = new Color(171f/255f,9f/255f,96f/255f);
 
@@ -27,10 +26,10 @@ public class GridCell : MonoBehaviour {
     public void UpdateImage() {
 
         if (isBarrier) {
-            GetComponent<Image>();.sprite = null;
-            GetComponent<Image>();.color = barrierColor;
+            GetComponent<Image>().sprite = null;
+            GetComponent<Image>().color = barrierColor;
         } else if (isOccupied) {
-            GetComponent<Image>();.color = occupiedColor;
+            GetComponent<Image>().color = occupiedColor;
         }
     }
 
