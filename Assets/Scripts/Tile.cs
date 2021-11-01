@@ -9,13 +9,13 @@ public class Tile : MonoBehaviour {
     private Vector2 highlightedPosition;
 
     private void Awake() {
-        startingPosition = transform.position;
+        startingPosition = gameObject.GetComponent<RectTransform>().anchoredPosition;
         GetTileCells();
     }
 
-    public Transform[] GetClosestCellsArray() {
+    public RectTransform[] GetClosestCellsArray() {
         
-        Transform[] closestGridCells = new Transform[transform.childCount];
+        RectTransform[] closestGridCells = new RectTransform[transform.childCount];
 
         // Loop through all the grid cells touching every tile cell in the tile and determine which are closest,
         // then add the closest ones to the closestGridCells array
@@ -25,12 +25,12 @@ public class Tile : MonoBehaviour {
                 return null;
             
             // Get all grid cells touching the tile cell
-            List<Transform> touchingCells = tileCells[i].GetTouchingCells();
+            List<RectTransform> touchingCells = tileCells[i].GetTouchingCells();
             var currentCell = touchingCells[0];
             var distance = Vector2.Distance(tileCells[i].transform.position, touchingCells[0].position);
 
             // Loop through all the grid cells touching the tile cell and find the closest one
-            foreach (Transform cell in touchingCells) {
+            foreach (RectTransform cell in touchingCells) {
                 if (Vector2.Distance(tileCells[i].transform.position, cell.position) < distance) {
                     currentCell = cell;
                     distance = Vector2.Distance(tileCells[i].transform.position, cell.position);
@@ -57,6 +57,6 @@ public class Tile : MonoBehaviour {
     }
 
     public void CancelPlacement() {
-        transform.position = startingPosition;
+        gameObject.GetComponent<RectTransform>().anchoredPosition = startingPosition;
     }
 }

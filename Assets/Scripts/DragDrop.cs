@@ -12,12 +12,20 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     private CanvasGroup canvasGroup;
 
     private void Awake() {
-
+        canvas = this.gameObject.transform.parent.gameObject.GetComponent<Canvas>();
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
     }
 
     public void OnPointerDown(PointerEventData eventData) {
+
+        // Reset the occupied values of the grid cells under this tile to false
+        RectTransform[] closestGridCells = gameObject.GetComponent<Tile>().GetClosestCellsArray();
+        if (closestGridCells != null) {
+            foreach(RectTransform gridcell in closestGridCells) {
+                gridcell.gameObject.GetComponent<GridCell>().isOccupied = false;
+            }
+        }
 
         rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y + 200);
         transform.localScale = new Vector3(1.2f, 1.2f, 1);
@@ -45,20 +53,26 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
             return;
         }
 
-        Transform[] closestGridCells = tile.GetClosestCellsArray();
-        var totalX = 0f;
-        var totalY = 0f;
-        
-        // Get the average/center location of all the grid cells under the tile
-        foreach(Transform gridCell in closestGridCells) {
-            totalX += gridCell.gameObject.GetComponent<RectTransform>().anchoredPosition.x;
-            totalY += gridCell.gameObject.GetComponent<RectTransform>().anchoredPosition.y;
-        }
-        var centerX = totalX / closestGridCells.Length;
-        var centerY = totalY / closestGridCells.Length;
+        RectTransform[] closestGridCells = tile.GetClosestCellsArray();
 
-        // Set the tile location to the average location of all the grid cells under it
-        tile.GetComponent<RectTransform>().anchoredPosition = new Vector2(centerX, centerY);
+        // Now check if the tile is covering any barrier or occupied cells, and if so, cancel placement
+        if (closestGridCells != null) {
+            if (TilePlacedOverOccupiedOrBarrierGridCells(closestGridCells)) {
+                tile.CancelPlacement();
+                return;
+            }
+        } else {
+            tile.CancelPlacement();
+            return;
+        }
+        
+        // Get the first closest cell and use its distance from its tile to determine how much to adjust the position
+        RectTransform gridCellTransform = closestGridCells[0];
+        TileCell tileCellTransform = transform.GetChild(0).gameObject.GetComponent<TileCell>();
+        Vector2 adjustmentDistance = tile.GetComponent<RectTransform>().anchoredPosition - gridCellTransform.anchoredPosition;
+
+        // Adjust the tile location by the calculated adjustment distance + the tile cell's offset values
+        tile.gameObject.GetComponent<RectTransform>().anchoredPosition -= adjustmentDistance + new Vector2(tileCellTransform.xOffset, tileCellTransform.yOffset);
 
         // Set the sorting layer of the tile to the appropriate level based on where it is on the board
         int maxSortingOrder = 1;
@@ -75,13 +89,9 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
             tileCell.SetSortingLayer(maxSortingOrder + 1);
         }
 
-        // Now check if the tile is covering any barrier or occupied cells, and if so, cancel placement
-        if (closestGridCells != null) {
-            if (TilePlacedOverOccupiedOrBarrierGridCells(closestGridCells)) {
-                tile.CancelPlacement();
-            }
-        } else {
-            tile.CancelPlacement();
+        // Set each grid cell under this tile to 'occupied'
+        foreach(RectTransform gridcell in closestGridCells) {
+            gridcell.gameObject.GetComponent<GridCell>().isOccupied = true;
         }
     }
 
