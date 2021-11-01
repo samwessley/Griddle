@@ -45,7 +45,7 @@ public class GridCell : MonoBehaviour {
             childObj.color = new Color(1,1,1,1);
 
             Canvas canvas = gameObject.GetComponent<Canvas>();
-            canvas.sortingOrder += 1;
+            canvas.sortingOrder += 2;
         }
     }
 
