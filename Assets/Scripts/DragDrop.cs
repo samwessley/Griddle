@@ -32,7 +32,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
         TileCell[] tileCells = transform.gameObject.GetComponentsInChildren<TileCell>();
         foreach (TileCell tileCell in tileCells) {
-            tileCell.SetSortingLayer(14);
+            tileCell.SetSortingLayer(tileCell.sortingOrder);
         }
     }
 
@@ -75,18 +75,18 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         tile.gameObject.GetComponent<RectTransform>().anchoredPosition -= adjustmentDistance + new Vector2(tileCellTransform.xOffset, tileCellTransform.yOffset);
 
         // Set the sorting layer of the tile to the appropriate level based on where it is on the board
-        int maxSortingOrder = 1;
+        int minSortingOrder = 999;
 
-        // Loop through all the closest grid cells to the tile to find the maximum sorting layer
+        // Loop through all the closest grid cells to the tile to find the minimum sorting layer under this tile
         foreach(Transform cell in closestGridCells) {
-            if (cell.GetComponent<Canvas>().sortingOrder > maxSortingOrder)
-                maxSortingOrder = cell.GetComponent<Canvas>().sortingOrder;
+            if (cell.GetComponent<Canvas>().sortingOrder < minSortingOrder)
+                minSortingOrder = cell.GetComponent<Canvas>().sortingOrder;
         }
 
-        // Set each tileCell's sorting layer to this maximum sorting layer
+        // Set each tileCell's sorting layer to this minimum sorting layer plus its sorting layer inside its tile
         TileCell[] tileCells = tile.GetComponentsInChildren<TileCell>();
         foreach (TileCell tileCell in tileCells) {
-            tileCell.SetSortingLayer(maxSortingOrder + 1);
+            tileCell.SetSortingLayer(minSortingOrder + (tileCell.sortingOrder - 14) + 1);
         }
 
         // Set each grid cell under this tile to 'occupied'

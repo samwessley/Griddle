@@ -6,9 +6,11 @@ public class TileCell : MonoBehaviour {
 
     public float xOffset;
     public float yOffset;
+    public int sortingOrder;
 
     private void Awake() {
         PopulateOffsetValues();
+        SetDefaultSortingOrder();
     }
 
     public List<RectTransform> GetTouchingCells() {
@@ -32,5 +34,9 @@ public class TileCell : MonoBehaviour {
     private void PopulateOffsetValues() {
         xOffset = gameObject.GetComponent<RectTransform>().anchoredPosition.x;
         yOffset = gameObject.GetComponent<RectTransform>().anchoredPosition.y;
+    }
+
+    private void SetDefaultSortingOrder() {
+        sortingOrder = gameObject.GetComponent<Canvas>().sortingOrder;
     }
 }

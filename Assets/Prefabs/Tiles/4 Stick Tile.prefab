@@ -116,6 +116,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2065448878444316376}
     m_Modifications:
+    - target: {fileID: 891195374875571159, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 1896449731950220992, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
       propertyPath: m_Name
       value: Tile Cell 2
@@ -313,9 +317,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7729873108990038154, guid: 6a6b7834eabf24d3cbc2f4fea213dc1d, type: 3}
+      propertyPath: m_SortingOrder
+      value: 17
+      objectReference: {fileID: 0}
     - target: {fileID: 8374001183157887907, guid: 6a6b7834eabf24d3cbc2f4fea213dc1d, type: 3}
       propertyPath: m_Name
-      value: 4 L Tile
+      value: 4 Stick Tile
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a6b7834eabf24d3cbc2f4fea213dc1d, type: 3}
@@ -331,6 +339,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2065448878444316376}
     m_Modifications:
+    - target: {fileID: 891195374875571159, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 1896449731950220992, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
       propertyPath: m_Name
       value: Tile Cell 3

@@ -20,7 +20,8 @@ public class ButtonScript : MonoBehaviour {
 
     public void LoadPreviousLevel() {
         // Increment current level
-        GameManager.Instance.currentLevel -= 1;
+        if (GameManager.Instance.currentLevel > 1)
+            GameManager.Instance.currentLevel -= 1;
 
         // Reload scene
         Scene scene = SceneManager.GetActiveScene(); 
