@@ -17,4 +17,20 @@ public class ButtonScript : MonoBehaviour {
         Scene scene = SceneManager.GetActiveScene(); 
         SceneManager.LoadScene(scene.name);
     }
+
+    public void LoadPreviousLevel() {
+        // Increment current level
+        GameManager.Instance.currentLevel -= 1;
+
+        // Reload scene
+        Scene scene = SceneManager.GetActiveScene(); 
+        SceneManager.LoadScene(scene.name);
+    }
+
+    public void RestartLevel() {
+
+        // Reload scene
+        Scene scene = SceneManager.GetActiveScene(); 
+        SceneManager.LoadScene(scene.name);
+    }
 }
