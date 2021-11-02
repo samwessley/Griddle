@@ -12,7 +12,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     private RectTransform rectTransform;
 
     private bool isOnBoard = false;
-    private bool isHighlighted = false;
+    public bool isHighlighted = false;
 
     private void Awake() {
         canvas = this.gameObject.transform.parent.gameObject.GetComponent<Canvas>();
@@ -40,7 +40,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
             // Set the sorting order of the tile to its highlighted value
             TileCell[] tileCells = transform.gameObject.GetComponentsInChildren<TileCell>();
             foreach (TileCell tileCell in tileCells)
-            tileCell.SetSortingLayer(tileCell.sortingOrder + 5);
+            tileCell.SetSortingLayer(tileCell.GetComponent<Canvas>().sortingOrder + 18);
         }
         // If it's not on the board when tapped but it is highlighted, put it in 'hovering' status
         else {
@@ -69,15 +69,15 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
                 // Set the sorting order of the tile to its highlighted value
                 TileCell[] cells = transform.gameObject.GetComponentsInChildren<TileCell>();
-                foreach (TileCell cell in cells)
-                cell.SetSortingLayer(cell.sortingOrder + 5);
+                foreach (TileCell cell in cells) {
+                    cell.SetSortingLayer(cell.GetComponent<Canvas>().sortingOrder + 5);
+                    //Debug.Log(cell.xOffset + ", " + cell.yOffset + ": " + cell.GetComponent<Canvas>().sortingOrder);
+                }
 
                 // Stop at this point. We need another tap on the tile to continue further
                 return;
             }
         }
-        // If tile was tapped and it's not on the board, we'll highlight it. Enable tilePopupTray
-        else tilePopupTray.SetActive(true); 
 
         // If we got to this point, the tile was highlighted or already on the board before being
         // tapped. Set isOnBoard to true before testing if it's in a valid board space.
@@ -114,7 +114,6 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
         // Adjust the tile location by the calculated adjustment distance + the tile cell's offset values
         tile.gameObject.GetComponent<RectTransform>().anchoredPosition -= adjustmentDistance + new Vector2(tileCellTransform.xOffset, tileCellTransform.yOffset);
-        isOnBoard = true;
         tilePopupTray.SetActive(false);
 
         // Set the sorting layer of the tile to the appropriate level based on where it is on the board
@@ -127,12 +126,22 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
         // Set each tileCell's sorting layer to this minimum sorting layer plus its sorting layer inside its tile
         TileCell[] tileCells = tile.GetComponentsInChildren<TileCell>();
-        foreach (TileCell tileCell in tileCells)
-        tileCell.SetSortingLayer(minSortingOrder + (tileCell.sortingOrder - 14) + 1);
+        int minTileCellSortingOrder = 999;
+        foreach (TileCell tileCell in tileCells) {
+            if (tileCell.GetComponent<Canvas>().sortingOrder < minTileCellSortingOrder)
+            minTileCellSortingOrder = tileCell.GetComponent<Canvas>().sortingOrder;
+        }
+
+        foreach (TileCell tileCell in tileCells) {
+            tileCell.SetSortingLayer(tileCell.GetComponent<Canvas>().sortingOrder - minTileCellSortingOrder + minSortingOrder + 1);
+            //Debug.Log(tileCell.xOffset + ", " + tileCell.yOffset + ": " + tileCell.GetComponent<Canvas>().sortingOrder);
+        }
 
         // Set each grid cell under this tile to 'occupied'
         foreach(RectTransform gridcell in closestGridCells)
         gridcell.gameObject.GetComponent<GridCell>().isOccupied = true;
+
+        isHighlighted = false;
     }
 
     private bool TilePlacedOverOccupiedOrBarrierGridCells(Transform[] closestCells) {
@@ -152,10 +161,20 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         isHighlighted = false;
         isOnBoard = false;
 
-        // Set the sorting order of the tile to its highlighted value
+        // Set the sorting order of the tile to its default value
         TileCell[] cells = transform.gameObject.GetComponentsInChildren<TileCell>();
+        int minSortingOrder = 999;
+
+        for (int i = 0; i < cells.Length; i++) {
+            if (cells[i].GetComponent<Canvas>().sortingOrder < minSortingOrder)
+            minSortingOrder = cells[i].GetComponent<Canvas>().sortingOrder;
+        }
+
+        int sortingOrderIncrement = 14 - minSortingOrder;
+
         foreach (TileCell cell in cells) {
-            cell.SetSortingLayer(cell.sortingOrder);
+            cell.SetSortingLayer(cell.GetComponent<Canvas>().sortingOrder + sortingOrderIncrement);
+            //Debug.Log(cell.xOffset + ", " + cell.yOffset + ": " + cell.GetComponent<Canvas>().sortingOrder);
         }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour {
     
-    private TileCell[] tileCells;
+    public TileCell[] tileCells;
     private Vector2 startingPosition;
     private Vector2 highlightedPosition;
 
