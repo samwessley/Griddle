@@ -29,7 +29,7 @@ public class TileCell : MonoBehaviour {
         canvas.sortingOrder = layer;
     }
 
-    private void PopulateOffsetValues() {
+    public void PopulateOffsetValues() {
         xOffset = gameObject.GetComponent<RectTransform>().anchoredPosition.x;
         yOffset = gameObject.GetComponent<RectTransform>().anchoredPosition.y;
     }

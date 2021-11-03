@@ -8,6 +8,10 @@ public class Tile : MonoBehaviour {
     private Vector2 startingPosition;
     private Vector2 highlightedPosition;
 
+    public int rotations = 0;
+    public bool reflected = false;
+    public int lastManipulationType = 0;
+
     private void Awake() {
         startingPosition = gameObject.GetComponent<RectTransform>().anchoredPosition;
         GetTileCells();

@@ -19,7 +19,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         tilePopupTray = canvas.transform.Find("Tile Popup Tray").gameObject;
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
-        transform.localScale = new Vector3(0.6f, 0.6f, 1);
+        SetScale(0.6f);
     }
 
     public void OnPointerDown(PointerEventData eventData) {
@@ -35,7 +35,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
             // Change the position and size
             rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y + 200);
-            transform.localScale = new Vector3(1.2f, 1.2f, 1);
+            SetScale(1.2f);
 
             // Set the sorting order of the tile to its highlighted value
             TileCell[] tileCells = transform.gameObject.GetComponentsInChildren<TileCell>();
@@ -44,8 +44,10 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         }
         // If it's not on the board when tapped but it is highlighted, put it in 'hovering' status
         else {
-            if (isHighlighted) 
-            transform.localScale = new Vector3(1.2f, 1.2f, 1);
+            if (isHighlighted) {
+                rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y + 200);
+                SetScale(1.2f);
+            }
         }
     }
 
@@ -63,7 +65,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
             if (!isHighlighted) {
                 // Set tile size and position to 'highlighted' status
-                transform.localScale = new Vector3(1, 1, 1);
+                SetScale(1f);
                 rectTransform.anchoredPosition = tilePopupTray.GetComponent<RectTransform>().anchoredPosition;
                 isHighlighted = true;
 
@@ -84,7 +86,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         isOnBoard = true;
 
         // Reset the scale back to normal
-        transform.localScale = new Vector3(1, 1, 1);
+        SetScale(1f);
 
         Tile tile = transform.gameObject.GetComponent<Tile>();
 
@@ -156,7 +158,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     private void CancelPlacement(Tile tile) {
         tile.CancelPlacement();
         isOnBoard = false;
-        transform.localScale = new Vector3(0.6f, 0.6f, 1);
+        SetScale(0.6f);
         tilePopupTray.SetActive(false);
         isHighlighted = false;
         isOnBoard = false;
@@ -175,6 +177,22 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         foreach (TileCell cell in cells) {
             cell.SetSortingLayer(cell.GetComponent<Canvas>().sortingOrder + sortingOrderIncrement);
             //Debug.Log(cell.xOffset + ", " + cell.yOffset + ": " + cell.GetComponent<Canvas>().sortingOrder);
+        }
+    }
+
+    private void SetScale(float scale) {
+        if (transform.localScale.x < 0) {
+            if (transform.localScale.y < 0) {
+                transform.localScale = new Vector3(-scale, -scale, 1);
+            } else {
+                transform.localScale = new Vector3(-scale, scale, 1);
+            }
+        } else {
+            if (transform.localScale.y < 0) {
+                transform.localScale = new Vector3(scale, -scale, 1);
+            } else {
+                transform.localScale = new Vector3(scale, scale, 1);
+            }
         }
     }
 }
