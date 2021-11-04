@@ -12,9 +12,8 @@ public class TouchCatcher : MonoBehaviour, IPointerDownHandler, IPointerUpHandle
     }
 
     public void OnPointerUp(PointerEventData eventData) {
-        Debug.Log("test");
-        tileTray.SetActive(false);
 
+        tileTray.SetActive(false);
         GameObject activeTile = gameController.GetComponent<GameController>().activeTile;
         activeTile.GetComponent<DragDrop>().CancelPlacement(activeTile.GetComponent<Tile>());
     }

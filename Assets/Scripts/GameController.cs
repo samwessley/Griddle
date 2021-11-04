@@ -76,15 +76,17 @@ public class GameController : MonoBehaviour {
         numberOfTiles = GameManager.Instance.levelTiles[GameManager.Instance.currentLevel - 1].Length;
 
         tiles = new GameObject[numberOfTiles];
-        float xLocation = -300;
+        //float xLocation = -300;
+        Vector2[] tileLocations = new Vector2[] { new Vector2(-300, -550), new Vector2(0, -550), new Vector2(300, -550),
+                                                new Vector2(-300, -780), new Vector2(0, -780), new Vector2(300, -780)};
 
         for (int i = 0; i < tiles.Length; i++) {
             string tileName = GameManager.Instance.levelTiles[GameManager.Instance.currentLevel - 1][i];
 
             tiles[i] = Instantiate(Resources.Load<GameObject>("Prefabs/Tiles/" + tileName));
             tiles[i].transform.SetParent(canvas.transform);
-            tiles[i].GetComponent<RectTransform>().anchoredPosition = new Vector2(xLocation, -600);
-            xLocation += 300;
+            tiles[i].GetComponent<RectTransform>().anchoredPosition = tileLocations[i];
+            //xLocation += 300;
         }
     }
 

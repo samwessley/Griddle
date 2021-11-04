@@ -26,7 +26,7 @@ public class GameManager: MonoBehaviour {
     }
 
     private void PopulateTileData() {
-        levelTiles[0] = new string[] {"2 Tile", "M Tile", "T Tile"};
+        levelTiles[0] = new string[] {"2 Tile", "M Tile", "T Tile", "F Tile", "X Tile", "B Tile"};
         levelTiles[1] = new string[] {"4 L Tile", "5 Z Tile"};
     }
 
