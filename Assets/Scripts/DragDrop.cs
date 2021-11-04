@@ -14,7 +14,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     private bool isOnBoard = false;
     public bool isHighlighted = false;
 
-    private void Awake() {
+    private void Start() {
         canvas = this.gameObject.transform.parent.gameObject.GetComponent<Canvas>();
         tilePopupTray = canvas.transform.Find("Tile Popup Tray").gameObject;
         rectTransform = GetComponent<RectTransform>();
@@ -45,7 +45,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         // If it's not on the board when tapped but it is highlighted, put it in 'hovering' status
         else {
             if (isHighlighted) {
-                rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y + 200);
+                rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y + 250);
                 SetScale(1.2f);
             }
         }
@@ -53,8 +53,11 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     public void OnDrag(PointerEventData eventData) {
         // We only want to drag the tile if it was on the board or highlighted when tapped
-        if (isOnBoard || isHighlighted)
-        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        if (isOnBoard || isHighlighted) {
+            Vector2 vector = (eventData.delta / canvas.scaleFactor);
+            vector *= 1.1f;
+            rectTransform.anchoredPosition += vector;
+        }
     }
 
     public void OnPointerUp(PointerEventData eventData) {

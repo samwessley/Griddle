@@ -12,6 +12,7 @@ public class GridCell : MonoBehaviour {
     public bool isBarrier = false;
     private bool isCorrect;
     public bool isOccupied = false;
+    public bool isStar = false;
 
     private bool isValid;
     private bool isInvalid;
@@ -47,6 +48,9 @@ public class GridCell : MonoBehaviour {
             Canvas canvas = gameObject.GetComponent<Canvas>();
             canvas.sortingOrder += 2;
         }
+        else if (isStar) {
+            gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/StarTile");
+        }
     }
 
     public void SetCoordinates(int x, int y) {
@@ -61,6 +65,8 @@ public class GridCell : MonoBehaviour {
             isBarrier = true; 
         } else if (state == 2) {
             isOccupied = true;
+        } else if (state == 3) {
+            isStar = true;
         }
     }
 }

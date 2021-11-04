@@ -6,11 +6,12 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour {
 
     [SerializeField] GameObject levelNumber = null;
+    [SerializeField] GameObject canvas = null;
 
     private GridCell[,] cellGrid = new GridCell[12,12];
     private int boardSize;
-
-    private Tile[] tiles;
+    private int numberOfTiles;
+    private GameObject[] tiles;
 
     private void Start() {
         PopulateCellGrid();
@@ -19,6 +20,7 @@ public class GameController : MonoBehaviour {
 
     public void LevelSetup() {
         LoadLevelData(GameManager.Instance.currentLevel);
+        LoadTileData();
         LoadTiles();
         SetLevelNumber(GameManager.Instance.currentLevel);
     }
@@ -67,13 +69,31 @@ public class GameController : MonoBehaviour {
         }
     }
 
+    private void LoadTileData() {
+
+        numberOfTiles = GameManager.Instance.levelTiles[GameManager.Instance.currentLevel - 1].Length;
+
+        tiles = new GameObject[numberOfTiles];
+        float xLocation = -300;
+
+        for (int i = 0; i < tiles.Length; i++) {
+            string tileName = GameManager.Instance.levelTiles[GameManager.Instance.currentLevel - 1][i];
+
+            tiles[i] = Instantiate(Resources.Load<GameObject>("Prefabs/Tiles/" + tileName));
+            tiles[i].transform.SetParent(canvas.transform);
+            tiles[i].GetComponent<RectTransform>().anchoredPosition = new Vector2(xLocation, -600);
+            xLocation += 300;
+        }
+    }
+
     private void LoadTiles() {
 
         GameObject[] objects = GameObject.FindGameObjectsWithTag("Tile");
-        tiles = new Tile[objects.Length];
+        tiles = new GameObject[objects.Length];
 
         for (int i = 0; i < objects.Length; i++) {
-            tiles[i] = objects[i].GetComponent<Tile>();
+            tiles[i] = objects[i];
+
         }
     }
     

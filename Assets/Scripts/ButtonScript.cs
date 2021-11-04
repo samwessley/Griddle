@@ -41,6 +41,8 @@ public class ButtonScript : MonoBehaviour {
         foreach(GameObject tile in tiles) {
 
             if (tile.GetComponent<DragDrop>().isHighlighted) {
+
+                TileCell[] tileCells = tile.GetComponent<Tile>().tileCells;
                 
                 // Rotate the Tile transform
                 int rotations = tile.GetComponent<Tile>().rotations;
@@ -50,37 +52,47 @@ public class ButtonScript : MonoBehaviour {
                         tile.transform.eulerAngles.y,
                         tile.transform.eulerAngles.z + 90
                     );
+
+                    for (int i = 0; i < tileCells.Length; i++) {
+                        
+                        // Rotate the tile cell transforms
+                        if (tile.GetComponent<Tile>().reflected)
+                        tileCells[i].GetComponent<RectTransform>().Rotate(0, 0, -270);
+                        else
+                        tileCells[i].GetComponent<RectTransform>().Rotate(0, 0, -90);
+
+                        // Rotate the tile cell offset values
+                        float oldX = tileCells[i].xOffset;
+                        float oldY = tileCells[i].yOffset;
+
+                        tileCells[i].xOffset = -oldY;
+                        tileCells[i].yOffset = oldX;
+                    }
                 } else {
-                    tile.transform.rotation = Quaternion.identity;
+
                     tile.GetComponent<Tile>().rotations = 0;
+
+                    // Reset the tile back to its default state
+                    ResetTile(tile);
+
+                    // If the tile was reflected before reset, reflect it back
+                    if (tile.GetComponent<Tile>().reflected) {
+                        // Reflect the transform
+                        tile.transform.localScale = new Vector2(-1, 1);
+            
+                        // Reflect the tile cells' offset locations
+                        for (int j = 0; j < tileCells.Length; j++) {
+                            tileCells[j].xOffset = -tileCells[j].xOffset;
+                        }
+                    }
                 }
                 tile.GetComponent<Tile>().rotations += 1;
-
-                // Rotate the tile cells' offset locations to account for rotation
-                TileCell[] tileCells = tile.GetComponent<Tile>().tileCells;
- 
-                for (int i = 0; i < tileCells.Length; i++) {
-                    
-                    // Rotate the tile cell transforms
-                    if (tile.GetComponent<Tile>().reflected)
-                    tileCells[i].GetComponent<RectTransform>().Rotate(0, 0, -270);
-                    else
-                    tileCells[i].GetComponent<RectTransform>().Rotate(0, 0, -90);
-
-                    // Rotate the tile cell offset values
-                    float oldX = tileCells[i].xOffset;
-                    float oldY = tileCells[i].yOffset;
-
-                    tileCells[i].xOffset = -oldY;
-                    tileCells[i].yOffset = oldX;
-                }
 
                 // Update the sorting order of each tile cell
                 UpdateSortingOrder(tileCells);
             }
         }
     }
-
 
     public void ReflectTile() {
 
@@ -90,21 +102,11 @@ public class ButtonScript : MonoBehaviour {
             if (tiles[i].GetComponent<DragDrop>().isHighlighted) {
                 
                 GameObject tile = tiles[i].gameObject;
+                TileCell[] tileCells = tile.GetComponent<Tile>().tileCells;
                 bool tileReflected = tile.GetComponent<Tile>().reflected;
 
-                // Reset the tile transform back to its default state
-                tile.transform.rotation = Quaternion.identity;
-                tile.transform.localScale = new Vector2(1, 1);
-                tile.GetComponent<Tile>().rotations = 0;
-
-                TileCell[] tileCells = tile.GetComponent<Tile>().tileCells;
-
-                // Reset the tile cells back to their default state
-                for (int j = 0; j < tileCells.Length; j++) {
-                    tileCells[j].transform.localScale = new Vector2(1, 1);
-                    tileCells[j].transform.rotation = Quaternion.identity;
-                    tileCells[j].PopulateOffsetValues();
-                }
+                // Reset the tile back to its default state
+                ResetTile(tile);
 
                 // If the tile isn't reflected, reflect it
                 if (!tileReflected) {
@@ -112,9 +114,8 @@ public class ButtonScript : MonoBehaviour {
                     tiles[i].transform.localScale = new Vector2(-1, 1);
         
                     // Reflect the tile cells' offset locations
-                    for (int j = 0; j < tileCells.Length; j++) {
+                    for (int j = 0; j < tileCells.Length; j++) 
                         tileCells[j].xOffset = -tileCells[j].xOffset;
-                    }
                 }
 
                 // Update reflected property
@@ -140,6 +141,23 @@ public class ButtonScript : MonoBehaviour {
         foreach(TileCell cell in tileCells) {
             cell.SetSortingLayer(19 + rowList.IndexOf((int)cell.yOffset));
             //Debug.Log(cell.xOffset + ", " + cell.yOffset + ": " + cell.GetComponent<Canvas>().sortingOrder);
+        }
+    }
+
+    private void ResetTile(GameObject tile) {
+
+        // Reset the tile transform back to its default state
+        tile.transform.rotation = Quaternion.identity;
+        tile.transform.localScale = new Vector2(1, 1);
+        tile.GetComponent<Tile>().rotations = 0;
+
+        TileCell[] tileCells = tile.GetComponent<Tile>().tileCells;
+
+        // Reset the tile cells back to their default state
+        for (int j = 0; j < tileCells.Length; j++) {
+            tileCells[j].transform.localScale = new Vector2(1, 1);
+            tileCells[j].transform.rotation = Quaternion.identity;
+            tileCells[j].PopulateOffsetValues();
         }
     }
 }

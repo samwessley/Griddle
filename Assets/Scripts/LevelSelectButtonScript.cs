@@ -5,9 +5,13 @@ using UnityEngine.UI;
 
 public class LevelSelectButtonScript : MonoBehaviour {
 
-    [SerializeField] int level;
-    private bool isLevelCompleted = false;
-    private bool isNextLevel = false;
+    private int level;
+    //private bool isLevelCompleted = false;
+    //private bool isNextLevel = false;
+
+    private void Awake() {
+        level = System.Convert.ToInt32(gameObject.GetComponentInChildren<Text>().text);
+    }
 
     public void LoadLevel() {
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);

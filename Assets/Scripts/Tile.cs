@@ -12,7 +12,7 @@ public class Tile : MonoBehaviour {
     public bool reflected = false;
     public int lastManipulationType = 0;
 
-    private void Awake() {
+    private void Start() {
         startingPosition = gameObject.GetComponent<RectTransform>().anchoredPosition;
         GetTileCells();
     }

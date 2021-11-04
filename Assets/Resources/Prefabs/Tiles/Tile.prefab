@@ -29,7 +29,7 @@ RectTransform:
   m_GameObject: {fileID: 8374001183157887907}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children:
   - {fileID: 1445377432596861718}
   m_Father: {fileID: 0}
@@ -72,6 +72,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a69958d30006493d954425fe6632e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isHighlighted: 0
 --- !u!114 &8287805546289965655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,6 +85,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00c788783967948f183f74ad1697a71f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileCells: []
+  rotations: 0
+  reflected: 0
+  lastManipulationType: 0
 --- !u!1001 &7428740205489677149
 PrefabInstance:
   m_ObjectHideFlags: 0
