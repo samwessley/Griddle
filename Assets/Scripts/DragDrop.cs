@@ -6,8 +6,10 @@ using UnityEngine.UI;
 
 public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler {
 
+    private GameController gameController;
     private Canvas canvas;
     private CanvasGroup canvasGroup;
+    private GameObject touchCatcher;
     private GameObject tilePopupTray;
     private RectTransform rectTransform;
 
@@ -15,7 +17,9 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     public bool isHighlighted = false;
 
     private void Start() {
+        gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
         canvas = this.gameObject.transform.parent.gameObject.GetComponent<Canvas>();
+        touchCatcher = canvas.transform.Find("Touch Catcher").gameObject;
         tilePopupTray = canvas.transform.Find("Tile Popup Tray").gameObject;
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
@@ -40,7 +44,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
             // Set the sorting order of the tile to its highlighted value
             TileCell[] tileCells = transform.gameObject.GetComponentsInChildren<TileCell>();
             foreach (TileCell tileCell in tileCells)
-            tileCell.SetSortingLayer(tileCell.GetComponent<Canvas>().sortingOrder + 18);
+            tileCell.SetSortingLayer(tileCell.GetComponent<Canvas>().sortingOrder + 19);
         }
         // If it's not on the board when tapped but it is highlighted, put it in 'hovering' status
         else {
@@ -55,22 +59,24 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         // We only want to drag the tile if it was on the board or highlighted when tapped
         if (isOnBoard || isHighlighted) {
             Vector2 vector = (eventData.delta / canvas.scaleFactor);
-            vector *= 1.1f;
+            vector *= 1.2f;
             rectTransform.anchoredPosition += vector;
         }
     }
 
     public void OnPointerUp(PointerEventData eventData) {
 
-        // If the tile isn't currently on the board, show the tilePopupTray when tapping on the tile
+        // If the tile isn't currently on the board, show the touchCatcher when tapping on the tile
         if (!isOnBoard) {
-           tilePopupTray.SetActive(true); 
+            touchCatcher.GetComponent<CanvasGroup>().blocksRaycasts = true;
+            tilePopupTray.gameObject.SetActive(true); 
 
             if (!isHighlighted) {
                 // Set tile size and position to 'highlighted' status
                 SetScale(1f);
                 rectTransform.anchoredPosition = tilePopupTray.GetComponent<RectTransform>().anchoredPosition;
                 isHighlighted = true;
+                gameController.activeTile = this.gameObject;
 
                 // Set the sorting order of the tile to its highlighted value
                 TileCell[] cells = transform.gameObject.GetComponentsInChildren<TileCell>();
@@ -119,7 +125,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
         // Adjust the tile location by the calculated adjustment distance + the tile cell's offset values
         tile.gameObject.GetComponent<RectTransform>().anchoredPosition -= adjustmentDistance + new Vector2(tileCellTransform.xOffset, tileCellTransform.yOffset);
-        tilePopupTray.SetActive(false);
+        touchCatcher.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        tilePopupTray.gameObject.SetActive(false);
 
         // Set the sorting layer of the tile to the appropriate level based on where it is on the board
         int minSortingOrder = 999;
@@ -147,6 +154,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         gridcell.gameObject.GetComponent<GridCell>().isOccupied = true;
 
         isHighlighted = false;
+        gameController.activeTile = null;
     }
 
     private bool TilePlacedOverOccupiedOrBarrierGridCells(Transform[] closestCells) {
@@ -158,13 +166,15 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         return false;
     }
 
-    private void CancelPlacement(Tile tile) {
+    public void CancelPlacement(Tile tile) {
         tile.CancelPlacement();
         isOnBoard = false;
         SetScale(0.6f);
-        tilePopupTray.SetActive(false);
+        touchCatcher.GetComponent<CanvasGroup>().blocksRaycasts = false;
+        tilePopupTray.gameObject.SetActive(false);
         isHighlighted = false;
         isOnBoard = false;
+        gameController.activeTile = null;
 
         // Set the sorting order of the tile to its default value
         TileCell[] cells = transform.gameObject.GetComponentsInChildren<TileCell>();

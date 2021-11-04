@@ -13,6 +13,8 @@ public class GameController : MonoBehaviour {
     private int numberOfTiles;
     private GameObject[] tiles;
 
+    public GameObject activeTile;
+
     private void Start() {
         PopulateCellGrid();
         LevelSetup();
