@@ -23,7 +23,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         tilePopupTray = canvas.transform.Find("Tile Popup Tray").gameObject;
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
-        SetScale(0.6f);
+        SetScale(0.7f);
     }
 
     public void OnPointerDown(PointerEventData eventData) {
@@ -169,7 +169,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     public void CancelPlacement(Tile tile) {
         tile.CancelPlacement();
         isOnBoard = false;
-        SetScale(0.6f);
+        SetScale(0.7f);
         touchCatcher.GetComponent<CanvasGroup>().blocksRaycasts = false;
         tilePopupTray.gameObject.SetActive(false);
         isHighlighted = false;

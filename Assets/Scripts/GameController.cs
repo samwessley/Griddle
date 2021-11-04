@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour {
 
     [SerializeField] GameObject levelNumber = null;
+    [SerializeField] GameObject levelNumberShadow = null;
     [SerializeField] GameObject canvas = null;
 
     private GridCell[,] cellGrid = new GridCell[12,12];
@@ -77,7 +78,7 @@ public class GameController : MonoBehaviour {
 
         tiles = new GameObject[numberOfTiles];
         //float xLocation = -300;
-        Vector2[] tileLocations = new Vector2[] { new Vector2(-300, -550), new Vector2(0, -550), new Vector2(300, -550),
+        Vector2[] tileLocations = new Vector2[] { new Vector2(-300, -560), new Vector2(0, -560), new Vector2(300, -560),
                                                 new Vector2(-300, -780), new Vector2(0, -780), new Vector2(300, -780)};
 
         for (int i = 0; i < tiles.Length; i++) {
@@ -103,5 +104,6 @@ public class GameController : MonoBehaviour {
     
     private void SetLevelNumber(int level) {
         levelNumber.GetComponent<Text>().text = level.ToString();
+        levelNumberShadow.GetComponent<Text>().text = level.ToString();
     }
 }

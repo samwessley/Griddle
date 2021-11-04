@@ -9,19 +9,23 @@ public class ButtonScript : MonoBehaviour {
         SceneManager.LoadScene(0);
     }
 
-    public void LoadNextLevel() {
-        // Increment current level
-        GameManager.Instance.currentLevel += 1;
-
-        // Reload scene
-        Scene scene = SceneManager.GetActiveScene(); 
-        SceneManager.LoadScene(scene.name);
-    }
-
     public void LoadPreviousLevel() {
         // Increment current level
         if (GameManager.Instance.currentLevel > 1) {
             GameManager.Instance.currentLevel -= 1;
+
+            // Reload scene
+            Scene scene = SceneManager.GetActiveScene(); 
+            SceneManager.LoadScene(scene.name);
+        } else {
+            SceneManager.LoadScene(0);
+        }
+    }
+
+    public void LoadNextLevel() {
+        // Increment current level
+        if (GameManager.Instance.currentLevel < GameManager.Instance.totalLevels) {
+            GameManager.Instance.currentLevel += 1;
 
             // Reload scene
             Scene scene = SceneManager.GetActiveScene(); 

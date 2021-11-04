@@ -6,9 +6,10 @@ public class GameManager: MonoBehaviour {
 
     private static GameManager _Instance;
 
+    public int totalLevels;
     public int currentLevel;
     public int[,,] levelBoardData;
-    public string[][] levelTiles = new string[2][];
+    public string[][] levelTiles = new string[3][];
 
     public static GameManager Instance {
         get {
@@ -23,11 +24,13 @@ public class GameManager: MonoBehaviour {
     void Awake() {
         PopulateLevelBoardData();
         PopulateTileData();
+        totalLevels = levelTiles.Length;
     }
 
     private void PopulateTileData() {
         levelTiles[0] = new string[] {"2 Tile", "M Tile", "T Tile", "F Tile", "X Tile", "B Tile"};
         levelTiles[1] = new string[] {"4 L Tile", "5 Z Tile"};
+        levelTiles[2] = new string[] {"4 L Tile", "5 Z Tile"};
     }
 
     private void PopulateLevelBoardData() {
