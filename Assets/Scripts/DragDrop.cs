@@ -159,7 +159,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         gameController.activeTile = null;
         gameController.tilesRemaining -= 1;
 
-        gameController.CheckForAllTilesPlayed();
+        gameController.CheckForLevelComplete();
     }
 
     private bool TilePlacedOverOccupiedOrBarrierGridCells(Transform[] closestCells) {

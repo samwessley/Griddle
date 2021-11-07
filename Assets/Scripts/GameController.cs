@@ -48,8 +48,8 @@ public class GameController : MonoBehaviour {
         }
     }
 
-    public void CheckForAllTilesPlayed() {
-        if (tilesRemaining == 0) {
+    public void CheckForLevelComplete() {
+        if (tilesRemaining == 0 && CheckForValidTilePlacement()) {
             StartCoroutine(LevelCompleteAnimation(0.2f));
         }
     }
@@ -74,16 +74,6 @@ public class GameController : MonoBehaviour {
         }
 
         yield return new WaitForSeconds(time);
-
-        //levelCompletePopup.transform.GetChild(2).gameObject.SetActive(true);
-        //Color buttonColor = levelCompletePopup.transform.GetChild(2).gameObject.GetComponent<Image>().color;
-
-        /*i = 0;
-        while (i < 1) {
-            i += Time.deltaTime * rate;
-            levelCompletePopup.transform.GetChild(2).gameObject.GetComponent<Image>().color = new Color(buttonColor.r, buttonColor.g, buttonColor.b, i);
-            yield return 0;
-        }*/
     }
 
     private void LoadLevelData(int level) {
@@ -139,12 +129,119 @@ public class GameController : MonoBehaviour {
 
         for (int i = 0; i < objects.Length; i++) {
             tiles[i] = objects[i];
-
         }
     }
     
     private void SetLevelNumber(int level) {
+
         levelNumber.GetComponent<Text>().text = level.ToString();
         levelNumberShadow.GetComponent<Text>().text = level.ToString();
+    }
+
+    private bool CheckForValidTilePlacement() {
+
+        for (int i = 0; i < tiles.Length; i++) {
+            Tile tile = tiles[i].GetComponent<Tile>();
+            RectTransform[] closestGridCellTransforms = tile.GetClosestCellsArray();
+            GridCell[] closestGridCells = new GridCell[closestGridCellTransforms.Length];
+
+            for (int j = 0; j < closestGridCellTransforms.Length; j++) {
+                closestGridCells[j] = closestGridCellTransforms[j].gameObject.GetComponent<GridCell>();
+            }
+
+            List<GridCell> sideCellsToTest = new List<GridCell>();
+            List<GridCell> cornerCellsToTest = new List<GridCell>();
+
+            foreach (GridCell cell in closestGridCells) {
+                
+                sideCellsToTest.AddRange(GetSideAdjacentCells(cell, closestGridCells));
+                cornerCellsToTest.AddRange(GetCornerAdjacentCells(cell, closestGridCells));
+            }
+
+            // Remove the side cells that are part of the tile
+            GridCell[] sideCellsToTestArray = sideCellsToTest.ToArray();
+            for (int g = 0; g < sideCellsToTestArray.Length; g++) {
+                for (int j = 0; j < closestGridCells.Length; j++) {
+                    if (sideCellsToTestArray[g] == closestGridCells[j])
+                    sideCellsToTest.Remove(sideCellsToTestArray[g]);
+                }
+            }
+
+            // Remove the corner cells that are part of the tile
+            GridCell[] cornerCellsToTestArray = cornerCellsToTest.ToArray();
+            for (int g = 0; g < cornerCellsToTestArray.Length; g++) {
+                for (int j = 0; j < closestGridCells.Length; j++) {
+                    if (cornerCellsToTestArray[g] == closestGridCells[j])
+                    cornerCellsToTest.Remove(cornerCellsToTestArray[g]);
+                }
+            }
+
+            // Loop through cornerCellsToTest and delete any cornerCells that are in sideCellsToTest
+            sideCellsToTestArray = sideCellsToTest.ToArray();
+            cornerCellsToTestArray = cornerCellsToTest.ToArray();
+            for (int g = 0; g < cornerCellsToTestArray.Length; g++) {
+                for (int j = 0; j < sideCellsToTestArray.Length; j++) {
+                    if (cornerCellsToTestArray[g] == sideCellsToTestArray[j])
+                        cornerCellsToTest.Remove(cornerCellsToTestArray[g]);
+                } 
+            }
+
+            // At this point, we have our side adjacent cells and our corner adjacent cells.
+            // Time to test that 1) no side adjacent cells are occupied and 2) at least one
+            // corner adjacent cell is occupied. If both these conditions pass, return true
+
+            // Loop through remaining side-adjacent cells to test for occupied
+            foreach (GridCell cell in sideCellsToTest) {
+                if (cell.isOccupied) {
+                    return false;
+                }
+            }
+            
+            // Loop through corner-adjacent cells and make sure at least one is occupied
+            bool oneCellIsValid = false;
+            foreach (GridCell cell in cornerCellsToTest) {
+                if (cell.isOccupied)
+                    oneCellIsValid = true;
+            }
+            if (!oneCellIsValid)
+                return false;
+        }
+
+        // If we get to this point, none of the tiles have any issues. This is a valid placement of tiles
+        return true;
+    }
+
+    private List<GridCell> GetSideAdjacentCells(GridCell cell, GridCell[] closestGridCells) {
+        
+        List<GridCell> sideCellsToTest = new List<GridCell>();
+
+        // Gather all the side adjacent cells for this grid cell
+        if (cell.xIndex - 1 >= 0)
+            sideCellsToTest.Add(cellGrid[cell.xIndex - 1, cell.yIndex]);
+        if (cell.xIndex + 1 <= 11)
+            sideCellsToTest.Add(cellGrid[cell.xIndex + 1, cell.yIndex]);
+        if (cell.yIndex - 1 >= 0)
+            sideCellsToTest.Add(cellGrid[cell.xIndex, cell.yIndex - 1]);
+        if (cell.yIndex + 1 <= 11)
+            sideCellsToTest.Add(cellGrid[cell.xIndex, cell.yIndex + 1]);
+
+        return sideCellsToTest;
+    }
+
+    private List<GridCell> GetCornerAdjacentCells(GridCell cell, GridCell[] closestGridCells) {
+
+        List<GridCell> cornerCellsToTest = new List<GridCell>();
+
+        // Gather all the corner adjacent cells for this grid cell
+        if (cell.xIndex - 1 >= 0 && cell.yIndex - 1 >= 0)
+            cornerCellsToTest.Add(cellGrid[cell.xIndex - 1, cell.yIndex - 1]);
+        if (cell.xIndex + 1 <= 11 && cell.yIndex - 1 >= 0)
+            cornerCellsToTest.Add(cellGrid[cell.xIndex + 1, cell.yIndex - 1]);
+        if (cell.xIndex - 1 >= 0 && cell.yIndex + 1 <= 11)
+            cornerCellsToTest.Add(cellGrid[cell.xIndex - 1, cell.yIndex + 1]);
+        if (cell.xIndex + 1 <= 11 && cell.yIndex + 1 <= 11)
+            cornerCellsToTest.Add(cellGrid[cell.xIndex + 1, cell.yIndex + 1]);
+
+        return cornerCellsToTest;
     }
 }

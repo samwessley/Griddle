@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GridCell : MonoBehaviour {
 
-    private int[] coords;
+    public int[] coords;
     public int xIndex;
     public int yIndex;
 
