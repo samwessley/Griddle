@@ -16,6 +16,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     private bool isOnBoard = false;
     public bool isHighlighted = false;
 
+    private Vector2 pointerLocation;
+
     private void Start() {
         gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
         canvas = this.gameObject.transform.parent.gameObject.GetComponent<Canvas>();
@@ -28,8 +30,11 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     public void OnPointerDown(PointerEventData eventData) {
 
+        pointerLocation = eventData.position;
+
         // If the tile is on the board when tapped, set it to 'hovering' status
         if (isOnBoard) {
+
             // Reset the occupied values of the grid cells under this tile to false
             RectTransform[] closestGridCells = gameObject.GetComponent<Tile>().GetClosestCellsArray();
             if (closestGridCells != null) {
@@ -68,6 +73,11 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     public void OnPointerUp(PointerEventData eventData) {
 
+        Tile tile = transform.gameObject.GetComponent<Tile>();
+
+        if (eventData.position == pointerLocation)
+        CancelPlacement(tile);
+
         // If the tile isn't currently on the board, show the touchCatcher when tapping on the tile
         if (!isOnBoard) {
             touchCatcher.GetComponent<CanvasGroup>().blocksRaycasts = true;
@@ -98,8 +108,6 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
         // Reset the scale back to normal
         SetScale(1f);
-
-        Tile tile = transform.gameObject.GetComponent<Tile>();
 
         // First check that the tile is touching the grid. If not, cancel placement and return
         if (tile.GetClosestCellsArray() == null) {

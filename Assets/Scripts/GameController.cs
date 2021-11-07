@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour {
 
     public GameObject activeTile;
     public int tilesRemaining;
+    public int starsCollected = 0;
 
     private void Start() {
         PopulateCellGrid();
@@ -57,6 +58,8 @@ public class GameController : MonoBehaviour {
     IEnumerator LevelCompleteAnimation(float time) {
         float i = 0;
         float rate = 1 / time;
+
+        Debug.Log(starsCollected);
 
         yield return new WaitForSeconds(0.4f);
 
@@ -148,6 +151,8 @@ public class GameController : MonoBehaviour {
             for (int j = 0; j < closestGridCellTransforms.Length; j++) {
                 closestGridCells[j] = closestGridCellTransforms[j].gameObject.GetComponent<GridCell>();
             }
+
+            GetStarsCollected(closestGridCells);
 
             List<GridCell> sideCellsToTest = new List<GridCell>();
             List<GridCell> cornerCellsToTest = new List<GridCell>();
@@ -243,5 +248,12 @@ public class GameController : MonoBehaviour {
             cornerCellsToTest.Add(cellGrid[cell.xIndex + 1, cell.yIndex + 1]);
 
         return cornerCellsToTest;
+    }
+
+    private void GetStarsCollected(GridCell[] closestGridCells) {
+        foreach (GridCell cell in closestGridCells) {
+            if (cell.isStar)
+            starsCollected += 1;
+        }
     }
 }
