@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour {
     [SerializeField] GameObject levelNumber = null;
     [SerializeField] GameObject levelNumberShadow = null;
     [SerializeField] GameObject canvas = null;
+    [SerializeField] GameObject levelCompletePopup = null;
 
     private GridCell[,] cellGrid = new GridCell[12,12];
     private int boardSize;
@@ -15,6 +16,7 @@ public class GameController : MonoBehaviour {
     private GameObject[] tiles;
 
     public GameObject activeTile;
+    public int tilesRemaining;
 
     private void Start() {
         PopulateCellGrid();
@@ -46,6 +48,44 @@ public class GameController : MonoBehaviour {
         }
     }
 
+    public void CheckForAllTilesPlayed() {
+        if (tilesRemaining == 0) {
+            StartCoroutine(LevelCompleteAnimation(0.2f));
+        }
+    }
+
+    IEnumerator LevelCompleteAnimation(float time) {
+        float i = 0;
+        float rate = 1 / time;
+
+        yield return new WaitForSeconds(0.4f);
+
+        levelCompletePopup.SetActive(true);
+        Color starColor = levelCompletePopup.transform.GetChild(0).gameObject.GetComponent<Image>().color;
+        Color textColor = levelCompletePopup.transform.GetChild(1).gameObject.GetComponent<Image>().color;
+        Color buttonColor = levelCompletePopup.transform.GetChild(2).gameObject.GetComponent<Image>().color;
+
+        while (i < 1) {
+            i += Time.deltaTime * rate;
+            levelCompletePopup.transform.GetChild(0).gameObject.GetComponent<Image>().color = new Color(starColor.r, starColor.g, starColor.b, i);
+            levelCompletePopup.transform.GetChild(1).gameObject.GetComponent<Image>().color = new Color(textColor.r, textColor.g, textColor.b, i);
+            levelCompletePopup.transform.GetChild(2).gameObject.GetComponent<Image>().color = new Color(buttonColor.r, buttonColor.g, buttonColor.b, i);
+            yield return 0;
+        }
+
+        yield return new WaitForSeconds(time);
+
+        //levelCompletePopup.transform.GetChild(2).gameObject.SetActive(true);
+        //Color buttonColor = levelCompletePopup.transform.GetChild(2).gameObject.GetComponent<Image>().color;
+
+        /*i = 0;
+        while (i < 1) {
+            i += Time.deltaTime * rate;
+            levelCompletePopup.transform.GetChild(2).gameObject.GetComponent<Image>().color = new Color(buttonColor.r, buttonColor.g, buttonColor.b, i);
+            yield return 0;
+        }*/
+    }
+
     private void LoadLevelData(int level) {
 
         int levelToLoadIndex = level - 1;
@@ -75,6 +115,7 @@ public class GameController : MonoBehaviour {
     private void LoadTileData() {
 
         numberOfTiles = GameManager.Instance.levelTiles[GameManager.Instance.currentLevel - 1].Length;
+        tilesRemaining = numberOfTiles;
 
         tiles = new GameObject[numberOfTiles];
         //float xLocation = -300;

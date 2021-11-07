@@ -45,6 +45,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
             TileCell[] tileCells = transform.gameObject.GetComponentsInChildren<TileCell>();
             foreach (TileCell tileCell in tileCells)
             tileCell.SetSortingLayer(tileCell.GetComponent<Canvas>().sortingOrder + 19);
+
+            gameController.tilesRemaining += 1;
         }
         // If it's not on the board when tapped but it is highlighted, put it in 'hovering' status
         else {
@@ -155,6 +157,9 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
         isHighlighted = false;
         gameController.activeTile = null;
+        gameController.tilesRemaining -= 1;
+
+        gameController.CheckForAllTilesPlayed();
     }
 
     private bool TilePlacedOverOccupiedOrBarrierGridCells(Transform[] closestCells) {
