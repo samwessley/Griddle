@@ -25,6 +25,9 @@ public class GameManager: MonoBehaviour {
         PopulateLevelBoardData();
         PopulateTileData();
         totalLevels = levelTiles.Length;
+
+        if (currentLevel == 0)
+        currentLevel = 1;
     }
 
     private void PopulateTileData() {

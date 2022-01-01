@@ -1156,7 +1156,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f238b34fe25344578816a96b219db6ee, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ace02459ffb6847b29c88ec950d944a9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2436,7 +2436,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f526117de7f7f4eba8285e94848446a2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d3d155283431442b6a2dd11e4f2c786a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4823,7 +4823,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ba5496d7f8b8a404d80dcd50d000c02d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 901af02b8b87445d9b4279b7b84afddf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7540,7 +7540,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7603ce154a3144fecba3c2e66127356a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bb288628cd5014a5389d0f6362cd6c6f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9349,7 +9349,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 32ab32bf4d80a49f381b5e45f3e2f3fc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7436f5a2fbab542e1b5f75c3ac71adb2, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10854,7 +10854,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.23529412, g: 0.654902, b: 0.7490196, a: 1}
+  m_BackGroundColor: {r: 0.15294118, g: 0.2784314, b: 0.34901962, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 1
@@ -12487,6 +12487,7 @@ MonoBehaviour:
   levelCompletePopup: {fileID: 1438573147}
   activeTile: {fileID: 0}
   tilesRemaining: 0
+  starsCollected: 0
 --- !u!4 &1588364175
 Transform:
   m_ObjectHideFlags: 0
@@ -12803,7 +12804,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 90c38ee1edc83448bb1a6272a2d16c7f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1cc54aea933624dc7abba86d1744dc7f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -16340,7 +16341,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: bddd1706bf1044b52b473ca5579f7d28, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e3f3649c32fe7416aa6eb23e8f89ccd0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
