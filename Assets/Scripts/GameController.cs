@@ -6,9 +6,13 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour {
 
     [SerializeField] GameObject levelNumber = null;
-    [SerializeField] GameObject levelNumberShadow = null;
     [SerializeField] GameObject canvas = null;
     [SerializeField] GameObject levelCompletePopup = null;
+
+    [SerializeField] GameObject star1 = null;
+    [SerializeField] GameObject star2 = null;
+    [SerializeField] GameObject star3 = null;
+    [SerializeField] GameObject message = null;
 
     private GridCell[,] cellGrid = new GridCell[12,12];
     private int boardSize;
@@ -51,32 +55,66 @@ public class GameController : MonoBehaviour {
 
     public void CheckForLevelComplete() {
         if (tilesRemaining == 0 && CheckForValidTilePlacement()) {
-            StartCoroutine(LevelCompleteAnimation(0.2f));
+            StartCoroutine(LevelCompleteAnimation());
         }
     }
 
-    IEnumerator LevelCompleteAnimation(float time) {
-        float i = 0;
-        float rate = 1 / time;
+    IEnumerator LevelCompleteAnimation() {
 
-        Debug.Log(starsCollected);
+        SetStarsAndMessage();
 
-        yield return new WaitForSeconds(0.4f);
+        LeanTween.scale(star1, Vector2.zero, 0);
+        LeanTween.scale(star2, Vector2.zero, 0);
+        LeanTween.scale(star3, Vector2.zero, 0);
+
+        LeanTween.scale(message, Vector2.zero, 0);
+        LeanTween.rotateZ(message, -25f,0);
+
+        yield return new WaitForSeconds(0.2f);
 
         levelCompletePopup.SetActive(true);
-        Color starColor = levelCompletePopup.transform.GetChild(0).gameObject.GetComponent<Image>().color;
-        Color textColor = levelCompletePopup.transform.GetChild(1).gameObject.GetComponent<Image>().color;
-        Color buttonColor = levelCompletePopup.transform.GetChild(2).gameObject.GetComponent<Image>().color;
 
-        while (i < 1) {
-            i += Time.deltaTime * rate;
-            levelCompletePopup.transform.GetChild(0).gameObject.GetComponent<Image>().color = new Color(starColor.r, starColor.g, starColor.b, i);
-            levelCompletePopup.transform.GetChild(1).gameObject.GetComponent<Image>().color = new Color(textColor.r, textColor.g, textColor.b, i);
-            levelCompletePopup.transform.GetChild(2).gameObject.GetComponent<Image>().color = new Color(buttonColor.r, buttonColor.g, buttonColor.b, i);
-            yield return 0;
+        yield return new WaitForSeconds(0.1f);
+        LeanTween.scale(star1, new Vector2 (1,1), 0.07f);
+        yield return new WaitForSeconds(0.07f);
+        LeanTween.scale(star2, new Vector2 (1,1), 0.07f);
+        yield return new WaitForSeconds(0.07f);
+        LeanTween.scale(star3, new Vector2 (1,1), 0.07f);
+
+        yield return new WaitForSeconds(0.25f);
+
+        LeanTween.scale(message, new Vector2(1,1), 0.08f);
+        LeanTween.rotateZ(message,0,0.08f);
+    }
+
+    private void SetStarsAndMessage() {
+        if (starsCollected > 0) {
+            star1.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Star");
+            RectTransform star_rt = star1.GetComponent<RectTransform>();
+            star_rt.sizeDelta = new Vector2 (595, 597);
+
+            message.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Nice!");
+            RectTransform message_rt = message.GetComponent<RectTransform>();
+            message_rt.sizeDelta = new Vector2 (353, 134);
         }
+        if (starsCollected > 1) {
+            star2.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Star");
+            RectTransform star_rt = star2.GetComponent<RectTransform>();
+            star_rt.sizeDelta = new Vector2 (595, 597);
 
-        yield return new WaitForSeconds(time);
+            message.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Great!");
+            RectTransform message_rt = message.GetComponent<RectTransform>();
+            message_rt.sizeDelta = new Vector2 (454, 143);
+        }
+        if (starsCollected > 2) {
+            star3.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Star");
+            RectTransform star_rt = star3.GetComponent<RectTransform>();
+            star_rt.sizeDelta = new Vector2 (595, 597);
+
+            message.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Perfect!");
+            RectTransform message_rt = message.GetComponent<RectTransform>();
+            message_rt.sizeDelta = new Vector2 (585, 159);
+        }
     }
 
     private void LoadLevelData(int level) {
@@ -136,9 +174,7 @@ public class GameController : MonoBehaviour {
     }
     
     private void SetLevelNumber(int level) {
-
         levelNumber.GetComponent<Text>().text = level.ToString();
-        levelNumberShadow.GetComponent<Text>().text = level.ToString();
     }
 
     private bool CheckForValidTilePlacement() {
