@@ -35,6 +35,18 @@ public class ButtonScript : MonoBehaviour {
         }
     }
 
+    public void LevelFinishedLoadNextLevel() {
+        // Increment current level
+        if (GameManager.Instance.currentLevel < GameManager.Instance.totalLevels) {
+
+            // Load next level
+            Scene scene = SceneManager.GetActiveScene(); 
+            SceneManager.LoadScene(scene.name);
+        } else {
+            SceneManager.LoadScene(0);
+        }
+    }
+
     public void RestartLevel() {
 
         // Reload scene

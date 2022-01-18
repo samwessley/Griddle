@@ -30,7 +30,7 @@ public class GameController : MonoBehaviour {
 
     public void LevelSetup() {
         LoadLevelData(GameManager.Instance.currentLevel);
-        LoadTileData();
+        LoadTileData(GameManager.Instance.currentLevel);
         LoadTiles();
         SetLevelNumber(GameManager.Instance.currentLevel);
     }
@@ -56,6 +56,14 @@ public class GameController : MonoBehaviour {
     public void CheckForLevelComplete() {
         if (tilesRemaining == 0 && CheckForValidTilePlacement()) {
             StartCoroutine(LevelCompleteAnimation());
+
+            GameManager.Instance.stars[GameManager.Instance.currentLevel - 1] = starsCollected;
+
+            if (GameManager.Instance.currentLevel < GameManager.Instance.totalLevels)
+            GameManager.Instance.currentLevel += 1;
+
+            if (GameManager.Instance.levelsUnlocked < GameManager.Instance.totalLevels)
+            GameManager.Instance.levelsUnlocked += 1;
         }
     }
 
@@ -143,9 +151,9 @@ public class GameController : MonoBehaviour {
         }
     }
 
-    private void LoadTileData() {
+    private void LoadTileData(int level) {
 
-        numberOfTiles = GameManager.Instance.levelTiles[GameManager.Instance.currentLevel - 1].Length;
+        numberOfTiles = GameManager.Instance.levelTiles[level - 1].Length;
         tilesRemaining = numberOfTiles;
 
         tiles = new GameObject[numberOfTiles];
@@ -154,7 +162,7 @@ public class GameController : MonoBehaviour {
                                                 new Vector2(-300, -780), new Vector2(0, -780), new Vector2(300, -780)};
 
         for (int i = 0; i < tiles.Length; i++) {
-            string tileName = GameManager.Instance.levelTiles[GameManager.Instance.currentLevel - 1][i];
+            string tileName = GameManager.Instance.levelTiles[level - 1][i];
 
             tiles[i] = Instantiate(Resources.Load<GameObject>("Prefabs/Tiles/" + tileName));
             tiles[i].transform.SetParent(canvas.transform);

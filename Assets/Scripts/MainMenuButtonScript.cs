@@ -5,6 +5,7 @@ using UnityEngine;
 public class MainMenuButtonScript : MonoBehaviour {
 
     public void LoadCurrentLevel() {
+        GameManager.Instance.currentLevel = GameManager.Instance.levelsUnlocked;
         UnityEngine.SceneManagement.SceneManager.LoadScene(2);
     }
   

@@ -18,6 +18,7 @@ public class GridCell : MonoBehaviour {
     private bool isInvalid;
 
     private Color barrierColor = new Color(210f/255f,210f/255f,205f/255f);
+    private Color barrierSideColor = new Color(145f/255f,145f/255f,145f/255f);
     private Color occupiedColor = new Color(171f/255f,9f/255f,96f/255f);
     private Color shadowColor = new Color(129f/255f,6f/255f,72f/255f);
 
@@ -34,7 +35,14 @@ public class GridCell : MonoBehaviour {
 
         if (isBarrier) {
             gameObject.GetComponent<Image>().sprite = null;
-            gameObject.GetComponent<Image>().color = barrierColor;
+            gameObject.GetComponent<Image>().color = barrierSideColor;
+
+            Image childObj = this.gameObject.transform.GetChild(0).GetComponent<Image>();
+            childObj.sprite = null;
+            childObj.color = barrierColor;
+            
+            Canvas canvas = gameObject.GetComponent<Canvas>();
+            canvas.sortingOrder += 1;
         }
         else if (isOccupied) {
 
