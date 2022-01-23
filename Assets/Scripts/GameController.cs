@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour {
     [SerializeField] GameObject levelNumber = null;
     [SerializeField] GameObject canvas = null;
     [SerializeField] GameObject levelCompletePopup = null;
+    [SerializeField] GameObject nextLevelButton = null;
 
     [SerializeField] GameObject star1 = null;
     [SerializeField] GameObject star2 = null;
@@ -26,6 +27,7 @@ public class GameController : MonoBehaviour {
     private void Start() {
         PopulateCellGrid();
         LevelSetup();
+        GameManager.Instance.SaveAsJSON();
     }
 
     public void LevelSetup() {
@@ -59,11 +61,10 @@ public class GameController : MonoBehaviour {
 
             GameManager.Instance.stars[GameManager.Instance.currentLevel - 1] = starsCollected;
 
-            if (GameManager.Instance.currentLevel < GameManager.Instance.totalLevels)
-            GameManager.Instance.currentLevel += 1;
-
             if (GameManager.Instance.levelsUnlocked < GameManager.Instance.totalLevels)
             GameManager.Instance.levelsUnlocked += 1;
+
+            GameManager.Instance.SaveAsJSON();
         }
     }
 
@@ -183,6 +184,7 @@ public class GameController : MonoBehaviour {
     
     private void SetLevelNumber(int level) {
         levelNumber.GetComponent<Text>().text = level.ToString();
+        GameManager.Instance.currentLevel = level;
     }
 
     private bool CheckForValidTilePlacement() {

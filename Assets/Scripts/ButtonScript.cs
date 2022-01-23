@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class ButtonScript : MonoBehaviour {
 
     public void LoadMenuScene() {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     public void LoadPreviousLevel() {
@@ -35,14 +35,21 @@ public class ButtonScript : MonoBehaviour {
         }
     }
 
+    public void LoadNextLevelSet() {
+        
+    }
+
     public void LevelFinishedLoadNextLevel() {
         // Increment current level
         if (GameManager.Instance.currentLevel < GameManager.Instance.totalLevels) {
+
+            GameManager.Instance.currentLevel += 1;
 
             // Load next level
             Scene scene = SceneManager.GetActiveScene(); 
             SceneManager.LoadScene(scene.name);
         } else {
+            Debug.Log("Jf");
             SceneManager.LoadScene(0);
         }
     }

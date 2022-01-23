@@ -22,8 +22,10 @@ public class LevelSelectButtonScript : MonoBehaviour {
 
     private void SetUpButton() {
         if (isLevelUnlocked) {
+            int buttonColor = GameManager.Instance.levelButtonColors[level - 1];
+
             gameObject.GetComponent<Button>().interactable = true;
-            gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Level Button Orange");
+            gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Level Button " + buttonColor);
             gameObject.GetComponentInChildren<Text>().enabled = true;
         }
     }

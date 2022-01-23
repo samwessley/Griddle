@@ -20,6 +20,8 @@ public class GameManager: MonoBehaviour {
     public int[,,] levelBoardData;
     public string[][] levelTiles = new string[3][];
 
+    public int[] levelButtonColors;
+
     public static GameManager Instance {
         get {
             if (_Instance == null) {
@@ -38,9 +40,22 @@ public class GameManager: MonoBehaviour {
         hintsRemaining = 3;
         adsRemoved = false;
 
+        SetLevelButtonColors();
         PopulateLevelBoardData();
         PopulateTileData();
         Load();
+    }
+
+    private void SetLevelButtonColors() {
+        // Give the random generator a manual seed so it generates the same values every time
+        Random.InitState(34);
+
+        levelButtonColors = new int[totalLevels];
+
+        // Set each level button color to a random value in the range of possible colors pulling from the same seed
+        for (int i = 0; i < totalLevels; i++) {
+            levelButtonColors[i] = Random.Range(1,4);
+        }
     }
 
     public void Load() {

@@ -4929,6 +4929,7 @@ GameObject:
   - component: {fileID: 749717129}
   - component: {fileID: 749717128}
   - component: {fileID: 749717127}
+  - component: {fileID: 749717131}
   m_Layer: 5
   m_Name: Next Level Button
   m_TagString: Untagged
@@ -5061,6 +5062,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 749717125}
   m_CullTransparentMesh: 1
+--- !u!114 &749717131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749717125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 494b226b66e9e46969cb422cdcc20c94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &757811393
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12703,6 +12716,7 @@ MonoBehaviour:
   levelNumber: {fileID: 1656326115}
   canvas: {fileID: 338111615}
   levelCompletePopup: {fileID: 1438573147}
+  nextLevelButton: {fileID: 0}
   star1: {fileID: 1255491915}
   star2: {fileID: 145172228}
   star3: {fileID: 951135701}
