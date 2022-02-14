@@ -5,11 +5,19 @@ using UnityEngine.UI;
 
 public class LevelSelectButtonScript : MonoBehaviour {
 
-    private int level;
+    public int level;
     private bool isLevelUnlocked = false;
 
     private void Awake() {
-        level = System.Convert.ToInt32(gameObject.GetComponentInChildren<Text>().text);
+    
+        SetUpButton();
+    }
+
+    public void SetUpButton() {
+        isLevelUnlocked = false;
+        gameObject.GetComponent<Button>().interactable = false;
+
+        gameObject.GetComponentInChildren<Text>().text = level.ToString();
 
         gameObject.GetComponentInChildren<Text>().enabled = false;
         gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Lock");
@@ -17,10 +25,6 @@ public class LevelSelectButtonScript : MonoBehaviour {
         if (GameManager.Instance.levelsUnlocked >= level)
         isLevelUnlocked = true;
 
-        SetUpButton();
-    }
-
-    private void SetUpButton() {
         if (isLevelUnlocked) {
             int buttonColor = GameManager.Instance.levelButtonColors[level - 1];
 

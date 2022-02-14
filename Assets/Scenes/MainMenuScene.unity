@@ -154,9 +154,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalLevels: 0
   currentLevel: 1
+  levelsUnlocked: 0
   stars: 
   hintsRemaining: 0
   adsRemoved: 0
+  levelButtonColors: 
 --- !u!4 &387025558
 Transform:
   m_ObjectHideFlags: 0
@@ -188,7 +190,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &404880071
 RectTransform:
   m_ObjectHideFlags: 0

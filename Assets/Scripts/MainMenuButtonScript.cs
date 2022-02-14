@@ -6,7 +6,7 @@ public class MainMenuButtonScript : MonoBehaviour {
 
     public void LoadCurrentLevel() {
         GameManager.Instance.currentLevel = GameManager.Instance.levelsUnlocked;
-        UnityEngine.SceneManagement.SceneManager.LoadScene(2);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(4);
     }
   
     public void LoadLevelSelectScene() {

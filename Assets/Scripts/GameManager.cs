@@ -17,8 +17,9 @@ public class GameManager: MonoBehaviour {
     public int hintsRemaining;
     public bool adsRemoved;
 
-    public int[,,] levelBoardData;
+    //public int[,,] levelBoardData;
     public string[][] levelTiles = new string[3][];
+    //public int[][][][] solutions;
 
     public int[] levelButtonColors;
 
@@ -41,8 +42,9 @@ public class GameManager: MonoBehaviour {
         adsRemoved = false;
 
         SetLevelButtonColors();
-        PopulateLevelBoardData();
+        //PopulateLevelBoardData();
         PopulateTileData();
+        //PopulateSolutions();
         Load();
     }
 
@@ -140,14 +142,14 @@ public class GameManager: MonoBehaviour {
     }
 
     private void PopulateTileData() {
-        levelTiles[0] = new string[] {"2 Tile", "M Tile", "T Tile", "F Tile", "X Tile", "B Tile"};
+        levelTiles[0] = new string[] {"2 Tile", "M Tile", "T Tile", "F Tile", "X Tile", "5 Stick Tile"};
         levelTiles[1] = new string[] {"4 L Tile", "5 Z Tile"};
         levelTiles[2] = new string[] {"4 L Tile", "5 Z Tile"};
     }
 
-    private void PopulateLevelBoardData() {
+    /*private void PopulateLevelBoardData() {
         levelBoardData = new int[3,12,12] {{{0,0,0,0,0,0,0,0,0,0,0,0},
-                                            {0,0,0,0,0,1,0,0,0,0,0,0},
+                                            {0,0,0,0,0,1,0,0,0,0,0,0}, 
                                             {0,0,0,1,0,1,1,0,1,1,0,0},
                                             {1,0,1,1,0,1,3,0,1,1,0,0},
                                             {1,1,0,1,1,0,0,0,0,1,0,0},
@@ -186,5 +188,42 @@ public class GameManager: MonoBehaviour {
                                             {0,0,0,0,0,0,0,0,0,0,0,0}
                                         }
                                         };
-    }
+    }*/
+
+    /*private void PopulateSolutions() {
+        solutions = new int[][][][] {
+            // Level 1
+            new int[][][] {
+                // 2 Tile
+                new int[][] {
+                    new int[] {11,11},
+                    new int[] {11,12}
+                },
+                // M Tile
+                new int[][] {
+                    new int[] {0,5},
+                    new int[] {0,6},
+                    new int[] {1,6},
+                    new int[] {1,7},
+                    new int[] {2,7}
+                }
+            },
+            // Level 2
+            new int[][][] {
+                // 2 Tile
+                new int[][] {
+                    new int[] {11,11},
+                    new int[] {11,12}
+                },
+                // Level 2
+                new int[][] {
+                    new int[] {0,0},
+                    new int[] {0,0},
+                    new int[] {0,0}
+                }
+            },
+        };
+
+        Debug.Log(solutions[0][1][1]);
+    }*/
 }

@@ -49,7 +49,6 @@ public class ButtonScript : MonoBehaviour {
             Scene scene = SceneManager.GetActiveScene(); 
             SceneManager.LoadScene(scene.name);
         } else {
-            Debug.Log("Jf");
             SceneManager.LoadScene(0);
         }
     }
@@ -63,7 +62,7 @@ public class ButtonScript : MonoBehaviour {
 
     public void RotateTile() {
         GameObject[] tiles = GameObject.FindGameObjectsWithTag("Tile");
-
+    
         foreach(GameObject tile in tiles) {
 
             if (tile.GetComponent<DragDrop>().isHighlighted) {
@@ -94,8 +93,10 @@ public class ButtonScript : MonoBehaviour {
                         tileCells[i].xOffset = -oldY;
                         tileCells[i].yOffset = oldX;
                     }
-                } else {
 
+                    tile.GetComponent<Tile>().rotations += 1;
+                } else {
+                    
                     tile.GetComponent<Tile>().rotations = 0;
 
                     // Reset the tile back to its default state
@@ -112,10 +113,9 @@ public class ButtonScript : MonoBehaviour {
                         }
                     }
                 }
-                tile.GetComponent<Tile>().rotations += 1;
-
+    
                 // Update the sorting order of each tile cell
-                UpdateSortingOrder(tileCells);
+                UpdateSortingOrder(tile);
             }
         }
     }
@@ -148,14 +148,15 @@ public class ButtonScript : MonoBehaviour {
                 tiles[i].GetComponent<Tile>().reflected = !tiles[i].GetComponent<Tile>().reflected;
 
                 // Update the sorting order of each tile cell
-                UpdateSortingOrder(tileCells);
+                UpdateSortingOrder(tile);
             }
         }
     }
 
-    private void UpdateSortingOrder(TileCell[] tileCells) {
+    private void UpdateSortingOrder(GameObject tile) {
 
         List<int> rowList = new List<int>();
+        TileCell[] tileCells = tile.GetComponent<Tile>().tileCells;
 
         foreach(TileCell cell in tileCells) {
             if (!rowList.Contains((int)cell.yOffset))
@@ -172,18 +173,6 @@ public class ButtonScript : MonoBehaviour {
 
     private void ResetTile(GameObject tile) {
 
-        // Reset the tile transform back to its default state
-        tile.transform.rotation = Quaternion.identity;
-        tile.transform.localScale = new Vector2(1, 1);
-        tile.GetComponent<Tile>().rotations = 0;
-
-        TileCell[] tileCells = tile.GetComponent<Tile>().tileCells;
-
-        // Reset the tile cells back to their default state
-        for (int j = 0; j < tileCells.Length; j++) {
-            tileCells[j].transform.localScale = new Vector2(1, 1);
-            tileCells[j].transform.rotation = Quaternion.identity;
-            tileCells[j].PopulateOffsetValues();
-        }
+        tile.GetComponent<Tile>().ResetTile();
     }
 }

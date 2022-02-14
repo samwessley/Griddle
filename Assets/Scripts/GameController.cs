@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
 
 public class GameController : MonoBehaviour {
 
@@ -15,11 +16,11 @@ public class GameController : MonoBehaviour {
     [SerializeField] GameObject star3 = null;
     [SerializeField] GameObject message = null;
 
-    private GridCell[,] cellGrid = new GridCell[12,12];
-    private int boardSize;
+    private GridCell[,] cellGrid;
     private int numberOfTiles;
     private GameObject[] tiles;
 
+    public int boardSize;
     public GameObject activeTile;
     public int tilesRemaining;
     public int starsCollected = 0;
@@ -31,16 +32,18 @@ public class GameController : MonoBehaviour {
     }
 
     public void LevelSetup() {
-        LoadLevelData(GameManager.Instance.currentLevel);
+        ReadLevelData(GameManager.Instance.currentLevel);
         LoadTileData(GameManager.Instance.currentLevel);
         LoadTiles();
         SetLevelNumber(GameManager.Instance.currentLevel);
     }
 
     private void PopulateCellGrid() {
+
+        cellGrid = new GridCell[boardSize, boardSize];
         
-        for(int y = 0; y < 12; y++) {
-            for (int x = 0; x < 12; x++) {
+        for(int y = 0; y < boardSize; y++) {
+            for (int x = 0; x < boardSize; x++) {
 
                 // Find the cell in the grid and get its GridCell component
                 GridCell cell = GameObject.Find("GridCell " + x + "," + y).gameObject.GetComponent<GridCell>();
@@ -126,10 +129,48 @@ public class GameController : MonoBehaviour {
         }
     }
 
-    private void LoadLevelData(int level) {
+    private string GetFilePath(string fileName) {
+
+        return Application.persistentDataPath + "/" + fileName;
+    }
+
+    private void ReadLevelData(int level) {
+        char[,] data = new char[boardSize,boardSize];
+
+        string path = GetFilePath("levels/" + level.ToString() + ".txt");
+        string text;
+
+        if (File.Exists(path)) {
+            using (StreamReader reader = new StreamReader(path)) {
+
+                for (int y = 0; y < boardSize; y++) {
+                    for (int x = 0; x < boardSize; x++) {
+                        data[x,y] = (char)reader.Read();
+                    }
+                    char unused__ = (char)reader.Read();
+                }
+
+                // Populate cellGrid according to level data retrieved from levels board data matrix
+                for(int y = 0; y < boardSize; y++) {
+                    for (int x = 0; x < boardSize; x++) {
+
+                        // Set the appropriate cell's status to the specification in data matrix
+                        cellGrid[x,y].SetState(data[x,y]);
+
+                        // Update the cell's image
+                        cellGrid[x,y].UpdateImage();
+                    }
+                }
+            }
+        } else {
+            Debug.Log("File not found!");
+        }
+    }
+
+    /*private void LoadLevelData(int level) {
 
         int levelToLoadIndex = level - 1;
-        int [,] data = new int[12,12];
+        char[,] data = new int[12,12];
 
         // Retrieve the 2-dimensional array of level data from the 3D array of levels data
         for(int y = 0; y < 12; y++) {
@@ -144,13 +185,13 @@ public class GameController : MonoBehaviour {
             for (int x = 0; x < 12; x++) {
 
                 // Set the appropriate cell's status to the specification in data matrix
-                cellGrid[x,y].SetState(data[x,y]);
+                cellGrid[x,y].SetState((char)data[x,y]);
 
                 // Update the cell's image
                 cellGrid[x,y].UpdateImage();
             }
         }
-    }
+    }*/
 
     private void LoadTileData(int level) {
 
@@ -165,7 +206,10 @@ public class GameController : MonoBehaviour {
         for (int i = 0; i < tiles.Length; i++) {
             string tileName = GameManager.Instance.levelTiles[level - 1][i];
 
-            tiles[i] = Instantiate(Resources.Load<GameObject>("Prefabs/Tiles/" + tileName));
+            // For 8x8 levels:
+            tiles[i] = Instantiate(Resources.Load<GameObject>("Prefabs/Tiles/8x8 Tiles/" + tileName + " 8x8"));
+            // For 12x12 levels:
+            //tiles[i] = Instantiate(Resources.Load<GameObject>("Prefabs/Tiles/" + tileName));
             tiles[i].transform.SetParent(canvas.transform);
             tiles[i].GetComponent<RectTransform>().anchoredPosition = tileLocations[i];
             //xLocation += 300;
@@ -269,11 +313,11 @@ public class GameController : MonoBehaviour {
         // Gather all the side adjacent cells for this grid cell
         if (cell.xIndex - 1 >= 0)
             sideCellsToTest.Add(cellGrid[cell.xIndex - 1, cell.yIndex]);
-        if (cell.xIndex + 1 <= 11)
+        if (cell.xIndex + 1 < boardSize)
             sideCellsToTest.Add(cellGrid[cell.xIndex + 1, cell.yIndex]);
         if (cell.yIndex - 1 >= 0)
             sideCellsToTest.Add(cellGrid[cell.xIndex, cell.yIndex - 1]);
-        if (cell.yIndex + 1 <= 11)
+        if (cell.yIndex + 1 < boardSize)
             sideCellsToTest.Add(cellGrid[cell.xIndex, cell.yIndex + 1]);
 
         return sideCellsToTest;
@@ -286,11 +330,11 @@ public class GameController : MonoBehaviour {
         // Gather all the corner adjacent cells for this grid cell
         if (cell.xIndex - 1 >= 0 && cell.yIndex - 1 >= 0)
             cornerCellsToTest.Add(cellGrid[cell.xIndex - 1, cell.yIndex - 1]);
-        if (cell.xIndex + 1 <= 11 && cell.yIndex - 1 >= 0)
+        if (cell.xIndex + 1 < boardSize && cell.yIndex - 1 >= 0)
             cornerCellsToTest.Add(cellGrid[cell.xIndex + 1, cell.yIndex - 1]);
-        if (cell.xIndex - 1 >= 0 && cell.yIndex + 1 <= 11)
+        if (cell.xIndex - 1 >= 0 && cell.yIndex + 1 < boardSize)
             cornerCellsToTest.Add(cellGrid[cell.xIndex - 1, cell.yIndex + 1]);
-        if (cell.xIndex + 1 <= 11 && cell.yIndex + 1 <= 11)
+        if (cell.xIndex + 1 < boardSize && cell.yIndex + 1 < boardSize)
             cornerCellsToTest.Add(cellGrid[cell.xIndex + 1, cell.yIndex + 1]);
 
         return cornerCellsToTest;
