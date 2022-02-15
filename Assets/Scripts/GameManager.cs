@@ -17,9 +17,7 @@ public class GameManager: MonoBehaviour {
     public int hintsRemaining;
     public bool adsRemoved;
 
-    //public int[,,] levelBoardData;
     public string[][] levelTiles = new string[3][];
-    //public int[][][][] solutions;
 
     public int[] levelButtonColors;
 
@@ -42,9 +40,7 @@ public class GameManager: MonoBehaviour {
         adsRemoved = false;
 
         SetLevelButtonColors();
-        //PopulateLevelBoardData();
         PopulateTileData();
-        //PopulateSolutions();
         Load();
     }
 
@@ -142,7 +138,7 @@ public class GameManager: MonoBehaviour {
     }
 
     private void PopulateTileData() {
-        levelTiles[0] = new string[] {"2 Tile", "M Tile", "T Tile", "F Tile", "X Tile", "5 Stick Tile"};
+        levelTiles[0] = new string[] {"2 Tile", "M Tile", "T Tile", "F Tile", "X Tile", "B Tile"};
         levelTiles[1] = new string[] {"4 L Tile", "5 Z Tile"};
         levelTiles[2] = new string[] {"4 L Tile", "5 Z Tile"};
     }

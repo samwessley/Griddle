@@ -35,7 +35,12 @@ public class LevelSelectButtonScript : MonoBehaviour {
     }
 
     public void LoadLevel() {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(2);
         GameManager.Instance.currentLevel = level;
+
+        if (level == 1) {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(4);
+        } else {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(2);
+        }
     }
 }

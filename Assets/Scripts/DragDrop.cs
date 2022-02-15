@@ -166,7 +166,6 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
         foreach (TileCell tileCell in tileCells) {
             tileCell.SetSortingLayer(tileCell.GetComponent<Canvas>().sortingOrder - minTileCellSortingOrder + minSortingOrder + 1);
-            //Debug.Log(tileCell.xOffset + ", " + tileCell.yOffset + ": " + tileCell.GetComponent<Canvas>().sortingOrder);
         }
 
         // Set each grid cell under this tile to 'occupied'
@@ -218,7 +217,6 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
         foreach (TileCell cell in cells) {
             cell.SetSortingLayer(cell.GetComponent<Canvas>().sortingOrder + sortingOrderIncrement);
-            //Debug.Log(cell.xOffset + ", " + cell.yOffset + ": " + cell.GetComponent<Canvas>().sortingOrder);
         }
     }
 

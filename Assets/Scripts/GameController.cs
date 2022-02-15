@@ -136,12 +136,13 @@ public class GameController : MonoBehaviour {
 
     private void ReadLevelData(int level) {
         char[,] data = new char[boardSize,boardSize];
+        
+        string levelPath = "Levels/" + level.ToString();
+        TextAsset txtAsset = (TextAsset)Resources.Load(levelPath, typeof(TextAsset));
+        string text = txtAsset.text;
 
-        string path = GetFilePath("levels/" + level.ToString() + ".txt");
-        string text;
-
-        if (File.Exists(path)) {
-            using (StreamReader reader = new StreamReader(path)) {
+        if (txtAsset != null) {
+            using (StringReader reader = new StringReader(text)) {
 
                 for (int y = 0; y < boardSize; y++) {
                     for (int x = 0; x < boardSize; x++) {
@@ -167,32 +168,6 @@ public class GameController : MonoBehaviour {
         }
     }
 
-    /*private void LoadLevelData(int level) {
-
-        int levelToLoadIndex = level - 1;
-        char[,] data = new int[12,12];
-
-        // Retrieve the 2-dimensional array of level data from the 3D array of levels data
-        for(int y = 0; y < 12; y++) {
-            for (int x = 0; x < 12; x++) {
-
-                data[x,y] = GameManager.Instance.levelBoardData[levelToLoadIndex,y,x];
-            }
-        }
-
-        // Populate cellGrid according to level data retrieved from levels board data matrix
-        for(int y = 0; y < 12; y++) {
-            for (int x = 0; x < 12; x++) {
-
-                // Set the appropriate cell's status to the specification in data matrix
-                cellGrid[x,y].SetState((char)data[x,y]);
-
-                // Update the cell's image
-                cellGrid[x,y].UpdateImage();
-            }
-        }
-    }*/
-
     private void LoadTileData(int level) {
 
         numberOfTiles = GameManager.Instance.levelTiles[level - 1].Length;
@@ -207,9 +182,13 @@ public class GameController : MonoBehaviour {
             string tileName = GameManager.Instance.levelTiles[level - 1][i];
 
             // For 8x8 levels:
-            tiles[i] = Instantiate(Resources.Load<GameObject>("Prefabs/Tiles/8x8 Tiles/" + tileName + " 8x8"));
-            // For 12x12 levels:
-            //tiles[i] = Instantiate(Resources.Load<GameObject>("Prefabs/Tiles/" + tileName));
+            if (GameManager.Instance.currentLevel < 2) {
+                tiles[i] = Instantiate(Resources.Load<GameObject>("Prefabs/Tiles/8x8 Tiles/" + tileName + " 8x8"));
+            } else {
+                // For 12x12 levels:
+                tiles[i] = Instantiate(Resources.Load<GameObject>("Prefabs/Tiles/" + tileName));
+            }
+
             tiles[i].transform.SetParent(canvas.transform);
             tiles[i].GetComponent<RectTransform>().anchoredPosition = tileLocations[i];
             //xLocation += 300;
