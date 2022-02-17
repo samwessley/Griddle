@@ -12721,6 +12721,7 @@ MonoBehaviour:
   star2: {fileID: 145172228}
   star3: {fileID: 951135701}
   message: {fileID: 2058280009}
+  boardSize: 12
   activeTile: {fileID: 0}
   tilesRemaining: 0
   starsCollected: 0

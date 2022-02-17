@@ -14,9 +14,8 @@ public class ButtonScript : MonoBehaviour {
         if (GameManager.Instance.currentLevel > 1) {
             GameManager.Instance.currentLevel -= 1;
 
-            // Reload scene
-            Scene scene = SceneManager.GetActiveScene(); 
-            SceneManager.LoadScene(scene.name);
+            // Load new scene
+            GameManager.Instance.LoadNewScene();
         } else {
             SceneManager.LoadScene(0);
         }
@@ -27,16 +26,11 @@ public class ButtonScript : MonoBehaviour {
         if (GameManager.Instance.currentLevel < GameManager.Instance.totalLevels) {
             GameManager.Instance.currentLevel += 1;
 
-            // Reload scene
-            Scene scene = SceneManager.GetActiveScene(); 
-            SceneManager.LoadScene(scene.name);
+            // Load new scene
+            GameManager.Instance.LoadNewScene();
         } else {
             SceneManager.LoadScene(0);
         }
-    }
-
-    public void LoadNextLevelSet() {
-        
     }
 
     public void LevelFinishedLoadNextLevel() {
@@ -45,9 +39,8 @@ public class ButtonScript : MonoBehaviour {
 
             GameManager.Instance.currentLevel += 1;
 
-            // Load next level
-            Scene scene = SceneManager.GetActiveScene(); 
-            SceneManager.LoadScene(scene.name);
+            // Load new scene
+            GameManager.Instance.LoadNewScene();
         } else {
             SceneManager.LoadScene(0);
         }
@@ -137,7 +130,9 @@ public class ButtonScript : MonoBehaviour {
                 // If the tile isn't reflected, reflect it
                 if (!tileReflected) {
                     // Reflect the transform
-                    tiles[i].transform.localScale = new Vector2(-1, 1);
+                    float tileXScale = Mathf.Abs(tiles[i].transform.localScale.x);
+                    float tileYScale = tiles[i].transform.localScale.y;
+                    tiles[i].transform.localScale = new Vector2(-tileXScale, tileYScale);
         
                     // Reflect the tile cells' offset locations
                     for (int j = 0; j < tileCells.Length; j++) 

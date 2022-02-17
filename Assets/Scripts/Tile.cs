@@ -69,8 +69,11 @@ public class Tile : MonoBehaviour {
 
         // Reset the tile transform back to its default state
         transform.rotation = Quaternion.identity;
-        //transform.localScale = new Vector2(1, 1);
-        gameObject.GetComponent<Tile>().rotations = 0;
+        
+        float xScale = transform.localScale.x;
+        float yScale = transform.localScale.y;
+        transform.localScale = new Vector2(Mathf.Abs(xScale), Mathf.Abs(yScale));
+        rotations = 0;
 
         // Reset the tile cells back to their default state
         for (int j = 0; j < tileCells.Length; j++) {
