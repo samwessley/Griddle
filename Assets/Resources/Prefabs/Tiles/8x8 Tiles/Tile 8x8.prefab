@@ -86,6 +86,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileCells: []
+  tileColor: 0
   rotations: 0
   reflected: 0
   lastManipulationType: 0
@@ -111,7 +112,7 @@ PrefabInstance:
     - target: {fileID: 3926289375620989621, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 55b63db90464241b3815874707583a64, type: 3}
+      objectReference: {fileID: 21300000, guid: 3fe02f6e5e6714cefa30a38db9bcedc5, type: 3}
     - target: {fileID: 5393988757512192617, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
       propertyPath: m_Size.x
       value: 135

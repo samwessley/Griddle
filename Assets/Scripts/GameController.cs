@@ -168,6 +168,18 @@ public class GameController : MonoBehaviour {
         }
     }
 
+    private void ReadTileData(int level) {
+        string levelPath = "Levels/" + level.ToString();
+        TextAsset txtAsset = (TextAsset)Resources.Load(levelPath, typeof(TextAsset));
+        string text = txtAsset.text;
+
+        /* foreach (char c in text) {
+            if (c == "y") {
+                
+            }
+        } */
+    }
+
     private void LoadTileData(int level) {
 
         numberOfTiles = GameManager.Instance.levelTiles[level - 1].Length;
@@ -266,7 +278,8 @@ public class GameController : MonoBehaviour {
 
             // Loop through remaining side-adjacent cells to test for occupied
             foreach (GridCell cell in sideCellsToTest) {
-                if (cell.isOccupied) {
+                if (cell.isOccupied && cell.colorOccupying == tile.tileColor) {
+                    Debug.Log("Side cell test failed");
                     return false;
                 }
             }
@@ -274,11 +287,13 @@ public class GameController : MonoBehaviour {
             // Loop through corner-adjacent cells and make sure at least one is occupied
             bool oneCellIsValid = false;
             foreach (GridCell cell in cornerCellsToTest) {
-                if (cell.isOccupied)
+                if (cell.isOccupied && cell.colorOccupying == tile.tileColor)
                     oneCellIsValid = true;
             }
-            if (!oneCellIsValid)
+            if (!oneCellIsValid) {
+                Debug.Log("Corner cell test failed");
                 return false;
+            }
         }
 
         // If we get to this point, none of the tiles have any issues. This is a valid placement of tiles

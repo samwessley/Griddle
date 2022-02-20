@@ -43,8 +43,10 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
             // Reset the occupied values of the grid cells under this tile to false
             RectTransform[] closestGridCells = gameObject.GetComponent<Tile>().GetClosestCellsArray();
             if (closestGridCells != null) {
-                foreach(RectTransform gridcell in closestGridCells)
-                gridcell.gameObject.GetComponent<GridCell>().isOccupied = false;
+                foreach(RectTransform gridcell in closestGridCells) {
+                    gridcell.gameObject.GetComponent<GridCell>().isOccupied = false;
+                    gridcell.gameObject.GetComponent<GridCell>().colorOccupying = 0;
+                }
             }
 
             // Change the position and size
@@ -169,8 +171,10 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         }
 
         // Set each grid cell under this tile to 'occupied'
-        foreach(RectTransform gridcell in closestGridCells)
-        gridcell.gameObject.GetComponent<GridCell>().isOccupied = true;
+        foreach(RectTransform gridcell in closestGridCells) {
+            gridcell.gameObject.GetComponent<GridCell>().isOccupied = true;
+            gridcell.gameObject.GetComponent<GridCell>().colorOccupying = tile.tileColor;
+        }
 
         isHighlighted = false;
         gameController.activeTile = null;

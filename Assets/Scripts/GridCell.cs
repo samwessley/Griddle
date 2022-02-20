@@ -10,8 +10,8 @@ public class GridCell : MonoBehaviour {
     public int yIndex;
 
     public bool isBarrier = false;
-    private bool isCorrect;
     public bool isOccupied = false;
+    public int colorOccupying = 0;
     public bool isStar = false;
 
     private bool isValid;

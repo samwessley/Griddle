@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Tile : MonoBehaviour {
     
     public TileCell[] tileCells;
+    public int tileColor;
     private Vector2 startingPosition;
     private Vector2 highlightedPosition;
 
@@ -15,6 +17,7 @@ public class Tile : MonoBehaviour {
     private void Start() {
         startingPosition = gameObject.GetComponent<RectTransform>().anchoredPosition;
         GetTileCells();
+        SetColor();
     }
 
     public RectTransform[] GetClosestCellsArray() {
@@ -57,6 +60,24 @@ public class Tile : MonoBehaviour {
         // Loop through the tile's children and get each cell component, then add to tileCells list
         for (int i = 0; i < transform.childCount; i++) {
             tileCells[i] = gameObject.transform.GetChild(i).gameObject.GetComponent<TileCell>();
+        }
+    }
+
+    private void SetColor() {
+        tileColor = Random.Range(1,4);
+        Image[] tileImages = gameObject.GetComponentsInChildren<Image>();
+        if (tileColor == 1) {
+            for (int i = 0; i < tileImages.Length; i++) {
+                tileImages[i].sprite = Resources.Load<Sprite>("Sprites/Tile Red 8x8");
+            }
+        } else if (tileColor == 2) {
+            for (int i = 0; i < tileImages.Length; i++) {
+                tileImages[i].sprite = Resources.Load<Sprite>("Sprites/Tile Blue 8x8");
+            }
+        } else {
+            for (int i = 0; i < tileImages.Length; i++) {
+                tileImages[i].sprite = Resources.Load<Sprite>("Sprites/Tile Yellow 8x8");
+            }
         }
     }
 
