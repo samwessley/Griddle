@@ -18,6 +18,7 @@ public class GameManager: MonoBehaviour {
     public bool adsRemoved;
 
     public string[][] levelTiles = new string[3][];
+    public float[] tileScaleFactors = {1.54166666667f, 1f};
 
     public int[] levelButtonColors;
 

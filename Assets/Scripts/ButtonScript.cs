@@ -106,9 +106,11 @@ public class ButtonScript : MonoBehaviour {
                         }
                     }
                 }
+
+                Debug.Log(tile.GetComponent<Tile>().rotations);
     
                 // Update the sorting order of each tile cell
-                UpdateSortingOrder(tile);
+                UpdateSortingOrder(tileCells);
             }
         }
     }
@@ -143,15 +145,14 @@ public class ButtonScript : MonoBehaviour {
                 tiles[i].GetComponent<Tile>().reflected = !tiles[i].GetComponent<Tile>().reflected;
 
                 // Update the sorting order of each tile cell
-                UpdateSortingOrder(tile);
+                UpdateSortingOrder(tileCells);
             }
         }
     }
 
-    private void UpdateSortingOrder(GameObject tile) {
+    private void UpdateSortingOrder(TileCell[] tileCells) {
 
         List<int> rowList = new List<int>();
-        TileCell[] tileCells = tile.GetComponent<Tile>().tileCells;
 
         foreach(TileCell cell in tileCells) {
             if (!rowList.Contains((int)cell.yOffset))
@@ -168,6 +169,24 @@ public class ButtonScript : MonoBehaviour {
 
     private void ResetTile(GameObject tile) {
 
-        tile.GetComponent<Tile>().ResetTile();
+        // Reset the tile transform back to its default state
+        tile.transform.rotation = Quaternion.identity;
+
+        if (GameManager.Instance.currentLevel < 2) {
+            tile.transform.localScale = new Vector2(1.2f, 1.2f);
+        } else {
+            tile.transform.localScale = new Vector2(1, 1);
+        }
+        tile.GetComponent<Tile>().rotations = 0;
+
+        TileCell[] tileCells = tile.GetComponent<Tile>().tileCells;
+
+        // Reset the tile cells back to their default state
+        for (int j = 0; j < tileCells.Length; j++) {
+            tileCells[j].transform.localScale = new Vector2(1, 1);
+            tileCells[j].transform.rotation = Quaternion.identity;
+
+            tileCells[j].PopulateOffsetValues();
+        }
     }
 }

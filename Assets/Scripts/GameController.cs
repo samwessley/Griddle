@@ -195,7 +195,8 @@ public class GameController : MonoBehaviour {
 
             // For 8x8 levels:
             if (GameManager.Instance.currentLevel < 2) {
-                tiles[i] = Instantiate(Resources.Load<GameObject>("Prefabs/Tiles/8x8 Tiles/" + tileName + " 8x8"));
+                tiles[i] = Instantiate(Resources.Load<GameObject>("Prefabs/Tiles/" + tileName));
+                tiles[i].transform.localScale = new Vector2(GameManager.Instance.tileScaleFactors[0], GameManager.Instance.tileScaleFactors[0]);
             } else {
                 // For 12x12 levels:
                 tiles[i] = Instantiate(Resources.Load<GameObject>("Prefabs/Tiles/" + tileName));

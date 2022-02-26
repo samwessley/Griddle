@@ -25,12 +25,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         tilePopupTray = canvas.transform.Find("Tile Popup Tray").gameObject;
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
-
-        if (gameController.boardSize == 8) {
-            SetScale(0.5f);
-        } else {
-            SetScale(0.7f);
-        }
+        SetScale(0.7f);
     }
 
     public void OnPointerDown(PointerEventData eventData) {
@@ -51,7 +46,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
             // Change the position and size
             rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y + 200);
-            SetScale(1.2f);
+            SetHoveringPositionScale();
 
             // Set the sorting order of the tile to its highlighted value
             TileCell[] tileCells = transform.gameObject.GetComponentsInChildren<TileCell>();
@@ -64,7 +59,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         else {
             if (isHighlighted) {
                 rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y + 250);
-                SetScale(1.2f);
+                SetHoveringPositionScale();
             }
         }
     }
@@ -82,6 +77,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
         Tile tile = transform.gameObject.GetComponent<Tile>();
 
+        //Debug.Log(tile.tileCells[0].xOffset + ", " + tile.tileCells[0].yOffset);
+
         if (eventData.position == pointerLocation)
         CancelPlacement(tile);
 
@@ -93,7 +90,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
             if (!isHighlighted) {
                 // Set tile size and position to 'highlighted' status
                 if (gameController.boardSize == 8) {
-                    SetScale(0.7f);
+                    SetScale(1.2f);
                 } else {
                     SetScale(1f);
                 }
@@ -119,7 +116,11 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         isOnBoard = true;
 
         // Reset the scale back to normal
-        SetScale(1f);
+        if (gameController.boardSize == 8) {
+            SetScale(GameManager.Instance.tileScaleFactors[0]);
+        } else {
+            SetScale(GameManager.Instance.tileScaleFactors[1]);
+        }
 
         // First check that the tile is touching the grid. If not, cancel placement and return
         if (tile.GetClosestCellsArray() == null) {
@@ -195,13 +196,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     public void CancelPlacement(Tile tile) {
         tile.CancelPlacement();
         isOnBoard = false;
-        
-        if (gameController.boardSize == 8) {
-            SetScale(0.5f);
-        } else {
-            SetScale(0.7f);
-        }
-
+        SetScale(0.7f);
         touchCatcher.GetComponent<CanvasGroup>().blocksRaycasts = false;
         tilePopupTray.gameObject.SetActive(false);
         isHighlighted = false;
@@ -237,6 +232,14 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
             } else {
                 transform.localScale = new Vector3(scale, scale, 1);
             }
+        }
+    }
+
+    private void SetHoveringPositionScale() {
+        if (gameController.boardSize == 8) {
+            SetScale(1.7f);
+        } else {
+            SetScale(1.2f);
         }
     }
 }

@@ -38,7 +38,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 135, y: 135}
+  m_SizeDelta: {x: 138.75, y: 138.75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7215155858468772762
 CanvasRenderer:
@@ -99,11 +99,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1694514502597656528, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 135
+      value: 138.75
       objectReference: {fileID: 0}
     - target: {fileID: 1694514502597656528, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 135
+      value: 138.75
       objectReference: {fileID: 0}
     - target: {fileID: 1896449731950220992, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
       propertyPath: m_Name
@@ -115,11 +115,11 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 3fe02f6e5e6714cefa30a38db9bcedc5, type: 3}
     - target: {fileID: 5393988757512192617, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
       propertyPath: m_Size.x
-      value: 135
+      value: 138.75
       objectReference: {fileID: 0}
     - target: {fileID: 5393988757512192617, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
       propertyPath: m_Size.y
-      value: 135
+      value: 138.75
       objectReference: {fileID: 0}
     - target: {fileID: 8293146469361430603, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
       propertyPath: m_Pivot.x
@@ -151,11 +151,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8293146469361430603, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 135
+      value: 138.75
       objectReference: {fileID: 0}
     - target: {fileID: 8293146469361430603, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 135
+      value: 138.75
       objectReference: {fileID: 0}
     - target: {fileID: 8293146469361430603, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
       propertyPath: m_LocalScale.x
