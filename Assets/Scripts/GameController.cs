@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
+using System.Linq;
 
 public class GameController : MonoBehaviour {
 
@@ -33,7 +34,8 @@ public class GameController : MonoBehaviour {
 
     public void LevelSetup() {
         ReadLevelData(GameManager.Instance.currentLevel);
-        LoadTileData(GameManager.Instance.currentLevel);
+        //LoadTileData(GameManager.Instance.currentLevel);
+        ReadTileData(GameManager.Instance.currentLevel);
         LoadTiles();
         SetLevelNumber(GameManager.Instance.currentLevel);
     }
@@ -173,11 +175,26 @@ public class GameController : MonoBehaviour {
         TextAsset txtAsset = (TextAsset)Resources.Load(levelPath, typeof(TextAsset));
         string text = txtAsset.text;
 
-        /* foreach (char c in text) {
-            if (c == "y") {
-                
-            }
-        } */
+        // Get distinct chars from the string of level data
+        string distinctChars = new string(text.Distinct().ToArray());
+        distinctChars = distinctChars.Replace("1","");
+        distinctChars = distinctChars.Replace("\n","");
+        Debug.Log(distinctChars);
+        int numberOfTiles = distinctChars.Length;
+        tilesRemaining = numberOfTiles;
+        tiles = new GameObject[numberOfTiles];
+        Vector2[] tileLocations = GetTileLocations();
+
+        int i = 0;
+        foreach (char c in distinctChars) {
+
+            tiles[i] = Instantiate(Resources.Load<GameObject>("Prefabs/Tiles/" + GameManager.Instance.tileDictionary[c]));
+            tiles[i].GetComponent<Tile>().tileColor = GameManager.Instance.tileColorDictionary[c];
+
+            tiles[i].transform.SetParent(canvas.transform);
+            tiles[i].GetComponent<RectTransform>().anchoredPosition = tileLocations[i];
+            i++;
+        }
     }
 
     private void LoadTileData(int level) {
@@ -186,25 +203,19 @@ public class GameController : MonoBehaviour {
         tilesRemaining = numberOfTiles;
 
         tiles = new GameObject[numberOfTiles];
-        //float xLocation = -300;
-        Vector2[] tileLocations = new Vector2[] { new Vector2(-300, -560), new Vector2(0, -560), new Vector2(300, -560),
-                                                new Vector2(-300, -780), new Vector2(0, -780), new Vector2(300, -780)};
+        Vector2[] tileLocations = GetTileLocations();
 
         for (int i = 0; i < tiles.Length; i++) {
             string tileName = GameManager.Instance.levelTiles[level - 1][i];
 
-            // For 8x8 levels:
-            if (GameManager.Instance.currentLevel < 2) {
-                tiles[i] = Instantiate(Resources.Load<GameObject>("Prefabs/Tiles/" + tileName));
-                tiles[i].transform.localScale = new Vector2(GameManager.Instance.tileScaleFactors[0], GameManager.Instance.tileScaleFactors[0]);
-            } else {
-                // For 12x12 levels:
-                tiles[i] = Instantiate(Resources.Load<GameObject>("Prefabs/Tiles/" + tileName));
-            }
-
+            tiles[i] = Instantiate(Resources.Load<GameObject>("Prefabs/Tiles/" + tileName));
             tiles[i].transform.SetParent(canvas.transform);
             tiles[i].GetComponent<RectTransform>().anchoredPosition = tileLocations[i];
-            //xLocation += 300;
+
+            // For 8x8 levels:
+            if (GameManager.Instance.currentLevel < 2) {
+                tiles[i].transform.localScale = new Vector2(GameManager.Instance.tileScaleFactors[0], GameManager.Instance.tileScaleFactors[0]);
+            }
         }
     }
 
@@ -340,5 +351,21 @@ public class GameController : MonoBehaviour {
             if (cell.isStar)
             starsCollected += 1;
         }
+    }
+
+    private Vector2[] GetTileLocations() {
+        Vector2[] tileLocations;
+
+        if (boardSize == 8) {
+            tileLocations = new Vector2[] { new Vector2(-300, -523), new Vector2(0, -523), new Vector2(300, -523),
+                                            new Vector2(-300, -660), new Vector2(0, -660), new Vector2(300, -660),
+                                            new Vector2(-300, -800), new Vector2(0, -800), new Vector2(300, -800)};
+        } else {
+            tileLocations = new Vector2[] { new Vector2(-300, -523), new Vector2(0, -523), new Vector2(300, -523),
+                                            new Vector2(-300, -660), new Vector2(0, -660), new Vector2(300, -660),
+                                            new Vector2(-300, -800), new Vector2(0, -800), new Vector2(300, -800)};
+        }
+
+        return tileLocations;
     }
 }

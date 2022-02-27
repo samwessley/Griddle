@@ -64,7 +64,7 @@ public class Tile : MonoBehaviour {
     }
 
     private void SetColor() {
-        tileColor = Random.Range(1,4);
+        //tileColor = Random.Range(1,4);
         Image[] tileImages = gameObject.GetComponentsInChildren<Image>();
         if (tileColor == 1) {
             for (int i = 0; i < tileImages.Length; i++) {
