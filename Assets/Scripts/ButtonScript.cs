@@ -163,7 +163,6 @@ public class ButtonScript : MonoBehaviour {
 
         foreach(TileCell cell in tileCells) {
             cell.SetSortingLayer(19 + rowList.IndexOf((int)cell.yOffset));
-            //Debug.Log(cell.xOffset + ", " + cell.yOffset + ": " + cell.GetComponent<Canvas>().sortingOrder);
         }
     }
 
@@ -171,12 +170,7 @@ public class ButtonScript : MonoBehaviour {
 
         // Reset the tile transform back to its default state
         tile.transform.rotation = Quaternion.identity;
-
-        if (GameManager.Instance.currentLevel < 2) {
-            tile.transform.localScale = new Vector2(1.2f, 1.2f);
-        } else {
-            tile.transform.localScale = new Vector2(1, 1);
-        }
+        tile.transform.localScale = new Vector2(1, 1);
         tile.GetComponent<Tile>().rotations = 0;
 
         TileCell[] tileCells = tile.GetComponent<Tile>().tileCells;

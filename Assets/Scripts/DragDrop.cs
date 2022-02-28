@@ -89,11 +89,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
             if (!isHighlighted) {
                 // Set tile size and position to 'highlighted' status
-                if (gameController.boardSize == 8) {
-                    SetScale(1.2f);
-                } else {
-                    SetScale(1f);
-                }
+                SetScale(1f);
 
                 rectTransform.anchoredPosition = tilePopupTray.GetComponent<RectTransform>().anchoredPosition;
                 isHighlighted = true;
@@ -116,10 +112,12 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         isOnBoard = true;
 
         // Reset the scale back to normal
-        if (gameController.boardSize == 8) {
+        if (gameController.boardSize == 7) {
             SetScale(GameManager.Instance.tileScaleFactors[0]);
-        } else {
+        } else if (gameController.boardSize == 8) {
             SetScale(GameManager.Instance.tileScaleFactors[1]);
+        } else {
+            SetScale(GameManager.Instance.tileScaleFactors[2]);
         }
 
         // First check that the tile is touching the grid. If not, cancel placement and return
@@ -236,7 +234,9 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     }
 
     private void SetHoveringPositionScale() {
-        if (gameController.boardSize == 8) {
+        if (gameController.boardSize == 7) {
+            SetScale(1.82f);
+        } else if (gameController.boardSize == 8) {
             SetScale(1.7f);
         } else {
             SetScale(1.2f);

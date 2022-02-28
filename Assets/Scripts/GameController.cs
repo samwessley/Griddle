@@ -197,7 +197,7 @@ public class GameController : MonoBehaviour {
         }
     }
 
-    private void LoadTileData(int level) {
+    /*private void LoadTileData(int level) {
 
         numberOfTiles = GameManager.Instance.levelTiles[level - 1].Length;
         tilesRemaining = numberOfTiles;
@@ -217,7 +217,7 @@ public class GameController : MonoBehaviour {
                 tiles[i].transform.localScale = new Vector2(GameManager.Instance.tileScaleFactors[0], GameManager.Instance.tileScaleFactors[0]);
             }
         }
-    }
+    }*/
 
     private void LoadTiles() {
 
@@ -356,7 +356,11 @@ public class GameController : MonoBehaviour {
     private Vector2[] GetTileLocations() {
         Vector2[] tileLocations;
 
-        if (boardSize == 8) {
+        if (boardSize == 7) {
+            tileLocations = new Vector2[] { new Vector2(-405, -550), new Vector2(-135, -550), new Vector2(135, -550),
+                                            new Vector2(405, -550), new Vector2(-300, -785), new Vector2(0, -785),
+                                            new Vector2(300, -785)};
+        } else if (boardSize == 8) {
             tileLocations = new Vector2[] { new Vector2(-300, -523), new Vector2(0, -523), new Vector2(300, -523),
                                             new Vector2(-300, -660), new Vector2(0, -660), new Vector2(300, -660),
                                             new Vector2(-300, -800), new Vector2(0, -800), new Vector2(300, -800)};

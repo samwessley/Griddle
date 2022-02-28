@@ -70,7 +70,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ce41765dbf6104db79666630da774f18, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7a3be8b17a56243cd993bae7ac368ab3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -97,6 +97,7 @@ MonoBehaviour:
   yIndex: 0
   isBarrier: 0
   isOccupied: 0
+  colorOccupying: 0
   isStar: 0
 --- !u!61 &2792401708363390302
 BoxCollider2D:
