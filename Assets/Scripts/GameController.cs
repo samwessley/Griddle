@@ -34,7 +34,6 @@ public class GameController : MonoBehaviour {
 
     public void LevelSetup() {
         ReadLevelData(GameManager.Instance.currentLevel);
-        //LoadTileData(GameManager.Instance.currentLevel);
         ReadTileData(GameManager.Instance.currentLevel);
         LoadTiles();
         SetLevelNumber(GameManager.Instance.currentLevel);
@@ -197,28 +196,6 @@ public class GameController : MonoBehaviour {
         }
     }
 
-    /*private void LoadTileData(int level) {
-
-        numberOfTiles = GameManager.Instance.levelTiles[level - 1].Length;
-        tilesRemaining = numberOfTiles;
-
-        tiles = new GameObject[numberOfTiles];
-        Vector2[] tileLocations = GetTileLocations();
-
-        for (int i = 0; i < tiles.Length; i++) {
-            string tileName = GameManager.Instance.levelTiles[level - 1][i];
-
-            tiles[i] = Instantiate(Resources.Load<GameObject>("Prefabs/Tiles/" + tileName));
-            tiles[i].transform.SetParent(canvas.transform);
-            tiles[i].GetComponent<RectTransform>().anchoredPosition = tileLocations[i];
-
-            // For 8x8 levels:
-            if (GameManager.Instance.currentLevel < 2) {
-                tiles[i].transform.localScale = new Vector2(GameManager.Instance.tileScaleFactors[0], GameManager.Instance.tileScaleFactors[0]);
-            }
-        }
-    }*/
-
     private void LoadTiles() {
 
         GameObject[] objects = GameObject.FindGameObjectsWithTag("Tile");
@@ -356,7 +333,11 @@ public class GameController : MonoBehaviour {
     private Vector2[] GetTileLocations() {
         Vector2[] tileLocations;
 
-        if (boardSize == 7) {
+        if (boardSize == 6 || boardSize == 5) {
+            tileLocations = new Vector2[] { new Vector2(-405, -550), new Vector2(-135, -550), new Vector2(135, -550),
+                                            new Vector2(405, -550), new Vector2(-300, -785), new Vector2(0, -785),
+                                            new Vector2(300, -785)};
+        } else if (boardSize == 7) {
             tileLocations = new Vector2[] { new Vector2(-405, -550), new Vector2(-135, -550), new Vector2(135, -550),
                                             new Vector2(405, -550), new Vector2(-300, -785), new Vector2(0, -785),
                                             new Vector2(300, -785)};

@@ -32,10 +32,16 @@ public class TileCell : MonoBehaviour {
     public void PopulateOffsetValues() {
         float scale;
 
-        if (GameManager.Instance.currentLevel < 2) {
+        if (GameManager.Instance.currentLevel == 1) {
             scale = GameManager.Instance.tileScaleFactors[0];
-        } else {
+        } else if (GameManager.Instance.currentLevel == 2) {
             scale = GameManager.Instance.tileScaleFactors[1];
+        } else if (GameManager.Instance.currentLevel == 3) {
+            scale = GameManager.Instance.tileScaleFactors[2];
+        } else if (GameManager.Instance.currentLevel == 4) {
+            scale = GameManager.Instance.tileScaleFactors[3];
+        } else {
+            scale = GameManager.Instance.tileScaleFactors[4];
         }
 
         xOffset = gameObject.GetComponent<RectTransform>().anchoredPosition.x * scale;

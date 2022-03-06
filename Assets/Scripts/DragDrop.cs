@@ -112,12 +112,16 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         isOnBoard = true;
 
         // Reset the scale back to normal
-        if (gameController.boardSize == 7) {
+        if (gameController.boardSize == 5) {
             SetScale(GameManager.Instance.tileScaleFactors[0]);
-        } else if (gameController.boardSize == 8) {
+        } else if (gameController.boardSize == 6) {
             SetScale(GameManager.Instance.tileScaleFactors[1]);
-        } else {
+        } else if (gameController.boardSize == 7) {
             SetScale(GameManager.Instance.tileScaleFactors[2]);
+        } else if (gameController.boardSize == 8) {
+            SetScale(GameManager.Instance.tileScaleFactors[3]);
+        } else {
+            SetScale(GameManager.Instance.tileScaleFactors[4]);
         }
 
         // First check that the tile is touching the grid. If not, cancel placement and return
@@ -234,7 +238,11 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     }
 
     private void SetHoveringPositionScale() {
-        if (gameController.boardSize == 7) {
+        if (gameController.boardSize == 5) {
+            SetScale(2.5f);
+        } else if (gameController.boardSize == 6) {
+            SetScale(2.1f);
+        } else if (gameController.boardSize == 7) {
             SetScale(1.82f);
         } else if (gameController.boardSize == 8) {
             SetScale(1.7f);

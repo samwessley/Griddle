@@ -20,7 +20,7 @@ public class GameManager: MonoBehaviour {
     //public string[][] levelTiles = new string[3][];
     public Dictionary<char, string> tileDictionary = new Dictionary<char, string>();
     public Dictionary<char, int> tileColorDictionary = new Dictionary<char, int>();
-    public float[] tileScaleFactors = {1.7619047619f, 1.54166666667f, 1f};
+    public float[] tileScaleFactors = {2.46666666667f, 2.05555555556f, 1.76190444444f, 1.54166666667f, 1f};
 
     public int[] levelButtonColors;
 
@@ -35,7 +35,7 @@ public class GameManager: MonoBehaviour {
     }
 
     void Awake() {
-        totalLevels = 3;
+        totalLevels = 5;
         currentLevel = 1;
         levelsUnlocked = 1;
         stars = new int[] {0,0,0};
@@ -43,7 +43,6 @@ public class GameManager: MonoBehaviour {
         adsRemoved = false;
 
         SetLevelButtonColors();
-        //PopulateTileData();
         Load();
         CreateTileDictionary();
         CreateTileColorDictionary();
@@ -52,8 +51,12 @@ public class GameManager: MonoBehaviour {
     public void LoadNewScene() {
         // Load new scene
         if (GameManager.Instance.currentLevel == 1) {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(5);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(7);
         } else if (GameManager.Instance.currentLevel == 2) {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(6);
+        } else if (GameManager.Instance.currentLevel == 3) {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(5);
+        } else if (GameManager.Instance.currentLevel == 4) {
             UnityEngine.SceneManagement.SceneManager.LoadScene(4);
         } else {
             UnityEngine.SceneManagement.SceneManager.LoadScene(2);
@@ -152,13 +155,6 @@ public class GameManager: MonoBehaviour {
         if (pause)
         SaveAsJSON(); 
     }
-
-    /*private void PopulateTileData() {
-        //levelTiles[0] = new string[] {"2 Tile", "M Tile", "T Tile", "F Tile", "X Tile", "B Tile"};
-        levelTiles[0] = new string[] {"2 Tile", "3 Tile", "Tile", "3 L Tile"};
-        levelTiles[1] = new string[] {"4 L Tile", "5 Z Tile"};
-        levelTiles[2] = new string[] {"4 L Tile", "5 Z Tile"};
-    }*/
 
     private void CreateTileDictionary() {
         tileDictionary.Add('a', "Tile");
