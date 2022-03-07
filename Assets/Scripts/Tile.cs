@@ -84,39 +84,4 @@ public class Tile : MonoBehaviour {
     public void CancelPlacement() {
         gameObject.GetComponent<RectTransform>().anchoredPosition = startingPosition;
     }
-
-    /*public void ResetTile() {
-
-        // Reset the tile transform back to its default state
-        transform.rotation = Quaternion.identity;
-        
-        float xScale = transform.localScale.x;
-        float yScale = transform.localScale.y;
-        transform.localScale = new Vector2(Mathf.Abs(xScale), Mathf.Abs(yScale));
-        rotations = 0;
-
-        // Reset the tile cells back to their default state
-        for (int j = 0; j < tileCells.Length; j++) {
-            //tileCells[j].transform.localScale = new Vector2(1, 1);
-            tileCells[j].transform.rotation = Quaternion.identity;
-            tileCells[j].PopulateOffsetValues(transform.localScale.x);
-        }
-    }*/
-
-    /*public void UpdateSortingOrder() {
-
-        List<int> rowList = new List<int>();
-
-        foreach(TileCell cell in tileCells) {
-            if (!rowList.Contains((int)cell.yOffset))
-            rowList.Add((int)cell.yOffset);
-        }
-        rowList.Sort();
-        rowList.Reverse();
-
-        foreach(TileCell cell in tileCells) {
-            cell.SetSortingLayer(19 + rowList.IndexOf((int)cell.yOffset));
-            //Debug.Log(cell.xOffset + ", " + cell.yOffset + ": " + cell.GetComponent<Canvas>().sortingOrder);
-        }
-    }*/
 }

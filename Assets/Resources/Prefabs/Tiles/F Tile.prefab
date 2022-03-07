@@ -93,7 +93,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8293146469361430603, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8293146469361430603, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -121,8 +121,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1445377432596861718, guid: 6a6b7834eabf24d3cbc2f4fea213dc1d, type: 3}
-      propertyPath: m_AnchoredPosition.y
+      propertyPath: m_AnchoredPosition.x
       value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1445377432596861718, guid: 6a6b7834eabf24d3cbc2f4fea213dc1d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 5229593227203311633, guid: 6a6b7834eabf24d3cbc2f4fea213dc1d, type: 3}
       propertyPath: m_Pivot.x
@@ -210,7 +214,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7729873108990038154, guid: 6a6b7834eabf24d3cbc2f4fea213dc1d, type: 3}
       propertyPath: m_SortingOrder
-      value: 16
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 8374001183157887907, guid: 6a6b7834eabf24d3cbc2f4fea213dc1d, type: 3}
       propertyPath: m_Name
@@ -230,6 +234,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6825706591658044853}
     m_Modifications:
+    - target: {fileID: 891195374875571159, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 1896449731950220992, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
       propertyPath: m_Name
       value: Tile Cell 4
@@ -312,11 +320,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8293146469361430603, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 8293146469361430603, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8293146469361430603, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -425,7 +433,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8293146469361430603, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 8293146469361430603, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -452,6 +460,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6825706591658044853}
     m_Modifications:
+    - target: {fileID: 891195374875571159, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 16
+      objectReference: {fileID: 0}
     - target: {fileID: 1896449731950220992, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
       propertyPath: m_Name
       value: Tile Cell 5
@@ -534,11 +546,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8293146469361430603, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 90
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8293146469361430603, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 90
+      value: -90
       objectReference: {fileID: 0}
     - target: {fileID: 8293146469361430603, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

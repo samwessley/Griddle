@@ -40,8 +40,12 @@ public class TileCell : MonoBehaviour {
             scale = GameManager.Instance.tileScaleFactors[2];
         } else if (GameManager.Instance.currentLevel == 4) {
             scale = GameManager.Instance.tileScaleFactors[3];
-        } else {
+        } else if (GameManager.Instance.currentLevel == 5) {
             scale = GameManager.Instance.tileScaleFactors[4];
+        } else if (GameManager.Instance.currentLevel == 6) {
+            scale = GameManager.Instance.tileScaleFactors[5];
+        } else {
+            scale = GameManager.Instance.tileScaleFactors[5];
         }
 
         xOffset = gameObject.GetComponent<RectTransform>().anchoredPosition.x * scale;

@@ -345,6 +345,10 @@ public class GameController : MonoBehaviour {
             tileLocations = new Vector2[] { new Vector2(-300, -523), new Vector2(0, -523), new Vector2(300, -523),
                                             new Vector2(-300, -660), new Vector2(0, -660), new Vector2(300, -660),
                                             new Vector2(-300, -800), new Vector2(0, -800), new Vector2(300, -800)};
+        } else if (boardSize == 9) {
+            tileLocations = new Vector2[] { new Vector2(-405, -460), new Vector2(-135, -460), new Vector2(135, -460), new Vector2(405, -460),
+                                            new Vector2(-405, -640), new Vector2(-135, -640), new Vector2(135, -640), new Vector2(405, -640),
+                                            new Vector2(-405, -820), new Vector2(-135, -820), new Vector2(135, -820), new Vector2(405, -820)};
         } else {
             tileLocations = new Vector2[] { new Vector2(-300, -523), new Vector2(0, -523), new Vector2(300, -523),
                                             new Vector2(-300, -660), new Vector2(0, -660), new Vector2(300, -660),

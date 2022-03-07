@@ -20,7 +20,7 @@ public class GameManager: MonoBehaviour {
     //public string[][] levelTiles = new string[3][];
     public Dictionary<char, string> tileDictionary = new Dictionary<char, string>();
     public Dictionary<char, int> tileColorDictionary = new Dictionary<char, int>();
-    public float[] tileScaleFactors = {2.46666666667f, 2.05555555556f, 1.76190444444f, 1.54166666667f, 1f};
+    public float[] tileScaleFactors = {2.46666666667f, 2.05555555556f, 1.76190444444f, 1.54166666667f, 1.37037037037f, 1f};
 
     public int[] levelButtonColors;
 
@@ -58,6 +58,8 @@ public class GameManager: MonoBehaviour {
             UnityEngine.SceneManagement.SceneManager.LoadScene(5);
         } else if (GameManager.Instance.currentLevel == 4) {
             UnityEngine.SceneManagement.SceneManager.LoadScene(4);
+        } else if (GameManager.Instance.currentLevel == 5) {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(8);
         } else {
             UnityEngine.SceneManagement.SceneManager.LoadScene(2);
         }

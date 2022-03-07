@@ -25,7 +25,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         tilePopupTray = canvas.transform.Find("Tile Popup Tray").gameObject;
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
-        SetScale(0.7f);
+        SetScale(0.6f);
     }
 
     public void OnPointerDown(PointerEventData eventData) {
@@ -120,8 +120,10 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
             SetScale(GameManager.Instance.tileScaleFactors[2]);
         } else if (gameController.boardSize == 8) {
             SetScale(GameManager.Instance.tileScaleFactors[3]);
-        } else {
+        } else if (gameController.boardSize == 9) {
             SetScale(GameManager.Instance.tileScaleFactors[4]);
+        } else {
+            SetScale(GameManager.Instance.tileScaleFactors[5]);
         }
 
         // First check that the tile is touching the grid. If not, cancel placement and return
@@ -246,6 +248,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
             SetScale(1.82f);
         } else if (gameController.boardSize == 8) {
             SetScale(1.7f);
+        } else if (gameController.boardSize == 9) {
+            SetScale(1.4f);
         } else {
             SetScale(1.2f);
         }
