@@ -13,7 +13,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     private GameObject tilePopupTray;
     private RectTransform rectTransform;
 
-    private bool isOnBoard = false;
+    public bool isOnBoard = false;
     public bool isHighlighted = false;
 
     private Vector2 pointerLocation;
@@ -41,6 +41,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
                 foreach(RectTransform gridcell in closestGridCells) {
                     gridcell.gameObject.GetComponent<GridCell>().isOccupied = false;
                     gridcell.gameObject.GetComponent<GridCell>().colorOccupying = 0;
+                    gridcell.gameObject.GetComponent<GridCell>().charOccupying = (char)0;
                 }
             }
 
@@ -179,11 +180,21 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         foreach(RectTransform gridcell in closestGridCells) {
             gridcell.gameObject.GetComponent<GridCell>().isOccupied = true;
             gridcell.gameObject.GetComponent<GridCell>().colorOccupying = tile.tileColor;
+            gridcell.gameObject.GetComponent<GridCell>().charOccupying = tile.tileCode;
         }
 
         isHighlighted = false;
         gameController.activeTile = null;
         gameController.tilesRemaining -= 1;
+
+        bool isInCorrectPosition = true;
+        foreach (RectTransform gridCell in closestGridCells) {
+            if (gridCell.GetComponent<GridCell>().state != tile.tileCode)
+            isInCorrectPosition = false;
+        }
+        if (isInCorrectPosition) {
+            gameController.distinctCharsRemaining = gameController.distinctCharsRemaining.Replace(tile.tileCode.ToString(),"");
+        }
 
         gameController.CheckForLevelComplete();
     }
@@ -198,6 +209,17 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     }
 
     public void CancelPlacement(Tile tile) {
+
+        // Reset the occupied values of the grid cells under this tile to false
+        RectTransform[] closestGridCells = gameObject.GetComponent<Tile>().GetClosestCellsArray();
+        if (closestGridCells != null) {
+            foreach(RectTransform gridcell in closestGridCells) {
+                gridcell.gameObject.GetComponent<GridCell>().isOccupied = false;
+                gridcell.gameObject.GetComponent<GridCell>().colorOccupying = 0;
+                gridcell.gameObject.GetComponent<GridCell>().charOccupying = (char)0;
+            }
+        }
+
         tile.CancelPlacement();
         isOnBoard = false;
         SetScale(0.7f);

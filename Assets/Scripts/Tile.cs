@@ -9,6 +9,8 @@ public class Tile : MonoBehaviour {
     public int tileColor;
     private Vector2 startingPosition;
     private Vector2 highlightedPosition;
+    [SerializeField] char[] tileCodeRange = null;
+    public char tileCode;
 
     public int rotations = 0;
     public bool reflected = false;
@@ -18,6 +20,7 @@ public class Tile : MonoBehaviour {
         startingPosition = gameObject.GetComponent<RectTransform>().anchoredPosition;
         GetTileCells();
         SetColor();
+        tileCode = tileCodeRange[tileColor - 1];
     }
 
     public RectTransform[] GetClosestCellsArray() {
@@ -68,15 +71,15 @@ public class Tile : MonoBehaviour {
         Image[] tileImages = gameObject.GetComponentsInChildren<Image>();
         if (tileColor == 1) {
             for (int i = 0; i < tileImages.Length; i++) {
-                tileImages[i].sprite = Resources.Load<Sprite>("Sprites/Tile Red 8x8");
+                tileImages[i].sprite = Resources.Load<Sprite>("Sprites/Tile Red");
             }
         } else if (tileColor == 2) {
             for (int i = 0; i < tileImages.Length; i++) {
-                tileImages[i].sprite = Resources.Load<Sprite>("Sprites/Tile Blue 8x8");
+                tileImages[i].sprite = Resources.Load<Sprite>("Sprites/Tile Blue");
             }
         } else {
             for (int i = 0; i < tileImages.Length; i++) {
-                tileImages[i].sprite = Resources.Load<Sprite>("Sprites/Tile Yellow 8x8");
+                tileImages[i].sprite = Resources.Load<Sprite>("Sprites/Tile Yellow");
             }
         }
     }

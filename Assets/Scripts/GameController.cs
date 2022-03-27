@@ -17,14 +17,17 @@ public class GameController : MonoBehaviour {
     [SerializeField] GameObject star3 = null;
     [SerializeField] GameObject message = null;
 
-    private GridCell[,] cellGrid;
+    public GridCell[,] cellGrid;
     private int numberOfTiles;
-    private GameObject[] tiles;
+    public GameObject[] tiles;
 
     public int boardSize;
+    public string distinctChars;
     public GameObject activeTile;
     public int tilesRemaining;
     public int starsCollected = 0;
+
+    public string distinctCharsRemaining;
 
     private void Start() {
         PopulateCellGrid();
@@ -148,13 +151,6 @@ public class GameController : MonoBehaviour {
                 for (int y = 0; y < boardSize; y++) {
                     for (int x = 0; x < boardSize; x++) {
                         data[x,y] = (char)reader.Read();
-                    }
-                    char unused__ = (char)reader.Read();
-                }
-
-                // Populate cellGrid according to level data retrieved from levels board data matrix
-                for(int y = 0; y < boardSize; y++) {
-                    for (int x = 0; x < boardSize; x++) {
 
                         // Set the appropriate cell's status to the specification in data matrix
                         cellGrid[x,y].SetState(data[x,y]);
@@ -162,6 +158,7 @@ public class GameController : MonoBehaviour {
                         // Update the cell's image
                         cellGrid[x,y].UpdateImage();
                     }
+                    char unused__ = (char)reader.Read();
                 }
             }
         } else {
@@ -175,9 +172,10 @@ public class GameController : MonoBehaviour {
         string text = txtAsset.text;
 
         // Get distinct chars from the string of level data
-        string distinctChars = new string(text.Distinct().ToArray());
+        distinctChars = new string(text.Distinct().ToArray());
         distinctChars = distinctChars.Replace("1","");
         distinctChars = distinctChars.Replace("\n","");
+        distinctCharsRemaining = distinctChars;
         Debug.Log(distinctChars);
         int numberOfTiles = distinctChars.Length;
         tilesRemaining = numberOfTiles;
@@ -215,73 +213,79 @@ public class GameController : MonoBehaviour {
 
         for (int i = 0; i < tiles.Length; i++) {
             Tile tile = tiles[i].GetComponent<Tile>();
-            RectTransform[] closestGridCellTransforms = tile.GetClosestCellsArray();
-            GridCell[] closestGridCells = new GridCell[closestGridCellTransforms.Length];
 
-            for (int j = 0; j < closestGridCellTransforms.Length; j++) {
-                closestGridCells[j] = closestGridCellTransforms[j].gameObject.GetComponent<GridCell>();
-            }
+            // Only check valid placement if the tile is on the board. If it's not on the
+            // board, we know it was either placed with a hint (and is in a correct position),
+            // or hasn't been played yet.
+            if (tile.GetComponent<DragDrop>().isOnBoard) {
+                RectTransform[] closestGridCellTransforms = tile.GetClosestCellsArray();
+                GridCell[] closestGridCells = new GridCell[closestGridCellTransforms.Length];
 
-            GetStarsCollected(closestGridCells);
-
-            List<GridCell> sideCellsToTest = new List<GridCell>();
-            List<GridCell> cornerCellsToTest = new List<GridCell>();
-
-            foreach (GridCell cell in closestGridCells) {
-                
-                sideCellsToTest.AddRange(GetSideAdjacentCells(cell, closestGridCells));
-                cornerCellsToTest.AddRange(GetCornerAdjacentCells(cell, closestGridCells));
-            }
-
-            // Remove the side cells that are part of the tile
-            GridCell[] sideCellsToTestArray = sideCellsToTest.ToArray();
-            for (int g = 0; g < sideCellsToTestArray.Length; g++) {
-                for (int j = 0; j < closestGridCells.Length; j++) {
-                    if (sideCellsToTestArray[g] == closestGridCells[j])
-                    sideCellsToTest.Remove(sideCellsToTestArray[g]);
+                for (int j = 0; j < closestGridCellTransforms.Length; j++) {
+                    closestGridCells[j] = closestGridCellTransforms[j].gameObject.GetComponent<GridCell>();
                 }
-            }
 
-            // Remove the corner cells that are part of the tile
-            GridCell[] cornerCellsToTestArray = cornerCellsToTest.ToArray();
-            for (int g = 0; g < cornerCellsToTestArray.Length; g++) {
-                for (int j = 0; j < closestGridCells.Length; j++) {
-                    if (cornerCellsToTestArray[g] == closestGridCells[j])
-                    cornerCellsToTest.Remove(cornerCellsToTestArray[g]);
+                GetStarsCollected(closestGridCells);
+
+                List<GridCell> sideCellsToTest = new List<GridCell>();
+                List<GridCell> cornerCellsToTest = new List<GridCell>();
+
+                foreach (GridCell cell in closestGridCells) {
+                    
+                    sideCellsToTest.AddRange(GetSideAdjacentCells(cell, closestGridCells));
+                    cornerCellsToTest.AddRange(GetCornerAdjacentCells(cell, closestGridCells));
                 }
-            }
 
-            // Loop through cornerCellsToTest and delete any cornerCells that are in sideCellsToTest
-            sideCellsToTestArray = sideCellsToTest.ToArray();
-            cornerCellsToTestArray = cornerCellsToTest.ToArray();
-            for (int g = 0; g < cornerCellsToTestArray.Length; g++) {
-                for (int j = 0; j < sideCellsToTestArray.Length; j++) {
-                    if (cornerCellsToTestArray[g] == sideCellsToTestArray[j])
+                // Remove the side cells that are part of the tile
+                GridCell[] sideCellsToTestArray = sideCellsToTest.ToArray();
+                for (int g = 0; g < sideCellsToTestArray.Length; g++) {
+                    for (int j = 0; j < closestGridCells.Length; j++) {
+                        if (sideCellsToTestArray[g] == closestGridCells[j])
+                        sideCellsToTest.Remove(sideCellsToTestArray[g]);
+                    }
+                }
+
+                // Remove the corner cells that are part of the tile
+                GridCell[] cornerCellsToTestArray = cornerCellsToTest.ToArray();
+                for (int g = 0; g < cornerCellsToTestArray.Length; g++) {
+                    for (int j = 0; j < closestGridCells.Length; j++) {
+                        if (cornerCellsToTestArray[g] == closestGridCells[j])
                         cornerCellsToTest.Remove(cornerCellsToTestArray[g]);
-                } 
-            }
+                    }
+                }
 
-            // At this point, we have our side adjacent cells and our corner adjacent cells.
-            // Time to test that 1) no side adjacent cells are occupied and 2) at least one
-            // corner adjacent cell is occupied. If both these conditions pass, return true
+                // Loop through cornerCellsToTest and delete any cornerCells that are in sideCellsToTest
+                sideCellsToTestArray = sideCellsToTest.ToArray();
+                cornerCellsToTestArray = cornerCellsToTest.ToArray();
+                for (int g = 0; g < cornerCellsToTestArray.Length; g++) {
+                    for (int j = 0; j < sideCellsToTestArray.Length; j++) {
+                        if (cornerCellsToTestArray[g] == sideCellsToTestArray[j])
+                            cornerCellsToTest.Remove(cornerCellsToTestArray[g]);
+                    } 
+                }
 
-            // Loop through remaining side-adjacent cells to test for occupied
-            foreach (GridCell cell in sideCellsToTest) {
-                if (cell.isOccupied && cell.colorOccupying == tile.tileColor) {
-                    Debug.Log("Side cell test failed");
+                // At this point, we have our side adjacent cells and our corner adjacent cells.
+                // Time to test that 1) no side adjacent cells are occupied and 2) at least one
+                // corner adjacent cell is occupied. If both these conditions pass, return true
+
+                // Loop through remaining side-adjacent cells to test for occupied
+                foreach (GridCell cell in sideCellsToTest) {
+                    if (cell.isOccupied && cell.colorOccupying == tile.tileColor) {
+                        Debug.Log("Side cell test failed: " + tile.tileCode);
+                        return false;
+                    }
+                }
+                
+                // Loop through corner-adjacent cells and make sure at least one is occupied
+                bool oneCellIsValid = false;
+                foreach (GridCell cell in cornerCellsToTest) {
+                    if (cell.isOccupied && cell.colorOccupying == tile.tileColor)
+                        oneCellIsValid = true;
+                }
+                if (!oneCellIsValid) {
+                    Debug.Log("Corner cell test failed");
                     return false;
                 }
-            }
-            
-            // Loop through corner-adjacent cells and make sure at least one is occupied
-            bool oneCellIsValid = false;
-            foreach (GridCell cell in cornerCellsToTest) {
-                if (cell.isOccupied && cell.colorOccupying == tile.tileColor)
-                    oneCellIsValid = true;
-            }
-            if (!oneCellIsValid) {
-                Debug.Log("Corner cell test failed");
-                return false;
             }
         }
 
@@ -334,8 +338,8 @@ public class GameController : MonoBehaviour {
         Vector2[] tileLocations;
 
         if (boardSize == 6 || boardSize == 5) {
-            tileLocations = new Vector2[] { new Vector2(-405, -550), new Vector2(-135, -550), new Vector2(135, -550),
-                                            new Vector2(405, -550), new Vector2(-300, -785), new Vector2(0, -785),
+            tileLocations = new Vector2[] { new Vector2(-405, -510), new Vector2(-135, -510), new Vector2(135, -510),
+                                            new Vector2(405, -510), new Vector2(-300, -785), new Vector2(0, -785),
                                             new Vector2(300, -785)};
         } else if (boardSize == 7) {
             tileLocations = new Vector2[] { new Vector2(-405, -550), new Vector2(-135, -550), new Vector2(135, -550),
@@ -356,5 +360,13 @@ public class GameController : MonoBehaviour {
         }
 
         return tileLocations;
+    }
+
+    public GameObject GetTileWithCode(char code) {
+        foreach (GameObject tile in tiles) {
+            if (tile.GetComponent<Tile>().tileCode == code)
+            return tile;
+        }
+        return null;
     }
 }

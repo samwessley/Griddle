@@ -72,6 +72,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a69958d30006493d954425fe6632e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOnBoard: 0
   isHighlighted: 0
 --- !u!114 &8287805546289965655
 MonoBehaviour:
@@ -86,6 +87,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileCells: []
+  tileColor: 0
+  tileCodeRange: 610041007600
+  tileCode: 0
   rotations: 0
   reflected: 0
   lastManipulationType: 0

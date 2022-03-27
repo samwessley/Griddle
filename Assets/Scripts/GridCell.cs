@@ -8,10 +8,12 @@ public class GridCell : MonoBehaviour {
     public int[] coords;
     public int xIndex;
     public int yIndex;
+    public char state;
 
     public bool isBarrier = false;
     public bool isOccupied = false;
     public int colorOccupying = 0;
+    public char charOccupying;
     public bool isStar = false;
 
     private bool isValid;
@@ -50,11 +52,17 @@ public class GridCell : MonoBehaviour {
             gameObject.GetComponent<Image>().color = shadowColor;
 
             Image childObj = this.gameObject.transform.GetChild(0).GetComponent<Image>();
-            childObj.sprite = Resources.Load<Sprite>("Sprites/Tile");
+            if (colorOccupying == 1) {
+                childObj.sprite = Resources.Load<Sprite>("Sprites/Tile Red");
+            } else if (colorOccupying == 2) {
+                childObj.sprite = Resources.Load<Sprite>("Sprites/Tile Blue");
+            } else {
+                childObj.sprite = Resources.Load<Sprite>("Sprites/Tile Yellow");
+            }
             childObj.color = new Color(1,1,1,1);
 
             Canvas canvas = gameObject.GetComponent<Canvas>();
-            canvas.sortingOrder += 2;
+            canvas.sortingOrder += 1;
         }
         else if (isStar) {
             gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Star Tile");
@@ -67,13 +75,15 @@ public class GridCell : MonoBehaviour {
         coords = new int[] {x,y};
     }
 
-    public void SetState(char state) {
+    public void SetState(char character) {
 
-        if (state == '1') {
+        state = character;
+
+        if (character == '1') {
             isBarrier = true; 
-        } else if (state == '2') {
+        } else if (character == '2') {
             isOccupied = true;
-        } else if (state == '3') {
+        } else if (character == '3') {
             isStar = true;
         }
     }

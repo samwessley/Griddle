@@ -547,6 +547,18 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 16
       objectReference: {fileID: 0}
+    - target: {fileID: 8287805546289965655, guid: 6a6b7834eabf24d3cbc2f4fea213dc1d, type: 3}
+      propertyPath: tileCodeRange.Array.data[0]
+      value: 114
+      objectReference: {fileID: 0}
+    - target: {fileID: 8287805546289965655, guid: 6a6b7834eabf24d3cbc2f4fea213dc1d, type: 3}
+      propertyPath: tileCodeRange.Array.data[1]
+      value: 82
+      objectReference: {fileID: 0}
+    - target: {fileID: 8287805546289965655, guid: 6a6b7834eabf24d3cbc2f4fea213dc1d, type: 3}
+      propertyPath: tileCodeRange.Array.data[2]
+      value: 57
+      objectReference: {fileID: 0}
     - target: {fileID: 8374001183157887907, guid: 6a6b7834eabf24d3cbc2f4fea213dc1d, type: 3}
       propertyPath: m_Name
       value: M Tile
