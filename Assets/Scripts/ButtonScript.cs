@@ -132,6 +132,8 @@ public class ButtonScript : MonoBehaviour {
 
         gameController.CheckForLevelComplete();
         Debug.Log(gameController.tilesRemaining);
+        GameManager.Instance.hintsRemaining -= 1;
+        gameController.UpdateHintsLabel();
     }
 
     private void ResetOccupiedCells(GameController gameController, string tileCodes) {

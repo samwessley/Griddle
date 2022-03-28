@@ -11,6 +11,7 @@ public class GameController : MonoBehaviour {
     [SerializeField] GameObject canvas = null;
     [SerializeField] GameObject levelCompletePopup = null;
     [SerializeField] GameObject nextLevelButton = null;
+    [SerializeField] GameObject hintsLabel = null;
 
     [SerializeField] GameObject star1 = null;
     [SerializeField] GameObject star2 = null;
@@ -25,7 +26,6 @@ public class GameController : MonoBehaviour {
     public string distinctChars;
     public GameObject activeTile;
     public int tilesRemaining;
-    public int starsCollected = 0;
 
     public string distinctCharsRemaining;
 
@@ -33,6 +33,7 @@ public class GameController : MonoBehaviour {
         PopulateCellGrid();
         LevelSetup();
         GameManager.Instance.SaveAsJSON();
+        UpdateHintsLabel();
     }
 
     public void LevelSetup() {
@@ -65,8 +66,6 @@ public class GameController : MonoBehaviour {
     public void CheckForLevelComplete() {
         if (tilesRemaining == 0 && CheckForValidTilePlacement()) {
             StartCoroutine(LevelCompleteAnimation());
-
-            GameManager.Instance.stars[GameManager.Instance.currentLevel - 1] = starsCollected;
 
             if (GameManager.Instance.levelsUnlocked < GameManager.Instance.totalLevels)
             GameManager.Instance.levelsUnlocked += 1;
@@ -104,7 +103,11 @@ public class GameController : MonoBehaviour {
     }
 
     private void SetStarsAndMessage() {
-        if (starsCollected > 0) {
+
+        System.Random random = new System.Random();
+        int randomInt = random.Next(1,4);
+
+        if (randomInt >= 1) {
             star1.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Star");
             RectTransform star_rt = star1.GetComponent<RectTransform>();
             star_rt.sizeDelta = new Vector2 (595, 597);
@@ -113,7 +116,7 @@ public class GameController : MonoBehaviour {
             RectTransform message_rt = message.GetComponent<RectTransform>();
             message_rt.sizeDelta = new Vector2 (353, 134);
         }
-        if (starsCollected > 1) {
+        if (randomInt >= 2) {
             star2.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Star");
             RectTransform star_rt = star2.GetComponent<RectTransform>();
             star_rt.sizeDelta = new Vector2 (595, 597);
@@ -122,7 +125,7 @@ public class GameController : MonoBehaviour {
             RectTransform message_rt = message.GetComponent<RectTransform>();
             message_rt.sizeDelta = new Vector2 (454, 143);
         }
-        if (starsCollected > 2) {
+        if (randomInt >= 3) {
             star3.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Star");
             RectTransform star_rt = star3.GetComponent<RectTransform>();
             star_rt.sizeDelta = new Vector2 (595, 597);
@@ -225,8 +228,6 @@ public class GameController : MonoBehaviour {
                     closestGridCells[j] = closestGridCellTransforms[j].gameObject.GetComponent<GridCell>();
                 }
 
-                GetStarsCollected(closestGridCells);
-
                 List<GridCell> sideCellsToTest = new List<GridCell>();
                 List<GridCell> cornerCellsToTest = new List<GridCell>();
 
@@ -327,13 +328,6 @@ public class GameController : MonoBehaviour {
         return cornerCellsToTest;
     }
 
-    private void GetStarsCollected(GridCell[] closestGridCells) {
-        foreach (GridCell cell in closestGridCells) {
-            if (cell.isStar)
-            starsCollected += 1;
-        }
-    }
-
     private Vector2[] GetTileLocations() {
         Vector2[] tileLocations;
 
@@ -368,5 +362,9 @@ public class GameController : MonoBehaviour {
             return tile;
         }
         return null;
+    }
+
+    public void UpdateHintsLabel() {
+        hintsLabel.GetComponent<Text>().text = "x " + GameManager.Instance.hintsRemaining.ToString();
     }
 }
