@@ -54,86 +54,87 @@ public class ButtonScript : MonoBehaviour {
     }
 
     public void Hint() {
-        GameController gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
+        if (GameManager.Instance.hintsRemaining > 0) {
+            GameController gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
 
-        string distinctCharsRemaining = gameController.distinctCharsRemaining;
-        System.Random random = new System.Random();
-        int randomCharIndex = random.Next(distinctCharsRemaining.Length);
-        char randomChar = distinctCharsRemaining[randomCharIndex];
-        string charsOccupied = "";
+            string distinctCharsRemaining = gameController.distinctCharsRemaining;
+            System.Random random = new System.Random();
+            int randomCharIndex = random.Next(distinctCharsRemaining.Length - 1);
+            char randomChar = distinctCharsRemaining[randomCharIndex];
+            string charsOccupied = "";
 
-        GridCell[,] cellGrid = gameController.cellGrid;
+            GridCell[,] cellGrid = gameController.cellGrid;
 
-        // Hide the tile that was just played via hint
-        GameObject tileHinted = gameController.GetTileWithCode(randomChar);
-        tileHinted.SetActive(false);
+            // Hide the tile that was just played via hint
+            GameObject tileHinted = gameController.GetTileWithCode(randomChar);
+            tileHinted.SetActive(false);
 
-        if (tileHinted.GetComponent<DragDrop>().isOnBoard) {
-            //tileHinted.GetComponent<DragDrop>().CancelPlacement(tileHinted.GetComponent<Tile>());
-            //tileHinted.GetComponent<DragDrop>().isOnBoard = false;
-            tileHinted.GetComponent<Tile>().CancelPlacement();
-            ResetOccupiedCells(gameController, tileHinted.GetComponent<Tile>().tileCode.ToString());
-            Debug.Log("Reset cell " + tileHinted.GetComponent<Tile>().tileCode.ToString());
-        }
+            if (tileHinted.GetComponent<DragDrop>().isOnBoard) {
+                tileHinted.GetComponent<Tile>().CancelPlacement();
+                ResetOccupiedCells(gameController, tileHinted.GetComponent<Tile>().tileCode.ToString());
+                Debug.Log("Reset cell " + tileHinted.GetComponent<Tile>().tileCode.ToString());
+                gameController.distinctCharsRemaining += tileHinted.GetComponent<Tile>().tileCode.ToString();
+            }
 
-        for(int y = 0; y < gameController.boardSize; y++) {
-            for (int x = 0; x < gameController.boardSize; x++) {
+            for(int y = 0; y < gameController.boardSize; y++) {
+                for (int x = 0; x < gameController.boardSize; x++) {
 
-                // Find the cell in the grid and get its GridCell component
-                GridCell cell = GameObject.Find("GridCell " + x + "," + y).gameObject.GetComponent<GridCell>();
+                    // Find the cell in the grid and get its GridCell component
+                    GridCell cell = GameObject.Find("GridCell " + x + "," + y).gameObject.GetComponent<GridCell>();
 
-                if (cell.state == randomChar) {
-                    if (cell.isOccupied) {
-                        
-                        if (charsOccupied.Length == 0) {
-                            charsOccupied += cell.charOccupying;
-                        } else {
-                            bool shouldAddChar = true;
-                            for (int i = 0; i < charsOccupied.Length; i++) {
-                                if (charsOccupied[i].Equals(cell.charOccupying)) {
-                                    shouldAddChar = false;
+                    if (cell.state == randomChar) {
+                        if (cell.isOccupied) {
+                            
+                            if (charsOccupied.Length == 0) {
+                                charsOccupied += cell.charOccupying;
+                            } else {
+                                bool shouldAddChar = true;
+                                for (int i = 0; i < charsOccupied.Length; i++) {
+                                    if (charsOccupied[i].Equals(cell.charOccupying)) {
+                                        shouldAddChar = false;
+                                    }
                                 }
+                                if (shouldAddChar)
+                                charsOccupied += cell.charOccupying;
                             }
-                            if (shouldAddChar)
-                            charsOccupied += cell.charOccupying;
+
+                            GameObject tileInSpace = gameController.GetTileWithCode(cell.charOccupying);
+                            tileInSpace.GetComponent<DragDrop>().CancelPlacement(tileInSpace.GetComponent<Tile>());
+                            
+                        }
+                        cell.isOccupied = true;
+                        int value = 0;
+                        if (GameManager.Instance.tileColorDictionary.TryGetValue(randomChar, out value)) {
+                            cell.colorOccupying = value;
+                            cell.charOccupying = randomChar;
+                        } else {
+                            Debug.Log("Value not found in tileColorDictionary");
                         }
 
-                        GameObject tileInSpace = gameController.GetTileWithCode(cell.charOccupying);
-                        tileInSpace.GetComponent<DragDrop>().CancelPlacement(tileInSpace.GetComponent<Tile>());
-                        
+                        cell.UpdateImage();
                     }
-                    cell.isOccupied = true;
-                    int value = 0;
-                    if (GameManager.Instance.tileColorDictionary.TryGetValue(randomChar, out value)) {
-                        cell.colorOccupying = value;
-                        cell.charOccupying = randomChar;
-                    } else {
-                        Debug.Log("Value not found in tileColorDictionary");
-                    }
-
-                    cell.UpdateImage();
                 }
             }
-        }
-        ResetOccupiedCells(gameController, charsOccupied);
-        Debug.Log("charsOccupied:" + charsOccupied);
-        gameController.tilesRemaining += charsOccupied.Length;
-        gameController.distinctCharsRemaining = gameController.distinctCharsRemaining.Replace(randomChar.ToString(),"");
+            ResetOccupiedCells(gameController, charsOccupied);
+            Debug.Log("charsOccupied:" + charsOccupied);
+            gameController.tilesRemaining += charsOccupied.Length;
+            gameController.distinctCharsRemaining = gameController.distinctCharsRemaining.Replace(randomChar.ToString(),"");
 
-        if (!gameController.GetTileWithCode(randomChar).GetComponent<DragDrop>().isOnBoard) {
-            gameController.tilesRemaining -= 1;
-            Debug.Log("tile was not on board");
-        }
+            if (!gameController.GetTileWithCode(randomChar).GetComponent<DragDrop>().isOnBoard) {
+                gameController.tilesRemaining -= 1;
+                Debug.Log("tile was not on board");
+            }
 
-        if (tileHinted.GetComponent<DragDrop>().isOnBoard) {
-            tileHinted.GetComponent<DragDrop>().CancelPlacement(tileHinted.GetComponent<Tile>());
-            //tileHinted.GetComponent<DragDrop>().isOnBoard = false;
-        }
+            if (tileHinted.GetComponent<DragDrop>().isOnBoard) {
+                tileHinted.GetComponent<DragDrop>().CancelPlacement(tileHinted.GetComponent<Tile>());
+                //tileHinted.GetComponent<DragDrop>().isOnBoard = false;
+            }
 
-        gameController.CheckForLevelComplete();
-        Debug.Log(gameController.tilesRemaining);
-        GameManager.Instance.hintsRemaining -= 1;
-        gameController.UpdateHintsLabel();
+            gameController.CheckForLevelComplete();
+            Debug.Log(gameController.tilesRemaining);
+            GameManager.Instance.hintsRemaining -= 1;
+            gameController.UpdateHintsLabel();
+        }
     }
 
     private void ResetOccupiedCells(GameController gameController, string tileCodes) {
