@@ -187,16 +187,21 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         gameController.activeTile = null;
         gameController.tilesRemaining -= 1;
 
+        bool isInCorrectPosition = IsInCorrectPosition(tile, closestGridCells);
+        if (isInCorrectPosition)
+        gameController.distinctCharsRemaining = gameController.distinctCharsRemaining.Replace(tile.tileCode.ToString(),"");
+
+        gameController.CheckForLevelComplete();
+    }
+
+    public bool IsInCorrectPosition(Tile tile, RectTransform[] closestGridCells) {
         bool isInCorrectPosition = true;
         foreach (RectTransform gridCell in closestGridCells) {
             if (gridCell.GetComponent<GridCell>().state != tile.tileCode)
             isInCorrectPosition = false;
         }
-        if (isInCorrectPosition) {
-            gameController.distinctCharsRemaining = gameController.distinctCharsRemaining.Replace(tile.tileCode.ToString(),"");
-        }
 
-        gameController.CheckForLevelComplete();
+        return isInCorrectPosition;
     }
 
     private bool TilePlacedOverOccupiedOrBarrierGridCells(Transform[] closestCells) {

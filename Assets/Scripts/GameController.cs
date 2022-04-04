@@ -213,7 +213,27 @@ public class GameController : MonoBehaviour {
     }
 
     private bool CheckForValidTilePlacement() {
+        
+        // SIMPLE TEST FIRST
+        // First check if all the tiles are in the correct position. If so, no need to do
+        // the more in-depth logic below.
+        bool allTilesInCorrectPosition = true;
+        for (int i = 0; i < tiles.Length; i++) {
+            Tile tile = tiles[i].GetComponent<Tile>();
+            DragDrop tileDragDrop = tiles[i].GetComponent<DragDrop>();
+            RectTransform[] closestGridCells = tile.GetClosestCellsArray();
 
+            if (!tileDragDrop.IsInCorrectPosition(tile, closestGridCells))
+            allTilesInCorrectPosition = false;
+        }
+
+        // If all tiles are in correct position, return true
+        if (allTilesInCorrectPosition)
+        return true;  
+        
+        // MORE IN-DEPTH TEST
+        // This tests each tile's location according to the game rules manually. This should
+        // catch situations that are valid tile placements but not the coded solution
         for (int i = 0; i < tiles.Length; i++) {
             Tile tile = tiles[i].GetComponent<Tile>();
 
