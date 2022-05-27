@@ -14,13 +14,12 @@ public class GridCell : MonoBehaviour {
     public bool isOccupied = false;
     public int colorOccupying = 0;
     public char charOccupying;
-    public bool isStar = false;
 
     private bool isValid;
     private bool isInvalid;
 
-    private Color barrierColor = new Color(255f/255f,253f/255f,244f/255f);
-    private Color barrierSideColor = new Color(213f/255f,211f/255f,201f/255f);
+    private Color barrierColor = new Color(0f/255f,0f/255f,0f/255f);
+    private Color barrierSideColor = new Color(30f/255f,30f/255f,32f/255f);
     private Color occupiedColor = new Color(171f/255f,9f/255f,96f/255f);
     private Color shadowColor = new Color(129f/255f,6f/255f,72f/255f);
 
@@ -64,9 +63,6 @@ public class GridCell : MonoBehaviour {
             Canvas canvas = gameObject.GetComponent<Canvas>();
             canvas.sortingOrder += 1;
         }
-        else if (isStar) {
-            gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Star Tile");
-        }
     }
 
     public void SetCoordinates(int x, int y) {
@@ -83,8 +79,6 @@ public class GridCell : MonoBehaviour {
             isBarrier = true; 
         } else if (character == '2') {
             isOccupied = true;
-        } else if (character == '3') {
-            isStar = true;
         }
     }
 }

@@ -196,6 +196,10 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     public bool IsInCorrectPosition(Tile tile, RectTransform[] closestGridCells) {
         bool isInCorrectPosition = true;
+
+        if (closestGridCells == null)
+        return true;
+
         foreach (RectTransform gridCell in closestGridCells) {
             if (gridCell.GetComponent<GridCell>().state != tile.tileCode)
             isInCorrectPosition = false;
@@ -227,7 +231,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
         tile.CancelPlacement();
         isOnBoard = false;
-        SetScale(0.7f);
+        SetScale(0.6f);
         touchCatcher.GetComponent<CanvasGroup>().blocksRaycasts = false;
         tilePopupTray.gameObject.SetActive(false);
         isHighlighted = false;
@@ -268,7 +272,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     private void SetHoveringPositionScale() {
         if (gameController.boardSize == 5) {
-            SetScale(2.5f);
+            SetScale(1.95f);
         } else if (gameController.boardSize == 6) {
             SetScale(2.1f);
         } else if (gameController.boardSize == 7) {

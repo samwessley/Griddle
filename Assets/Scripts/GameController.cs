@@ -78,25 +78,25 @@ public class GameController : MonoBehaviour {
 
         SetStarsAndMessage();
 
-        LeanTween.scale(star1, Vector2.zero, 0);
-        LeanTween.scale(star2, Vector2.zero, 0);
-        LeanTween.scale(star3, Vector2.zero, 0);
+        //LeanTween.scale(star1, Vector2.zero, 0);
+        //LeanTween.scale(star2, Vector2.zero, 0);
+        //LeanTween.scale(star3, Vector2.zero, 0);
 
         LeanTween.scale(message, Vector2.zero, 0);
         LeanTween.rotateZ(message, -25f,0);
 
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.25f);
 
         levelCompletePopup.SetActive(true);
 
-        yield return new WaitForSeconds(0.1f);
+        /*yield return new WaitForSeconds(0.1f);
         LeanTween.scale(star1, new Vector2 (1,1), 0.07f);
         yield return new WaitForSeconds(0.07f);
         LeanTween.scale(star2, new Vector2 (1,1), 0.07f);
         yield return new WaitForSeconds(0.07f);
-        LeanTween.scale(star3, new Vector2 (1,1), 0.07f);
+        LeanTween.scale(star3, new Vector2 (1,1), 0.07f);*/
 
-        yield return new WaitForSeconds(0.25f);
+        //yield return new WaitForSeconds(0.25f);
 
         LeanTween.scale(message, new Vector2(1,1), 0.08f);
         LeanTween.rotateZ(message,0,0.08f);
@@ -108,27 +108,27 @@ public class GameController : MonoBehaviour {
         int randomInt = random.Next(1,4);
 
         if (randomInt >= 1) {
-            star1.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Star");
-            RectTransform star_rt = star1.GetComponent<RectTransform>();
-            star_rt.sizeDelta = new Vector2 (595, 597);
+            //star1.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Star");
+            //RectTransform star_rt = star1.GetComponent<RectTransform>();
+            //star_rt.sizeDelta = new Vector2 (595, 597);
 
             message.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Nice!");
             RectTransform message_rt = message.GetComponent<RectTransform>();
             message_rt.sizeDelta = new Vector2 (353, 134);
         }
         if (randomInt >= 2) {
-            star2.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Star");
-            RectTransform star_rt = star2.GetComponent<RectTransform>();
-            star_rt.sizeDelta = new Vector2 (595, 597);
+            //star2.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Star");
+            //RectTransform star_rt = star2.GetComponent<RectTransform>();
+            //star_rt.sizeDelta = new Vector2 (595, 597);
 
             message.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Great!");
             RectTransform message_rt = message.GetComponent<RectTransform>();
             message_rt.sizeDelta = new Vector2 (454, 143);
         }
         if (randomInt >= 3) {
-            star3.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Star");
-            RectTransform star_rt = star3.GetComponent<RectTransform>();
-            star_rt.sizeDelta = new Vector2 (595, 597);
+            //star3.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Star");
+            //RectTransform star_rt = star3.GetComponent<RectTransform>();
+            //star_rt.sizeDelta = new Vector2 (595, 597);
 
             message.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Perfect!");
             RectTransform message_rt = message.GetComponent<RectTransform>();
@@ -144,7 +144,7 @@ public class GameController : MonoBehaviour {
     private void ReadLevelData(int level) {
         char[,] data = new char[boardSize,boardSize];
         
-        string levelPath = "Levels/" + level.ToString();
+        string levelPath = "Levels/New/" + level.ToString();
         TextAsset txtAsset = (TextAsset)Resources.Load(levelPath, typeof(TextAsset));
         string text = txtAsset.text;
 
@@ -170,7 +170,7 @@ public class GameController : MonoBehaviour {
     }
 
     private void ReadTileData(int level) {
-        string levelPath = "Levels/" + level.ToString();
+        string levelPath = "Levels/New/" + level.ToString();
         TextAsset txtAsset = (TextAsset)Resources.Load(levelPath, typeof(TextAsset));
         string text = txtAsset.text;
 
