@@ -7,10 +7,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2065448878444316376}
     m_Modifications:
+    - target: {fileID: 150720039549351147, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 150720039549351147, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 150720039549351147, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1896449731950220992, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
       propertyPath: m_Name
       value: Tile Cell 4
       objectReference: {fileID: 0}
+    - target: {fileID: 3926289375620989621, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3fe02f6e5e6714cefa30a38db9bcedc5, type: 3}
     - target: {fileID: 8293146469361430603, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -116,6 +132,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2065448878444316376}
     m_Modifications:
+    - target: {fileID: 150720039549351147, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 150720039549351147, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 150720039549351147, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 891195374875571159, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
       propertyPath: m_SortingOrder
       value: 14
@@ -124,6 +152,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tile Cell 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3926289375620989621, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3fe02f6e5e6714cefa30a38db9bcedc5, type: 3}
     - target: {fileID: 8293146469361430603, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -355,6 +387,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2065448878444316376}
     m_Modifications:
+    - target: {fileID: 150720039549351147, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 150720039549351147, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 150720039549351147, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 891195374875571159, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
       propertyPath: m_SortingOrder
       value: 14
@@ -363,6 +407,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tile Cell 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3926289375620989621, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3fe02f6e5e6714cefa30a38db9bcedc5, type: 3}
     - target: {fileID: 8293146469361430603, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

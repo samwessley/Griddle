@@ -49,17 +49,17 @@ public class GameManager: MonoBehaviour {
     public void LoadNewScene() {
         // Load new scene
         if (GameManager.Instance.currentLevel == 1) {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(7);
-        } else if (GameManager.Instance.currentLevel == 2) {
             UnityEngine.SceneManagement.SceneManager.LoadScene(6);
-        } else if (GameManager.Instance.currentLevel == 3) {
+        } else if (GameManager.Instance.currentLevel == 2) {
             UnityEngine.SceneManagement.SceneManager.LoadScene(5);
-        } else if (GameManager.Instance.currentLevel == 4) {
+        } else if (GameManager.Instance.currentLevel == 3) {
             UnityEngine.SceneManagement.SceneManager.LoadScene(4);
+        } else if (GameManager.Instance.currentLevel == 4) {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(3);
         } else if (GameManager.Instance.currentLevel == 5) {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(8);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(7);
         } else {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(2);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(1);
         }
     }
 

@@ -78,25 +78,12 @@ public class GameController : MonoBehaviour {
 
         SetStarsAndMessage();
 
-        //LeanTween.scale(star1, Vector2.zero, 0);
-        //LeanTween.scale(star2, Vector2.zero, 0);
-        //LeanTween.scale(star3, Vector2.zero, 0);
-
         LeanTween.scale(message, Vector2.zero, 0);
         LeanTween.rotateZ(message, -25f,0);
 
         yield return new WaitForSeconds(0.25f);
 
         levelCompletePopup.SetActive(true);
-
-        /*yield return new WaitForSeconds(0.1f);
-        LeanTween.scale(star1, new Vector2 (1,1), 0.07f);
-        yield return new WaitForSeconds(0.07f);
-        LeanTween.scale(star2, new Vector2 (1,1), 0.07f);
-        yield return new WaitForSeconds(0.07f);
-        LeanTween.scale(star3, new Vector2 (1,1), 0.07f);*/
-
-        //yield return new WaitForSeconds(0.25f);
 
         LeanTween.scale(message, new Vector2(1,1), 0.08f);
         LeanTween.rotateZ(message,0,0.08f);
@@ -105,34 +92,68 @@ public class GameController : MonoBehaviour {
     private void SetStarsAndMessage() {
 
         System.Random random = new System.Random();
-        int randomInt = random.Next(1,4);
+        int randomInt = random.Next(1,9);
 
-        if (randomInt >= 1) {
-            //star1.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Star");
-            //RectTransform star_rt = star1.GetComponent<RectTransform>();
-            //star_rt.sizeDelta = new Vector2 (595, 597);
-
+        switch(randomInt) {
+            
+            case 1: {
             message.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Nice!");
             RectTransform message_rt = message.GetComponent<RectTransform>();
-            message_rt.sizeDelta = new Vector2 (353, 134);
-        }
-        if (randomInt >= 2) {
-            //star2.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Star");
-            //RectTransform star_rt = star2.GetComponent<RectTransform>();
-            //star_rt.sizeDelta = new Vector2 (595, 597);
+            message_rt.sizeDelta = new Vector2 (328, 157);
+            break;
+            }
 
+            case 2: {
             message.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Great!");
             RectTransform message_rt = message.GetComponent<RectTransform>();
-            message_rt.sizeDelta = new Vector2 (454, 143);
-        }
-        if (randomInt >= 3) {
-            //star3.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Star");
-            //RectTransform star_rt = star3.GetComponent<RectTransform>();
-            //star_rt.sizeDelta = new Vector2 (595, 597);
+            message_rt.sizeDelta = new Vector2 (412, 161);
+            break;
+            }
 
+            case 3: {
             message.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Perfect!");
             RectTransform message_rt = message.GetComponent<RectTransform>();
-            message_rt.sizeDelta = new Vector2 (585, 159);
+            message_rt.sizeDelta = new Vector2 (505, 175);
+            break;
+            }
+
+            case 4: {
+            message.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Excellent!");
+            RectTransform message_rt = message.GetComponent<RectTransform>();
+            message_rt.sizeDelta = new Vector2 (616, 187);
+            break;
+            }
+
+            case 5: {
+            message.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Fabulous!");
+            RectTransform message_rt = message.GetComponent<RectTransform>();
+            message_rt.sizeDelta = new Vector2 (635, 189);
+            break;
+            }
+
+            case 6: {
+            message.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Outstanding!");
+            RectTransform message_rt = message.GetComponent<RectTransform>();
+            message_rt.sizeDelta = new Vector2 (876, 246);
+            break;
+            }
+
+            case 7: {
+            message.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Wonderful!");
+            RectTransform message_rt = message.GetComponent<RectTransform>();
+            message_rt.sizeDelta = new Vector2 (729, 199);
+            break;
+            }
+
+            case 8: {
+            message.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Sensational!");
+            RectTransform message_rt = message.GetComponent<RectTransform>();
+            message_rt.sizeDelta = new Vector2 (818, 209);
+            break;
+            }
+
+            default:
+                break;
         }
     }
 

@@ -69,17 +69,30 @@ public class Tile : MonoBehaviour {
     private void SetColor() {
         //tileColor = Random.Range(1,4);
         Image[] tileImages = gameObject.GetComponentsInChildren<Image>();
+
         if (tileColor == 1) {
             for (int i = 0; i < tileImages.Length; i++) {
-                tileImages[i].sprite = Resources.Load<Sprite>("Sprites/Tile Red");
+                if (tileImages[i].sprite != null) {
+                    tileImages[i].sprite = Resources.Load<Sprite>("Sprites/Tile Red");
+                } else {
+                    tileImages[i].color = new Color(206f/255f,77f/255f,69f/255f);
+                }
             }
         } else if (tileColor == 2) {
             for (int i = 0; i < tileImages.Length; i++) {
-                tileImages[i].sprite = Resources.Load<Sprite>("Sprites/Tile Blue");
+                if (tileImages[i].sprite != null) {
+                    tileImages[i].sprite = Resources.Load<Sprite>("Sprites/Tile Blue");
+                } else {
+                    tileImages[i].color = new Color(92f/255f,164f/255f,155f/255f);
+                }
             }
         } else {
             for (int i = 0; i < tileImages.Length; i++) {
-                tileImages[i].sprite = Resources.Load<Sprite>("Sprites/Tile Yellow");
+                if (tileImages[i].sprite != null) {
+                    tileImages[i].sprite = Resources.Load<Sprite>("Sprites/Tile Yellow");
+                } else {
+                    tileImages[i].color = new Color(206f/255f,77f/255f,69f/255f);
+                }
             }
         }
     }
