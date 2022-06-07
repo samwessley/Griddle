@@ -19,7 +19,7 @@ public class GameManager: MonoBehaviour {
     //public string[][] levelTiles = new string[3][];
     public Dictionary<char, string> tileDictionary = new Dictionary<char, string>();
     public Dictionary<char, int> tileColorDictionary = new Dictionary<char, int>();
-    public float[] tileScaleFactors = {1.88888888889f, 2.05555555556f, 1.76190444444f, 1.54166666667f, 1.37037037037f, 1f};
+    public float[] tileScaleFactors = {1.88888888889f, 1.66666666667f, 1.76190444444f, 1.54166666667f, 1.37037037037f, 1f};
 
     public int[] levelButtonColors;
 
@@ -34,7 +34,7 @@ public class GameManager: MonoBehaviour {
     }
 
     void Awake() {
-        totalLevels = 5;
+        totalLevels = 50;
         currentLevel = 1;
         levelsUnlocked = 1;
         hintsRemaining = 3;
@@ -48,16 +48,10 @@ public class GameManager: MonoBehaviour {
 
     public void LoadNewScene() {
         // Load new scene
-        if (GameManager.Instance.currentLevel == 1) {
+        if (GameManager.Instance.currentLevel <= 30) {
             UnityEngine.SceneManagement.SceneManager.LoadScene(6);
-        } else if (GameManager.Instance.currentLevel == 2) {
+        } else if (GameManager.Instance.currentLevel > 30 && GameManager.Instance.currentLevel <= 60) {
             UnityEngine.SceneManagement.SceneManager.LoadScene(5);
-        } else if (GameManager.Instance.currentLevel == 3) {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(4);
-        } else if (GameManager.Instance.currentLevel == 4) {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(3);
-        } else if (GameManager.Instance.currentLevel == 5) {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(7);
         } else {
             UnityEngine.SceneManagement.SceneManager.LoadScene(1);
         }

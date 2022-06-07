@@ -274,7 +274,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         if (gameController.boardSize == 5) {
             SetScale(1.95f);
         } else if (gameController.boardSize == 6) {
-            SetScale(2.1f);
+            SetScale(1.85f);
         } else if (gameController.boardSize == 7) {
             SetScale(1.82f);
         } else if (gameController.boardSize == 8) {

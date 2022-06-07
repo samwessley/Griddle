@@ -372,10 +372,12 @@ public class GameController : MonoBehaviour {
     private Vector2[] GetTileLocations() {
         Vector2[] tileLocations;
 
-        if (boardSize == 6 || boardSize == 5) {
-            tileLocations = new Vector2[] { new Vector2(-405, -510), new Vector2(-135, -510), new Vector2(135, -510),
-                                            new Vector2(405, -510), new Vector2(-300, -785), new Vector2(0, -785),
-                                            new Vector2(300, -785)};
+        if (boardSize == 5) {
+            tileLocations = new Vector2[] { new Vector2(-405, -480), new Vector2(-135, -480), new Vector2(135, -480),
+                                            new Vector2(405, -480)};
+        } else if (boardSize == 6) {
+            tileLocations = new Vector2[] { new Vector2(-310, -380), new Vector2(0, -380), new Vector2(310, -380),
+                                            new Vector2(-310, -600), new Vector2(0, -600), new Vector2(310, -600)};
         } else if (boardSize == 7) {
             tileLocations = new Vector2[] { new Vector2(-405, -550), new Vector2(-135, -550), new Vector2(135, -550),
                                             new Vector2(405, -550), new Vector2(-300, -785), new Vector2(0, -785),

@@ -155,7 +155,6 @@ MonoBehaviour:
   totalLevels: 0
   currentLevel: 1
   levelsUnlocked: 0
-  stars: 
   hintsRemaining: 0
   adsRemoved: 0
   tileScaleFactors:
@@ -216,7 +215,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -600}
-  m_SizeDelta: {x: 600, y: 150}
+  m_SizeDelta: {x: 600, y: 132}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &407252010
 MonoBehaviour:
@@ -282,7 +281,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c21ea269a60c9400d9aa3b5e776a4af9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 342c4edda24a342ae895804c2b31cd03, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -673,7 +672,7 @@ GameObject:
   - component: {fileID: 1485678976}
   - component: {fileID: 1485678979}
   m_Layer: 5
-  m_Name: Levels Button
+  m_Name: Play Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -696,7 +695,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -400}
-  m_SizeDelta: {x: 600, y: 150}
+  m_SizeDelta: {x: 600, y: 132}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1485678976
 MonoBehaviour:
@@ -919,7 +918,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 71c4e2d1c950241d6b43538d5275a33c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5b8079771c3c6409b95c30523631e44c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
