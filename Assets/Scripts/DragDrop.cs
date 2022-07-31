@@ -80,7 +80,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
         //Debug.Log(tile.tileCells[0].xOffset + ", " + tile.tileCells[0].yOffset);
 
-        if (eventData.position == pointerLocation)
+        if (eventData.position == pointerLocation && !isOnBoard)
         CancelPlacement(tile);
 
         // If the tile isn't currently on the board, show the touchCatcher when tapping on the tile
@@ -223,9 +223,11 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         RectTransform[] closestGridCells = gameObject.GetComponent<Tile>().GetClosestCellsArray();
         if (closestGridCells != null) {
             foreach(RectTransform gridcell in closestGridCells) {
-                gridcell.gameObject.GetComponent<GridCell>().isOccupied = false;
-                gridcell.gameObject.GetComponent<GridCell>().colorOccupying = 0;
-                gridcell.gameObject.GetComponent<GridCell>().charOccupying = (char)0;
+                if (gridcell.gameObject.GetComponent<GridCell>().colorOccupying == gameObject.GetComponent<Tile>().tileColor) {
+                    gridcell.gameObject.GetComponent<GridCell>().isOccupied = false;
+                    gridcell.gameObject.GetComponent<GridCell>().colorOccupying = 3;
+                    gridcell.gameObject.GetComponent<GridCell>().charOccupying = (char)0;
+                }
             }
         }
 

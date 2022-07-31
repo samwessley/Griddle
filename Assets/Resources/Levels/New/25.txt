@@ -1,5 +1,5 @@
-ii1I1
-1iiII
-p111I
-pppO1
-pOOOO
+00011
+dd011
+d0a00
+1MM0A
+0MMM1

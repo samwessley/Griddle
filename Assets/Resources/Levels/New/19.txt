@@ -1,5 +1,5 @@
-11RR1
-cRR11
-cRpMM
-c1pMM
-1pppM
+01110
+bb010
+A1aS1
+1SSS1
+1S100

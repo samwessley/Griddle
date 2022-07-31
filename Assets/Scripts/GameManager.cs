@@ -50,7 +50,7 @@ public class GameManager: MonoBehaviour {
         // Load new scene
         if (GameManager.Instance.currentLevel <= 30) {
             UnityEngine.SceneManagement.SceneManager.LoadScene(6);
-        } else if (GameManager.Instance.currentLevel > 30 && GameManager.Instance.currentLevel <= 60) {
+        } else if (GameManager.Instance.currentLevel > 30 && GameManager.Instance.currentLevel <= 40) {
             UnityEngine.SceneManagement.SceneManager.LoadScene(5);
         } else {
             UnityEngine.SceneManagement.SceneManager.LoadScene(1);

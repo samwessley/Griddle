@@ -31,6 +31,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 3fe02f6e5e6714cefa30a38db9bcedc5, type: 3}
+    - target: {fileID: 6788238182642468020, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
+      propertyPath: xOffset
+      value: 45
+      objectReference: {fileID: 0}
     - target: {fileID: 8293146469361430603, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -136,6 +140,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3585433714275303378}
     m_Modifications:
+    - target: {fileID: 150720039549351147, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 150720039549351147, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 150720039549351147, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 891195374875571159, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
       propertyPath: m_SortingOrder
       value: 14
@@ -148,6 +164,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 3fe02f6e5e6714cefa30a38db9bcedc5, type: 3}
+    - target: {fileID: 6788238182642468020, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
+      propertyPath: yOffset
+      value: 45
+      objectReference: {fileID: 0}
     - target: {fileID: 8293146469361430603, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -277,6 +297,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 3fe02f6e5e6714cefa30a38db9bcedc5, type: 3}
+    - target: {fileID: 6788238182642468020, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
+      propertyPath: xOffset
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 6788238182642468020, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
+      propertyPath: yOffset
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8293146469361430603, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

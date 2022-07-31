@@ -198,6 +198,8 @@ public class GameController : MonoBehaviour {
         // Get distinct chars from the string of level data
         distinctChars = new string(text.Distinct().ToArray());
         distinctChars = distinctChars.Replace("1","");
+        // Remove 0's
+        distinctChars = distinctChars.Replace("0","");
         distinctChars = distinctChars.Replace("\n","");
         distinctCharsRemaining = distinctChars;
         Debug.Log(distinctChars);
@@ -325,7 +327,13 @@ public class GameController : MonoBehaviour {
                         oneCellIsValid = true;
                 }
                 if (!oneCellIsValid) {
-                    Debug.Log("Corner cell test failed");
+                    Debug.Log("Corner cell test failed: " + tile.tileCode);
+
+                    /*foreach (GridCell cell in cornerCellsToTest) {
+                        Debug.Log(cell.xIndex + ", " + cell.yIndex);
+                        Debug.Log(cell.isOccupied + ", " + cell.colorOccupying);
+                    }*/
+
                     return false;
                 }
             }
