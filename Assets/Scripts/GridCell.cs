@@ -18,8 +18,8 @@ public class GridCell : MonoBehaviour {
     private bool isValid;
     private bool isInvalid;
 
-    private Color barrierColor = new Color(201f/255f,201f/255f,201f/255f);
-    private Color barrierSideColor = new Color(30f/255f,30f/255f,32f/255f);
+    private Color barrierColor = new Color(255f/255f,159f/255f,130f/255f);
+    private Color barrierSideColor = new Color(228f/255f,115f/255f,80f/255f);
     private Color occupiedColor = new Color(171f/255f,9f/255f,96f/255f);
     private Color shadowColor = new Color(129f/255f,6f/255f,72f/255f);
 

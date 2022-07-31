@@ -75,7 +75,7 @@ public class Tile : MonoBehaviour {
                 if (tileImages[i].sprite != null) {
                     tileImages[i].sprite = Resources.Load<Sprite>("Sprites/Tile Red");
                 } else {
-                    tileImages[i].color = new Color(206f/255f,77f/255f,69f/255f);
+                    tileImages[i].color = new Color(203f/255f,62f/255f,53f/255f);
                 }
             }
         } else if (tileColor == 2) {
@@ -83,7 +83,7 @@ public class Tile : MonoBehaviour {
                 if (tileImages[i].sprite != null) {
                     tileImages[i].sprite = Resources.Load<Sprite>("Sprites/Tile Blue");
                 } else {
-                    tileImages[i].color = new Color(92f/255f,164f/255f,155f/255f);
+                    tileImages[i].color = new Color(25f/255f,73f/255f,77f/255f);
                 }
             }
         } else {
@@ -91,7 +91,7 @@ public class Tile : MonoBehaviour {
                 if (tileImages[i].sprite != null) {
                     tileImages[i].sprite = Resources.Load<Sprite>("Sprites/Tile Yellow");
                 } else {
-                    tileImages[i].color = new Color(206f/255f,77f/255f,69f/255f);
+                    tileImages[i].color = new Color(101f/255f,137f/255f,62f/255f);
                 }
             }
         }

@@ -49,11 +49,20 @@ public class GameManager: MonoBehaviour {
     public void LoadNewScene() {
         // Load new scene
         if (GameManager.Instance.currentLevel <= 30) {
+            // Load 5x5 scenes
             UnityEngine.SceneManagement.SceneManager.LoadScene(6);
-        } else if (GameManager.Instance.currentLevel > 30 && GameManager.Instance.currentLevel <= 40) {
+        } else if (GameManager.Instance.currentLevel > 30 && GameManager.Instance.currentLevel <= 60) {
+            // Load 6x6 scenes
             UnityEngine.SceneManagement.SceneManager.LoadScene(5);
-        } else {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(1);
+        } else if (GameManager.Instance.currentLevel > 60 && GameManager.Instance.currentLevel <= 90){
+            // Load 7x7 scenes
+            UnityEngine.SceneManagement.SceneManager.LoadScene(4);
+        } else if (GameManager.Instance.currentLevel > 90 && GameManager.Instance.currentLevel <= 120){
+            // Load 8x8 scenes
+            UnityEngine.SceneManagement.SceneManager.LoadScene(3);
+        } else if (GameManager.Instance.currentLevel > 120) {
+            // Load 9x9 scenes
+            UnityEngine.SceneManagement.SceneManager.LoadScene(7);
         }
     }
 

@@ -164,8 +164,9 @@ public class GameController : MonoBehaviour {
 
     private void ReadLevelData(int level) {
         char[,] data = new char[boardSize,boardSize];
-        
-        string levelPath = "Levels/New/" + level.ToString();
+
+        string boardSizePath = GetLevelPath();
+        string levelPath = "Levels/" + boardSizePath + "/" + level.ToString();
         TextAsset txtAsset = (TextAsset)Resources.Load(levelPath, typeof(TextAsset));
         string text = txtAsset.text;
 
@@ -191,7 +192,10 @@ public class GameController : MonoBehaviour {
     }
 
     private void ReadTileData(int level) {
-        string levelPath = "Levels/New/" + level.ToString();
+
+        string boardSize = GetLevelPath();
+
+        string levelPath = "Levels/" + boardSize + "/" + level.ToString();
         TextAsset txtAsset = (TextAsset)Resources.Load(levelPath, typeof(TextAsset));
         string text = txtAsset.text;
 
@@ -233,6 +237,25 @@ public class GameController : MonoBehaviour {
     private void SetLevelNumber(int level) {
         levelNumber.GetComponent<Text>().text = level.ToString();
         GameManager.Instance.currentLevel = level;
+    }
+
+    private string GetLevelPath() {
+        string boardSize = "";
+        int levelNumber = GameManager.Instance.currentLevel;
+
+        if (levelNumber <= 30) {
+            boardSize = "5x5";
+        } else if (levelNumber > 30 && levelNumber <= 60) {
+            boardSize = "6x6";
+        } else if (levelNumber > 60 && levelNumber <= 90) {
+            boardSize = "7x7";
+        } else if (levelNumber > 90 && levelNumber <= 120) {
+            boardSize = "8x8";
+        } else if (levelNumber > 120) {
+            boardSize = "9x9";
+        }
+
+        return boardSize;
     }
 
     private bool CheckForValidTilePlacement() {
