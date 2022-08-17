@@ -25,7 +25,11 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         tilePopupTray = canvas.transform.Find("Tile Popup Tray").gameObject;
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
-        SetScale(0.6f);
+        if (gameController.boardSize < 8) {
+            SetScale(0.6f);
+        } else {
+            SetScale(0.5f);
+        }
     }
 
     public void OnPointerDown(PointerEventData eventData) {
@@ -225,7 +229,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
             foreach(RectTransform gridcell in closestGridCells) {
                 if (gridcell.gameObject.GetComponent<GridCell>().colorOccupying == gameObject.GetComponent<Tile>().tileColor) {
                     gridcell.gameObject.GetComponent<GridCell>().isOccupied = false;
-                    gridcell.gameObject.GetComponent<GridCell>().colorOccupying = 3;
+                    gridcell.gameObject.GetComponent<GridCell>().colorOccupying = 0;
                     gridcell.gameObject.GetComponent<GridCell>().charOccupying = (char)0;
                 }
             }
@@ -233,7 +237,11 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
         tile.CancelPlacement();
         isOnBoard = false;
-        SetScale(0.6f);
+        if (gameController.boardSize < 8) {
+            SetScale(0.6f);
+        } else {
+            SetScale(0.5f);
+        }
         touchCatcher.GetComponent<CanvasGroup>().blocksRaycasts = false;
         tilePopupTray.gameObject.SetActive(false);
         isHighlighted = false;
@@ -274,13 +282,13 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     private void SetHoveringPositionScale() {
         if (gameController.boardSize == 5) {
-            SetScale(1.95f);
+            SetScale(2.5f);
         } else if (gameController.boardSize == 6) {
-            SetScale(1.85f);
+            SetScale(2.1f);
         } else if (gameController.boardSize == 7) {
-            SetScale(1.82f);
+            SetScale(1.8f);
         } else if (gameController.boardSize == 8) {
-            SetScale(1.7f);
+            SetScale(1.6f);
         } else if (gameController.boardSize == 9) {
             SetScale(1.4f);
         } else {

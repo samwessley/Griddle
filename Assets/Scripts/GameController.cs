@@ -67,8 +67,7 @@ public class GameController : MonoBehaviour {
         if (tilesRemaining == 0 && CheckForValidTilePlacement()) {
             StartCoroutine(LevelCompleteAnimation());
 
-            if (GameManager.Instance.levelsUnlocked < GameManager.Instance.totalLevels)
-            GameManager.Instance.levelsUnlocked += 1;
+            GameManager.Instance.levelsCompleted[GameManager.Instance.currentLevel - 1] = 1;
 
             GameManager.Instance.SaveAsJSON();
         }
@@ -410,17 +409,17 @@ public class GameController : MonoBehaviour {
             tileLocations = new Vector2[] { new Vector2(-310, -380), new Vector2(0, -380), new Vector2(310, -380),
                                             new Vector2(-310, -600), new Vector2(0, -600), new Vector2(310, -600)};
         } else if (boardSize == 7) {
-            tileLocations = new Vector2[] { new Vector2(-405, -550), new Vector2(-135, -550), new Vector2(135, -550),
-                                            new Vector2(405, -550), new Vector2(-300, -785), new Vector2(0, -785),
-                                            new Vector2(300, -785)};
+            tileLocations = new Vector2[] { new Vector2(-405, -380), new Vector2(-135, -380), new Vector2(135, -380),
+                                            new Vector2(405, -380), new Vector2(-300, -600), new Vector2(0, -600),
+                                            new Vector2(300, -600)};
         } else if (boardSize == 8) {
-            tileLocations = new Vector2[] { new Vector2(-300, -523), new Vector2(0, -523), new Vector2(300, -523),
-                                            new Vector2(-300, -660), new Vector2(0, -660), new Vector2(300, -660),
-                                            new Vector2(-300, -800), new Vector2(0, -800), new Vector2(300, -800)};
+            tileLocations = new Vector2[] { new Vector2(-300, -335), new Vector2(0, -335), new Vector2(300, -335),
+                                            new Vector2(-300, -495), new Vector2(0, -495), new Vector2(300, -495),
+                                            new Vector2(-300, -660), new Vector2(0, -660), new Vector2(300, -660)};
         } else if (boardSize == 9) {
-            tileLocations = new Vector2[] { new Vector2(-405, -460), new Vector2(-135, -460), new Vector2(135, -460), new Vector2(405, -460),
-                                            new Vector2(-405, -640), new Vector2(-135, -640), new Vector2(135, -640), new Vector2(405, -640),
-                                            new Vector2(-405, -820), new Vector2(-135, -820), new Vector2(135, -820), new Vector2(405, -820)};
+            tileLocations = new Vector2[] { new Vector2(-405, -335), new Vector2(-135, -335), new Vector2(135, -335), new Vector2(405, -335),
+                                            new Vector2(-405, -495), new Vector2(-135, -495), new Vector2(135, -495), new Vector2(405, -495),
+                                            new Vector2(-405, -660), new Vector2(-135, -660), new Vector2(135, -660), new Vector2(405, -660)};
         } else {
             tileLocations = new Vector2[] { new Vector2(-300, -523), new Vector2(0, -523), new Vector2(300, -523),
                                             new Vector2(-300, -660), new Vector2(0, -660), new Vector2(300, -660),

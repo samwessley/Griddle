@@ -35,12 +35,12 @@ public class GridCell : MonoBehaviour {
     public void UpdateImage() {
 
         if (isBarrier) {
-            gameObject.GetComponent<Image>().sprite = null;
-            gameObject.GetComponent<Image>().color = barrierSideColor;
+            gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Barrier");;
+            //gameObject.GetComponent<Image>().color = barrierSideColor;
 
-            Image childObj = this.gameObject.transform.GetChild(0).GetComponent<Image>();
+            /*Image childObj = this.gameObject.transform.GetChild(0).GetComponent<Image>();
             childObj.sprite = null;
-            childObj.color = barrierColor;
+            childObj.color = barrierColor;*/
             
             Canvas canvas = gameObject.GetComponent<Canvas>();
             canvas.sortingOrder += 1;

@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class LevelSelectButtonScript : MonoBehaviour {
 
     public int level;
-    private bool isLevelUnlocked = true;
 
     private void Awake() {
         SetUpButton();
@@ -16,9 +15,13 @@ public class LevelSelectButtonScript : MonoBehaviour {
 
         gameObject.GetComponentInChildren<Text>().text = level.ToString();
             gameObject.GetComponent<Button>().interactable = true;
-            gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Level Button");
             gameObject.GetComponentInChildren<Text>().enabled = true;
 
+            if (GameManager.Instance.levelsCompleted[level - 1] == 1) {
+                gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Level Button Complete");
+            } else {
+                gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Level Button");
+            }
     }
 
     public void LoadLevel() {

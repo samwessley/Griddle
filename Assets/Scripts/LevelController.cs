@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class LevelController : MonoBehaviour {
 
+    [SerializeField] GameObject levelPageLabel = null;
     [SerializeField] GameObject nextLevelPageButton = null;
     [SerializeField] GameObject previousLevelPageButton = null;
 
@@ -117,14 +118,17 @@ public class LevelController : MonoBehaviour {
     }
 
     public void LoadNextLevelPage() {
-        if (page < 8) {
+        if (page < 5) {
             SetLevelPage(30);
             page += 1;
+
+            if (page == 5)
+            nextLevelPageButton.SetActive(false);
         } else {
             nextLevelPageButton.SetActive(false);
         }
 
-        Debug.Log(page);
+        UpdatePageTitle();
     }
 
     public void LoadPreviousLevelPage() {
@@ -135,9 +139,32 @@ public class LevelController : MonoBehaviour {
             UnityEngine.SceneManagement.SceneManager.LoadScene(0);
         }
 
-        if (page == 7)
+        if (page == 4)
         nextLevelPageButton.SetActive(true);
 
-        Debug.Log(page);
+        UpdatePageTitle();
+    }
+
+    private void UpdatePageTitle() {
+        switch(page) {
+            case 1:
+            levelPageLabel.GetComponent<Text>().text = "5x5 - Novice";
+            break;
+            case 2:
+            levelPageLabel.GetComponent<Text>().text = "6x6 - Beginner";
+            break;
+            case 3:
+            levelPageLabel.GetComponent<Text>().text = "7x7 - Intermediate";
+            break;
+            case 4:
+            levelPageLabel.GetComponent<Text>().text = "8x8 - Advanced";
+            break;
+            case 5:
+            levelPageLabel.GetComponent<Text>().text = "9x9 - Expert";
+            break;
+            default:
+            levelPageLabel.GetComponent<Text>().text = "5x5 - Novice";
+            break;
+        }
     }
 }

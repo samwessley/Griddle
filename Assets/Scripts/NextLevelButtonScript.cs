@@ -5,7 +5,7 @@ using UnityEngine;
 public class NextLevelButtonScript : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
-        if (GameManager.Instance.currentLevel == GameManager.Instance.levelsUnlocked)
+        if (GameManager.Instance.currentLevel == GameManager.Instance.totalLevels)
         gameObject.SetActive(false);
     }
 }

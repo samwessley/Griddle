@@ -12,14 +12,14 @@ public class GameManager: MonoBehaviour {
     public int totalLevels;
 
     public int currentLevel;
-    public int levelsUnlocked;
+    public int[] levelsCompleted;
     public int hintsRemaining;
     public bool adsRemoved;
 
     //public string[][] levelTiles = new string[3][];
     public Dictionary<char, string> tileDictionary = new Dictionary<char, string>();
     public Dictionary<char, int> tileColorDictionary = new Dictionary<char, int>();
-    public float[] tileScaleFactors = {1.88888888889f, 1.66666666667f, 1.76190444444f, 1.54166666667f, 1.37037037037f, 1f};
+    public float[] tileScaleFactors = {2.26666666667f, 1.88888888889f, 1.62222222222f, 1.43333333333f, 1.26666666667f, 1f};
 
     public int[] levelButtonColors;
 
@@ -34,11 +34,15 @@ public class GameManager: MonoBehaviour {
     }
 
     void Awake() {
-        totalLevels = 50;
+        totalLevels = 150;
         currentLevel = 1;
-        levelsUnlocked = 1;
         hintsRemaining = 3;
         adsRemoved = false;
+
+        levelsCompleted = new int[totalLevels];
+        for (int i = 0; i < levelsCompleted.Length; i++) {
+           levelsCompleted[i] = 0;
+        }        
 
         SetLevelButtonColors();
         Load();
@@ -88,7 +92,7 @@ public class GameManager: MonoBehaviour {
 
             // Set the GameManager's properties by pulling from this new Save object
             currentLevel = save.currentLevel;
-            levelsUnlocked = save.levelsUnlocked;
+            levelsCompleted = save.levelsCompleted;
             hintsRemaining = save.hintsRemaining;
             adsRemoved = save.adsRemoved;
 
@@ -145,7 +149,7 @@ public class GameManager: MonoBehaviour {
         Save save = new Save();
 
         save.currentLevel = currentLevel;
-        save.levelsUnlocked = levelsUnlocked;
+        save.levelsCompleted = levelsCompleted;
         save.hintsRemaining = hintsRemaining;
         save.adsRemoved = adsRemoved;
 
