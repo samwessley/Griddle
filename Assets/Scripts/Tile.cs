@@ -56,7 +56,7 @@ public class Tile : MonoBehaviour {
         return closestGridCells;
     }
 
-    private void GetTileCells() {
+    public void GetTileCells() {
 
         tileCells = new TileCell[transform.childCount];
 
@@ -99,5 +99,111 @@ public class Tile : MonoBehaviour {
 
     public void CancelPlacement() {
         gameObject.GetComponent<RectTransform>().anchoredPosition = startingPosition;
+    }
+
+    public void ResetTile() {
+
+        // Reset the tile transform back to its default state
+        transform.rotation = Quaternion.identity;
+        transform.localScale = new Vector2(1, 1);
+        rotations = 0;
+
+        // Reset the tile cells back to their default state
+        for (int i = 0; i < tileCells.Length; i++) {
+            tileCells[i].transform.localScale = new Vector2(1, 1);
+            tileCells[i].transform.rotation = Quaternion.identity;
+
+            tileCells[i].PopulateOffsetValues();
+        }
+    }
+
+    public void Rotate() {
+
+        // Rotate the Tile transform
+        if (rotations < 3) {
+            gameObject.transform.eulerAngles = new Vector3(
+            gameObject.transform.eulerAngles.x,
+            gameObject.transform.eulerAngles.y,
+            gameObject.transform.eulerAngles.z + 90
+            );
+
+            for (int i = 0; i < tileCells.Length; i++) {
+                        
+                // Rotate the tile cell transforms
+                if (reflected)
+                tileCells[i].GetComponent<RectTransform>().Rotate(0, 0, -270);
+                else
+                tileCells[i].GetComponent<RectTransform>().Rotate(0, 0, -90);
+
+                // Rotate the tile cell offset values
+                float oldX = tileCells[i].xOffset;
+                float oldY = tileCells[i].yOffset;
+
+                tileCells[i].xOffset = -oldY;
+                tileCells[i].yOffset = oldX;
+            }
+
+            rotations += 1;
+        } else {
+                    
+            rotations = 0;
+
+            // Reset the tile back to its default state
+            ResetTile();
+
+            // If the tile was reflected before reset, reflect it back
+            if (reflected) {
+                // Reflect the transform
+                transform.localScale = new Vector2(-1, 1);
+            
+                // Reflect the tile cells' offset locations
+                for (int j = 0; j < tileCells.Length; j++) {
+                    tileCells[j].xOffset = -tileCells[j].xOffset;
+                }
+            }
+        }
+    
+        // Update the sorting order of each tile cell
+        UpdateSortingOrder();
+    }
+
+    public void Reflect() {
+
+        // Reset the tile back to its default state
+        ResetTile();
+
+        // If the tile isn't reflected, reflect it
+        if (!reflected) {
+            // Reflect the transform
+            float tileXScale = Mathf.Abs(transform.localScale.x);
+            float tileYScale = transform.localScale.y;
+            transform.localScale = new Vector2(-tileXScale, tileYScale);
+        
+            // Reflect the tile cells' offset locations
+            for (int j = 0; j < tileCells.Length; j++) 
+                tileCells[j].xOffset = -tileCells[j].xOffset;
+        }
+
+        // Update reflected property
+        reflected = !reflected;
+
+        // Update the sorting order of each tile cell
+        UpdateSortingOrder();
+    }
+
+    private void UpdateSortingOrder() {
+
+        List<int> rowList = new List<int>();
+
+        foreach(TileCell cell in tileCells) {
+            if (!rowList.Contains((int)cell.yOffset))
+            rowList.Add((int)cell.yOffset);
+        }
+        rowList.Sort();
+        rowList.Reverse();
+
+        foreach(TileCell cell in tileCells) {
+            cell.SetSortingLayer(19 + rowList.IndexOf((int)cell.yOffset));
+        }
     }
 }

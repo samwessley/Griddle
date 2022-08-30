@@ -194,10 +194,10 @@ public class GameManager: MonoBehaviour {
         tileDictionary.Add('Z', "5 Stick Tile");
         tileDictionary.Add('k', "Long L Tile");
         tileDictionary.Add('K', "Long L Tile");
-        tileDictionary.Add('2', "Long L Tile");
+        tileDictionary.Add('=', "Long L Tile");
         tileDictionary.Add('l', "Long Z Tile");
         tileDictionary.Add('L', "Long Z Tile");
-        tileDictionary.Add('3', "Long Z Tile");
+        tileDictionary.Add('*', "Long Z Tile");
         tileDictionary.Add('m', "B Tile");
         tileDictionary.Add('M', "B Tile");
         tileDictionary.Add('4', "B Tile");
@@ -260,10 +260,10 @@ public class GameManager: MonoBehaviour {
         tileColorDictionary.Add('Z', 3);
         tileColorDictionary.Add('k', 1);
         tileColorDictionary.Add('K', 2);
-        tileColorDictionary.Add('2', 3);
+        tileColorDictionary.Add('=', 3);
         tileColorDictionary.Add('l', 1);
         tileColorDictionary.Add('L', 2);
-        tileColorDictionary.Add('3', 3);
+        tileColorDictionary.Add('*', 3);
         tileColorDictionary.Add('m', 1);
         tileColorDictionary.Add('M', 2);
         tileColorDictionary.Add('4', 3);

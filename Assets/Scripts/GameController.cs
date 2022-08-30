@@ -216,10 +216,44 @@ public class GameController : MonoBehaviour {
 
             tiles[i] = Instantiate(Resources.Load<GameObject>("Prefabs/Tiles/" + GameManager.Instance.tileDictionary[c]));
             tiles[i].GetComponent<Tile>().tileColor = GameManager.Instance.tileColorDictionary[c];
+            tiles[i].GetComponent<Tile>().tileCode = c;
+            tiles[i].GetComponent<Tile>().GetTileCells();
 
             tiles[i].transform.SetParent(canvas.transform);
             tiles[i].GetComponent<RectTransform>().anchoredPosition = tileLocations[i];
+
             i++;
+        }
+        SetTileOrientations(level);
+    }
+
+    private void SetTileOrientations(int level) {
+        // Get tile orientation file from folder
+        string boardSize = GetLevelPath();
+        string tileOrientationFilePath = "Levels/" + boardSize + "/" + level.ToString() + "_orientations";
+        TextAsset txtAsset = (TextAsset)Resources.Load(tileOrientationFilePath, typeof(TextAsset));
+        string text = txtAsset.text;
+
+        // Iterate over each char in text and set appropriate tile's orientation
+        for (int i = 0; i < text.Length; i++) {
+            for (int j = 0; j < tiles.Length; j++) {
+                Tile tile = tiles[j].GetComponent<Tile>();
+                Debug.Log(tile.tileCode + ", " + text[i]);
+                if (tile.tileCode == text[i]) {
+                    if ((int)(text[i + 2] - '0') == 1) {
+                        tile.Reflect();
+                        Debug.Log("tile reflected");
+                    }
+                    RotateTileNTimes(tile, (int)(text[i + 1] - '0'));
+                    Debug.Log("tile rotated " + (int)(text[i + 1] - '0') + "times");
+                }
+            }
+        }
+    }
+
+    private void RotateTileNTimes(Tile tile, int n) {        
+        for (int i = 0; i < n; i++) {
+            tile.Rotate();
         }
     }
 
@@ -402,10 +436,12 @@ public class GameController : MonoBehaviour {
     private Vector2[] GetTileLocations() {
         Vector2[] tileLocations;
 
-        if (boardSize == 5) {
+        /*if (boardSize == 5) {
             tileLocations = new Vector2[] { new Vector2(-405, -480), new Vector2(-135, -480), new Vector2(135, -480),
                                             new Vector2(405, -480)};
-        } else if (boardSize == 6) {
+        } */
+        
+        if (boardSize <= 6) {
             tileLocations = new Vector2[] { new Vector2(-310, -380), new Vector2(0, -380), new Vector2(310, -380),
                                             new Vector2(-310, -600), new Vector2(0, -600), new Vector2(310, -600)};
         } else if (boardSize == 7) {
