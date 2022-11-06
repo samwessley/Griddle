@@ -50,7 +50,7 @@ public class GridCell : MonoBehaviour {
             gameObject.GetComponent<Image>().sprite = null;
             gameObject.GetComponent<Image>().color = shadowColor;
 
-            Image childObj = this.gameObject.transform.GetChild(0).GetComponent<Image>();
+            Image childObj = this.gameObject.transform.GetComponent<Image>();
             if (colorOccupying == 1) {
                 childObj.sprite = Resources.Load<Sprite>("Sprites/Tile Red");
             } else if (colorOccupying == 2) {

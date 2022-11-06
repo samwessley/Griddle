@@ -1,7 +1,7 @@
-111B011
-wwwB002
-CCC2222
-01oooo0
-hh0o01c
-hh0000c
-010110c
+1xxxx01
+y0a0010
+yyGnn10
+yGGn011
+A0Gnn00
+00b1101
+00b1111

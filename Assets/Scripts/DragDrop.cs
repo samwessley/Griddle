@@ -62,20 +62,28 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         }
         // If it's not on the board when tapped but it is highlighted, put it in 'hovering' status
         else {
-            if (isHighlighted) {
+            // Set the sorting order of the tile to its highlighted value
+            TileCell[] tileCells = transform.gameObject.GetComponentsInChildren<TileCell>();
+            foreach (TileCell tileCell in tileCells)
+            tileCell.SetSortingLayer(tileCell.GetComponent<Canvas>().sortingOrder + 19);
+
+            rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y + 250);
+            SetHoveringPositionScale();
+
+            /*if (isHighlighted) {
                 rectTransform.anchoredPosition = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y + 250);
                 SetHoveringPositionScale();
-            }
+            }*/
         }
     }
 
     public void OnDrag(PointerEventData eventData) {
         // We only want to drag the tile if it was on the board or highlighted when tapped
-        if (isOnBoard || isHighlighted) {
+    
             Vector2 vector = (eventData.delta / canvas.scaleFactor);
             vector *= 1.2f;
             rectTransform.anchoredPosition += vector;
-        }
+    
     }
 
     public void OnPointerUp(PointerEventData eventData) {
@@ -88,7 +96,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         CancelPlacement(tile);
 
         // If the tile isn't currently on the board, show the touchCatcher when tapping on the tile
-        if (!isOnBoard) {
+        /*if (!isOnBoard) {
             touchCatcher.GetComponent<CanvasGroup>().blocksRaycasts = true;
             tilePopupTray.gameObject.SetActive(true); 
 
@@ -110,7 +118,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
                 // Stop at this point. We need another tap on the tile to continue further
                 return;
             }
-        }
+        }*/
 
         // If we got to this point, the tile was highlighted or already on the board before being
         // tapped. Set isOnBoard to true before testing if it's in a valid board space.
