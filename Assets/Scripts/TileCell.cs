@@ -33,20 +33,39 @@ public class TileCell : MonoBehaviour {
     public void PopulateOffsetValues() {
         float scale;
 
-        if (GameManager.Instance.currentLevel <= 30) {
-            // 5x5 level
-            scale = GameManager.Instance.tileScaleFactors[0];
-        } else if (GameManager.Instance.currentLevel > 30 && GameManager.Instance.currentLevel <= 60) {
+        // Set offset values for Classic and Bonus Packs
+        if (GameManager.Instance.currentLevelPack < 2) {
+            if (GameManager.Instance.currentLevel <= 35) {
+                // 5x5 level
+                scale = GameManager.Instance.tileScaleFactors[0];
+            } else if (GameManager.Instance.currentLevel > 35 && GameManager.Instance.currentLevel <= 70) {
+                // 6x6 level
+                scale = GameManager.Instance.tileScaleFactors[1];
+            } else if (GameManager.Instance.currentLevel > 70 && GameManager.Instance.currentLevel <= 105) {
+                // 7x7 level
+                scale = GameManager.Instance.tileScaleFactors[2];
+            } else if (GameManager.Instance.currentLevel > 105 && GameManager.Instance.currentLevel <= 140) {
+                // 8x8 level
+                scale = GameManager.Instance.tileScaleFactors[3];
+            } else {
+                // 9x9 level
+                scale = GameManager.Instance.tileScaleFactors[4];
+            }
+        }
+        // Set offset values for 6x6, 7x7, 8x8, and 9x9 packs
+        else if (GameManager.Instance.currentLevelPack == 2) {
             // 6x6 level
             scale = GameManager.Instance.tileScaleFactors[1];
-        } else if (GameManager.Instance.currentLevel > 60 && GameManager.Instance.currentLevel <= 90) {
+        } else if (GameManager.Instance.currentLevelPack == 3) {
             // 7x7 level
             scale = GameManager.Instance.tileScaleFactors[2];
-        } else if (GameManager.Instance.currentLevel > 90 && GameManager.Instance.currentLevel <= 120) {
+        } else if (GameManager.Instance.currentLevelPack == 4) {
             // 8x8 level
             scale = GameManager.Instance.tileScaleFactors[3];
-        } else {
+        } else if (GameManager.Instance.currentLevelPack == 5) {
             // 9x9 level
+            scale = GameManager.Instance.tileScaleFactors[4];
+        } else {
             scale = GameManager.Instance.tileScaleFactors[4];
         }
 

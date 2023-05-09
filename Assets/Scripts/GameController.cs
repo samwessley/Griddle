@@ -37,6 +37,7 @@ public class GameController : MonoBehaviour {
     }
 
     public void LevelSetup() {
+        Debug.Log(GameManager.Instance.currentLevel);
         ReadLevelData(GameManager.Instance.currentLevel);
         ReadTileData(GameManager.Instance.currentLevel);
         LoadTiles();
@@ -67,7 +68,20 @@ public class GameController : MonoBehaviour {
         if (tilesRemaining == 0 && CheckForValidTilePlacement()) {
             StartCoroutine(LevelCompleteAnimation());
 
-            GameManager.Instance.levelsCompleted[GameManager.Instance.currentLevel - 1] = 1;
+            //Save 'completed' status for appropriate level and level pack to the save file
+            if (GameManager.Instance.currentLevelPack == 0) {
+                GameManager.Instance.levelsCompleted_ClassicPack[GameManager.Instance.currentLevel - 1] = 1;
+            } else if (GameManager.Instance.currentLevelPack == 1) {
+                GameManager.Instance.levelsCompleted_BonusPack[GameManager.Instance.currentLevel - 1] = 1;
+            } else if (GameManager.Instance.currentLevelPack == 2) {
+                GameManager.Instance.levelsCompleted_6x6[GameManager.Instance.currentLevel - 1] = 1;
+            } else if (GameManager.Instance.currentLevelPack == 3) {
+                GameManager.Instance.levelsCompleted_7x7[GameManager.Instance.currentLevel - 1] = 1;
+            } else if (GameManager.Instance.currentLevelPack == 4) {
+                GameManager.Instance.levelsCompleted_8x8[GameManager.Instance.currentLevel - 1] = 1;
+            } else if (GameManager.Instance.currentLevelPack == 5) {
+                GameManager.Instance.levelsCompleted_9x9[GameManager.Instance.currentLevel - 1] = 1;
+            }
 
             GameManager.Instance.SaveAsJSON();
         }
@@ -276,16 +290,36 @@ public class GameController : MonoBehaviour {
         string boardSize = "";
         int levelNumber = GameManager.Instance.currentLevel;
 
-        if (levelNumber <= 30) {
-            boardSize = "5x5";
-        } else if (levelNumber > 30 && levelNumber <= 60) {
+        //Set the level pack folder
+        if (GameManager.Instance.currentLevelPack == 0) {
+            boardSize = "Classic Pack/";
+        } else if (GameManager.Instance.currentLevelPack == 1) {
+            boardSize = "Bonus Pack/";
+        } else if (GameManager.Instance.currentLevelPack == 2) {
             boardSize = "6x6";
-        } else if (levelNumber > 60 && levelNumber <= 90) {
+        } else if (GameManager.Instance.currentLevelPack == 3) {
             boardSize = "7x7";
-        } else if (levelNumber > 90 && levelNumber <= 120) {
+        } else if (GameManager.Instance.currentLevelPack == 4) {
             boardSize = "8x8";
-        } else if (levelNumber > 120) {
+        } else if (GameManager.Instance.currentLevelPack == 5) {
             boardSize = "9x9";
+        }
+
+        //Set the board size folder according to level number for Classic Pack and Bonus Pack
+        if (GameManager.Instance.currentLevelPack < 2) {
+            if (levelNumber <= 35) {
+                boardSize += "5x5";
+            } else if (levelNumber > 35 && levelNumber <= 70) {
+                boardSize += "6x6";
+            } else if (levelNumber > 70 && levelNumber <= 105) {
+                boardSize += "7x7";
+            } else if (levelNumber > 105 && levelNumber <= 140) {
+                boardSize += "8x8";
+            } else if (levelNumber > 140) {
+                boardSize += "9x9";
+            } else {
+                Debug.Log("Couldn't find folder with level data.");
+            }
         }
 
         return boardSize;
@@ -441,9 +475,13 @@ public class GameController : MonoBehaviour {
                                             new Vector2(405, -480)};
         } */
         
-        if (boardSize <= 6) {
+        if (boardSize <= 5) {
+            tileLocations = new Vector2[] { new Vector2(-310, -530), new Vector2(0, -530), new Vector2(310, -530),
+                                            new Vector2(-310, -800), new Vector2(0, -800), new Vector2(310, -800)};
+        } else if (boardSize == 6) {
             tileLocations = new Vector2[] { new Vector2(-310, -380), new Vector2(0, -380), new Vector2(310, -380),
-                                            new Vector2(-310, -600), new Vector2(0, -600), new Vector2(310, -600)};
+                                            new Vector2(-310, -590), new Vector2(0, -590), new Vector2(310, -590),
+                                            new Vector2(-310, -800), new Vector2(0, -800), new Vector2(310, -800)};
         } else if (boardSize == 7) {
             tileLocations = new Vector2[] { new Vector2(-405, -380), new Vector2(-135, -380), new Vector2(135, -380),
                                             new Vector2(405, -380), new Vector2(-300, -600), new Vector2(0, -600),

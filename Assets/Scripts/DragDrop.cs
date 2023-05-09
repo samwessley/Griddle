@@ -25,7 +25,9 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         tilePopupTray = canvas.transform.Find("Tile Popup Tray").gameObject;
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
-        if (gameController.boardSize < 8) {
+        if (gameController.boardSize == 5) {
+            SetScale(0.8f);
+        } else if (gameController.boardSize == 6) {
             SetScale(0.6f);
         } else {
             SetScale(0.5f);

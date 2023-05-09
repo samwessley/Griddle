@@ -46,6 +46,12 @@ public class LevelController : MonoBehaviour {
     [SerializeField] GameObject level5D = null;
     [SerializeField] GameObject level5E = null;
 
+    [SerializeField] GameObject level6A = null;
+    [SerializeField] GameObject level6B = null;
+    [SerializeField] GameObject level6C = null;
+    [SerializeField] GameObject level6D = null;
+    [SerializeField] GameObject level6E = null;
+
     private int page = 1;
 
     public void SetLevelPage(int page) {
@@ -115,11 +121,22 @@ public class LevelController : MonoBehaviour {
         level5D.gameObject.GetComponent<LevelSelectButtonScript>().SetUpButton();
         level5E.gameObject.GetComponent<LevelSelectButtonScript>().level += page;
         level5E.gameObject.GetComponent<LevelSelectButtonScript>().SetUpButton();
+
+        level6A.gameObject.GetComponent<LevelSelectButtonScript>().level += page;
+        level6A.gameObject.GetComponent<LevelSelectButtonScript>().SetUpButton();
+        level6B.gameObject.GetComponent<LevelSelectButtonScript>().level += page;
+        level6B.gameObject.GetComponent<LevelSelectButtonScript>().SetUpButton();
+        level6C.gameObject.GetComponent<LevelSelectButtonScript>().level += page;
+        level6C.gameObject.GetComponent<LevelSelectButtonScript>().SetUpButton();
+        level6D.gameObject.GetComponent<LevelSelectButtonScript>().level += page;
+        level6D.gameObject.GetComponent<LevelSelectButtonScript>().SetUpButton();
+        level6E.gameObject.GetComponent<LevelSelectButtonScript>().level += page;
+        level6E.gameObject.GetComponent<LevelSelectButtonScript>().SetUpButton();
     }
 
     public void LoadNextLevelPage() {
         if (page < 5) {
-            SetLevelPage(30);
+            SetLevelPage(35);
             page += 1;
 
             if (page == 5)
@@ -133,7 +150,7 @@ public class LevelController : MonoBehaviour {
 
     public void LoadPreviousLevelPage() {
         if (page > 1) {
-            SetLevelPage(-30);
+            SetLevelPage(-35);
             page -= 1;
         } else {
             UnityEngine.SceneManagement.SceneManager.LoadScene(0);
@@ -146,25 +163,49 @@ public class LevelController : MonoBehaviour {
     }
 
     private void UpdatePageTitle() {
-        switch(page) {
-            case 1:
-            levelPageLabel.GetComponent<Text>().text = "5x5 - Novice";
-            break;
-            case 2:
-            levelPageLabel.GetComponent<Text>().text = "6x6 - Beginner";
-            break;
-            case 3:
-            levelPageLabel.GetComponent<Text>().text = "7x7 - Intermediate";
-            break;
-            case 4:
-            levelPageLabel.GetComponent<Text>().text = "8x8 - Advanced";
-            break;
-            case 5:
-            levelPageLabel.GetComponent<Text>().text = "9x9 - Expert";
-            break;
-            default:
-            levelPageLabel.GetComponent<Text>().text = "5x5 - Novice";
-            break;
+
+        if (GameManager.Instance.currentLevelPack < 2) {
+            switch(page) {
+                case 1:
+                levelPageLabel.GetComponent<Text>().text = "5x5 - Novice";
+                break;
+                case 2:
+                levelPageLabel.GetComponent<Text>().text = "6x6 - Beginner";
+                break;
+                case 3:
+                levelPageLabel.GetComponent<Text>().text = "7x7 - Intermediate";
+                break;
+                case 4:
+                levelPageLabel.GetComponent<Text>().text = "8x8 - Advanced";
+                break;
+                case 5:
+                levelPageLabel.GetComponent<Text>().text = "9x9 - Expert";
+                break;
+                default:
+                levelPageLabel.GetComponent<Text>().text = "5x5 - Novice";
+                break;
+            }
+        } else {
+            switch(page) {
+                case 1:
+                levelPageLabel.GetComponent<Text>().text = "1 - 35";
+                break;
+                case 2:
+                levelPageLabel.GetComponent<Text>().text = "36 - 70";
+                break;
+                case 3:
+                levelPageLabel.GetComponent<Text>().text = "71 - 105";
+                break;
+                case 4:
+                levelPageLabel.GetComponent<Text>().text = "106 - 140";
+                break;
+                case 5:
+                levelPageLabel.GetComponent<Text>().text = "141 - 175";
+                break;
+                default:
+                levelPageLabel.GetComponent<Text>().text = "";
+                break;
+            }
         }
     }
 }

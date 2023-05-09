@@ -30,6 +30,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1445377432596861718}
   m_Father: {fileID: 0}
@@ -131,6 +132,14 @@ PrefabInstance:
     - target: {fileID: 3926289375620989621, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
       propertyPath: m_Color.a
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393988757512192617, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
+      propertyPath: m_Size.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5393988757512192617, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
+      propertyPath: m_Size.y
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 6323154705208566392, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
       propertyPath: m_TagString

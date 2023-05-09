@@ -1,0 +1,7 @@
+0FFFv10
+100F0x0
+CCCddx0
+111d1x1
+1010sx1
+0100sss
+111a01s
