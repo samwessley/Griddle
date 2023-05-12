@@ -7,8 +7,7 @@ using UnityEngine.SceneManagement;
 public class LevelController : MonoBehaviour {
 
     [SerializeField] GameObject levelPageLabel = null;
-    [SerializeField] GameObject nextLevelPageButton = null;
-    [SerializeField] GameObject previousLevelPageButton = null;
+    [SerializeField] GameObject backButton = null;
 
     [SerializeField] GameObject level0A = null;
     [SerializeField] GameObject level0B = null;
@@ -135,30 +134,14 @@ public class LevelController : MonoBehaviour {
     }
 
     public void LoadNextLevelPage() {
-        if (page < 5) {
-            SetLevelPage(35);
-            page += 1;
-
-            if (page == 5)
-            nextLevelPageButton.SetActive(false);
-        } else {
-            nextLevelPageButton.SetActive(false);
-        }
-
+        SetLevelPage(35);
+        page += 1;
         UpdatePageTitle();
     }
 
     public void LoadPreviousLevelPage() {
-        if (page > 1) {
-            SetLevelPage(-35);
-            page -= 1;
-        } else {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
-        }
-
-        if (page == 4)
-        nextLevelPageButton.SetActive(true);
-
+        SetLevelPage(-35);
+        page -= 1;
         UpdatePageTitle();
     }
 

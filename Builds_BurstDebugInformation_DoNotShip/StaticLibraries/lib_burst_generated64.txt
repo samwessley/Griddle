@@ -122,13 +122,13 @@ Library: lib_burst_generated64
 --compilation-defines=ENABLE_TILEMAP
 --compilation-defines=ENABLE_TIMELINE
 --compilation-defines=ENABLE_LEGACY_INPUT_MANAGER
---compilation-defines=CSHARP_7_OR_LATER
---compilation-defines=CSHARP_7_3_OR_NEWER
 --compilation-defines=PACKAGE_PHYSICS
 --compilation-defines=PACKAGE_PHYSICS2D
 --compilation-defines=PACKAGE_TILEMAP
 --compilation-defines=PACKAGE_ANIMATION
 --compilation-defines=PACKAGE_UITOOLKIT
+--compilation-defines=CSHARP_7_OR_LATER
+--compilation-defines=CSHARP_7_3_OR_NEWER
 --compilation-defines=TIMELINE_FRAMEACCURATE
 --compilation-defines=ENABLE_ANIMATION_BURST
 --compilation-defines=ENABLE_SPRITESHAPE_BURST
@@ -136,8 +136,8 @@ Library: lib_burst_generated64
 --debug=Full
 --generate-static-linkage-methods
 --output=/Users/samwessley/Developer/Mesa/Temp/StagingArea/StaticLibraries/lib_burst_generated64
---root-assembly=/Users/samwessley/Developer/Mesa/Temp/StagingArea/Data/Managed/Unity.Services.Core.Telemetry.dll
 --root-assembly=/Users/samwessley/Developer/Mesa/Temp/StagingArea/Data/Managed/UnityEngine.UI.dll
+--root-assembly=/Users/samwessley/Developer/Mesa/Temp/StagingArea/Data/Managed/Unity.Services.Core.Telemetry.dll
 --root-assembly=/Users/samwessley/Developer/Mesa/Temp/StagingArea/Data/Managed/Unity.Mathematics.dll
 --root-assembly=/Users/samwessley/Developer/Mesa/Temp/StagingArea/Data/Managed/Unity.Services.Core.Internal.dll
 --root-assembly=/Users/samwessley/Developer/Mesa/Temp/StagingArea/Data/Managed/Unity.Timeline.dll
