@@ -20,8 +20,11 @@ public class LevelSelectButtonScript : MonoBehaviour {
 
             //Set level button images based on which pack is displaying
             if (GameManager.Instance.currentLevelPack == 0 && GameManager.Instance.levelsCompleted_ClassicPack[level - 1] == 1) {
-                    gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Level Button Dark Blue");
-                    gameObject.GetComponentInChildren<Text>().color = Color.white;
+                /*gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/White 1x1");
+                gameObject.GetComponent<Image>().color = new Color(0.1451f, 0.4627f, 0.5333f, 1f);
+                gameObject.GetComponentInChildren<Text>().color = Color.white;*/
+                gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Level Button Dark Blue");
+                gameObject.GetComponentInChildren<Text>().color = Color.white;
             } else if (GameManager.Instance.currentLevelPack == 1 && GameManager.Instance.levelsCompleted_BonusPack[level - 1] == 1) {
                 gameObject.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Level Button Light Blue");
                 gameObject.GetComponentInChildren<Text>().color = Color.white;

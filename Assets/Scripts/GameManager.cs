@@ -25,7 +25,7 @@ public class GameManager: MonoBehaviour {
     //public string[][] levelTiles = new string[3][];
     public Dictionary<char, string> tileDictionary = new Dictionary<char, string>();
     public Dictionary<char, int> tileColorDictionary = new Dictionary<char, int>();
-    public float[] tileScaleFactors = {2, 1.66666666667f, 1.62222222222f, 1.43333333333f, 1.26666666667f, 1f};
+    public float[] tileScaleFactors = {1.733333f, 1.66666666667f, 1.62222222222f, 1.43333333333f, 1.26666666667f, 1f};
 
     public int[] levelButtonColors;
 
@@ -40,37 +40,37 @@ public class GameManager: MonoBehaviour {
     }
 
     void Awake() {
-        totalLevels = 1050;
+        totalLevels = 1200;
         currentLevel = 1;
         hintsRemaining = 3;
         adsRemoved = false;
 
-        levelsCompleted_ClassicPack = new int[175];
+        levelsCompleted_ClassicPack = new int[200];
         for (int i = 0; i < levelsCompleted_ClassicPack.Length; i++) {
            levelsCompleted_ClassicPack[i] = 0;
         } 
 
-        levelsCompleted_BonusPack = new int[175];
+        levelsCompleted_BonusPack = new int[200];
         for (int i = 0; i < levelsCompleted_BonusPack.Length; i++) {
            levelsCompleted_BonusPack[i] = 0;
         }   
 
-        levelsCompleted_6x6 = new int[175];
+        levelsCompleted_6x6 = new int[200];
         for (int i = 0; i < levelsCompleted_6x6.Length; i++) {
            levelsCompleted_6x6[i] = 0;
         }       
 
-        levelsCompleted_7x7 = new int[175];
+        levelsCompleted_7x7 = new int[200];
         for (int i = 0; i < levelsCompleted_7x7.Length; i++) {
            levelsCompleted_7x7[i] = 0;
         }     
 
-        levelsCompleted_8x8 = new int[175];
+        levelsCompleted_8x8 = new int[200];
         for (int i = 0; i < levelsCompleted_8x8.Length; i++) {
            levelsCompleted_8x8[i] = 0;
         }    
 
-        levelsCompleted_9x9 = new int[175];
+        levelsCompleted_9x9 = new int[200];
         for (int i = 0; i < levelsCompleted_9x9.Length; i++) {
            levelsCompleted_9x9[i] = 0;
         }        
@@ -86,19 +86,19 @@ public class GameManager: MonoBehaviour {
         //If loading the Classic Pack or Bonus Pack, use the following logic:
         if (GameManager.Instance.currentLevelPack < 2) {
             // Load new scene
-            if (GameManager.Instance.currentLevel <= 35) {
+            if (GameManager.Instance.currentLevel <= 40) {
                 // Load 5x5 scenes
                 UnityEngine.SceneManagement.SceneManager.LoadScene(6);
-            } else if (GameManager.Instance.currentLevel > 35 && GameManager.Instance.currentLevel <= 70) {
+            } else if (GameManager.Instance.currentLevel > 40 && GameManager.Instance.currentLevel <= 80) {
                 // Load 6x6 scenes
                 UnityEngine.SceneManagement.SceneManager.LoadScene(5);
-            } else if (GameManager.Instance.currentLevel > 70 && GameManager.Instance.currentLevel <= 105){
+            } else if (GameManager.Instance.currentLevel > 80 && GameManager.Instance.currentLevel <= 120){
                 // Load 7x7 scenes
                 UnityEngine.SceneManagement.SceneManager.LoadScene(4);
-            } else if (GameManager.Instance.currentLevel > 105 && GameManager.Instance.currentLevel <= 140){
+            } else if (GameManager.Instance.currentLevel > 120 && GameManager.Instance.currentLevel <= 160){
                 // Load 8x8 scenes
                 UnityEngine.SceneManagement.SceneManager.LoadScene(3);
-            } else if (GameManager.Instance.currentLevel > 140) {
+            } else if (GameManager.Instance.currentLevel > 160) {
                 // Load 9x9 scenes
                 UnityEngine.SceneManagement.SceneManager.LoadScene(7);
             }

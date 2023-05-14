@@ -41,5 +41,4 @@ public class MainMenuButtonScript : MonoBehaviour {
     public void LoadSettingsScene() {
         UnityEngine.SceneManagement.SceneManager.LoadScene(2);
     }
-
 }

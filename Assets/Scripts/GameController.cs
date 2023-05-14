@@ -307,15 +307,15 @@ public class GameController : MonoBehaviour {
 
         //Set the board size folder according to level number for Classic Pack and Bonus Pack
         if (GameManager.Instance.currentLevelPack < 2) {
-            if (levelNumber <= 35) {
+            if (levelNumber <= 40) {
                 boardSize += "5x5";
-            } else if (levelNumber > 35 && levelNumber <= 70) {
+            } else if (levelNumber > 40 && levelNumber <= 80) {
                 boardSize += "6x6";
-            } else if (levelNumber > 70 && levelNumber <= 105) {
+            } else if (levelNumber > 80 && levelNumber <= 120) {
                 boardSize += "7x7";
-            } else if (levelNumber > 105 && levelNumber <= 140) {
+            } else if (levelNumber > 120 && levelNumber <= 160) {
                 boardSize += "8x8";
-            } else if (levelNumber > 140) {
+            } else if (levelNumber > 160) {
                 boardSize += "9x9";
             } else {
                 Debug.Log("Couldn't find folder with level data.");
