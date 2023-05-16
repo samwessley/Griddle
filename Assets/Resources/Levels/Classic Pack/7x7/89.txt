@@ -1,7 +1,7 @@
-1www001
-V0fff01
-V100f01
-1ccc010
-10A0m10
-HH1mm01
-HH0mm01
+000r01x
+111rr1x
+ccc0rrx
+001m11x
+10Rmmv1
+1RRmm10
+RR0A110

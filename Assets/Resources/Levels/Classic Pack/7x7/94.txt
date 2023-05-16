@@ -1,7 +1,7 @@
-1000V01
-1pppV01
-00pv001
-B1p0mmm
-B1Gr0mm
-1GGrr01
-00G1rr1
+10010FF
+010BB0F
+0jjjjjF
+t00YY01
+tttYYp1
+0tVppp1
+10V10p1
