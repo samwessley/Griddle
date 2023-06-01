@@ -70,17 +70,15 @@ public class GameController : MonoBehaviour {
 
             //Save 'completed' status for appropriate level and level pack to the save file
             if (GameManager.Instance.currentLevelPack == 0) {
-                GameManager.Instance.levelsCompleted_ClassicPack[GameManager.Instance.currentLevel - 1] = 1;
+                GameManager.Instance.levelsCompleted_5x5 += 1;
             } else if (GameManager.Instance.currentLevelPack == 1) {
-                GameManager.Instance.levelsCompleted_BonusPack[GameManager.Instance.currentLevel - 1] = 1;
+                GameManager.Instance.levelsCompleted_6x6 += 1;
             } else if (GameManager.Instance.currentLevelPack == 2) {
-                GameManager.Instance.levelsCompleted_6x6[GameManager.Instance.currentLevel - 1] = 1;
+                GameManager.Instance.levelsCompleted_7x7 += 1;
             } else if (GameManager.Instance.currentLevelPack == 3) {
-                GameManager.Instance.levelsCompleted_7x7[GameManager.Instance.currentLevel - 1] = 1;
+                GameManager.Instance.levelsCompleted_8x8 += 1;
             } else if (GameManager.Instance.currentLevelPack == 4) {
-                GameManager.Instance.levelsCompleted_8x8[GameManager.Instance.currentLevel - 1] = 1;
-            } else if (GameManager.Instance.currentLevelPack == 5) {
-                GameManager.Instance.levelsCompleted_9x9[GameManager.Instance.currentLevel - 1] = 1;
+                GameManager.Instance.levelsCompleted_9x9 += 1;
             }
 
             GameManager.Instance.SaveAsJSON();
@@ -292,34 +290,15 @@ public class GameController : MonoBehaviour {
 
         //Set the level pack folder
         if (GameManager.Instance.currentLevelPack == 0) {
-            boardSize = "Classic Pack/";
+            boardSize = "5x5";
         } else if (GameManager.Instance.currentLevelPack == 1) {
-            boardSize = "Bonus Pack/";
-        } else if (GameManager.Instance.currentLevelPack == 2) {
             boardSize = "6x6";
-        } else if (GameManager.Instance.currentLevelPack == 3) {
+        } else if (GameManager.Instance.currentLevelPack == 2) {
             boardSize = "7x7";
-        } else if (GameManager.Instance.currentLevelPack == 4) {
+        } else if (GameManager.Instance.currentLevelPack == 3) {
             boardSize = "8x8";
-        } else if (GameManager.Instance.currentLevelPack == 5) {
+        } else if (GameManager.Instance.currentLevelPack == 4) {
             boardSize = "9x9";
-        }
-
-        //Set the board size folder according to level number for Classic Pack and Bonus Pack
-        if (GameManager.Instance.currentLevelPack < 2) {
-            if (levelNumber <= 40) {
-                boardSize += "5x5";
-            } else if (levelNumber > 40 && levelNumber <= 80) {
-                boardSize += "6x6";
-            } else if (levelNumber > 80 && levelNumber <= 120) {
-                boardSize += "7x7";
-            } else if (levelNumber > 120 && levelNumber <= 160) {
-                boardSize += "8x8";
-            } else if (levelNumber > 160) {
-                boardSize += "9x9";
-            } else {
-                Debug.Log("Couldn't find folder with level data.");
-            }
         }
 
         return boardSize;

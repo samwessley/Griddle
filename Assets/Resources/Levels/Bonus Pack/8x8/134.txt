@@ -1,8 +1,0 @@
-v1ymm001
-0yymm110
-w1ym0ccc
-w0n1n101
-wFnnn100
-0FFF0II0
-0111II1D
-011011DD

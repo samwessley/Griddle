@@ -9,28 +9,23 @@ public class MainMenuButtonScript : MonoBehaviour {
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 
-    public void LoadBonusPackLevelSeScene() {
+    public void Load6x6PackLevelSeScene() {
         GameManager.Instance.currentLevelPack = 1;
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 
-    public void Load6x6PackLevelSeScene() {
+    public void Load7x7PackLevelSeScene() {
         GameManager.Instance.currentLevelPack = 2;
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 
-    public void Load7x7PackLevelSeScene() {
+    public void Load8x8PackLevelSeScene() {
         GameManager.Instance.currentLevelPack = 3;
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 
-    public void Load8x8PackLevelSeScene() {
-        GameManager.Instance.currentLevelPack = 4;
-        UnityEngine.SceneManagement.SceneManager.LoadScene(1);
-    }
-
     public void Load9x9PackLevelSeScene() {
-        GameManager.Instance.currentLevelPack = 5;
+        GameManager.Instance.currentLevelPack = 4;
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 

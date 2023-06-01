@@ -13,12 +13,11 @@ public class GameManager: MonoBehaviour {
     public int currentLevelPack;
 
     public int currentLevel;
-    public int[] levelsCompleted_ClassicPack;
-    public int[] levelsCompleted_BonusPack;
-    public int[] levelsCompleted_6x6;
-    public int[] levelsCompleted_7x7;
-    public int[] levelsCompleted_8x8;
-    public int[] levelsCompleted_9x9;
+    public int levelsCompleted_5x5;
+    public int levelsCompleted_6x6;
+    public int levelsCompleted_7x7;
+    public int levelsCompleted_8x8;
+    public int levelsCompleted_9x9;
     public int hintsRemaining;
     public bool adsRemoved;
 
@@ -45,37 +44,12 @@ public class GameManager: MonoBehaviour {
         hintsRemaining = 3;
         adsRemoved = false;
 
-        levelsCompleted_ClassicPack = new int[200];
-        for (int i = 0; i < levelsCompleted_ClassicPack.Length; i++) {
-           levelsCompleted_ClassicPack[i] = 0;
-        } 
+        levelsCompleted_5x5 = 0;
+        levelsCompleted_6x6 = 0;
+        levelsCompleted_7x7 = 0;
+        levelsCompleted_8x8 = 0;
+        levelsCompleted_9x9 = 0;
 
-        levelsCompleted_BonusPack = new int[200];
-        for (int i = 0; i < levelsCompleted_BonusPack.Length; i++) {
-           levelsCompleted_BonusPack[i] = 0;
-        }   
-
-        levelsCompleted_6x6 = new int[200];
-        for (int i = 0; i < levelsCompleted_6x6.Length; i++) {
-           levelsCompleted_6x6[i] = 0;
-        }       
-
-        levelsCompleted_7x7 = new int[200];
-        for (int i = 0; i < levelsCompleted_7x7.Length; i++) {
-           levelsCompleted_7x7[i] = 0;
-        }     
-
-        levelsCompleted_8x8 = new int[200];
-        for (int i = 0; i < levelsCompleted_8x8.Length; i++) {
-           levelsCompleted_8x8[i] = 0;
-        }    
-
-        levelsCompleted_9x9 = new int[200];
-        for (int i = 0; i < levelsCompleted_9x9.Length; i++) {
-           levelsCompleted_9x9[i] = 0;
-        }        
-
-        //SetLevelButtonColors();
         Load();
         CreateTileDictionary();
         CreateTileColorDictionary();
@@ -119,18 +93,6 @@ public class GameManager: MonoBehaviour {
         }
     }
 
-    private void SetLevelButtonColors() {
-        // Give the random generator a manual seed so it generates the same values every time
-        Random.InitState(34);
-
-        levelButtonColors = new int[totalLevels];
-
-        // Set each level button color to a random value in the range of possible colors pulling from the same seed
-        for (int i = 0; i < totalLevels; i++) {
-            levelButtonColors[i] = Random.Range(1,4);
-        }
-    }
-
     public void Load() {
         
         if (File.Exists(Application.persistentDataPath + file)) {
@@ -141,8 +103,7 @@ public class GameManager: MonoBehaviour {
 
             // Set the GameManager's properties by pulling from this new Save object
             currentLevel = save.currentLevel;
-            levelsCompleted_ClassicPack = save.levelsCompleted_ClassicPack;
-            levelsCompleted_BonusPack = save.levelsCompleted_BonusPack;
+            levelsCompleted_5x5 = save.levelsCompleted_5x5;
             levelsCompleted_6x6 = save.levelsCompleted_6x6;
             levelsCompleted_7x7 = save.levelsCompleted_7x7;
             levelsCompleted_8x8 = save.levelsCompleted_8x8;
@@ -203,8 +164,7 @@ public class GameManager: MonoBehaviour {
         Save save = new Save();
 
         save.currentLevel = currentLevel;
-        save.levelsCompleted_ClassicPack = levelsCompleted_ClassicPack;
-        save.levelsCompleted_BonusPack = levelsCompleted_BonusPack;
+        save.levelsCompleted_5x5 = levelsCompleted_5x5;
         save.levelsCompleted_6x6 = levelsCompleted_6x6;
         save.levelsCompleted_7x7 = levelsCompleted_7x7;
         save.levelsCompleted_8x8 = levelsCompleted_8x8;

@@ -1,9 +1,0 @@
-10C100000
-B1C**11v1
-B0C0***1y
-0D00mmmyy
-DD0f1mm1y
-10Mf1www0
-1MMff0ii1
-1MM01ii00
-jjjjj0101
