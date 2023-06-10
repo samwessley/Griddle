@@ -12,5 +12,6 @@ public class Save {
     public int currentLevel = 1;
     public int[] stars = new int[] {0,0,0};
     public int hintsRemaining = 3;
+    public int skipsRemaining = 3;
     public bool adsRemoved = false;
 }

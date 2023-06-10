@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour {
     [SerializeField] GameObject levelCompletePopup = null;
     [SerializeField] GameObject nextLevelButton = null;
     [SerializeField] GameObject hintsLabel = null;
+    [SerializeField] GameObject skipsLabel = null;
 
     [SerializeField] GameObject star1 = null;
     [SerializeField] GameObject star2 = null;
@@ -34,6 +35,7 @@ public class GameController : MonoBehaviour {
         LevelSetup();
         GameManager.Instance.SaveAsJSON();
         UpdateHintsLabel();
+        UpdateSkipsLabel();
     }
 
     public void LevelSetup() {
@@ -448,13 +450,8 @@ public class GameController : MonoBehaviour {
 
     private Vector2[] GetTileLocations() {
         Vector2[] tileLocations;
-
-        /*if (boardSize == 5) {
-            tileLocations = new Vector2[] { new Vector2(-405, -480), new Vector2(-135, -480), new Vector2(135, -480),
-                                            new Vector2(405, -480)};
-        } */
         
-        if (boardSize <= 5) {
+        if (boardSize == 5) {
             tileLocations = new Vector2[] { new Vector2(-310, -530), new Vector2(0, -530), new Vector2(310, -530),
                                             new Vector2(-310, -800), new Vector2(0, -800), new Vector2(310, -800)};
         } else if (boardSize == 6) {
@@ -492,5 +489,9 @@ public class GameController : MonoBehaviour {
 
     public void UpdateHintsLabel() {
         hintsLabel.GetComponent<Text>().text = "x " + GameManager.Instance.hintsRemaining.ToString();
+    }
+
+    public void UpdateSkipsLabel() {
+        skipsLabel.GetComponent<Text>().text = "x " + GameManager.Instance.skipsRemaining.ToString();
     }
 }

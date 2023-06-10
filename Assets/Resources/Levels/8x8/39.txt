@@ -1,0 +1,8 @@
+G0011010
+GG11ppp0
+G1U01p00
+1UUU0p00
+0vU>>0nn
+5A51>>0n
+5550>0nn
+0jjjjj01

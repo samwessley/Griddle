@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SettingsMenuAnimationScript : MonoBehaviour {
 
+    [SerializeField] GameObject settingsButton = null;
     [SerializeField] GameObject settingsBackground = null;
     [SerializeField] GameObject settingsPanel = null;
     [SerializeField] GameObject fiveByFivePackButton = null;
@@ -43,6 +45,7 @@ public class SettingsMenuAnimationScript : MonoBehaviour {
     }
 
     IEnumerator SlidePackButtonsOut() {
+        settingsButton.GetComponent<Button>().interactable = false;
         LeanTween.moveX(fiveByFivePackButton, 5f, 0.1f);
         yield return new WaitForSeconds(.04f);
         LeanTween.moveX(sixBySixPackButton, 5f, 0.1f);
@@ -72,10 +75,12 @@ public class SettingsMenuAnimationScript : MonoBehaviour {
         LeanTween.moveX(nineByNinePackButton, packButtonXPosition - .15f, 0.08f);
         yield return new WaitForSeconds(.08f);
         LeanTween.moveX(nineByNinePackButton, packButtonXPosition, 0.03f);
+        settingsButton.GetComponent<Button>().interactable = true;
         yield return null;
     }
 
     IEnumerator SlideSettingsPanelOut() {
+        settingsButton.GetComponent<Button>().interactable = false;
         LeanTween.moveX(settingsPanel, -6f, 0.12f);
         yield return new WaitForSeconds(.12f);
         settingsPanel.SetActive(false);
@@ -87,6 +92,7 @@ public class SettingsMenuAnimationScript : MonoBehaviour {
         LeanTween.moveX(settingsPanel, settingsPanelXPosition + .25f, 0.12f);
         yield return new WaitForSeconds(.12f);
         LeanTween.moveX(settingsPanel, settingsPanelXPosition, 0.08f);
+        settingsButton.GetComponent<Button>().interactable = true;
     }
 
 }

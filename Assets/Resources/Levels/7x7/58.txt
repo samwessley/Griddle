@@ -1,0 +1,7 @@
+oooo010
+10o0m0X
+G01mm1X
+GG1mmXX
+G1U1Vss
+0UUUVs1
+00U1ss0

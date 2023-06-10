@@ -5,11 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class ButtonScript : MonoBehaviour {
 
-    public void LoadMenuScene() {
+    public void LoadMainMenuScene() {
+        SceneManager.LoadScene(0);
+    }
+
+    public void LoadLevelSelectScene() {
         SceneManager.LoadScene(1);
     }
 
-    public void LoadPreviousLevel() {
+    /*public void LoadPreviousLevel() {
         // Increment current level
         if (GameManager.Instance.currentLevel > 1) {
             GameManager.Instance.currentLevel -= 1;
@@ -19,7 +23,7 @@ public class ButtonScript : MonoBehaviour {
         } else {
             SceneManager.LoadScene(0);
         }
-    }
+    }*/
 
     public void LoadNextLevel() {
         // Increment current level
@@ -134,6 +138,39 @@ public class ButtonScript : MonoBehaviour {
             Debug.Log(gameController.tilesRemaining);
             GameManager.Instance.hintsRemaining -= 1;
             gameController.UpdateHintsLabel();
+        }
+    }
+
+    public void Skip() {
+        GameController gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
+
+        if (GameManager.Instance.skipsRemaining > 0) {
+            GameManager.Instance.skipsRemaining -= 1;
+
+            // Increment current level
+            if (GameManager.Instance.currentLevel < 200) {
+                GameManager.Instance.currentLevel += 1;
+
+                // Increment the levels completed for the appropriate level pack
+                if (GameManager.Instance.currentLevelPack == 0) {
+                    GameManager.Instance.levelsCompleted_5x5 += 1;
+                } else if (GameManager.Instance.currentLevelPack == 1) {
+                    GameManager.Instance.levelsCompleted_6x6 += 1;
+                } else if (GameManager.Instance.currentLevelPack == 2) {
+                    GameManager.Instance.levelsCompleted_7x7 += 1;
+                } else if (GameManager.Instance.currentLevelPack == 3) {
+                    GameManager.Instance.levelsCompleted_8x8 += 1;
+                } else if (GameManager.Instance.currentLevelPack == 4) {
+                    GameManager.Instance.levelsCompleted_9x9 += 1;
+                } else {
+                    Debug.Log("Error with level pack.");
+                }
+
+                // Load new scene
+                GameManager.Instance.LoadNewScene();
+            } else {
+                SceneManager.LoadScene(0);
+            }
         }
     }
 

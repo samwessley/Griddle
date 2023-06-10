@@ -1,6 +1,6 @@
-1I0xc0
-II1xc0
-I10xc1
-0A1x0b
-FVV0vb
-FFF0a1
+11xxxx
+0V10kk
+1VQQQk
+vBhhQk
+1BhhQk
+A100a1

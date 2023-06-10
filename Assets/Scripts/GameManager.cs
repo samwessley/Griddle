@@ -19,6 +19,7 @@ public class GameManager: MonoBehaviour {
     public int levelsCompleted_8x8;
     public int levelsCompleted_9x9;
     public int hintsRemaining;
+    public int skipsRemaining;
     public bool adsRemoved;
 
     //public string[][] levelTiles = new string[3][];
@@ -39,9 +40,10 @@ public class GameManager: MonoBehaviour {
     }
 
     void Awake() {
-        totalLevels = 1200;
+        totalLevels = 1000;
         currentLevel = 1;
         hintsRemaining = 3;
+        skipsRemaining = 3;
         adsRemoved = false;
 
         levelsCompleted_5x5 = 0;
@@ -57,37 +59,21 @@ public class GameManager: MonoBehaviour {
 
     public void LoadNewScene() {
 
-        //If loading the Classic Pack or Bonus Pack, use the following logic:
-        if (GameManager.Instance.currentLevelPack < 2) {
-            // Load new scene
-            if (GameManager.Instance.currentLevel <= 40) {
-                // Load 5x5 scenes
-                UnityEngine.SceneManagement.SceneManager.LoadScene(6);
-            } else if (GameManager.Instance.currentLevel > 40 && GameManager.Instance.currentLevel <= 80) {
-                // Load 6x6 scenes
-                UnityEngine.SceneManagement.SceneManager.LoadScene(5);
-            } else if (GameManager.Instance.currentLevel > 80 && GameManager.Instance.currentLevel <= 120){
-                // Load 7x7 scenes
-                UnityEngine.SceneManagement.SceneManager.LoadScene(4);
-            } else if (GameManager.Instance.currentLevel > 120 && GameManager.Instance.currentLevel <= 160){
-                // Load 8x8 scenes
-                UnityEngine.SceneManagement.SceneManager.LoadScene(3);
-            } else if (GameManager.Instance.currentLevel > 160) {
-                // Load 9x9 scenes
-                UnityEngine.SceneManagement.SceneManager.LoadScene(7);
-            }
-        } else if (GameManager.Instance.currentLevelPack == 2) {
+        if (GameManager.Instance.currentLevelPack == 0) {
+            // Load 5x5 scenes
+            UnityEngine.SceneManagement.SceneManager.LoadScene(6);
+        } else if (GameManager.Instance.currentLevelPack == 1) {
             // Load 6x6 scenes
-                UnityEngine.SceneManagement.SceneManager.LoadScene(5);
-        } else if (GameManager.Instance.currentLevelPack == 3) {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(5);
+        } else if (GameManager.Instance.currentLevelPack == 2) {
             // Load 7x7 scenes
-                UnityEngine.SceneManagement.SceneManager.LoadScene(4);
-        } else if (GameManager.Instance.currentLevelPack == 4) {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(4);
+        } else if (GameManager.Instance.currentLevelPack == 3) {
             // Load 8x8 scenes
-                UnityEngine.SceneManagement.SceneManager.LoadScene(3);
-        } else if (GameManager.Instance.currentLevelPack == 5) {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(3);
+        } else if (GameManager.Instance.currentLevelPack == 4) {
             // Load 9x9 scenes
-                UnityEngine.SceneManagement.SceneManager.LoadScene(7);
+            UnityEngine.SceneManagement.SceneManager.LoadScene(7);
         } else {
             Debug.Log("Tried to load a level scene that doesn't exist");
         }
@@ -109,6 +95,7 @@ public class GameManager: MonoBehaviour {
             levelsCompleted_8x8 = save.levelsCompleted_8x8;
             levelsCompleted_9x9 = save.levelsCompleted_9x9;
             hintsRemaining = save.hintsRemaining;
+            skipsRemaining = save.skipsRemaining;
             adsRemoved = save.adsRemoved;
 
             Debug.Log("Game Loaded.");
@@ -170,6 +157,7 @@ public class GameManager: MonoBehaviour {
         save.levelsCompleted_8x8 = levelsCompleted_8x8;
         save.levelsCompleted_9x9 = levelsCompleted_9x9;
         save.hintsRemaining = hintsRemaining;
+        save.skipsRemaining = skipsRemaining;
         save.adsRemoved = adsRemoved;
 
         return save;

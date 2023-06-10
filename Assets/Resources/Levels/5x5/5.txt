@@ -1,5 +1,5 @@
-C100V
-Cdd0V
-C1dv1
-1HHhh
-0HHhh
+0vmm1
+V0mm0
+VAm01
+bbB00
+00B11
