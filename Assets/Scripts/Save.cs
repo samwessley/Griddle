@@ -14,4 +14,7 @@ public class Save {
     public int hintsRemaining = 3;
     public int skipsRemaining = 3;
     public bool adsRemoved = false;
+    public bool musicOn = false;
+    public bool soundsOn = false;
+    public bool hapticsOn = false;
 }

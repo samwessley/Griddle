@@ -161,6 +161,7 @@ Library: lib_burst_generated64
 --root-assembly=/Users/samwessley/Developer/Mesa/Temp/StagingArea/Data/Managed/Unity.Services.Core.Device.dll
 --root-assembly=/Users/samwessley/Developer/Mesa/Temp/StagingArea/Data/Managed/Unity.Services.Core.Threading.dll
 --root-assembly=/Users/samwessley/Developer/Mesa/Temp/StagingArea/Data/Managed/Unity.InternalAPIEngineBridge.001.dll
+--root-assembly=/Users/samwessley/Developer/Mesa/Temp/StagingArea/Data/Managed/Vibration.dll
 --assembly-folder=/Users/samwessley/Developer/Mesa/Temp/StagingArea/Data/Managed/
 --pdb-search-paths=Temp/ManagedSymbols/
 --method=Unity.Burst.BurstCompiler+BurstCompilerHelper, Unity.Burst, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null::IsBurstEnabled()--8c2be93e18276203cbd918daa2748a10

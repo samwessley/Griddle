@@ -10,6 +10,7 @@ public class ButtonPlaySound : MonoBehaviour {
     }
 
     private void ButtonPlay() {
-        SoundEngine.Instance.PlaySound();
+        if (GameManager.Instance.soundsOn)
+        SoundEngine.Instance.PlayButtonSound();
     }
 }

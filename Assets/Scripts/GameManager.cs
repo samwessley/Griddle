@@ -20,6 +20,10 @@ public class GameManager: MonoBehaviour {
     public int levelsCompleted_9x9;
     public int hintsRemaining;
     public int skipsRemaining;
+
+    public bool musicOn;
+    public bool soundsOn;
+    public bool hapticsOn;
     public bool adsRemoved;
 
     //public string[][] levelTiles = new string[3][];
@@ -40,11 +44,17 @@ public class GameManager: MonoBehaviour {
     }
 
     void Awake() {
+        //SetUpInstance();
+
         totalLevels = 1000;
         currentLevel = 1;
         hintsRemaining = 3;
         skipsRemaining = 3;
+
         adsRemoved = false;
+        musicOn = true;
+        soundsOn = true;
+        hapticsOn = true;
 
         levelsCompleted_5x5 = 0;
         levelsCompleted_6x6 = 0;
@@ -56,6 +66,14 @@ public class GameManager: MonoBehaviour {
         CreateTileDictionary();
         CreateTileColorDictionary();
     }
+
+    /*private void SetUpInstance() {
+        if (Instance != null && Instance != this) { 
+            Destroy(this); 
+        } else { 
+            Instance = this; 
+        }
+    }*/
 
     public void LoadNewScene() {
 
@@ -97,6 +115,9 @@ public class GameManager: MonoBehaviour {
             hintsRemaining = save.hintsRemaining;
             skipsRemaining = save.skipsRemaining;
             adsRemoved = save.adsRemoved;
+            musicOn = save.musicOn;
+            soundsOn = save.soundsOn;
+            hapticsOn = save.hapticsOn;
 
             Debug.Log("Game Loaded.");
         } else {
@@ -159,6 +180,9 @@ public class GameManager: MonoBehaviour {
         save.hintsRemaining = hintsRemaining;
         save.skipsRemaining = skipsRemaining;
         save.adsRemoved = adsRemoved;
+        save.musicOn = musicOn;
+        save.soundsOn = soundsOn;
+        save.hapticsOn = hapticsOn;
 
         return save;
     }

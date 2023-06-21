@@ -13,18 +13,6 @@ public class ButtonScript : MonoBehaviour {
         SceneManager.LoadScene(1);
     }
 
-    /*public void LoadPreviousLevel() {
-        // Increment current level
-        if (GameManager.Instance.currentLevel > 1) {
-            GameManager.Instance.currentLevel -= 1;
-
-            // Load new scene
-            GameManager.Instance.LoadNewScene();
-        } else {
-            SceneManager.LoadScene(0);
-        }
-    }*/
-
     public void LoadNextLevel() {
         // Increment current level
         if (GameManager.Instance.currentLevel < GameManager.Instance.totalLevels) {
@@ -209,38 +197,4 @@ public class ButtonScript : MonoBehaviour {
             }
         }
     }
-
-    /*private void UpdateSortingOrder(TileCell[] tileCells) {
-
-        List<int> rowList = new List<int>();
-
-        foreach(TileCell cell in tileCells) {
-            if (!rowList.Contains((int)cell.yOffset))
-            rowList.Add((int)cell.yOffset);
-        }
-        rowList.Sort();
-        rowList.Reverse();
-
-        foreach(TileCell cell in tileCells) {
-            cell.SetSortingLayer(19 + rowList.IndexOf((int)cell.yOffset));
-        }
-    }*/
-
-    /*private void ResetTile(GameObject tile) {
-
-        // Reset the tile transform back to its default state
-        tile.transform.rotation = Quaternion.identity;
-        tile.transform.localScale = new Vector2(1, 1);
-        tile.GetComponent<Tile>().rotations = 0;
-
-        TileCell[] tileCells = tile.GetComponent<Tile>().tileCells;
-
-        // Reset the tile cells back to their default state
-        for (int j = 0; j < tileCells.Length; j++) {
-            tileCells[j].transform.localScale = new Vector2(1, 1);
-            tileCells[j].transform.rotation = Quaternion.identity;
-
-            tileCells[j].PopulateOffsetValues();
-        }
-    }*/
 }

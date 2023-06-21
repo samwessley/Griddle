@@ -17,6 +17,12 @@ public class MainMenuController : MonoBehaviour {
     [SerializeField] GameObject check8x8 = null;
     [SerializeField] GameObject check9x9 = null;
 
+    [SerializeField] GameObject musicToggle = null;
+    [SerializeField] GameObject soundsToggle = null;
+    [SerializeField] GameObject hapticsToggle = null;
+
+    private bool musicPlaying;
+
     private void Start() {
         levelNumberLabel5x5.GetComponent<Text>().text = "LVL " + (GameManager.Instance.levelsCompleted_5x5 + 1);
         levelNumberLabel6x6.GetComponent<Text>().text = "LVL " + (GameManager.Instance.levelsCompleted_6x6 + 1);
@@ -52,6 +58,31 @@ public class MainMenuController : MonoBehaviour {
             check9x9.SetActive(true);
         } else {
             check9x9.SetActive(false);
+        }
+
+        // Play background music
+        SoundEngine.Instance.PlayMusic();
+
+        SetUpSettingsToggles();
+    }
+
+    private void SetUpSettingsToggles() {
+        if (GameManager.Instance.musicOn) {
+            musicToggle.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Toggle On");
+        } else {
+            musicToggle.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Toggle Off");
+        }
+
+        if (GameManager.Instance.soundsOn) {
+            soundsToggle.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Toggle On");
+        } else {
+            soundsToggle.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Toggle Off");
+        }
+
+        if (GameManager.Instance.hapticsOn) {
+            hapticsToggle.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Toggle On");
+        } else {
+            hapticsToggle.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Toggle Off");
         }
     }
 }

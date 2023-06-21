@@ -10,7 +10,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     private Canvas canvas;
     private CanvasGroup canvasGroup;
     private GameObject touchCatcher;
-    private GameObject tilePopupTray;
+    //private GameObject tilePopupTray;
     private RectTransform rectTransform;
 
     public bool isOnBoard = false;
@@ -22,7 +22,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
         canvas = this.gameObject.transform.parent.gameObject.GetComponent<Canvas>();
         touchCatcher = canvas.transform.Find("Touch Catcher").gameObject;
-        tilePopupTray = canvas.transform.Find("Tile Popup Tray").gameObject;
+        //tilePopupTray = canvas.transform.Find("Tile Popup Tray").gameObject;
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         if (gameController.boardSize == 5) {
@@ -100,7 +100,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         // If the tile isn't currently on the board, show the touchCatcher when tapping on the tile
         /*if (!isOnBoard) {
             touchCatcher.GetComponent<CanvasGroup>().blocksRaycasts = true;
-            tilePopupTray.gameObject.SetActive(true); 
+            //tilePopupTray.gameObject.SetActive(true); 
 
             if (!isHighlighted) {
                 // Set tile size and position to 'highlighted' status
@@ -168,7 +168,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         // Adjust the tile location by the calculated adjustment distance + the tile cell's offset values
         tile.gameObject.GetComponent<RectTransform>().anchoredPosition -= adjustmentDistance + new Vector2(tileCellTransform.xOffset, tileCellTransform.yOffset);
         touchCatcher.GetComponent<CanvasGroup>().blocksRaycasts = false;
-        tilePopupTray.gameObject.SetActive(false);
+        //tilePopupTray.gameObject.SetActive(false);
 
         // Set the sorting layer of the tile to the appropriate level based on where it is on the board
         int minSortingOrder = 999;
@@ -200,6 +200,21 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         isHighlighted = false;
         gameController.activeTile = null;
         gameController.tilesRemaining -= 1;
+        
+        // Play pop sound
+        if (GameManager.Instance.soundsOn)
+        SoundEngine.Instance.PlayPopSound();
+
+        // Vibrate
+        if (GameManager.Instance.hapticsOn) {
+            Vibration.Init();
+            #if UNITY_IOS
+            Vibration.VibrateIOS(ImpactFeedbackStyle.Light);
+            #endif
+            #if UNITY_ANDROID
+            Vibration.Vibrate(50);
+            #endif
+        }
 
         bool isInCorrectPosition = IsInCorrectPosition(tile, closestGridCells);
         if (isInCorrectPosition)
@@ -253,7 +268,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
             SetScale(0.5f);
         }
         touchCatcher.GetComponent<CanvasGroup>().blocksRaycasts = false;
-        tilePopupTray.gameObject.SetActive(false);
+        //tilePopupTray.gameObject.SetActive(false);
         isHighlighted = false;
         isOnBoard = false;
         gameController.activeTile = null;
