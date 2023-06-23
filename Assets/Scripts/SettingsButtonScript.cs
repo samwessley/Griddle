@@ -12,6 +12,9 @@ public class SettingsButtonScript : MonoBehaviour {
     [SerializeField] GameObject musicToggle = null;
     [SerializeField] GameObject settingsButton = null;
 
+    [SerializeField] GameObject resetProgressModal = null;
+    [SerializeField] GameObject settingsPanel = null;
+
     /*public void CloseSettingsScene() {
         StartCoroutine(CloseSettingsScreenAnimation());
     }
@@ -74,5 +77,26 @@ public class SettingsButtonScript : MonoBehaviour {
         }
 
         GameManager.Instance.SaveAsJSON();
+    }
+
+    public void ToggleResetProgressModal() {
+        settingsPanel.SetActive(false);
+        resetProgressModal.SetActive(true);
+    }
+
+    public void CancelResetProgress() {
+        settingsPanel.SetActive(true);
+        resetProgressModal.SetActive(false);
+    }
+
+    public void ResetProgress() {
+        GameManager.Instance.currentLevel = 1;
+        GameManager.Instance.levelsCompleted_5x5 = 0;
+        GameManager.Instance.levelsCompleted_6x6 = 0;
+        GameManager.Instance.levelsCompleted_7x7 = 0;
+        GameManager.Instance.levelsCompleted_8x8 = 0;
+        GameManager.Instance.levelsCompleted_9x9 = 0;
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 }
