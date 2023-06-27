@@ -31,6 +31,9 @@ public class ButtonScript : MonoBehaviour {
 
             GameManager.Instance.currentLevel += 1;
 
+            // Show interstitial ad
+            AdManager.Instance.ShowAd();
+
             // Load new scene
             GameManager.Instance.LoadNewScene();
         } else {
