@@ -38,7 +38,9 @@ public class SettingsMenuAnimationScript : MonoBehaviour {
         } else {
             StartCoroutine(SlideSettingsPanelOut());
             StartCoroutine(SlidePackButtonsIn());
-            removeAdsButton.SetActive(true);
+            if (!GameManager.Instance.adsRemoved) {
+                removeAdsButton.SetActive(true);
+            }
             settingsBackground.SetActive(false);
             menuOpen = false;
         }

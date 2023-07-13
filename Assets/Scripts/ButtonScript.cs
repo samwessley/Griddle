@@ -32,7 +32,14 @@ public class ButtonScript : MonoBehaviour {
             GameManager.Instance.currentLevel += 1;
 
             // Show interstitial ad
-            AdManager.Instance.ShowAd();
+            if (!GameManager.Instance.adsRemoved) {
+                if (GameManager.Instance.currentLevelPack == 0) {
+                    if (GameManager.Instance.currentLevel % 2 == 0)
+                    AdManager.Instance.ShowAd(); 
+                } else {
+                    AdManager.Instance.ShowAd();
+                }
+            }
 
             // Load new scene
             GameManager.Instance.LoadNewScene();

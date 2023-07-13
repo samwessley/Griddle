@@ -21,9 +21,18 @@ public class MainMenuController : MonoBehaviour {
     [SerializeField] GameObject soundsToggle = null;
     [SerializeField] GameObject hapticsToggle = null;
 
+    [SerializeField] GameObject removeAdsButton = null;
+
     private bool musicPlaying;
 
     private void Start() {
+
+        if (GameManager.Instance.adsRemoved) {
+            removeAdsButton.SetActive(false);
+        } else {
+            removeAdsButton.SetActive(true);
+        }
+
         levelNumberLabel5x5.GetComponent<Text>().text = "LVL " + (GameManager.Instance.levelsCompleted_5x5 + 1);
         levelNumberLabel6x6.GetComponent<Text>().text = "LVL " + (GameManager.Instance.levelsCompleted_6x6 + 1);
         levelNumberLabel7x7.GetComponent<Text>().text = "LVL " + (GameManager.Instance.levelsCompleted_7x7 + 1);
