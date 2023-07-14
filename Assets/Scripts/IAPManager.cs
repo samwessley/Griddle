@@ -12,6 +12,9 @@ public class IAPManager : MonoBehaviour, IDetailedStoreListener {
     public string noAdsProductId = "remove_ads";
 
     [SerializeField] GameObject noAdsButton = null;
+    [SerializeField] GameObject settingsPanel = null;
+    [SerializeField] GameObject restoreSuccessModal = null;
+    [SerializeField] GameObject restoreFailedModal = null;
 
     void Start() {
         InitializePurchasing();
@@ -45,10 +48,13 @@ public class IAPManager : MonoBehaviour, IDetailedStoreListener {
             // This does not mean anything was restored,
             // merely that the restoration process succeeded.
             restoreMessage = "Restore Successful";
+            restoreSuccessModal.SetActive(true);
         } else {
             // Restoration failed.
             restoreMessage = $"Restore Failed with error: {error}";
+            restoreFailedModal.SetActive(true);
         }
+        settingsPanel.SetActive(false);
 
         Debug.Log(restoreMessage);
     }

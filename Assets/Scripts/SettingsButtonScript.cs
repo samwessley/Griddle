@@ -15,6 +15,9 @@ public class SettingsButtonScript : MonoBehaviour {
     [SerializeField] GameObject resetProgressModal = null;
     [SerializeField] GameObject settingsPanel = null;
 
+    [SerializeField] GameObject restorePurchasesSuccessModal = null;
+    [SerializeField] GameObject restorePurchasesFailedModal = null;
+
     /*public void CloseSettingsScene() {
         StartCoroutine(CloseSettingsScreenAnimation());
     }
@@ -88,6 +91,17 @@ public class SettingsButtonScript : MonoBehaviour {
         settingsPanel.SetActive(true);
         resetProgressModal.SetActive(false);
     }
+
+    public void CloseRestorePurchasesSuccessModal() {
+        settingsPanel.SetActive(true);
+        restorePurchasesSuccessModal.SetActive(false);
+    }
+
+    public void CloseRestorePurchasesFailedModal() {
+        settingsPanel.SetActive(true);
+        restorePurchasesFailedModal.SetActive(false);
+    }
+
 
     public void ResetProgress() {
         GameManager.Instance.currentLevel = 1;
