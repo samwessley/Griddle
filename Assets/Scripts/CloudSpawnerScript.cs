@@ -21,9 +21,9 @@ public class CloudSpawnerScript : MonoBehaviour {
             float randomYPos = Random.Range(-24750,24750);
             float randomXPos = 0;
             if (round == 1) {
-                randomXPos = Random.Range(-1500, 700); 
+                randomXPos = Random.Range(-1600, 800); 
             } else {
-                randomXPos = Random.Range(-1500, -850);            
+                randomXPos = Random.Range(-1700, -950);            
             }
 
             cloud.transform.localPosition = new Vector3(randomXPos,randomYPos,0);
@@ -41,12 +41,12 @@ public class CloudSpawnerScript : MonoBehaviour {
     }
 
     IEnumerator AnimateCloud(GameObject cloud) {
-        int time = Random.Range(50,80);
+        int time = Random.Range(60,90);
         while (true) {
-            LeanTween.moveX(cloud, 5f, time);
+            LeanTween.moveX(cloud, 8f, time);
             yield return new WaitForSeconds(time);
 
-            float randomXPos = Random.Range(-8f, -10f);
+            float randomXPos = Random.Range(-16f, -19f);
             LeanTween.moveX(cloud, randomXPos, 0);
         }
         //Destroy(cloud);

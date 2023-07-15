@@ -167,55 +167,55 @@ public class MainMenuAnimation : MonoBehaviour {
 
 
     IEnumerator AnimateCloud1() {
-        LeanTween.moveX(cloud1, 2.5f, 13f);
+        LeanTween.moveX(cloud1, 3.5f, 13f);
         yield return new WaitForSeconds(13f);
-        LeanTween.moveX(cloud1, -5f, 0);
+        LeanTween.moveX(cloud1, -9f, 0);
         yield return new WaitForSeconds(8f);
 
         while (true) {
-            LeanTween.moveX(cloud1, 2.5f, 29f);
+            LeanTween.moveX(cloud1, 3.5f, 29f);
             yield return new WaitForSeconds(29f);
-            LeanTween.moveX(cloud1, -5f, 0);
+            LeanTween.moveX(cloud1, -9f, 0);
             yield return new WaitForSeconds(9f);
         }
     }
 
     IEnumerator AnimateCloud2() {
-        LeanTween.moveX(cloud2, 2.5f, 25f);
+        LeanTween.moveX(cloud2, 3.5f, 25f);
         yield return new WaitForSeconds(25f);
-        LeanTween.moveX(cloud2, -6.5f, 0);
+        LeanTween.moveX(cloud2, -9f, 0);
         yield return new WaitForSeconds(9.5f);
 
         while (true) {
-            LeanTween.moveX(cloud2, 2.5f, 39f);
+            LeanTween.moveX(cloud2, 3.5f, 39f);
             yield return new WaitForSeconds(39f);
-            LeanTween.moveX(cloud2, -6.5f, 0);
+            LeanTween.moveX(cloud2, -9f, 0);
             yield return new WaitForSeconds(7f);
         }
     }
 
     IEnumerator AnimateCloud3() {
-        LeanTween.moveX(cloud3, 2.5f, 52f);
+        LeanTween.moveX(cloud3, 3.5f, 52f);
         yield return new WaitForSeconds(52f);
-        LeanTween.moveX(cloud3, -8f, 0);
+        LeanTween.moveX(cloud3, -9f, 0);
         yield return new WaitForSeconds(2.5f);
 
         while (true) {
-            LeanTween.moveX(cloud3, 2.5f, 55f);
+            LeanTween.moveX(cloud3, 3.5f, 55f);
             yield return new WaitForSeconds(55f);
-            LeanTween.moveX(cloud3, -8f, 0);
+            LeanTween.moveX(cloud3, -9f, 0);
             yield return new WaitForSeconds(7.5f);
         }
     }
 
     IEnumerator AnimateCloud4() {
-        LeanTween.moveX(cloud4, 2.5f, 48f);
+        LeanTween.moveX(cloud4, 3.5f, 48f);
         yield return new WaitForSeconds(48f);
         LeanTween.moveX(cloud4, -9f, 0);
         yield return new WaitForSeconds(2.5f);
 
         while (true) {
-            LeanTween.moveX(cloud4, 2.5f, 55f);
+            LeanTween.moveX(cloud4, 235f, 55f);
             yield return new WaitForSeconds(55f);
             LeanTween.moveX(cloud4, -9f, 0);
             yield return new WaitForSeconds(6f);

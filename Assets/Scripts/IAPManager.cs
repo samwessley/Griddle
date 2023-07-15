@@ -10,11 +10,18 @@ public class IAPManager : MonoBehaviour, IDetailedStoreListener {
     IAppleExtensions m_AppleExtensions;
 
     public string noAdsProductId = "remove_ads";
+    public string fiveHintsProductId = "five_hints";
+    public string fiveSkipsProductId = "five_skips";
 
     [SerializeField] GameObject noAdsButton = null;
     [SerializeField] GameObject settingsPanel = null;
     [SerializeField] GameObject restoreSuccessModal = null;
     [SerializeField] GameObject restoreFailedModal = null;
+
+    [SerializeField] GameObject hintsLabel = null;
+    [SerializeField] GameObject skipsLabel = null;
+    [SerializeField] GameObject moreHints = null;
+    [SerializeField] GameObject moreSkips = null;
 
     void Start() {
         InitializePurchasing();
@@ -25,6 +32,8 @@ public class IAPManager : MonoBehaviour, IDetailedStoreListener {
         var builder = ConfigurationBuilder.Instance(StandardPurchasingModule.Instance());
 
         builder.AddProduct(noAdsProductId, ProductType.NonConsumable);
+        builder.AddProduct(fiveHintsProductId, ProductType.Consumable);
+        builder.AddProduct(fiveSkipsProductId, ProductType.Consumable);
 
         UnityPurchasing.Initialize(this, builder);
     }
@@ -63,19 +72,38 @@ public class IAPManager : MonoBehaviour, IDetailedStoreListener {
         m_StoreController.InitiatePurchase(noAdsProductId);
     }
 
+    public void BuyFiveHints() {
+        if (GameManager.Instance.hintsRemaining == 0)
+        m_StoreController.InitiatePurchase(fiveHintsProductId);
+    }
+
+    public void BuyFiveSkips() {
+        if (GameManager.Instance.skipsRemaining == 0) 
+        m_StoreController.InitiatePurchase(fiveSkipsProductId);
+    }
+
     public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs args) {
         var product = args.purchasedProduct;
 
+        //Add the purchased product to the players inventory
+        if (product.definition.id == fiveHintsProductId) {
+            GameManager.Instance.hintsRemaining += 5;
+            UpdateHintsUI();
+        } else if (product.definition.id == fiveSkipsProductId) {
+            GameManager.Instance.skipsRemaining += 5;
+            UpdateSkipsUI();
+        } else if (product.definition.id == noAdsProductId) {
+            // Print if the ad receipt has been received
+            bool result = HasNoAds();
+            Debug.Log("Purchase " + result);
+            if (HasNoAds()) {
+                GameManager.Instance.adsRemoved = true;
+                noAdsButton.SetActive(false);
+            }
+        }
+
         Debug.Log($"Processing Purchase: {product.definition.id}");
         //UpdateUI();
-
-        // Print if the ad receipt has been received
-        bool result = HasNoAds();
-        Debug.Log("Purchase " + result);
-        if (HasNoAds()) {
-            GameManager.Instance.adsRemoved = true;
-            noAdsButton.SetActive(false);
-        }
 
         return PurchaseProcessingResult.Complete;
     }
@@ -83,6 +111,16 @@ public class IAPManager : MonoBehaviour, IDetailedStoreListener {
     /*void UpdateUI(){
         hasNoAdsText.text = HasNoAds() ? "No ads will be shown" : "Ads will be shown";
     }*/
+
+    void UpdateHintsUI() {
+        hintsLabel.GetComponent<Text>().text = "x " + GameManager.Instance.hintsRemaining.ToString();
+        moreHints.SetActive(false);
+    }
+
+    void UpdateSkipsUI() {
+        skipsLabel.GetComponent<Text>().text = "x " + GameManager.Instance.skipsRemaining.ToString();
+        moreSkips.SetActive(false);
+    }
 
     bool HasNoAds() {
         var noAdsProduct = m_StoreController.products.WithID(noAdsProductId);

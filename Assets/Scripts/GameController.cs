@@ -13,6 +13,8 @@ public class GameController : MonoBehaviour {
     [SerializeField] GameObject nextLevelButton = null;
     [SerializeField] GameObject hintsLabel = null;
     [SerializeField] GameObject skipsLabel = null;
+    [SerializeField] GameObject moreHints = null;
+    [SerializeField] GameObject moreSkips = null;
 
     [SerializeField] GameObject star1 = null;
     [SerializeField] GameObject star2 = null;
@@ -504,9 +506,21 @@ public class GameController : MonoBehaviour {
 
     public void UpdateHintsLabel() {
         hintsLabel.GetComponent<Text>().text = "x " + GameManager.Instance.hintsRemaining.ToString();
+
+        if (GameManager.Instance.hintsRemaining == 0) {
+            moreHints.SetActive(true);
+        } else {
+            moreHints.SetActive(false);
+        }
     }
 
     public void UpdateSkipsLabel() {
         skipsLabel.GetComponent<Text>().text = "x " + GameManager.Instance.skipsRemaining.ToString();
+
+        if (GameManager.Instance.skipsRemaining == 0) {
+            moreSkips.SetActive(true);
+        } else {
+            moreSkips.SetActive(false);
+        }
     }
 }

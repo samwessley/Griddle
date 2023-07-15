@@ -23,7 +23,7 @@ public class BalloonSpawnerScript : MonoBehaviour {
             float randomYPos = Random.Range(-24750,24750);
             float randomXPos = 0;
             if (direction) {
-                randomXPos = Random.Range(-200, 100);
+                randomXPos = Random.Range(-300, 0);
             } else {
                 randomXPos = Random.Range(1200, 1900);
             }
@@ -40,15 +40,15 @@ public class BalloonSpawnerScript : MonoBehaviour {
 
         if (!direction) {
             while (true) {
-                LeanTween.moveX(balloon, 3.6f, time);
+                LeanTween.moveX(balloon, 5f, time);
                 yield return new WaitForSeconds(time);
-                LeanTween.moveX(balloon, -3.6f, 0);
+                LeanTween.moveX(balloon, -5f, 0);
             }
         } else {
             while (true) {
-                LeanTween.moveX(balloon, -3.6f, time);
+                LeanTween.moveX(balloon, -5f, time);
                 yield return new WaitForSeconds(time);
-                LeanTween.moveX(balloon, 3.6f, 0);
+                LeanTween.moveX(balloon, 5f, 0);
             }
         }
     }
