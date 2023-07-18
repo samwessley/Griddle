@@ -41,7 +41,7 @@ public class CloudSpawnerScript : MonoBehaviour {
     }
 
     IEnumerator AnimateCloud(GameObject cloud) {
-        int time = Random.Range(60,90);
+        int time = Random.Range(70,100);
         while (true) {
             LeanTween.moveX(cloud, 8f, time);
             yield return new WaitForSeconds(time);

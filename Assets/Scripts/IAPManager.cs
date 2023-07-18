@@ -23,6 +23,11 @@ public class IAPManager : MonoBehaviour, IDetailedStoreListener {
     [SerializeField] GameObject moreHints = null;
     [SerializeField] GameObject moreSkips = null;
 
+    [SerializeField] GameObject buyBackground = null;
+    [SerializeField] GameObject buyHintsModal = null;
+    [SerializeField] GameObject buySkipsModal = null;
+    [SerializeField] GameObject loadingIcon = null;
+
     void Start() {
         InitializePurchasing();
         //UpdateWarningMessage();
@@ -68,18 +73,38 @@ public class IAPManager : MonoBehaviour, IDetailedStoreListener {
         Debug.Log(restoreMessage);
     }
 
+    public void ShowMoreHintsModal() {
+        if (GameManager.Instance.hintsRemaining == 0) {
+            buyBackground.SetActive(true);
+            buyHintsModal.SetActive(true);
+        }
+    }
+
+    public void ShowMoreSkipsModal() {
+        if (GameManager.Instance.skipsRemaining == 0) {
+            buyBackground.SetActive(true);
+            buySkipsModal.SetActive(true);
+        }
+    }
+
     public void BuyNoAds() {
         m_StoreController.InitiatePurchase(noAdsProductId);
     }
 
     public void BuyFiveHints() {
-        if (GameManager.Instance.hintsRemaining == 0)
-        m_StoreController.InitiatePurchase(fiveHintsProductId);
+        if (GameManager.Instance.hintsRemaining == 0) {
+            loadingIcon.SetActive(true);
+            buyHintsModal.SetActive(false);
+            m_StoreController.InitiatePurchase(fiveHintsProductId);
+        }
     }
 
     public void BuyFiveSkips() {
-        if (GameManager.Instance.skipsRemaining == 0) 
-        m_StoreController.InitiatePurchase(fiveSkipsProductId);
+        if (GameManager.Instance.skipsRemaining == 0) {
+            loadingIcon.SetActive(true);
+            buySkipsModal.SetActive(false);
+            m_StoreController.InitiatePurchase(fiveSkipsProductId);
+        }
     }
 
     public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs args) {
@@ -88,9 +113,15 @@ public class IAPManager : MonoBehaviour, IDetailedStoreListener {
         //Add the purchased product to the players inventory
         if (product.definition.id == fiveHintsProductId) {
             GameManager.Instance.hintsRemaining += 5;
+            loadingIcon.SetActive(false);
+            buyHintsModal.SetActive(false);
+            buyBackground.SetActive(false);
             UpdateHintsUI();
         } else if (product.definition.id == fiveSkipsProductId) {
             GameManager.Instance.skipsRemaining += 5;
+            loadingIcon.SetActive(false);
+            buySkipsModal.SetActive(false);
+            buyBackground.SetActive(false);
             UpdateSkipsUI();
         } else if (product.definition.id == noAdsProductId) {
             // Print if the ad receipt has been received
@@ -143,12 +174,22 @@ public class IAPManager : MonoBehaviour, IDetailedStoreListener {
 
     public void OnPurchaseFailed(Product product, PurchaseFailureReason failureReason) {
         Debug.Log($"Purchase failed - Product: '{product.definition.id}', PurchaseFailureReason: {failureReason}");
+
+        loadingIcon.SetActive(false);
+        buyBackground.SetActive(false);
+        buyHintsModal.SetActive(false);
+        buySkipsModal.SetActive(false);
     }
 
     public void OnPurchaseFailed(Product product, PurchaseFailureDescription failureDescription) {
         Debug.Log($"Purchase failed - Product: '{product.definition.id}'," +
         $" Purchase failure reason: {failureDescription.reason}," +
         $" Purchase failure details: {failureDescription.message}");
+
+        loadingIcon.SetActive(false);
+        buyBackground.SetActive(false);
+        buyHintsModal.SetActive(false);
+        buySkipsModal.SetActive(false);
     }
 
     /*void UpdateWarningMessage() {
