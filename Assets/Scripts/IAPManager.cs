@@ -88,6 +88,7 @@ public class IAPManager : MonoBehaviour, IDetailedStoreListener {
     }
 
     public void BuyNoAds() {
+        buyBackground.SetActive(true);
         m_StoreController.InitiatePurchase(noAdsProductId);
     }
 
@@ -131,6 +132,7 @@ public class IAPManager : MonoBehaviour, IDetailedStoreListener {
                 GameManager.Instance.adsRemoved = true;
                 noAdsButton.SetActive(false);
             }
+            buyBackground.SetActive(false);
         }
 
         Debug.Log($"Processing Purchase: {product.definition.id}");

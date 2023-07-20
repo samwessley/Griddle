@@ -262,11 +262,16 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
         tile.CancelPlacement();
         isOnBoard = false;
-        if (gameController.boardSize < 8) {
+
+        // Reset tiles back to their initial size depending on board size
+        if (gameController.boardSize == 5) {
+            SetScale(0.8f);
+        } else if (gameController.boardSize == 6) {
             SetScale(0.6f);
         } else {
             SetScale(0.5f);
         }
+        
         touchCatcher.GetComponent<CanvasGroup>().blocksRaycasts = false;
         //tilePopupTray.gameObject.SetActive(false);
         isHighlighted = false;
