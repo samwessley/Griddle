@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SettingsMenuAnimationScript : MonoBehaviour {
 
     [SerializeField] GameObject settingsButton = null;
+    [SerializeField] GameObject settingsButton2 = null;
     [SerializeField] GameObject settingsBackground = null;
     [SerializeField] GameObject settingsPanel = null;
     [SerializeField] GameObject fiveByFivePackButton = null;
@@ -28,20 +29,25 @@ public class SettingsMenuAnimationScript : MonoBehaviour {
         settingsPanel.SetActive(true);
     }
 
-    public void ToggleSettingsMenu() {
+    public void OpenSettingsMenu() {
         if (!menuOpen) {
-            StartCoroutine(SlidePackButtonsOut());
+            //StartCoroutine(SlidePackButtonsOut());
+            settingsButton.GetComponent<Button>().interactable = false;
             StartCoroutine(SlideSettingsPanelIn());
             removeAdsButton.SetActive(false);
             settingsBackground.SetActive(true);
             menuOpen = true;
-        } else {
+        }
+    }
+
+    public void CloseSettingsMenu() {
+        if (menuOpen) {
             StartCoroutine(SlideSettingsPanelOut());
-            StartCoroutine(SlidePackButtonsIn());
+            //StartCoroutine(SlidePackButtonsIn());
+            settingsButton.GetComponent<Button>().interactable = true;
             if (!GameManager.Instance.adsRemoved) {
                 removeAdsButton.SetActive(true);
             }
-            settingsBackground.SetActive(false);
             menuOpen = false;
         }
     }
@@ -86,11 +92,12 @@ public class SettingsMenuAnimationScript : MonoBehaviour {
         LeanTween.moveX(settingsPanel, -6f, 0.12f);
         yield return new WaitForSeconds(.12f);
         settingsPanel.SetActive(false);
+        settingsBackground.SetActive(false);
     }
 
     IEnumerator SlideSettingsPanelIn() {
         settingsPanel.SetActive(true);
-        yield return new WaitForSeconds(.2f);
+        //yield return new WaitForSeconds(.2f);
         LeanTween.moveX(settingsPanel, settingsPanelXPosition + .25f, 0.12f);
         yield return new WaitForSeconds(.12f);
         LeanTween.moveX(settingsPanel, settingsPanelXPosition, 0.08f);

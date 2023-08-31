@@ -90,7 +90,7 @@ MonoBehaviour:
   tileCells: []
   tileColor: 0
   tileCodeRange: 610041007600
-  tileCode: 0
+  tileCode: 110
   rotations: 0
   reflected: 0
   lastManipulationType: 0
@@ -99,6 +99,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 5229593227203311633}
     m_Modifications:
     - target: {fileID: 150720039549351147, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
@@ -242,6 +243,9 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f8b06f9d2b8149698221515704e0e8b, type: 3}
 --- !u!224 &1445377432596861718 stripped
 RectTransform:

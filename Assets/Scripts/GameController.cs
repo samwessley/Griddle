@@ -299,7 +299,7 @@ public class GameController : MonoBehaviour {
     }
     
     private void SetLevelNumber(int level) {
-        levelNumber.GetComponent<Text>().text = level.ToString();
+        levelNumber.GetComponent<Text>().text = "# " + level.ToString();
         GameManager.Instance.currentLevel = level;
     }
 
