@@ -108,6 +108,13 @@ public class IAPManager : MonoBehaviour, IDetailedStoreListener {
         }
     }
 
+    public void Cancel() {
+        buyBackground.SetActive(false);
+        buyHintsModal.SetActive(false);
+        buySkipsModal.SetActive(false);
+        loadingIcon.SetActive(false);
+    }
+
     public PurchaseProcessingResult ProcessPurchase(PurchaseEventArgs args) {
         var product = args.purchasedProduct;
 

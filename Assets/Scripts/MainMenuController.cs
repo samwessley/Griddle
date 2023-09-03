@@ -26,6 +26,8 @@ public class MainMenuController : MonoBehaviour {
     [SerializeField] GameObject settingsBackground = null;
     [SerializeField] GameObject settingsPanel = null;
 
+    [SerializeField] GameObject playText = null;
+
     [SerializeField] GameObject levelNumber = null;
 
     public GridCell[,] cellGrid;
@@ -43,6 +45,11 @@ public class MainMenuController : MonoBehaviour {
         PopulateCellGrid();
         LevelSetup();
         SetLevelNumber();
+
+        if (GameManager.Instance.currentLevel > 1) {
+            playText.GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("Sprites/ContinueText");
+            playText.GetComponentInChildren<Image>().SetNativeSize();
+        }
 
         if (GameManager.Instance.adsRemoved) {
             removeAdsButton.SetActive(false);
