@@ -22,6 +22,7 @@ public class GameController : MonoBehaviour {
     [SerializeField] GameObject message = null;
 
     public GridCell[,] cellGrid;
+    public GameObject[] gridCells;
     private int numberOfTiles;
     public GameObject[] tiles;
 
@@ -33,6 +34,7 @@ public class GameController : MonoBehaviour {
     public string distinctCharsRemaining;
 
     private void Start() {
+        GatherGridCells();
         PopulateCellGrid();
         LevelSetup();
         GameManager.Instance.SaveAsJSON();
@@ -522,5 +524,9 @@ public class GameController : MonoBehaviour {
         } else {
             moreSkips.SetActive(false);
         }
+    }
+
+    private void GatherGridCells() {
+        gridCells = GameObject.FindGameObjectsWithTag("GridCell");
     }
 }

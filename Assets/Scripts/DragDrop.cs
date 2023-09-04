@@ -10,7 +10,6 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     private Canvas canvas;
     private CanvasGroup canvasGroup;
     private GameObject touchCatcher;
-    //private GameObject tilePopupTray;
     private RectTransform rectTransform;
 
     public bool isOnBoard = false;
@@ -40,6 +39,17 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
         // If the tile is on the board when tapped, set it to 'hovering' status
         if (isOnBoard) {
+
+            // Vibrate
+            if (GameManager.Instance.hapticsOn) {
+                Vibration.Init();
+                #if UNITY_IOS
+                Vibration.VibrateIOS(ImpactFeedbackStyle.Light);
+                #endif
+                #if UNITY_ANDROID
+                Vibration.Vibrate(50);
+                #endif
+            }
 
             // Reset the occupied values of the grid cells under this tile to false
             RectTransform[] closestGridCells = gameObject.GetComponent<Tile>().GetClosestCellsArray();
@@ -81,11 +91,11 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     public void OnDrag(PointerEventData eventData) {
         // We only want to drag the tile if it was on the board or highlighted when tapped
-    
-            Vector2 vector = (eventData.delta / canvas.scaleFactor);
-            vector *= 1.2f;
-            rectTransform.anchoredPosition += vector;
-    
+        Vector2 vector = (eventData.delta / canvas.scaleFactor);
+        vector *= 1.2f;
+        rectTransform.anchoredPosition += vector;
+
+        AddShadowToGrid();
     }
 
     public void OnPointerUp(PointerEventData eventData) {
@@ -97,34 +107,14 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         if (eventData.position == pointerLocation && !isOnBoard)
         CancelPlacement(tile);
 
-        // If the tile isn't currently on the board, show the touchCatcher when tapping on the tile
-        /*if (!isOnBoard) {
-            touchCatcher.GetComponent<CanvasGroup>().blocksRaycasts = true;
-            //tilePopupTray.gameObject.SetActive(true); 
-
-            if (!isHighlighted) {
-                // Set tile size and position to 'highlighted' status
-                SetScale(1f);
-
-                rectTransform.anchoredPosition = tilePopupTray.GetComponent<RectTransform>().anchoredPosition;
-                isHighlighted = true;
-                gameController.activeTile = this.gameObject;
-
-                // Set the sorting order of the tile to its highlighted value
-                TileCell[] cells = transform.gameObject.GetComponentsInChildren<TileCell>();
-                foreach (TileCell cell in cells) {
-                    cell.SetSortingLayer(cell.GetComponent<Canvas>().sortingOrder + 5);
-                    //Debug.Log(cell.xOffset + ", " + cell.yOffset + ": " + cell.GetComponent<Canvas>().sortingOrder);
-                }
-
-                // Stop at this point. We need another tap on the tile to continue further
-                return;
-            }
-        }*/
-
         // If we got to this point, the tile was highlighted or already on the board before being
         // tapped. Set isOnBoard to true before testing if it's in a valid board space.
         isOnBoard = true;
+
+        // Reset all grid cells to their default color
+        foreach (GameObject gridCell in gameController.gridCells) {
+            gridCell.GetComponent<Image>().color = Color.white;
+        }
 
         // Reset the scale back to normal
         if (gameController.boardSize == 5) {
@@ -312,17 +302,43 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     private void SetHoveringPositionScale() {
         if (gameController.boardSize == 5) {
-            SetScale(2.5f);
+            SetScale(1.733333f);
         } else if (gameController.boardSize == 6) {
-            SetScale(2.1f);
+            SetScale(1.66666666667f);
         } else if (gameController.boardSize == 7) {
-            SetScale(1.8f);
+            SetScale(1.62222222222f);
         } else if (gameController.boardSize == 8) {
-            SetScale(1.6f);
+            SetScale(1.43333333333f);
         } else if (gameController.boardSize == 9) {
-            SetScale(1.4f);
+            SetScale(1.26666666667f);
         } else {
-            SetScale(1.2f);
+            SetScale(1f);
+        }
+    }
+
+    private void AddShadowToGrid() {
+        // Reset all grid cells to their default color
+        foreach (GameObject gridCell in gameController.gridCells) {
+            if (!gridCell.GetComponent<GridCell>().isBarrier && !gridCell.GetComponent<GridCell>().isOccupied)
+            gridCell.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Grid Cell");
+        }
+
+        // Add shadow to the closest grid cells to the tile
+        Tile tile = transform.gameObject.GetComponent<Tile>();
+        RectTransform[] closestGridCells = tile.GetClosestCellsArray();
+
+        bool allGridCellsOpen = true;
+        if (closestGridCells != null) {
+            foreach (RectTransform cell in closestGridCells) {
+                if (cell.GetComponent<GridCell>().isOccupied || cell.GetComponent<GridCell>().isBarrier)
+                allGridCellsOpen = false;
+            }
+
+            if (closestGridCells.Length == gameObject.transform.childCount && allGridCellsOpen) {
+                foreach (RectTransform cell in closestGridCells) {
+                    cell.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/GridCellShadow");
+                }
+            } 
         }
     }
 }

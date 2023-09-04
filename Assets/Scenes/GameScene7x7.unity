@@ -1565,6 +1565,7 @@ RectTransform:
   m_Children:
   - {fileID: 539018469}
   - {fileID: 1687454616}
+  - {fileID: 644473813}
   - {fileID: 1438573148}
   - {fileID: 1469327814}
   - {fileID: 1538487840}
@@ -1577,7 +1578,6 @@ RectTransform:
   - {fileID: 393491790}
   - {fileID: 1656326116}
   - {fileID: 1476900690}
-  - {fileID: 644473813}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2886,7 +2886,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &644473813
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2904,7 +2904,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -200}
+  m_AnchoredPosition: {x: 0, y: -220}
   m_SizeDelta: {x: 960, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &644473814
@@ -8232,6 +8232,7 @@ MonoBehaviour:
   star2: {fileID: 0}
   star3: {fileID: 0}
   message: {fileID: 2058280009}
+  gridCells: []
   tiles: []
   boardSize: 7
   distinctChars: 
