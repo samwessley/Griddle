@@ -19,12 +19,6 @@ public class GameManager: MonoBehaviour {
     public int levelsCompleted_8x8;
     public int levelsCompleted_9x9;
 
-    public int[] five_by_five_stars;
-    public int[] six_by_six_stars;
-    public int[] seven_by_seven_stars;
-    public int[] eight_by_eight_stars;   
-    public int[] nine_by_nine_stars; 
-
     public int hintsRemaining;
     public int skipsRemaining;
 
@@ -69,13 +63,6 @@ public class GameManager: MonoBehaviour {
         levelsCompleted_8x8 = 0;
         levelsCompleted_9x9 = 0;
 
-        five_by_five_stars = new int[200];
-        six_by_six_stars = new int[200];
-        seven_by_seven_stars = new int [200];
-        eight_by_eight_stars = new int [200];
-        nine_by_nine_stars = new int [200];
-
-        InstantiateStarArrays();
         Load();
         CreateTileDictionary();
         CreateTileColorDictionary();
@@ -126,11 +113,6 @@ public class GameManager: MonoBehaviour {
             levelsCompleted_7x7 = save.levelsCompleted_7x7;
             levelsCompleted_8x8 = save.levelsCompleted_8x8;
             levelsCompleted_9x9 = save.levelsCompleted_9x9;
-            five_by_five_stars = save.five_by_five_stars;
-            six_by_six_stars = save.six_by_six_stars;
-            seven_by_seven_stars = save.seven_by_seven_stars;
-            eight_by_eight_stars = save.eight_by_eight_stars;
-            nine_by_nine_stars = save.nine_by_nine_stars;
             hintsRemaining = save.hintsRemaining;
             skipsRemaining = save.skipsRemaining;
             adsRemoved = save.adsRemoved;
@@ -197,12 +179,6 @@ public class GameManager: MonoBehaviour {
         save.levelsCompleted_7x7 = levelsCompleted_7x7;
         save.levelsCompleted_8x8 = levelsCompleted_8x8;
         save.levelsCompleted_9x9 = levelsCompleted_9x9;
-
-        save.five_by_five_stars = five_by_five_stars;
-        save.six_by_six_stars = six_by_six_stars;
-        save.seven_by_seven_stars = seven_by_seven_stars;
-        save.eight_by_eight_stars = eight_by_eight_stars;
-        save.nine_by_nine_stars = nine_by_nine_stars;
 
         save.hintsRemaining = hintsRemaining;
         save.skipsRemaining = skipsRemaining;
@@ -350,27 +326,5 @@ public class GameManager: MonoBehaviour {
         tileColorDictionary.Add('u', 1);
         tileColorDictionary.Add('U', 2);
         tileColorDictionary.Add('+', 3);
-    }
-
-    private void InstantiateStarArrays() {
-        for (int i = 0; i < five_by_five_stars.Length; i++) {
-            five_by_five_stars[i] = 0;
-        }
-        
-        for (int i = 0; i < six_by_six_stars.Length; i++) {
-            six_by_six_stars[i] = 0;
-        }
-
-        for (int i = 0; i < seven_by_seven_stars.Length; i++) {
-            seven_by_seven_stars[i] = 0;
-        }
-
-        for (int i = 0; i < eight_by_eight_stars.Length; i++) {
-            eight_by_eight_stars[i] = 0;
-        }
-
-        for (int i = 0; i < nine_by_nine_stars.Length; i++) {
-            nine_by_nine_stars[i] = 0;
-        }
     }
 }

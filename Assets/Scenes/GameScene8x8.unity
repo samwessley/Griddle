@@ -131,6 +131,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 99
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 104
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 7,7
@@ -205,7 +213,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -216
+      value: -66
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -257,6 +265,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 5,1
@@ -331,7 +343,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 558
+      value: 708
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -434,8 +446,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 9a01e197021024ac994007fcc5b8acc8, type: 3}
-    m_FontSize: 60
+    m_Font: {fileID: 12800000, guid: ea39bdb8863b6434b9f1a60f8174d448, type: 3}
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -463,6 +475,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 2,6
@@ -537,7 +557,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -87
+      value: 63
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -589,6 +609,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 66
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 88
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 5,4
@@ -663,7 +691,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 171
+      value: 321
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -715,6 +743,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 99
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 104
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 3,7
@@ -789,7 +825,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -216
+      value: -66
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1022,6 +1058,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 5,6
@@ -1096,7 +1140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -87
+      value: 63
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1316,7 +1360,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1868896998}
-  - {fileID: 1276454306}
+  - {fileID: 2007342339}
   - {fileID: 1184617369}
   - {fileID: 1438573148}
   - {fileID: 751825314}
@@ -1535,6 +1579,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 4,6
@@ -1609,7 +1661,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -87
+      value: 63
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1712,7 +1764,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: aa378c24433634507bfba32a7bb40fcd, type: 3}
+    m_Font: {fileID: 12800000, guid: 451ef71ed337e4ad5ae3f7926008ba6a, type: 3}
     m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
@@ -1939,7 +1991,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: aa378c24433634507bfba32a7bb40fcd, type: 3}
+    m_Font: {fileID: 12800000, guid: 451ef71ed337e4ad5ae3f7926008ba6a, type: 3}
     m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
@@ -1968,6 +2020,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 66
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 88
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 0,4
@@ -2042,7 +2102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 171
+      value: 321
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2094,6 +2154,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 2,1
@@ -2168,7 +2232,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 558
+      value: 708
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2367,6 +2431,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 0,1
@@ -2441,7 +2509,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 558
+      value: 708
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2493,6 +2561,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 66
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 88
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 2,4
@@ -2567,7 +2643,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 171
+      value: 321
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2670,8 +2746,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 9a01e197021024ac994007fcc5b8acc8, type: 3}
-    m_FontSize: 60
+    m_Font: {fileID: 12800000, guid: ea39bdb8863b6434b9f1a60f8174d448, type: 3}
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 4
@@ -2704,6 +2780,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 116
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 6,3
@@ -2778,7 +2858,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 300
+      value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2830,6 +2910,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 4,1
@@ -2904,7 +2988,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 558
+      value: 708
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2956,6 +3040,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 88
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 2,5
@@ -3030,7 +3122,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 42
+      value: 192
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3133,7 +3225,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: aa378c24433634507bfba32a7bb40fcd, type: 3}
+    m_Font: {fileID: 12800000, guid: 451ef71ed337e4ad5ae3f7926008ba6a, type: 3}
     m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
@@ -3162,6 +3254,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 0,2
@@ -3236,7 +3336,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 429
+      value: 579
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3288,6 +3388,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 116
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 0,3
@@ -3362,7 +3466,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 300
+      value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3414,6 +3518,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 66
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 88
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 7,4
@@ -3488,7 +3600,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 171
+      value: 321
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3868,6 +3980,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 88
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 89
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 3,0
@@ -3942,7 +4062,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 687
+      value: 837
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4074,6 +4194,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 116
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 4,3
@@ -4148,7 +4272,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 300
+      value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4200,6 +4324,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 66
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 88
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 4,4
@@ -4274,7 +4406,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 171
+      value: 321
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4326,6 +4458,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 88
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 6,5
@@ -4400,7 +4540,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 42
+      value: 192
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4452,6 +4592,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 1,1
@@ -4526,7 +4670,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 558
+      value: 708
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4578,6 +4722,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 88
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 89
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 5,0
@@ -4652,7 +4804,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 687
+      value: 837
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4704,6 +4856,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 99
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 104
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 2,7
@@ -4778,7 +4938,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -216
+      value: -66
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -4830,6 +4990,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 99
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 104
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 1,7
@@ -4904,7 +5072,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -216
+      value: -66
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5007,7 +5175,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: aa378c24433634507bfba32a7bb40fcd, type: 3}
+    m_Font: {fileID: 12800000, guid: 451ef71ed337e4ad5ae3f7926008ba6a, type: 3}
     m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
@@ -5087,9 +5255,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: aa378c24433634507bfba32a7bb40fcd, type: 3}
-    m_FontSize: 90
-    m_FontStyle: 1
+    m_Font: {fileID: 12800000, guid: 38eb243bef44345f6a949ea63c4d42c0, type: 3}
+    m_FontSize: 80
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 4
     m_MaxSize: 90
@@ -5190,7 +5358,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 429
+      value: 579
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5242,6 +5410,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 116
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 2,3
@@ -5316,7 +5488,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 300
+      value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5444,6 +5616,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 88
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 89
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 1,0
@@ -5518,7 +5698,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 687
+      value: 837
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5570,6 +5750,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 1,6
@@ -5644,7 +5832,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -87
+      value: 63
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5796,6 +5984,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 99
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 104
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 5,7
@@ -5870,7 +6066,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -216
+      value: -66
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5973,7 +6169,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: aa378c24433634507bfba32a7bb40fcd, type: 3}
+    m_Font: {fileID: 12800000, guid: 451ef71ed337e4ad5ae3f7926008ba6a, type: 3}
     m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
@@ -6256,82 +6452,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1276454305
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1276454306}
-  - component: {fileID: 1276454308}
-  - component: {fileID: 1276454307}
-  m_Layer: 5
-  m_Name: Logo
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1276454306
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1276454305}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.00014, y: 1.00014, z: 1.00014}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 338111619}
-  m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 130, y: -390}
-  m_SizeDelta: {x: 372, y: 150}
-  m_Pivot: {x: 0, y: 0.5}
---- !u!114 &1276454307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1276454305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 612b728ac0d564ca6bd797f664bf4e4d, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &1276454308
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1276454305}
-  m_CullTransparentMesh: 1
 --- !u!1001 &1283171536
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6340,6 +6460,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 6,1
@@ -6414,7 +6538,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 558
+      value: 708
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6614,6 +6738,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 88
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 4,5
@@ -6688,7 +6820,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 42
+      value: 192
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6740,6 +6872,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 88
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 0,5
@@ -6814,7 +6954,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 42
+      value: 192
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7047,6 +7187,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 88
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 89
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 2,0
@@ -7121,7 +7269,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 687
+      value: 837
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7173,6 +7321,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 88
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 1,5
@@ -7247,7 +7403,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 42
+      value: 192
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7299,6 +7455,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 88
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 7,5
@@ -7373,7 +7537,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 42
+      value: 192
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7425,6 +7589,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 66
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 88
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 1,4
@@ -7499,7 +7671,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 171
+      value: 321
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7551,6 +7723,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 99
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 104
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 0,7
@@ -7625,7 +7805,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -216
+      value: -66
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7871,7 +8051,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 429
+      value: 579
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7951,7 +8131,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.9764706, g: 0.9764706, b: 0.9764706, a: 1}
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 1}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 1
@@ -8235,7 +8415,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 429
+      value: 579
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -8287,6 +8467,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 88
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 89
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 7,0
@@ -8361,7 +8549,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 687
+      value: 837
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -8464,9 +8652,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: aa378c24433634507bfba32a7bb40fcd, type: 3}
-    m_FontSize: 90
-    m_FontStyle: 1
+    m_Font: {fileID: 12800000, guid: 38eb243bef44345f6a949ea63c4d42c0, type: 3}
+    m_FontSize: 80
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
     m_MaxSize: 90
@@ -8493,6 +8681,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 0,6
@@ -8567,7 +8763,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -87
+      value: 63
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -8693,7 +8889,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 429
+      value: 579
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -8845,6 +9041,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 116
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 1,3
@@ -8919,7 +9119,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 300
+      value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -9108,7 +9308,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 429
+      value: 579
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -9160,6 +9360,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 99
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 104
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 6,7
@@ -9234,7 +9442,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -216
+      value: -66
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -9337,7 +9545,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: aa378c24433634507bfba32a7bb40fcd, type: 3}
+    m_Font: {fileID: 12800000, guid: 451ef71ed337e4ad5ae3f7926008ba6a, type: 3}
     m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
@@ -9440,7 +9648,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 429
+      value: 579
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -9492,6 +9700,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 7,6
@@ -9566,7 +9782,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -87
+      value: 63
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -9728,7 +9944,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: aa378c24433634507bfba32a7bb40fcd, type: 3}
+    m_Font: {fileID: 12800000, guid: 451ef71ed337e4ad5ae3f7926008ba6a, type: 3}
     m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
@@ -10079,7 +10295,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: aa378c24433634507bfba32a7bb40fcd, type: 3}
+    m_Font: {fileID: 12800000, guid: 451ef71ed337e4ad5ae3f7926008ba6a, type: 3}
     m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
@@ -10289,6 +10505,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 6,6
@@ -10363,7 +10587,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -87
+      value: 63
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -10415,6 +10639,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 88
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 89
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 6,0
@@ -10489,7 +10721,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 687
+      value: 837
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -10541,6 +10773,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 3,1
@@ -10615,7 +10851,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 558
+      value: 708
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -10667,6 +10903,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 116
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 7,3
@@ -10741,7 +10981,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 300
+      value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -10793,6 +11033,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 99
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 104
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 4,7
@@ -10867,7 +11115,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -216
+      value: -66
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -10919,6 +11167,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 116
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 3,3
@@ -10993,7 +11245,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 300
+      value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -11072,7 +11324,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -136.00006, y: -390}
+  m_AnchoredPosition: {x: -136, y: -270}
   m_SizeDelta: {x: -686, y: 100}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1868896999
@@ -11096,13 +11348,13 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 5ee9d301b7e9f4fb1b29ec4d46a37ffd, type: 3}
-    m_FontSize: 100
-    m_FontStyle: 1
+    m_Font: {fileID: 12800000, guid: 38eb243bef44345f6a949ea63c4d42c0, type: 3}
+    m_FontSize: 120
+    m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 120
-    m_Alignment: 2
+    m_Alignment: 5
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -11125,6 +11377,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 88
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 3,5
@@ -11199,7 +11459,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 42
+      value: 192
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -11251,6 +11511,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 88
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 89
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 4,0
@@ -11325,7 +11593,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 687
+      value: 837
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -11377,6 +11645,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 66
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 88
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 3,4
@@ -11451,7 +11727,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 171
+      value: 321
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -11503,6 +11779,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 66
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 88
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 6,4
@@ -11577,7 +11861,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 171
+      value: 321
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -11629,6 +11913,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 116
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 5,3
@@ -11703,7 +11991,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 300
+      value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -11755,6 +12043,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 88
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 5,5
@@ -11829,7 +12125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 42
+      value: 192
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -11955,7 +12251,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 429
+      value: 579
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -11999,6 +12295,86 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
   m_PrefabInstance: {fileID: 1977493843}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2007342338
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2007342339}
+  - component: {fileID: 2007342341}
+  - component: {fileID: 2007342340}
+  m_Layer: 5
+  m_Name: Logo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2007342339
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007342338}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.00014, y: 1.00014, z: 1.00014}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 338111619}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 130, y: -270}
+  m_SizeDelta: {x: 400, y: 100}
+  m_Pivot: {x: 0, y: 0.5}
+--- !u!114 &2007342340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007342338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 38eb243bef44345f6a949ea63c4d42c0, type: 3}
+    m_FontSize: 120
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 120
+    m_Alignment: 3
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: Griddle
+--- !u!222 &2007342341
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007342338}
+  m_CullTransparentMesh: 1
 --- !u!1 &2058280009
 GameObject:
   m_ObjectHideFlags: 0
@@ -12083,6 +12459,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 3,6
@@ -12157,7 +12541,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -87
+      value: 63
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -12357,6 +12741,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 7,1
@@ -12431,7 +12819,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 558
+      value: 708
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -12483,6 +12871,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1538487840}
     m_Modifications:
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: state
+      value: 88
+      objectReference: {fileID: 0}
+    - target: {fileID: 6590249178590308728, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
+      propertyPath: charOccupying
+      value: 89
+      objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308734, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_Name
       value: GridCell 0,0
@@ -12557,7 +12953,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 687
+      value: 837
       objectReference: {fileID: 0}
     - target: {fileID: 6590249178590308735, guid: 8410ef1c46158489aaacc6e33664f2da, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

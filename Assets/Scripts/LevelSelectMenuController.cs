@@ -9,17 +9,34 @@ public class LevelSelectMenuController : MonoBehaviour {
     [SerializeField] GameObject levelPack = null;
     [SerializeField] GameObject levelsCompleted = null;
 
-    void Start() {
+    void Awake() {
         int pack = GameManager.Instance.currentLevelPack + 5;
         levelPack.GetComponent<Text>().text = pack + "x" + pack + " PACK";
-        levelsCompleted.GetComponent<Text>().text = (GameManager.Instance.currentLevel - 1) + " / 1000"; 
 
-        SnapToLevel();
+        if (pack == 5) {
+            GameManager.Instance.currentLevel = GameManager.Instance.levelsCompleted_5x5 + 1;
+            levelsCompleted.GetComponent<Text>().text = (GameManager.Instance.levelsCompleted_5x5) + " / 1000";
+        } else if (pack == 6) {
+            GameManager.Instance.currentLevel = GameManager.Instance.levelsCompleted_6x6 + 1;
+            levelsCompleted.GetComponent<Text>().text = (GameManager.Instance.levelsCompleted_6x6) + " / 1000";
+        } else if (pack == 7) {
+            GameManager.Instance.currentLevel = GameManager.Instance.levelsCompleted_7x7 + 1;
+            levelsCompleted.GetComponent<Text>().text = (GameManager.Instance.levelsCompleted_7x7) + " / 1000";
+        } else if (pack == 8) {
+            GameManager.Instance.currentLevel = GameManager.Instance.levelsCompleted_8x8 + 1;
+            levelsCompleted.GetComponent<Text>().text = (GameManager.Instance.levelsCompleted_8x8) + " / 1000";
+        } else if (pack == 9) {
+            GameManager.Instance.currentLevel = GameManager.Instance.levelsCompleted_9x9 + 1;
+            levelsCompleted.GetComponent<Text>().text = (GameManager.Instance.levelsCompleted_9x9) + " / 1000";
+        }
+
+        levelsCompleted.GetComponent<Text>().text = (GameManager.Instance.currentLevel - 1) + " / 1000"; 
+        SnapToLevel(GameManager.Instance.levelsCompleted_5x5 + 1);
     }
 
-    public void SnapToLevel() {
+    public void SnapToLevel(int currentLevel) {
         
-        int level = GameManager.Instance.currentLevel + 1;
+        int level = currentLevel;
         string levelString = "Level Select Button ";
         Canvas.ForceUpdateCanvases();
         levelString += level;

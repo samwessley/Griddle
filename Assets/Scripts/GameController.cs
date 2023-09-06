@@ -16,9 +16,6 @@ public class GameController : MonoBehaviour {
     [SerializeField] GameObject moreHints = null;
     [SerializeField] GameObject moreSkips = null;
 
-    [SerializeField] GameObject star1 = null;
-    [SerializeField] GameObject star2 = null;
-    [SerializeField] GameObject star3 = null;
     [SerializeField] GameObject message = null;
 
     public GridCell[,] cellGrid;
@@ -301,7 +298,7 @@ public class GameController : MonoBehaviour {
     }
     
     private void SetLevelNumber(int level) {
-        levelNumber.GetComponent<Text>().text = "# " + level.ToString();
+        levelNumber.GetComponent<Text>().text = "#" + level.ToString();
         GameManager.Instance.currentLevel = level;
     }
 
@@ -471,23 +468,23 @@ public class GameController : MonoBehaviour {
         Vector2[] tileLocations;
         
         if (boardSize == 5) {
-            tileLocations = new Vector2[] { new Vector2(-310, -500), new Vector2(0, -500), new Vector2(310, -500),
-                                            new Vector2(-310, -770), new Vector2(0, -770), new Vector2(310, -770)};
+            tileLocations = new Vector2[] { new Vector2(-310, -370), new Vector2(0, -370), new Vector2(310, -370),
+                                            new Vector2(-310, -720), new Vector2(0, -720), new Vector2(310, -720)};
         } else if (boardSize == 6) {
-            tileLocations = new Vector2[] { new Vector2(-310, -380), new Vector2(0, -380), new Vector2(310, -380),
-                                            new Vector2(-310, -590), new Vector2(0, -590), new Vector2(310, -590),
-                                            new Vector2(-310, -800), new Vector2(0, -800), new Vector2(310, -800)};
+            tileLocations = new Vector2[] { new Vector2(-310, -310), new Vector2(0, -310), new Vector2(310, -310),
+                                            new Vector2(-310, -540), new Vector2(0, -540), new Vector2(310, -540),
+                                            new Vector2(-310, -770), new Vector2(0, -770), new Vector2(310, -770)};
         } else if (boardSize == 7) {
-            tileLocations = new Vector2[] { new Vector2(-405, -450), new Vector2(-135, -450), new Vector2(135, -450),
-                                            new Vector2(405, -450), new Vector2(-300, -670), new Vector2(0, -670),
-                                            new Vector2(300, -670)};
+            tileLocations = new Vector2[] { new Vector2(-405, -430), new Vector2(-135, -430), new Vector2(135, -430),
+                                            new Vector2(405, -430), new Vector2(-300, -700), new Vector2(0, -700),
+                                            new Vector2(300, -700)};
         } else if (boardSize == 8) {
-            tileLocations = new Vector2[] { new Vector2(-300, -400), new Vector2(0, -400), new Vector2(300, -400),
-                                            new Vector2(-300, -590), new Vector2(0, -590), new Vector2(300, -590),
-                                            new Vector2(-300, -780), new Vector2(0, -780), new Vector2(300, -780)};
+            tileLocations = new Vector2[] { new Vector2(-310, -340), new Vector2(0, -340), new Vector2(310, -340),
+                                            new Vector2(-310, -555), new Vector2(0, -555), new Vector2(310, -555),
+                                            new Vector2(-310, -770), new Vector2(0, -770), new Vector2(310, -770)};
         } else if (boardSize == 9) {
-            tileLocations = new Vector2[] { new Vector2(-405, -400), new Vector2(-135, -400), new Vector2(135, -400), new Vector2(405, -400),
-                                            new Vector2(-405, -590), new Vector2(-135, -590), new Vector2(135, -590), new Vector2(405, -590),
+            tileLocations = new Vector2[] { new Vector2(-405, -320), new Vector2(-135, -320), new Vector2(135, -320), new Vector2(405, -320),
+                                            new Vector2(-405, -550), new Vector2(-135, -550), new Vector2(135, -550), new Vector2(405, -550),
                                             new Vector2(-405, -780), new Vector2(-135, -780), new Vector2(135, -780), new Vector2(405, -780)};
         } else {
             tileLocations = new Vector2[] { new Vector2(-300, -523), new Vector2(0, -523), new Vector2(300, -523),

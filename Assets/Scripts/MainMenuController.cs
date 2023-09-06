@@ -140,7 +140,7 @@ public class MainMenuController : MonoBehaviour {
     }
 
     private void SetLevelNumber() {
-        levelNumber.GetComponent<Text>().text = "# " + (GameManager.Instance.levelsCompleted_6x6 + 1).ToString();
+        levelNumber.GetComponent<Text>().text = "#" + (GameManager.Instance.levelsCompleted_6x6 + 1).ToString();
     }
 
     public void LevelSetup() {

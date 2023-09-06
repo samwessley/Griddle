@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6e8f1e9aabfd1437d9b208540ddd6e14
+guid: 451ef71ed337e4ad5ae3f7926008ba6a
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Lexend
+  - SF Compact Rounded
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

@@ -6,22 +6,19 @@ using UnityEngine.UI;
 public class LevelSelectButtonScript : MonoBehaviour {
 
     public int level;
+    private GameObject levelNumber;
     private GameObject completed; 
-    private GameObject star1;
-    private GameObject star2;
-    private GameObject star3;
-    private GameObject star4;
-    private GameObject star5;
 
-    private void Awake() {
+    private void Start() {
         SetUpButton();
         SetCompletedStatus();
-        //SetStars();
 
         if (GameManager.Instance.currentLevel == level) {
             GetComponent<Image>().color = new Color(.95f, .95f, .95f, 1);
             completed.GetComponent<Text>().text = "PLAY";
             completed.GetComponent<Text>().color = Color.black;
+            completed.GetComponent<Text>().fontStyle = FontStyle.Bold;
+            levelNumber.GetComponent<Text>().fontStyle = FontStyle.Bold;
         }
     }
 
@@ -35,19 +32,8 @@ public class LevelSelectButtonScript : MonoBehaviour {
         }
     }
 
-    private void SetStars() {
-        star1 = transform.Find("Star 1").gameObject;
-        star2 = transform.Find("Star 2").gameObject;
-        star3 = transform.Find("Star 3").gameObject;
-        star4 = transform.Find("Star 4").gameObject;
-        star5 = transform.Find("Star 5").gameObject;
-
-        //if (GameManager.Instance.five_by_five_stars[GameManager.Instance.])
-        star1.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Star 2");
-    }
-
     public void SetUpButton() {
-
+        levelNumber = transform.Find("Label").gameObject;
         gameObject.GetComponentInChildren<Text>().text = "#" + level.ToString();
         gameObject.GetComponent<Button>().interactable = true;
 
