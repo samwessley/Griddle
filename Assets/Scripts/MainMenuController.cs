@@ -94,17 +94,17 @@ public class MainMenuController : MonoBehaviour {
         }
 
         // Play background music
-        SoundEngine.Instance.PlayMusic();
+        //SoundEngine.Instance.PlayMusic();
 
         SetUpSettingsToggles();
     }
 
     private void SetUpSettingsToggles() {
-        if (GameManager.Instance.musicOn) {
+        /*if (GameManager.Instance.musicOn) {
             musicToggle.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Toggle On");
         } else {
             musicToggle.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Toggle Off");
-        }
+        }*/
 
         if (GameManager.Instance.soundsOn) {
             soundsToggle.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Toggle On");

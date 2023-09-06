@@ -1914,11 +1914,6 @@ MonoBehaviour:
   levelsCompleted_7x7: 0
   levelsCompleted_8x8: 0
   levelsCompleted_9x9: 0
-  five_by_five_stars: 
-  six_by_six_stars: 
-  seven_by_seven_stars: 
-  eight_by_eight_stars: 
-  nine_by_nine_stars: 
   hintsRemaining: 0
   skipsRemaining: 0
   musicOn: 0
@@ -5242,7 +5237,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 195, y: 1150}
+  m_AnchoredPosition: {x: 195, y: 1000}
   m_SizeDelta: {x: 630, y: 3}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &806092166
@@ -7021,7 +7016,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 195, y: 510}
+  m_AnchoredPosition: {x: 195, y: 360}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1049365168
@@ -10181,7 +10176,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 190, y: 190}
+  m_AnchoredPosition: {x: 190, y: 40}
   m_SizeDelta: {x: 599, y: 485}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1517519981
@@ -12223,7 +12218,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 195, y: 870}
+  m_AnchoredPosition: {x: 195, y: 720}
   m_SizeDelta: {x: 630, y: 102}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1721123503
@@ -13369,7 +13364,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1863452720
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14866,7 +14861,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 195, y: 1020}
+  m_AnchoredPosition: {x: 195, y: 870}
   m_SizeDelta: {x: 630, y: 102}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &2081723066
@@ -15284,7 +15279,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 130, y: -270}
-  m_SizeDelta: {x: 400, y: 100}
+  m_SizeDelta: {x: 500, y: 100}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &2110163093
 MonoBehaviour:
