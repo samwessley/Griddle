@@ -1,0 +1,7 @@
+11110II
+0F00II0
+0FFFmmm
+00bb1mm
+hhV1011
+hhV0011
+110xxxx

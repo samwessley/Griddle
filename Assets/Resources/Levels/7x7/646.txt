@@ -1,0 +1,7 @@
+x0000DD
+x01b1D0
+x00b01B
+xrr1ssB
+0wrr1s1
+1w0r1ss
+0w00011

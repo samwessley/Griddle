@@ -60,7 +60,7 @@ public class SettingsButtonScript : MonoBehaviour {
         GameManager.Instance.hapticsOn = !GameManager.Instance.hapticsOn;
     }
 
-    public void ToggleMusic() {
+    /*public void ToggleMusic() {
         if (SoundEngine.Instance.musicPlaying) {
             //SoundEngine.Instance.audioSrc.Pause();
             SoundEngine.Instance.audioSrc.clip = null;
@@ -80,7 +80,7 @@ public class SettingsButtonScript : MonoBehaviour {
         }
 
         GameManager.Instance.SaveAsJSON();
-    }
+    }*/
 
     public void ToggleResetProgressModal() {
         settingsPanel.SetActive(false);

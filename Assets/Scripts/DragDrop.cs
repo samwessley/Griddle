@@ -199,7 +199,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         if (GameManager.Instance.hapticsOn) {
             Vibration.Init();
             #if UNITY_IOS
-            Vibration.VibrateIOS(ImpactFeedbackStyle.Light);
+            Vibration.VibrateIOS(ImpactFeedbackStyle.Medium);
             #endif
             #if UNITY_ANDROID
             Vibration.Vibrate(50);

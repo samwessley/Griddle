@@ -1,0 +1,7 @@
+1100110
+0A100hh
+G1111hh
+GGWWt00
+GrrWtt0
+rrytt10
+ryyy010

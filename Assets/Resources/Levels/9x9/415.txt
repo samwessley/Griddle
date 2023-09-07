@@ -1,0 +1,9 @@
+0====1111
+x100=0000
+x0010VV0y
+x0ccc11yy
+xd100qqqy
+1dd0i01q1
+101ii0AqG
+CCCi000GG
+110EEEE1G

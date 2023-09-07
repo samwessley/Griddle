@@ -1,0 +1,7 @@
+F0B1100
+F1B1110
+FFss1u0
+V0s1uuu
+Vss10u0
+0v0dd01
+1000d11

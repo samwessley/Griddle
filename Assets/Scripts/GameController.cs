@@ -10,7 +10,6 @@ public class GameController : MonoBehaviour {
     [SerializeField] GameObject levelNumber = null;
     [SerializeField] GameObject canvas = null;
     [SerializeField] GameObject levelCompletePopup = null;
-    [SerializeField] GameObject nextLevelButton = null;
     [SerializeField] GameObject hintsLabel = null;
     [SerializeField] GameObject skipsLabel = null;
     [SerializeField] GameObject moreHints = null;
@@ -73,18 +72,28 @@ public class GameController : MonoBehaviour {
 
             //Save 'completed' status for appropriate level and level pack to the save file
             if (GameManager.Instance.currentLevelPack == 0) {
+                if (GameManager.Instance.levelsCompleted_5x5 < GameManager.Instance.totalLevels)
                 GameManager.Instance.levelsCompleted_5x5 += 1;
             } else if (GameManager.Instance.currentLevelPack == 1) {
+                if (GameManager.Instance.levelsCompleted_6x6 < GameManager.Instance.totalLevels)
                 GameManager.Instance.levelsCompleted_6x6 += 1;
             } else if (GameManager.Instance.currentLevelPack == 2) {
+                if (GameManager.Instance.levelsCompleted_7x7 < GameManager.Instance.totalLevels)
                 GameManager.Instance.levelsCompleted_7x7 += 1;
             } else if (GameManager.Instance.currentLevelPack == 3) {
+                if (GameManager.Instance.levelsCompleted_8x8 < GameManager.Instance.totalLevels)
                 GameManager.Instance.levelsCompleted_8x8 += 1;
             } else if (GameManager.Instance.currentLevelPack == 4) {
+                if (GameManager.Instance.levelsCompleted_9x9 < GameManager.Instance.totalLevels)
                 GameManager.Instance.levelsCompleted_9x9 += 1;
             }
 
             GameManager.Instance.SaveAsJSON();
+
+            // Disable movement for all tiles on board
+            foreach(GameObject tile in tiles) {
+                tile.GetComponent<DragDrop>().enabled = false;
+            }
 
             // Play level complete sound
             if (GameManager.Instance.soundsOn)
@@ -97,14 +106,13 @@ public class GameController : MonoBehaviour {
         SetStarsAndMessage();
 
         LeanTween.scale(message, Vector2.zero, 0);
-        LeanTween.rotateZ(message, -25f,0);
 
         yield return new WaitForSeconds(0.25f);
 
         levelCompletePopup.SetActive(true);
 
         LeanTween.scale(message, new Vector2(1,1), 0.08f);
-        LeanTween.rotateZ(message,0,0.08f);
+        LeanTween.rotateZ(message,10f,0.08f);
 
         // Vibrate
         if (GameManager.Instance.hapticsOn) {
@@ -121,69 +129,13 @@ public class GameController : MonoBehaviour {
     private void SetStarsAndMessage() {
 
         System.Random random = new System.Random();
-        int randomInt = random.Next(1,9);
-
-        switch(randomInt) {
-            
-            case 1: {
-            message.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Nice!");
-            RectTransform message_rt = message.GetComponent<RectTransform>();
-            message_rt.sizeDelta = new Vector2 (328, 157);
-            break;
-            }
-
-            case 2: {
-            message.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Great!");
-            RectTransform message_rt = message.GetComponent<RectTransform>();
-            message_rt.sizeDelta = new Vector2 (412, 161);
-            break;
-            }
-
-            case 3: {
-            message.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Perfect!");
-            RectTransform message_rt = message.GetComponent<RectTransform>();
-            message_rt.sizeDelta = new Vector2 (505, 175);
-            break;
-            }
-
-            case 4: {
-            message.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Excellent!");
-            RectTransform message_rt = message.GetComponent<RectTransform>();
-            message_rt.sizeDelta = new Vector2 (616, 187);
-            break;
-            }
-
-            case 5: {
-            message.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Fabulous!");
-            RectTransform message_rt = message.GetComponent<RectTransform>();
-            message_rt.sizeDelta = new Vector2 (635, 189);
-            break;
-            }
-
-            case 6: {
-            message.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Outstanding!");
-            RectTransform message_rt = message.GetComponent<RectTransform>();
-            message_rt.sizeDelta = new Vector2 (876, 246);
-            break;
-            }
-
-            case 7: {
-            message.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Wonderful!");
-            RectTransform message_rt = message.GetComponent<RectTransform>();
-            message_rt.sizeDelta = new Vector2 (729, 199);
-            break;
-            }
-
-            case 8: {
-            message.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Sensational!");
-            RectTransform message_rt = message.GetComponent<RectTransform>();
-            message_rt.sizeDelta = new Vector2 (818, 209);
-            break;
-            }
-
-            default:
-                break;
-        }
+        string[] phrases = {"Great!", "Perfect!", "Excellent!", "Fabulous!", "Outstanding!", "Wonderful!", "Sensational!", "Amazing!",
+                            "Astonishing!", "Stunning!", "Spectacular!", "Breathtaking!", "Fantastic!", "Incredible!", "Terrific!",
+                            "Superb!", "Dazzling!", "Tremendous!", "Awesome!", "Brilliant!", "Impressive!", "Remarkable!", "Cool!",
+                            "Exceptional!", "Marvelous!", "Legendary!", "Phenomenal!", "Wondrous!", "Smashing!", "Sweet!", "Extraordinary!",
+                            "Magnificent!"};
+        int randomInt = random.Next(0,phrases.Length);
+        message.GetComponent<Text>().text = phrases[randomInt];
     }
 
     private string GetFilePath(string fileName) {

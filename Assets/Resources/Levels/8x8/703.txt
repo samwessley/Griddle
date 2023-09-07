@@ -1,0 +1,8 @@
+0s100101
+0sss1000
+p11s1x01
+ppp10x00
+p00HHx11
+0m1HHx10
+mm1VVA0D
+mmv000DD

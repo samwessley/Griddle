@@ -16,22 +16,49 @@ public class LevelSelectMenuController : MonoBehaviour {
         if (pack == 5) {
             GameManager.Instance.currentLevel = GameManager.Instance.levelsCompleted_5x5 + 1;
             levelsCompleted.GetComponent<Text>().text = (GameManager.Instance.levelsCompleted_5x5) + " / 1000";
+            
+            if (GameManager.Instance.levelsCompleted_5x5 < GameManager.Instance.totalLevels) {
+                SnapToLevel(GameManager.Instance.levelsCompleted_5x5 + 1);
+            } else {
+                SnapToLevel(GameManager.Instance.levelsCompleted_5x5);
+            }
         } else if (pack == 6) {
             GameManager.Instance.currentLevel = GameManager.Instance.levelsCompleted_6x6 + 1;
             levelsCompleted.GetComponent<Text>().text = (GameManager.Instance.levelsCompleted_6x6) + " / 1000";
+
+            if (GameManager.Instance.levelsCompleted_6x6 < GameManager.Instance.totalLevels) {
+                SnapToLevel(GameManager.Instance.levelsCompleted_6x6 + 1);
+            } else {
+                SnapToLevel(GameManager.Instance.levelsCompleted_6x6);
+            }
         } else if (pack == 7) {
             GameManager.Instance.currentLevel = GameManager.Instance.levelsCompleted_7x7 + 1;
             levelsCompleted.GetComponent<Text>().text = (GameManager.Instance.levelsCompleted_7x7) + " / 1000";
+
+            if (GameManager.Instance.levelsCompleted_7x7 < GameManager.Instance.totalLevels) {
+                SnapToLevel(GameManager.Instance.levelsCompleted_7x7 + 1);
+            } else {
+                SnapToLevel(GameManager.Instance.levelsCompleted_7x7);
+            }
         } else if (pack == 8) {
             GameManager.Instance.currentLevel = GameManager.Instance.levelsCompleted_8x8 + 1;
             levelsCompleted.GetComponent<Text>().text = (GameManager.Instance.levelsCompleted_8x8) + " / 1000";
+
+            if (GameManager.Instance.levelsCompleted_8x8 < GameManager.Instance.totalLevels) {
+                SnapToLevel(GameManager.Instance.levelsCompleted_8x8 + 1);
+            } else {
+                SnapToLevel(GameManager.Instance.levelsCompleted_8x8);
+            }
         } else if (pack == 9) {
             GameManager.Instance.currentLevel = GameManager.Instance.levelsCompleted_9x9 + 1;
             levelsCompleted.GetComponent<Text>().text = (GameManager.Instance.levelsCompleted_9x9) + " / 1000";
-        }
 
-        levelsCompleted.GetComponent<Text>().text = (GameManager.Instance.currentLevel - 1) + " / 1000"; 
-        SnapToLevel(GameManager.Instance.levelsCompleted_5x5 + 1);
+            if (GameManager.Instance.levelsCompleted_9x9 < GameManager.Instance.totalLevels) {
+                SnapToLevel(GameManager.Instance.levelsCompleted_9x9 + 1);
+            } else {
+                SnapToLevel(GameManager.Instance.levelsCompleted_9x9);
+            }
+        }
     }
 
     public void SnapToLevel(int currentLevel) {
@@ -45,7 +72,7 @@ public class LevelSelectMenuController : MonoBehaviour {
 
         var contentPos = (Vector2)scrollRect.transform.InverseTransformPoint( scrollRect.GetComponent<ScrollRect>().content.position );
         var childPos = (Vector2)scrollRect.transform.InverseTransformPoint( child.transform.position );
-        var margin = new Vector2(0,200);
+        var margin = new Vector2(0,100);
         var endPos = contentPos - childPos - margin;
         // If no horizontal scroll, then don't change contentPos.x
         if( !scrollRect.GetComponent<ScrollRect>().horizontal ) endPos.x = contentPos.x;

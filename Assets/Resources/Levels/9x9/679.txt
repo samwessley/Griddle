@@ -1,0 +1,9 @@
+1VVCCC=11
+0HH====0y
+0HH0010yy
+000Iwww1y
+F1IIu1111
+F1Iuuu111
+FFi0u00nn
+0ii11ll0n
+1i1lll0nn

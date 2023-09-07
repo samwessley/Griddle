@@ -36,7 +36,13 @@ public class MainMenuController : MonoBehaviour {
 
     private void Awake() {
         GameManager.Instance.currentLevelPack = 1;
-        GameManager.Instance.currentLevel = GameManager.Instance.levelsCompleted_6x6 + 1;
+
+        if (GameManager.Instance.levelsCompleted_6x6 < GameManager.Instance.totalLevels) {
+            GameManager.Instance.currentLevel = GameManager.Instance.levelsCompleted_6x6 + 1;
+        } else {
+            GameManager.Instance.currentLevel = GameManager.Instance.levelsCompleted_6x6;
+        }
+
         settingsBackground.SetActive(false);
         settingsPanel.SetActive(false);
     }
@@ -57,37 +63,66 @@ public class MainMenuController : MonoBehaviour {
             removeAdsButton.SetActive(true);
         }
 
-        levelNumberLabel5x5.GetComponent<Text>().text = "#" + (GameManager.Instance.levelsCompleted_5x5 + 1);
-        levelNumberLabel6x6.GetComponent<Text>().text = "#" + (GameManager.Instance.levelsCompleted_6x6 + 1);
-        levelNumberLabel7x7.GetComponent<Text>().text = "#" + (GameManager.Instance.levelsCompleted_7x7 + 1);
-        levelNumberLabel8x8.GetComponent<Text>().text = "#" + (GameManager.Instance.levelsCompleted_8x8 + 1);
-        levelNumberLabel9x9.GetComponent<Text>().text = "#" + (GameManager.Instance.levelsCompleted_9x9 + 1);
+        // Set 5x5 level number
+        if (GameManager.Instance.levelsCompleted_5x5 < GameManager.Instance.totalLevels) {
+            levelNumberLabel5x5.GetComponent<Text>().text = "#" + (GameManager.Instance.levelsCompleted_5x5 + 1);
+        } else {
+            levelNumberLabel5x5.GetComponent<Text>().text = "#" + (GameManager.Instance.levelsCompleted_5x5);
+        }
+
+        // Set 6x6 level number
+        if (GameManager.Instance.levelsCompleted_6x6 < GameManager.Instance.totalLevels) {
+            levelNumberLabel6x6.GetComponent<Text>().text = "#" + (GameManager.Instance.levelsCompleted_6x6 + 1);
+        } else {
+            levelNumberLabel6x6.GetComponent<Text>().text = "#" + (GameManager.Instance.levelsCompleted_6x6);
+        }
+
+        // Set 7x7 level number
+        if (GameManager.Instance.levelsCompleted_7x7 < GameManager.Instance.totalLevels) {
+            levelNumberLabel7x7.GetComponent<Text>().text = "#" + (GameManager.Instance.levelsCompleted_7x7 + 1);
+        } else {
+            levelNumberLabel7x7.GetComponent<Text>().text = "#" + (GameManager.Instance.levelsCompleted_7x7);
+        }
+
+        // Set 8x8 level number
+        if (GameManager.Instance.levelsCompleted_8x8 < GameManager.Instance.totalLevels) {
+            levelNumberLabel8x8.GetComponent<Text>().text = "#" + (GameManager.Instance.levelsCompleted_8x8 + 1);
+        } else {
+            levelNumberLabel8x8.GetComponent<Text>().text = "#" + (GameManager.Instance.levelsCompleted_8x8);
+        }
+
+        // Set 9x9 level number
+        if (GameManager.Instance.levelsCompleted_9x9 < GameManager.Instance.totalLevels) {
+            levelNumberLabel9x9.GetComponent<Text>().text = "#" + (GameManager.Instance.levelsCompleted_9x9 + 1);
+        } else {
+            levelNumberLabel9x9.GetComponent<Text>().text = "#" + (GameManager.Instance.levelsCompleted_9x9);
+        }
     
-        if (GameManager.Instance.levelsCompleted_5x5 == 200) {
+        if (GameManager.Instance.levelsCompleted_5x5 == GameManager.Instance.totalLevels) {
             check5x5.SetActive(true);
         } else {
             check5x5.SetActive(false);
         }
 
-        if (GameManager.Instance.levelsCompleted_6x6 == 200) {
+        if (GameManager.Instance.levelsCompleted_6x6 == GameManager.Instance.totalLevels) {
             check6x6.SetActive(true);
         } else {
             check6x6.SetActive(false);
         }
 
-        if (GameManager.Instance.levelsCompleted_7x7 == 200) {
+        if (GameManager.Instance.levelsCompleted_7x7 == GameManager.Instance.totalLevels) {
             check7x7.SetActive(true);
         } else {
             check7x7.SetActive(false);
         }
 
-        if (GameManager.Instance.levelsCompleted_8x8 == 200) {
+        if (GameManager.Instance.levelsCompleted_8x8 == GameManager.Instance.totalLevels) {
             check8x8.SetActive(true);
         } else {
             check8x8.SetActive(false);
         }
 
-        if (GameManager.Instance.levelsCompleted_9x9 == 200) {
+        if (GameManager.Instance.levelsCompleted_9x9 == GameManager.Instance.totalLevels) {
             check9x9.SetActive(true);
         } else {
             check9x9.SetActive(false);
@@ -140,7 +175,11 @@ public class MainMenuController : MonoBehaviour {
     }
 
     private void SetLevelNumber() {
-        levelNumber.GetComponent<Text>().text = "#" + (GameManager.Instance.levelsCompleted_6x6 + 1).ToString();
+        if (GameManager.Instance.levelsCompleted_6x6 < GameManager.Instance.totalLevels) {
+            levelNumber.GetComponent<Text>().text = "#" + (GameManager.Instance.levelsCompleted_6x6 + 1).ToString(); 
+        } else {
+            levelNumber.GetComponent<Text>().text = "#" + GameManager.Instance.levelsCompleted_6x6.ToString();  
+        }
     }
 
     public void LevelSetup() {

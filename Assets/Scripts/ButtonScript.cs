@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ButtonScript : MonoBehaviour {
 
@@ -132,6 +133,12 @@ public class ButtonScript : MonoBehaviour {
                 //tileHinted.GetComponent<DragDrop>().isOnBoard = false;
             }
 
+            // Reset all grid cells to their default color
+            foreach (GameObject gridCell in gameController.gridCells) {
+                if (!gridCell.GetComponent<GridCell>().isBarrier && !gridCell.GetComponent<GridCell>().isOccupied)
+                gridCell.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Grid Cell");
+            }
+
             gameController.CheckForLevelComplete();
             Debug.Log(gameController.tilesRemaining);
             GameManager.Instance.hintsRemaining -= 1;
@@ -146,7 +153,7 @@ public class ButtonScript : MonoBehaviour {
             GameManager.Instance.skipsRemaining -= 1;
 
             // Increment current level
-            if (GameManager.Instance.currentLevel < 200) {
+            if (GameManager.Instance.currentLevel < GameManager.Instance.totalLevels) {
                 GameManager.Instance.currentLevel += 1;
 
                 // Increment the levels completed for the appropriate level pack
