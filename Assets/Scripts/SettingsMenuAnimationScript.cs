@@ -53,8 +53,8 @@ public class SettingsMenuAnimationScript : MonoBehaviour {
 
     IEnumerator SlideSettingsPanelIn() {
         settingsPanel.SetActive(true);
-        LeanTween.moveX(settingsPanel, settingsPanelXPosition + .25f, 0.12f);
-        yield return new WaitForSeconds(.12f);
+        LeanTween.moveX(settingsPanel, settingsPanelXPosition + 0f, 0.08f);
+        yield return new WaitForSeconds(.08f);
         LeanTween.moveX(settingsPanel, settingsPanelXPosition, 0.08f);
         settingsButton.GetComponent<Button>().interactable = true;
     }
