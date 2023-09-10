@@ -8,10 +8,12 @@ public class LevelSelectMenuController : MonoBehaviour {
     [SerializeField] GameObject scrollRect = null;
     [SerializeField] GameObject levelPack = null;
     [SerializeField] GameObject levelsCompleted = null;
+    [SerializeField] GameObject buttons = null;
 
     void Awake() {
+        CreateButtons();
         int pack = GameManager.Instance.currentLevelPack + 5;
-        levelPack.GetComponent<Text>().text = pack + "x" + pack + " PACK";
+        levelPack.GetComponent<Text>().text = pack + "x" + pack + " Pack";
 
         if (pack == 5) {
             GameManager.Instance.currentLevel = GameManager.Instance.levelsCompleted_5x5 + 1;
@@ -61,7 +63,7 @@ public class LevelSelectMenuController : MonoBehaviour {
         }
     }
 
-    public void SnapToLevel(int currentLevel) {
+    private void SnapToLevel(int currentLevel) {
         
         int level = currentLevel;
         string levelString = "Level Select Button ";
@@ -79,5 +81,18 @@ public class LevelSelectMenuController : MonoBehaviour {
         // If no vertical scroll, then don't change contentPos.y
         if( !scrollRect.GetComponent<ScrollRect>().vertical ) endPos.y = contentPos.y;
         scrollRect.GetComponent<ScrollRect>().content.anchoredPosition = endPos;
+    }
+
+    private void CreateButtons() {
+
+        for (int i = 0; i < GameManager.Instance.totalLevels; i++) {
+            GameObject tile = Instantiate(Resources.Load<GameObject>("Prefabs/Level Select Button"));
+            tile.name = "Level Select Button " + (i + 1);
+            tile.GetComponent<LevelSelectButtonScript>().level = (i+1);
+            tile.transform.SetParent(buttons.transform);
+            tile.transform.localScale = new Vector3(1,1,1);
+        }
+
+        LayoutRebuilder.ForceRebuildLayoutImmediate(buttons.GetComponent<RectTransform>());
     }
 }

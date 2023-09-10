@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour {
     [SerializeField] GameObject levelNumber = null;
     [SerializeField] GameObject canvas = null;
     [SerializeField] GameObject levelCompletePopup = null;
+    [SerializeField] GameObject nextLevelButton = null;
     [SerializeField] GameObject hintsLabel = null;
     [SerializeField] GameObject skipsLabel = null;
     [SerializeField] GameObject moreHints = null;
@@ -106,13 +107,18 @@ public class GameController : MonoBehaviour {
         SetStarsAndMessage();
 
         LeanTween.scale(message, Vector2.zero, 0);
+        LeanTween.scale(nextLevelButton, Vector2.zero, 0);
 
         yield return new WaitForSeconds(0.25f);
 
         levelCompletePopup.SetActive(true);
 
+        nextLevelButton.SetActive(true);
+
         LeanTween.scale(message, new Vector2(1,1), 0.08f);
         LeanTween.rotateZ(message,10f,0.08f);
+
+        LeanTween.scale(nextLevelButton, new Vector2(1,1), 0);
 
         // Vibrate
         if (GameManager.Instance.hapticsOn) {
@@ -200,13 +206,51 @@ public class GameController : MonoBehaviour {
             tiles[i].GetComponent<Tile>().tileColor = GameManager.Instance.tileColorDictionary[c];
             tiles[i].GetComponent<Tile>().tileCode = c;
             tiles[i].GetComponent<Tile>().GetTileCells();
-
             tiles[i].transform.SetParent(canvas.transform);
             tiles[i].GetComponent<RectTransform>().anchoredPosition = tileLocations[i];
 
             i++;
         }
+
         SetTileOrientations(level);
+
+        /*i = 0;
+        foreach (char c in distinctChars) {
+            bool tilePlaced = false;
+            for (int j = 0; j < 100; j++) {
+
+                float randomX = Random.Range(-310f, 510f);
+                float randomY = Random.Range(-770f, 0f);
+                Vector2 randomLocation = new Vector2(randomX, randomY);
+                tiles[i].GetComponent<RectTransform>().anchoredPosition = randomLocation;
+
+                    
+                RaycastHit2D[] hits = Physics2D.RaycastAll(tiles[i].transform.position, Vector2.zero);
+
+                if (hits == null || hits.Length == 0) {
+                    tilePlaced = true;
+                    Debug.Log("No hits");
+                } else {
+                    foreach (RaycastHit2D hit in hits) {
+                        if (hit.collider != null && hit.collider.gameObject.GetComponent<TileCell>() != null && hit.collider.transform.parent.gameObject != tiles[i].transform.parent.gameObject) {
+                            tilePlaced = false;
+                            Debug.Log("Hit a tile");
+                        } else {
+                            tilePlaced = true;
+                            Debug.Log("Didn't hit a tile");
+                        }
+                    }
+                }
+            }
+
+            if (!tilePlaced) {
+                tiles[i].GetComponent<RectTransform>().anchoredPosition = tileLocations[i];
+                Debug.Log("Couldn't place tile");
+            }
+            //tiles[i].GetComponent<RectTransform>().anchoredPosition = tileLocations[i];
+
+            i++;
+        }*/
     }
 
     private void SetTileOrientations(int level) {
@@ -220,14 +264,14 @@ public class GameController : MonoBehaviour {
         for (int i = 0; i < text.Length; i++) {
             for (int j = 0; j < tiles.Length; j++) {
                 Tile tile = tiles[j].GetComponent<Tile>();
-                Debug.Log(tile.tileCode + ", " + text[i]);
+                //Debug.Log(tile.tileCode + ", " + text[i]);
                 if (tile.tileCode == text[i]) {
                     if ((int)(text[i + 2] - '0') == 1) {
                         tile.Reflect();
-                        Debug.Log("tile reflected");
+                        //Debug.Log("tile reflected");
                     }
                     RotateTileNTimes(tile, (int)(text[i + 1] - '0'));
-                    Debug.Log("tile rotated " + (int)(text[i + 1] - '0') + "times");
+                    //Debug.Log("tile rotated " + (int)(text[i + 1] - '0') + "times");
                 }
             }
         }
@@ -250,7 +294,7 @@ public class GameController : MonoBehaviour {
     }
     
     private void SetLevelNumber(int level) {
-        levelNumber.GetComponent<Text>().text = "#" + level.ToString();
+        levelNumber.GetComponent<Text>().text = level.ToString();
         GameManager.Instance.currentLevel = level;
     }
 
@@ -423,17 +467,17 @@ public class GameController : MonoBehaviour {
             tileLocations = new Vector2[] { new Vector2(-310, -370), new Vector2(0, -370), new Vector2(310, -370),
                                             new Vector2(-310, -720), new Vector2(0, -720), new Vector2(310, -720)};
         } else if (boardSize == 6) {
-            tileLocations = new Vector2[] { new Vector2(-310, -310), new Vector2(0, -310), new Vector2(310, -310),
-                                            new Vector2(-310, -540), new Vector2(0, -540), new Vector2(310, -540),
-                                            new Vector2(-310, -770), new Vector2(0, -770), new Vector2(310, -770)};
+            tileLocations = new Vector2[] { new Vector2(-390, -310), new Vector2(-80, -310), new Vector2(230, -310),
+                                            new Vector2(-230, -540), new Vector2(80, -540), new Vector2(390, -540),
+                                            new Vector2(-390, -770), new Vector2(-80, -770), new Vector2(230, -770)};
         } else if (boardSize == 7) {
-            tileLocations = new Vector2[] { new Vector2(-405, -430), new Vector2(-135, -430), new Vector2(135, -430),
-                                            new Vector2(405, -430), new Vector2(-300, -700), new Vector2(0, -700),
-                                            new Vector2(300, -700)};
+            tileLocations = new Vector2[] { new Vector2(-405, -400), new Vector2(-135, -400), new Vector2(135, -400),
+                                            new Vector2(405, -400), new Vector2(-300, -720), new Vector2(0, -720),
+                                            new Vector2(300, -720)};
         } else if (boardSize == 8) {
-            tileLocations = new Vector2[] { new Vector2(-310, -340), new Vector2(0, -340), new Vector2(310, -340),
-                                            new Vector2(-310, -555), new Vector2(0, -555), new Vector2(310, -555),
-                                            new Vector2(-310, -770), new Vector2(0, -770), new Vector2(310, -770)};
+            tileLocations = new Vector2[] { new Vector2(-390, -310), new Vector2(-80, -310), new Vector2(230, -310),
+                                            new Vector2(-230, -540), new Vector2(80, -540), new Vector2(390, -540),
+                                            new Vector2(-390, -770), new Vector2(-80, -770), new Vector2(230, -770)};
         } else if (boardSize == 9) {
             tileLocations = new Vector2[] { new Vector2(-405, -320), new Vector2(-135, -320), new Vector2(135, -320), new Vector2(405, -320),
                                             new Vector2(-405, -550), new Vector2(-135, -550), new Vector2(135, -550), new Vector2(405, -550),

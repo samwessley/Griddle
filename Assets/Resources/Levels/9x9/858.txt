@@ -1,9 +1,0 @@
-1w0=0kk10
-0w1=10k00
-1w0=10k01
-V1==11k00
-Vjjjjj0e1
-ov1NNN0e1
-oo0N1N1e0
-oBB0100eA
-o11JJJJJ1

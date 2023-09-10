@@ -16,7 +16,7 @@ public class LevelSelectButtonScript : MonoBehaviour {
         if (GameManager.Instance.currentLevel == level) {
             GetComponent<Image>().color = new Color(.95f, .95f, .95f, 1);
             completed.GetComponent<Text>().text = "PLAY";
-            completed.GetComponent<Text>().color = Color.black;
+            completed.GetComponent<Text>().color = new Color(0, .22f, .267f, 1);
             completed.GetComponent<Text>().fontStyle = FontStyle.Bold;
             levelNumber.GetComponent<Text>().fontStyle = FontStyle.Bold;
         }
@@ -34,7 +34,7 @@ public class LevelSelectButtonScript : MonoBehaviour {
 
     public void SetUpButton() {
         levelNumber = transform.Find("Label").gameObject;
-        gameObject.GetComponentInChildren<Text>().text = "#" + level.ToString();
+        gameObject.GetComponentInChildren<Text>().text = level.ToString();
         gameObject.GetComponent<Button>().interactable = true;
 
         if (GameManager.Instance.currentLevel < level)

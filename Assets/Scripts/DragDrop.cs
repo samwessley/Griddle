@@ -27,9 +27,9 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         if (gameController.boardSize == 5) {
             SetScale(0.8f);
         } else if (gameController.boardSize == 6) {
-            SetScale(0.6f);
+            SetScale(0.7f);
         } else {
-            SetScale(0.5f);
+            SetScale(0.7f);
         }
     }
 
@@ -87,12 +87,18 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
                 SetHoveringPositionScale();
             }*/
         }
+
+        // Reset all grid cells to their default color
+        foreach (GameObject gridCell in gameController.gridCells) {
+            if (!gridCell.GetComponent<GridCell>().isBarrier && !gridCell.GetComponent<GridCell>().isOccupied)
+            gridCell.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Grid Cell");
+        }
     }
 
     public void OnDrag(PointerEventData eventData) {
         // We only want to drag the tile if it was on the board or highlighted when tapped
         Vector2 vector = (eventData.delta / canvas.scaleFactor);
-        vector *= 1.2f;
+        vector *= 1.1f;
         rectTransform.anchoredPosition += vector;
 
         AddShadowToGrid();
@@ -257,9 +263,9 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         if (gameController.boardSize == 5) {
             SetScale(0.8f);
         } else if (gameController.boardSize == 6) {
-            SetScale(0.6f);
+            SetScale(0.7f);
         } else {
-            SetScale(0.5f);
+            SetScale(0.7f);
         }
         
         touchCatcher.GetComponent<CanvasGroup>().blocksRaycasts = false;

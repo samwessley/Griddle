@@ -61,7 +61,6 @@ public class GameManager: MonoBehaviour {
         levelsCompleted_6x6 = 0;
         levelsCompleted_7x7 = 0;
         levelsCompleted_8x8 = 0;
-        levelsCompleted_9x9 = 0;
 
         Load();
         CreateTileDictionary();

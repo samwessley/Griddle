@@ -10,15 +10,17 @@ public class MainMenuController : MonoBehaviour {
     [SerializeField] GameObject levelNumberLabel6x6 = null;
     [SerializeField] GameObject levelNumberLabel7x7 = null;
     [SerializeField] GameObject levelNumberLabel8x8 = null;
-    [SerializeField] GameObject levelNumberLabel9x9 = null;
+
+    [SerializeField] GameObject levelNumberContainer5x5 = null;
+    [SerializeField] GameObject levelNumberContainer6x6 = null;
+    [SerializeField] GameObject levelNumberContainer7x7 = null;
+    [SerializeField] GameObject levelNumberContainer8x8 = null;
 
     [SerializeField] GameObject check5x5 = null;
     [SerializeField] GameObject check6x6 = null;
     [SerializeField] GameObject check7x7 = null;
     [SerializeField] GameObject check8x8 = null;
-    [SerializeField] GameObject check9x9 = null;
 
-    [SerializeField] GameObject musicToggle = null;
     [SerializeField] GameObject soundsToggle = null;
     [SerializeField] GameObject hapticsToggle = null;
 
@@ -26,121 +28,91 @@ public class MainMenuController : MonoBehaviour {
     [SerializeField] GameObject settingsBackground = null;
     [SerializeField] GameObject settingsPanel = null;
 
-    [SerializeField] GameObject playText = null;
-
-    [SerializeField] GameObject levelNumber = null;
-
-    public GridCell[,] cellGrid;
-
-    private bool musicPlaying;
-
     private void Awake() {
-        GameManager.Instance.currentLevelPack = 1;
-
-        if (GameManager.Instance.levelsCompleted_6x6 < GameManager.Instance.totalLevels) {
-            GameManager.Instance.currentLevel = GameManager.Instance.levelsCompleted_6x6 + 1;
-        } else {
-            GameManager.Instance.currentLevel = GameManager.Instance.levelsCompleted_6x6;
-        }
-
         settingsBackground.SetActive(false);
         settingsPanel.SetActive(false);
     }
 
     private void Start() {
-        PopulateCellGrid();
-        LevelSetup();
-        SetLevelNumber();
+        HideShowAdsButton();
+        SetUpSettingsToggles();
+        SetLevelNumbers();
+    }
 
-        if (GameManager.Instance.currentLevel > 1) {
-            playText.GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("Sprites/ContinueText");
-            playText.GetComponentInChildren<Image>().SetNativeSize();
-        }
-
+    private void HideShowAdsButton() {
+        // Hide/show ads button according to ads removed status
         if (GameManager.Instance.adsRemoved) {
             removeAdsButton.SetActive(false);
         } else {
             removeAdsButton.SetActive(true);
         }
+    }
 
+    private void SetLevelNumbers() {
         // Set 5x5 level number
         if (GameManager.Instance.levelsCompleted_5x5 < GameManager.Instance.totalLevels) {
-            levelNumberLabel5x5.GetComponent<Text>().text = "#" + (GameManager.Instance.levelsCompleted_5x5 + 1);
+            levelNumberLabel5x5.GetComponent<Text>().text = (GameManager.Instance.levelsCompleted_5x5 + 1).ToString();
         } else {
-            levelNumberLabel5x5.GetComponent<Text>().text = "#" + (GameManager.Instance.levelsCompleted_5x5);
+            levelNumberLabel5x5.GetComponent<Text>().text = (GameManager.Instance.levelsCompleted_5x5).ToString();
         }
 
         // Set 6x6 level number
         if (GameManager.Instance.levelsCompleted_6x6 < GameManager.Instance.totalLevels) {
-            levelNumberLabel6x6.GetComponent<Text>().text = "#" + (GameManager.Instance.levelsCompleted_6x6 + 1);
+            levelNumberLabel6x6.GetComponent<Text>().text = (GameManager.Instance.levelsCompleted_6x6 + 1).ToString();
         } else {
-            levelNumberLabel6x6.GetComponent<Text>().text = "#" + (GameManager.Instance.levelsCompleted_6x6);
+            levelNumberLabel6x6.GetComponent<Text>().text = (GameManager.Instance.levelsCompleted_6x6).ToString();
         }
 
         // Set 7x7 level number
         if (GameManager.Instance.levelsCompleted_7x7 < GameManager.Instance.totalLevels) {
-            levelNumberLabel7x7.GetComponent<Text>().text = "#" + (GameManager.Instance.levelsCompleted_7x7 + 1);
+            levelNumberLabel7x7.GetComponent<Text>().text = (GameManager.Instance.levelsCompleted_7x7 + 1).ToString();
         } else {
-            levelNumberLabel7x7.GetComponent<Text>().text = "#" + (GameManager.Instance.levelsCompleted_7x7);
+            levelNumberLabel7x7.GetComponent<Text>().text = (GameManager.Instance.levelsCompleted_7x7).ToString();
         }
 
         // Set 8x8 level number
         if (GameManager.Instance.levelsCompleted_8x8 < GameManager.Instance.totalLevels) {
-            levelNumberLabel8x8.GetComponent<Text>().text = "#" + (GameManager.Instance.levelsCompleted_8x8 + 1);
+            levelNumberLabel8x8.GetComponent<Text>().text = (GameManager.Instance.levelsCompleted_8x8 + 1).ToString();
         } else {
-            levelNumberLabel8x8.GetComponent<Text>().text = "#" + (GameManager.Instance.levelsCompleted_8x8);
+            levelNumberLabel8x8.GetComponent<Text>().text = GameManager.Instance.levelsCompleted_8x8.ToString();
         }
 
-        // Set 9x9 level number
-        if (GameManager.Instance.levelsCompleted_9x9 < GameManager.Instance.totalLevels) {
-            levelNumberLabel9x9.GetComponent<Text>().text = "#" + (GameManager.Instance.levelsCompleted_9x9 + 1);
-        } else {
-            levelNumberLabel9x9.GetComponent<Text>().text = "#" + (GameManager.Instance.levelsCompleted_9x9);
-        }
-    
+        // Set 5x5 checkmark
         if (GameManager.Instance.levelsCompleted_5x5 == GameManager.Instance.totalLevels) {
             check5x5.SetActive(true);
         } else {
             check5x5.SetActive(false);
         }
 
+        // Set 6x6 checkmark
         if (GameManager.Instance.levelsCompleted_6x6 == GameManager.Instance.totalLevels) {
             check6x6.SetActive(true);
         } else {
             check6x6.SetActive(false);
         }
 
+        // Set 7x7 checkmark
         if (GameManager.Instance.levelsCompleted_7x7 == GameManager.Instance.totalLevels) {
             check7x7.SetActive(true);
         } else {
             check7x7.SetActive(false);
         }
 
+        // Set 8x8 checkmark
         if (GameManager.Instance.levelsCompleted_8x8 == GameManager.Instance.totalLevels) {
             check8x8.SetActive(true);
         } else {
             check8x8.SetActive(false);
         }
 
-        if (GameManager.Instance.levelsCompleted_9x9 == GameManager.Instance.totalLevels) {
-            check9x9.SetActive(true);
-        } else {
-            check9x9.SetActive(false);
-        }
-
-        // Play background music
-        //SoundEngine.Instance.PlayMusic();
-
-        SetUpSettingsToggles();
+        // Rebuild level number containers
+        LayoutRebuilder.ForceRebuildLayoutImmediate(levelNumberContainer5x5.GetComponent<RectTransform>());
+        LayoutRebuilder.ForceRebuildLayoutImmediate(levelNumberContainer6x6.GetComponent<RectTransform>());
+        LayoutRebuilder.ForceRebuildLayoutImmediate(levelNumberContainer7x7.GetComponent<RectTransform>());
+        LayoutRebuilder.ForceRebuildLayoutImmediate(levelNumberContainer8x8.GetComponent<RectTransform>());
     }
 
     private void SetUpSettingsToggles() {
-        /*if (GameManager.Instance.musicOn) {
-            musicToggle.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Toggle On");
-        } else {
-            musicToggle.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Toggle Off");
-        }*/
-
         if (GameManager.Instance.soundsOn) {
             soundsToggle.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Toggle On");
         } else {
@@ -151,67 +123,6 @@ public class MainMenuController : MonoBehaviour {
             hapticsToggle.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Toggle On");
         } else {
             hapticsToggle.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Toggle Off");
-        }
-    }
-
-    private void PopulateCellGrid() {
-
-        cellGrid = new GridCell[6,6];
-        
-        for(int y = 0; y < 6; y++) {
-            for (int x = 0; x < 6; x++) {
-
-                // Find the cell in the grid and get its GridCell component
-                GridCell cell = GameObject.Find("GridCell " + x + "," + y).gameObject.GetComponent<GridCell>();
-
-                // Set the appropriate index in cellGrid to this cell
-                cellGrid[x,y] = cell;
-
-                // Set the cell's coordinate properties
-                cell.SetCoordinates(x,y);
-                cell.SetSortingLayer();
-            }
-        }
-    }
-
-    private void SetLevelNumber() {
-        if (GameManager.Instance.levelsCompleted_6x6 < GameManager.Instance.totalLevels) {
-            levelNumber.GetComponent<Text>().text = "#" + (GameManager.Instance.levelsCompleted_6x6 + 1).ToString(); 
-        } else {
-            levelNumber.GetComponent<Text>().text = "#" + GameManager.Instance.levelsCompleted_6x6.ToString();  
-        }
-    }
-
-    public void LevelSetup() {
-        Debug.Log(GameManager.Instance.currentLevel);
-        ReadLevelData(GameManager.Instance.currentLevel);
-    }
-
-    private void ReadLevelData(int level) {
-        char[,] data = new char[6,6];
-
-        string levelPath = "Levels/6x6/" + level.ToString();
-        TextAsset txtAsset = (TextAsset)Resources.Load(levelPath, typeof(TextAsset));
-        string text = txtAsset.text;
-
-        if (txtAsset != null) {
-            using (StringReader reader = new StringReader(text)) {
-
-                for (int y = 0; y < 6; y++) {
-                    for (int x = 0; x < 6; x++) {
-                        data[x,y] = (char)reader.Read();
-
-                        // Set the appropriate cell's status to the specification in data matrix
-                        cellGrid[x,y].SetState(data[x,y]);
-
-                        // Update the cell's image
-                        cellGrid[x,y].UpdateImage();
-                    }
-                    char unused__ = (char)reader.Read();
-                }
-            }
-        } else {
-            Debug.Log("File not found!");
         }
     }
 }
