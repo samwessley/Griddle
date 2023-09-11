@@ -20,7 +20,7 @@ public class SoundEngine : MonoBehaviour {
     public void PlayButtonSound() {
         //audioSrc.pitch = 0.8f;
         //audioSrc.volume = 1f;
-        AudioClip clip = Resources.Load<AudioClip>("button2");
+        AudioClip clip = Resources.Load<AudioClip>("button3");
         audioSrc.PlayOneShot(clip);
     }
 

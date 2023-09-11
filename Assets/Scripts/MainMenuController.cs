@@ -6,6 +6,9 @@ using System.IO;
 
 public class MainMenuController : MonoBehaviour {
 
+    [SerializeField] GameObject brillianceScore = null;
+    [SerializeField] GameObject brillianceScoreContainer = null;
+
     [SerializeField] GameObject levelNumberLabel5x5 = null;
     [SerializeField] GameObject levelNumberLabel6x6 = null;
     [SerializeField] GameObject levelNumberLabel7x7 = null;
@@ -25,11 +28,9 @@ public class MainMenuController : MonoBehaviour {
     [SerializeField] GameObject hapticsToggle = null;
 
     [SerializeField] GameObject removeAdsButton = null;
-    [SerializeField] GameObject settingsBackground = null;
     [SerializeField] GameObject settingsPanel = null;
 
     private void Awake() {
-        settingsBackground.SetActive(false);
         settingsPanel.SetActive(false);
     }
 
@@ -37,6 +38,10 @@ public class MainMenuController : MonoBehaviour {
         HideShowAdsButton();
         SetUpSettingsToggles();
         SetLevelNumbers();
+
+        // Set brilliance score
+        brillianceScore.GetComponent<Text>().text = ((GameManager.Instance.levelsCompleted_5x5 + 2*GameManager.Instance.levelsCompleted_6x6 + 3*GameManager.Instance.levelsCompleted_7x7 + 4*GameManager.Instance.levelsCompleted_8x8)/4).ToString();
+        LayoutRebuilder.ForceRebuildLayoutImmediate(brillianceScoreContainer.GetComponent<RectTransform>());
     }
 
     private void HideShowAdsButton() {

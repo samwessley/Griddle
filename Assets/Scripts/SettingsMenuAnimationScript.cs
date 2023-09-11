@@ -6,11 +6,8 @@ using UnityEngine.UI;
 public class SettingsMenuAnimationScript : MonoBehaviour {
 
     [SerializeField] GameObject settingsButton = null;
-    [SerializeField] GameObject settingsButton2 = null;
-    [SerializeField] GameObject settingsBackground = null;
     [SerializeField] GameObject settingsPanel = null;
     [SerializeField] GameObject removeAdsButton = null;
-    [SerializeField] GameObject logo = null;
     
     float settingsPanelXPosition = 0;
     bool menuOpen = false;
@@ -18,7 +15,7 @@ public class SettingsMenuAnimationScript : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         settingsPanelXPosition = settingsPanel.transform.position.x;
-        LeanTween.moveX(settingsPanel, -6f, 0);
+        LeanTween.moveX(settingsPanel, -9f, 0);
         settingsPanel.SetActive(true);
     }
 
@@ -27,7 +24,6 @@ public class SettingsMenuAnimationScript : MonoBehaviour {
             settingsButton.GetComponent<Button>().interactable = false;
             StartCoroutine(SlideSettingsPanelIn());
             removeAdsButton.SetActive(false);
-            settingsBackground.SetActive(true);
             menuOpen = true;
         }
     }
@@ -45,18 +41,16 @@ public class SettingsMenuAnimationScript : MonoBehaviour {
 
     IEnumerator SlideSettingsPanelOut() {
         settingsButton.GetComponent<Button>().interactable = false;
-        LeanTween.moveX(settingsPanel, -6f, 0.12f);
+        LeanTween.moveX(settingsPanel, -9f, 0.12f);
         yield return new WaitForSeconds(.12f);
         settingsPanel.SetActive(false);
-        settingsBackground.SetActive(false);
     }
 
     IEnumerator SlideSettingsPanelIn() {
         settingsPanel.SetActive(true);
-        LeanTween.moveX(settingsPanel, settingsPanelXPosition + 0f, 0.08f);
-        yield return new WaitForSeconds(.08f);
-        LeanTween.moveX(settingsPanel, settingsPanelXPosition, 0.08f);
+        LeanTween.moveX(settingsPanel, settingsPanelXPosition, 0.12f);
         settingsButton.GetComponent<Button>().interactable = true;
+        yield return new WaitForSeconds(0);
     }
 
 }
