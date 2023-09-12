@@ -9,14 +9,17 @@ public class GameController : MonoBehaviour {
 
     [SerializeField] GameObject levelNumber = null;
     [SerializeField] GameObject canvas = null;
-    [SerializeField] GameObject levelCompletePopup = null;
-    [SerializeField] GameObject nextLevelButton = null;
     [SerializeField] GameObject hintsLabel = null;
     [SerializeField] GameObject skipsLabel = null;
     [SerializeField] GameObject moreHints = null;
     [SerializeField] GameObject moreSkips = null;
 
+    [SerializeField] GameObject levelCompletePopup = null;
     [SerializeField] GameObject message = null;
+    [SerializeField] GameObject brillianceModal = null;
+    [SerializeField] GameObject brillianceScoreContainer = null;
+    [SerializeField] GameObject brillianceScore = null;
+    [SerializeField] GameObject nextLevelButton = null;
 
     public GridCell[,] cellGrid;
     public GameObject[] gridCells;
@@ -30,7 +33,7 @@ public class GameController : MonoBehaviour {
 
     public string distinctCharsRemaining;
 
-    private void Start() {
+    private void Awake() {
         GatherGridCells();
         PopulateCellGrid();
         LevelSetup();
@@ -104,21 +107,40 @@ public class GameController : MonoBehaviour {
 
     IEnumerator LevelCompleteAnimation() {
 
-        SetStarsAndMessage();
+        SetMessage();
 
+        // Hide message, next level button and brilliance modal
         LeanTween.scale(message, Vector2.zero, 0);
         LeanTween.scale(nextLevelButton, Vector2.zero, 0);
+        LeanTween.scale(brillianceModal, Vector2.zero, 0);
 
         yield return new WaitForSeconds(0.25f);
 
+        // Show the level complete screen
         levelCompletePopup.SetActive(true);
 
-        nextLevelButton.SetActive(true);
+        // Calculate the brilliance score
+        brillianceScore.GetComponent<Text>().text = (10*GameManager.Instance.levelsCompleted_5x5 + 30*GameManager.Instance.levelsCompleted_6x6 + 60*GameManager.Instance.levelsCompleted_7x7 + 90*GameManager.Instance.levelsCompleted_8x8).ToString("n0");
+        LayoutRebuilder.ForceRebuildLayoutImmediate(brillianceScoreContainer.GetComponent<RectTransform>());
 
-        LeanTween.scale(message, new Vector2(1,1), 0.08f);
-        LeanTween.rotateZ(message,10f,0.08f);
+        // Show the message
+        LeanTween.scale(message, new Vector2(1,1), 0.12f).setEase(LeanTweenType.easeInOutBounce);
+        LeanTween.rotateZ(message,5f,0.12f);
+        yield return new WaitForSeconds(1f);
 
-        LeanTween.scale(nextLevelButton, new Vector2(1,1), 0);
+        // Hide the message
+        LeanTween.scale(message, new Vector2(0,0), 0.05f);
+        yield return new WaitForSeconds(0.15f);
+
+        // Show the brilliance modal
+        LeanTween.scale(brillianceModal, new Vector2(1,1), 0.25f).setEase(LeanTweenType.easeInOutBounce);
+        LeanTween.moveY(brillianceModal, 0.25f, 0.1f);
+        AddBrillianceScore();
+
+        yield return new WaitForSeconds(1.8f);
+
+        // Show the next level button
+        LeanTween.scale(nextLevelButton, new Vector2(1,1), 0.05f).setEase(LeanTweenType.easeInOutBounce);
 
         // Vibrate
         if (GameManager.Instance.hapticsOn) {
@@ -132,7 +154,70 @@ public class GameController : MonoBehaviour {
         }
     }
 
-    private void SetStarsAndMessage() {
+    private void AddBrillianceScore() {
+
+        int newScore = 10*GameManager.Instance.levelsCompleted_5x5 + 30*GameManager.Instance.levelsCompleted_6x6 + 60*GameManager.Instance.levelsCompleted_7x7 + 90*GameManager.Instance.levelsCompleted_8x8;
+        int oldScore = 0;
+
+        // Calculate old and new brilliance score
+        if (GameManager.Instance.currentLevelPack == 0) {
+            if (GameManager.Instance.levelsCompleted_5x5 < GameManager.Instance.totalLevels) {
+                oldScore = newScore - 10;
+            } else {
+                oldScore = newScore;
+            }
+        } else if (GameManager.Instance.currentLevelPack == 1) {
+            if (GameManager.Instance.levelsCompleted_6x6 < GameManager.Instance.totalLevels) {
+                oldScore = newScore - 30;
+            } else {
+                oldScore = newScore;
+            }
+        } else if (GameManager.Instance.currentLevelPack == 2) {
+            if (GameManager.Instance.levelsCompleted_7x7 < GameManager.Instance.totalLevels) {
+                oldScore = newScore - 60;
+            } else {
+                oldScore = newScore;
+            }
+        } else if (GameManager.Instance.currentLevelPack == 3) {
+            if (GameManager.Instance.levelsCompleted_8x8 < GameManager.Instance.totalLevels) {
+                oldScore = newScore - 90;
+            } else {
+                oldScore = newScore;
+            }
+        }
+
+        StartCoroutine(AddBrillianceAnimation(oldScore, newScore));
+        StartCoroutine(PlayTickerSound());
+    }
+
+    IEnumerator AddBrillianceAnimation(int oldScore, int newScore) {
+        
+        int countFPS = newScore - oldScore;
+        int diff = newScore - oldScore;
+
+        while (diff >= 0) {
+            brillianceScore.GetComponent<Text>().text = (newScore - diff).ToString("n0");
+            yield return new WaitForSeconds(0.8f / countFPS);
+            diff -= 1;
+            LayoutRebuilder.ForceRebuildLayoutImmediate(brillianceScoreContainer.GetComponent<RectTransform>());
+        }
+    }
+
+    IEnumerator PlayTickerSound() {
+
+        int countFPS = 10;
+        int number = 10;
+
+        while (number >= 0) {
+            if (GameManager.Instance.soundsOn)
+            SoundEngine.Instance.PlayPopSound();
+
+            yield return new WaitForSeconds(0.8f / countFPS);
+            number -= 1;
+        }
+    }
+
+    private void SetMessage() {
 
         System.Random random = new System.Random();
         string[] phrases = {"Great!", "Perfect!", "Excellent!", "Fabulous!", "Outstanding!", "Wonderful!", "Sensational!", "Amazing!",
@@ -213,44 +298,6 @@ public class GameController : MonoBehaviour {
         }
 
         SetTileOrientations(level);
-
-        /*i = 0;
-        foreach (char c in distinctChars) {
-            bool tilePlaced = false;
-            for (int j = 0; j < 100; j++) {
-
-                float randomX = Random.Range(-310f, 510f);
-                float randomY = Random.Range(-770f, 0f);
-                Vector2 randomLocation = new Vector2(randomX, randomY);
-                tiles[i].GetComponent<RectTransform>().anchoredPosition = randomLocation;
-
-                    
-                RaycastHit2D[] hits = Physics2D.RaycastAll(tiles[i].transform.position, Vector2.zero);
-
-                if (hits == null || hits.Length == 0) {
-                    tilePlaced = true;
-                    Debug.Log("No hits");
-                } else {
-                    foreach (RaycastHit2D hit in hits) {
-                        if (hit.collider != null && hit.collider.gameObject.GetComponent<TileCell>() != null && hit.collider.transform.parent.gameObject != tiles[i].transform.parent.gameObject) {
-                            tilePlaced = false;
-                            Debug.Log("Hit a tile");
-                        } else {
-                            tilePlaced = true;
-                            Debug.Log("Didn't hit a tile");
-                        }
-                    }
-                }
-            }
-
-            if (!tilePlaced) {
-                tiles[i].GetComponent<RectTransform>().anchoredPosition = tileLocations[i];
-                Debug.Log("Couldn't place tile");
-            }
-            //tiles[i].GetComponent<RectTransform>().anchoredPosition = tileLocations[i];
-
-            i++;
-        }*/
     }
 
     private void SetTileOrientations(int level) {

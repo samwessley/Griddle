@@ -18,28 +18,6 @@ public class SettingsButtonScript : MonoBehaviour {
     [SerializeField] GameObject restorePurchasesSuccessModal = null;
     [SerializeField] GameObject restorePurchasesFailedModal = null;
 
-    /*public void CloseSettingsScene() {
-        StartCoroutine(CloseSettingsScreenAnimation());
-    }
-
-    IEnumerator CloseSettingsScreenAnimation() {
-        LeanTween.moveX(restorePurchases, -4f,0.08f);
-        yield return new WaitForSeconds(0.05f);
-
-        LeanTween.moveX(resetProgress, -4f,0.08f);    
-        yield return new WaitForSeconds(0.05f); 
-
-        LeanTween.moveX(hapticsToggle, -4f,0.08f);    
-        yield return new WaitForSeconds(0.05f);
-
-        LeanTween.moveX(soundsToggle, -4f,0.08f);    
-        yield return new WaitForSeconds(0.05f);
-
-        LeanTween.rotateZ(settingsButton, 0,0.1f);
-        yield return new WaitForSeconds(0.1f);
-        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
-    }*/
-
     public void ToggleSounds() {
         if (GameManager.Instance.soundsOn) {
             soundsToggle.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Toggle Off");
@@ -60,46 +38,27 @@ public class SettingsButtonScript : MonoBehaviour {
         GameManager.Instance.hapticsOn = !GameManager.Instance.hapticsOn;
     }
 
-    /*public void ToggleMusic() {
-        if (SoundEngine.Instance.musicPlaying) {
-            //SoundEngine.Instance.audioSrc.Pause();
-            SoundEngine.Instance.audioSrc.clip = null;
-            SoundEngine.Instance.musicPlaying = false;
-            GameManager.Instance.musicOn = false;
-
-            musicToggle.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Toggle Off");
-        } else {
-            AudioClip clip = Resources.Load<AudioClip>("Dominoes");
-            SoundEngine.Instance.audioSrc.clip = clip;
-            SoundEngine.Instance.audioSrc.loop = true;
-            SoundEngine.Instance.audioSrc.Play();
-            SoundEngine.Instance.musicPlaying = true;
-            GameManager.Instance.musicOn = true;
-
-            musicToggle.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/Toggle On");
-        }
-
-        GameManager.Instance.SaveAsJSON();
-    }*/
-
     public void ToggleResetProgressModal() {
         settingsPanel.SetActive(false);
         resetProgressModal.SetActive(true);
     }
 
     public void CancelResetProgress() {
-        settingsPanel.SetActive(true);
+        //settingsPanel.SetActive(true);
         resetProgressModal.SetActive(false);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 
     public void CloseRestorePurchasesSuccessModal() {
-        settingsPanel.SetActive(true);
+        settingsPanel.SetActive(false);
         restorePurchasesSuccessModal.SetActive(false);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 
     public void CloseRestorePurchasesFailedModal() {
-        settingsPanel.SetActive(true);
+        settingsPanel.SetActive(false);
         restorePurchasesFailedModal.SetActive(false);
+        UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 
 

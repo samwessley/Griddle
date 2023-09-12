@@ -26,8 +26,6 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         canvasGroup = GetComponent<CanvasGroup>();
         if (gameController.boardSize == 5) {
             SetScale(0.8f);
-        } else if (gameController.boardSize == 6) {
-            SetScale(0.7f);
         } else {
             SetScale(0.7f);
         }

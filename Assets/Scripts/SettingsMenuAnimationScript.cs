@@ -41,14 +41,14 @@ public class SettingsMenuAnimationScript : MonoBehaviour {
 
     IEnumerator SlideSettingsPanelOut() {
         settingsButton.GetComponent<Button>().interactable = false;
-        LeanTween.moveX(settingsPanel, -9f, 0.12f);
-        yield return new WaitForSeconds(.12f);
+        LeanTween.moveX(settingsPanel, -9f, 0.2f).setEase(LeanTweenType.easeInOutBounce);
+        yield return new WaitForSeconds(.2f);
         settingsPanel.SetActive(false);
     }
 
     IEnumerator SlideSettingsPanelIn() {
         settingsPanel.SetActive(true);
-        LeanTween.moveX(settingsPanel, settingsPanelXPosition, 0.12f);
+        LeanTween.moveX(settingsPanel, settingsPanelXPosition, 0.2f).setEase(LeanTweenType.easeInOutBounce);
         settingsButton.GetComponent<Button>().interactable = true;
         yield return new WaitForSeconds(0);
     }

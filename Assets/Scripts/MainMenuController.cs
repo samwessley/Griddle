@@ -40,7 +40,7 @@ public class MainMenuController : MonoBehaviour {
         SetLevelNumbers();
 
         // Set brilliance score
-        brillianceScore.GetComponent<Text>().text = ((GameManager.Instance.levelsCompleted_5x5 + 2*GameManager.Instance.levelsCompleted_6x6 + 3*GameManager.Instance.levelsCompleted_7x7 + 4*GameManager.Instance.levelsCompleted_8x8)/4).ToString();
+        brillianceScore.GetComponent<Text>().text = (10*GameManager.Instance.levelsCompleted_5x5 + 30*GameManager.Instance.levelsCompleted_6x6 + 60*GameManager.Instance.levelsCompleted_7x7 + 90*GameManager.Instance.levelsCompleted_8x8).ToString("n0");
         LayoutRebuilder.ForceRebuildLayoutImmediate(brillianceScoreContainer.GetComponent<RectTransform>());
     }
 
