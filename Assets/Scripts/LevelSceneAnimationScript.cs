@@ -93,12 +93,10 @@ public class LevelSceneAnimationScript : MonoBehaviour {
         int numberPerRow = 5 + GameManager.Instance.currentLevelPack;
         for (int i = gridCells.Length; i > 0; i--) {
             for (int j = 0; j < numberPerRow; j++) {
-                LeanTween.moveY(gridCells[i - 1], gridCellYPositions[i - 1], 0.18f).setEase(LeanTweenType.easeOutBack);
+                LeanTween.moveY(gridCells[i - 1], gridCellYPositions[i - 1], 0.12f).setEase(LeanTweenType.easeOutBack);
             }
             yield return new WaitForSeconds(0.02f);
         }
-
-        yield return new WaitForSeconds(0.1f);
 
         // Animate tiles
         for (int i = 0; i < tiles.Length; i++) {
