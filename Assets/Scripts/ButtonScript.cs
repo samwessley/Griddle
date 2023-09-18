@@ -50,7 +50,6 @@ public class ButtonScript : MonoBehaviour {
     }
 
     public void RestartLevel() {
-
         // Reload scene
         Scene scene = SceneManager.GetActiveScene(); 
         SceneManager.LoadScene(scene.name);

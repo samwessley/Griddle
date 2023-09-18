@@ -19,6 +19,7 @@ public class LevelSceneAnimationScript : MonoBehaviour {
     [SerializeField] GameObject hintLabel = null;
     [SerializeField] GameObject skipLabel = null;
     [SerializeField] GameObject levelNumber = null;
+    [SerializeField] GameObject grid = null;
 
     private float backButtonYPosition = 0;
     private float menuButtonYPosition = 0;
@@ -28,6 +29,7 @@ public class LevelSceneAnimationScript : MonoBehaviour {
     private float hintLabelYPosition = 0;
     private float skipLabelYPosition = 0;
     private float levelNumberYPosition = 0;
+    private float gridYPosition = 0;
 
     // Start is called before the first frame update
     void Start() {
@@ -39,10 +41,12 @@ public class LevelSceneAnimationScript : MonoBehaviour {
         hintLabelYPosition = hintLabel.transform.position.y;
         skipLabelYPosition = skipLabel.transform.position.y;
         levelNumberYPosition = levelNumber.transform.position.y;
+        gridYPosition = grid.transform.position.y;
 
-        GatherGridCells();
+        //GatherGridCells();
         GatherTiles();
         gridCellYPositions = new float[gridCells.Length];
+
         tileScales = new Vector2[tiles.Length];
         GetGridCellYPositions();
         GetTileScales();
@@ -57,9 +61,10 @@ public class LevelSceneAnimationScript : MonoBehaviour {
         }
 
         // Move all grid cells off the screen
-        for (int i = 0; i < gridCellYPositions.Length; i++) {
-            LeanTween.moveY(gridCells[i], (gridCellYPositions[i] + 6f), 0);
-        }
+        /*for (int i = 0; i < gridCellYPositions.Length; i++) {
+            LeanTween.scale(gridCells[i], Vector2.zero, 0);
+        }*/
+        LeanTween.moveY(grid, gridYPosition + 6f, 0);
 
         // Move all buttons off screen
         LeanTween.moveY(backButton, backButtonYPosition - 2f, 0);
@@ -75,28 +80,23 @@ public class LevelSceneAnimationScript : MonoBehaviour {
         LeanTween.scaleX(line, 0, 0);
         LeanTween.scaleX(line, 1, 0.25f);
 
-        // Animate buttons
-        LeanTween.moveY(levelNumber, levelNumberYPosition, 0.25f).setEase(LeanTweenType.easeOutBack);
-        LeanTween.moveY(backButton, backButtonYPosition, 0.25f).setEase(LeanTweenType.easeOutBack);
-        yield return new WaitForSeconds(0.1f);
-        LeanTween.moveY(menuButton, menuButtonYPosition, 0.25f).setEase(LeanTweenType.easeOutBack);
-        yield return new WaitForSeconds(0.1f);
-        LeanTween.moveY(restartButton, restartButtonYPosition, 0.25f).setEase(LeanTweenType.easeOutBack);
-        yield return new WaitForSeconds(0.1f);
-        LeanTween.moveY(hintButton, hintButtonYPosition, 0.25f).setEase(LeanTweenType.easeOutBack);
-        LeanTween.moveY(hintLabel, hintLabelYPosition, 0.25f).setEase(LeanTweenType.easeOutBack);
-        yield return new WaitForSeconds(0.1f);
-        LeanTween.moveY(skipButton, skipButtonYPosition, 0.25f).setEase(LeanTweenType.easeOutBack);
-        LeanTween.moveY(skipLabel, skipLabelYPosition, 0.25f).setEase(LeanTweenType.easeOutBack);
-
         // Animate grid
-        int numberPerRow = 5 + GameManager.Instance.currentLevelPack;
-        for (int i = gridCells.Length; i > 0; i--) {
-            for (int j = 0; j < numberPerRow; j++) {
-                LeanTween.moveY(gridCells[i - 1], gridCellYPositions[i - 1], 0.12f).setEase(LeanTweenType.easeOutBack);
-            }
-            yield return new WaitForSeconds(0.02f);
-        }
+        //StartCoroutine(GridAnimation());
+        LeanTween.moveY(grid, gridYPosition, 0.35f).setEase(LeanTweenType.easeOutBack);
+
+        // Animate buttons
+        LeanTween.moveY(levelNumber, levelNumberYPosition, 0.2f).setEase(LeanTweenType.easeOutBack);
+        LeanTween.moveY(backButton, backButtonYPosition, 0.2f).setEase(LeanTweenType.easeOutBack);
+        yield return new WaitForSeconds(0.05f);
+        LeanTween.moveY(menuButton, menuButtonYPosition, 0.2f).setEase(LeanTweenType.easeOutBack);
+        yield return new WaitForSeconds(0.05f);
+        LeanTween.moveY(restartButton, restartButtonYPosition, 0.2f).setEase(LeanTweenType.easeOutBack);
+        yield return new WaitForSeconds(0.05f);
+        LeanTween.moveY(hintButton, hintButtonYPosition, 0.2f).setEase(LeanTweenType.easeOutBack);
+        LeanTween.moveY(hintLabel, hintLabelYPosition, 0.2f).setEase(LeanTweenType.easeOutBack);
+        yield return new WaitForSeconds(0.05f);
+        LeanTween.moveY(skipButton, skipButtonYPosition, 0.2f).setEase(LeanTweenType.easeOutBack);
+        LeanTween.moveY(skipLabel, skipLabelYPosition, 0.2f).setEase(LeanTweenType.easeOutBack);
 
         // Animate tiles
         for (int i = 0; i < tiles.Length; i++) {
@@ -104,6 +104,17 @@ public class LevelSceneAnimationScript : MonoBehaviour {
             yield return new WaitForSeconds(0.03f);
         }
     }
+
+    IEnumerator GridAnimation() {
+    
+        int numberPerRow = 5 + GameManager.Instance.currentLevelPack;
+        for (int i = gridCells.Length; i > 0; i--) {
+            for (int j = 0; j < numberPerRow; j++) {
+                LeanTween.scale(gridCells[i - 1], new Vector2(1,1), 0.2f).setEase(LeanTweenType.easeOutBack);
+            }
+            yield return new WaitForSeconds(0.005f);
+        }
+    }   
 
     private void GatherGridCells() {
         gridCells = GameObject.FindGameObjectsWithTag("GridCell");

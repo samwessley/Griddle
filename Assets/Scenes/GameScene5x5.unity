@@ -508,6 +508,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridCells: []
   gridCellYPositions: []
+  tiles: []
   line: {fileID: 1293021322}
   backButton: {fileID: 339050435}
   menuButton: {fileID: 175345459}
@@ -517,6 +518,7 @@ MonoBehaviour:
   hintLabel: {fileID: 1401323467}
   skipLabel: {fileID: 2089060611}
   levelNumber: {fileID: 865063940}
+  grid: {fileID: 1538487839}
 --- !u!1001 &181596700
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6784,7 +6786,6 @@ GameObject:
   - component: {fileID: 1685880437}
   - component: {fileID: 1685880440}
   - component: {fileID: 1685880441}
-  - component: {fileID: 1685880442}
   m_Layer: 5
   m_Name: Restart Button
   m_TagString: Untagged
@@ -6930,27 +6931,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 627a7f663aa5041cbafb7aee22bf6e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!95 &1685880442
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1685880435}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ecb6007ff153545eeb1a04123b525cac, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1722408384
 GameObject:
   m_ObjectHideFlags: 0

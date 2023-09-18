@@ -4663,6 +4663,7 @@ MonoBehaviour:
   hintLabel: {fileID: 907036445}
   skipLabel: {fileID: 2092467429}
   levelNumber: {fileID: 237231269}
+  grid: {fileID: 1538487839}
 --- !u!4 &1196821803
 Transform:
   m_ObjectHideFlags: 0

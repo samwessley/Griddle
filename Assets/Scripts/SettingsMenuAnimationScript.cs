@@ -15,7 +15,7 @@ public class SettingsMenuAnimationScript : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         settingsPanelXPosition = settingsPanel.transform.position.x;
-        LeanTween.moveX(settingsPanel, -9f, 0);
+        LeanTween.moveX(settingsPanel, -11.5f, 0);
         settingsPanel.SetActive(true);
     }
 
@@ -41,7 +41,7 @@ public class SettingsMenuAnimationScript : MonoBehaviour {
 
     IEnumerator SlideSettingsPanelOut() {
         settingsButton.GetComponent<Button>().interactable = false;
-        LeanTween.moveX(settingsPanel, -9f, 0.2f).setEase(LeanTweenType.easeInOutBounce);
+        LeanTween.moveX(settingsPanel, -11.5f, 0.2f).setEase(LeanTweenType.easeInOutBounce);
         yield return new WaitForSeconds(.2f);
         settingsPanel.SetActive(false);
     }
