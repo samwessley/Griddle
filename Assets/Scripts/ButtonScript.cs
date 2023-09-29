@@ -6,6 +6,17 @@ using UnityEngine.UI;
 
 public class ButtonScript : MonoBehaviour {
 
+    public void SkipTutorial() {
+        GameManager.Instance.tutorialShown = true;
+        GameManager.Instance.SaveAsJSON();
+        SceneManager.LoadScene(0);
+    }
+
+    public void LoadTutorial() {
+        GameManager.Instance.tutorialShown = false;
+        SceneManager.LoadScene(6);
+    }
+
     public void LoadMainMenuScene() {
         SceneManager.LoadScene(0);
     }

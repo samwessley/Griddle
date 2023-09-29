@@ -26,6 +26,7 @@ public class GameManager: MonoBehaviour {
     public bool soundsOn;
     public bool hapticsOn;
     public bool adsRemoved;
+    public bool tutorialShown;
 
     //public string[][] levelTiles = new string[3][];
     public Dictionary<char, string> tileDictionary = new Dictionary<char, string>();
@@ -56,6 +57,7 @@ public class GameManager: MonoBehaviour {
         musicOn = true;
         soundsOn = true;
         hapticsOn = true;
+        tutorialShown = false;
 
         levelsCompleted_5x5 = 0;
         levelsCompleted_6x6 = 0;
@@ -118,6 +120,7 @@ public class GameManager: MonoBehaviour {
             musicOn = save.musicOn;
             soundsOn = save.soundsOn;
             hapticsOn = save.hapticsOn;
+            tutorialShown = save.tutorialShown;
 
             Debug.Log("Game Loaded.");
         } else {
@@ -186,6 +189,7 @@ public class GameManager: MonoBehaviour {
         save.musicOn = musicOn;
         save.soundsOn = soundsOn;
         save.hapticsOn = hapticsOn;
+        save.tutorialShown = tutorialShown;
 
         return save;
     }

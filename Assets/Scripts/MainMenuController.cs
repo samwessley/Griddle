@@ -31,6 +31,10 @@ public class MainMenuController : MonoBehaviour {
     [SerializeField] GameObject settingsPanel = null;
 
     private void Awake() {
+        // Load tutorial if it hasn't been shown
+        if (!GameManager.Instance.tutorialShown)
+        UnityEngine.SceneManagement.SceneManager.LoadScene(6);
+
         settingsPanel.SetActive(false);
     }
 

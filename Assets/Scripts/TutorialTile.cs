@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Tile : MonoBehaviour {
+public class TutorialTile : MonoBehaviour {
     
     public TileCell[] tileCells;
     public int tileColor;
     private Vector2 startingPosition;
     private Vector2 highlightedPosition;
-    [SerializeField] char[] tileCodeRange = null;
-    public char tileCode;
 
     public int rotations = 0;
     public bool reflected = false;
@@ -19,7 +17,6 @@ public class Tile : MonoBehaviour {
         startingPosition = gameObject.GetComponent<RectTransform>().anchoredPosition;
         GetTileCells();
         SetColor();
-        tileCode = tileCodeRange[tileColor - 1];
     }
 
     public RectTransform[] GetClosestCellsArray() {
@@ -66,7 +63,6 @@ public class Tile : MonoBehaviour {
     }
 
     private void SetColor() {
-        //tileColor = Random.Range(1,4);
         Image[] tileImages = gameObject.GetComponentsInChildren<Image>();
 
         if (tileColor == 1) {
@@ -104,7 +100,7 @@ public class Tile : MonoBehaviour {
 
         // Reset the tile transform back to its default state
         transform.rotation = Quaternion.identity;
-        transform.localScale = new Vector2(1, 1);
+        transform.localScale = new Vector2(0.8f, 0.8f);
         rotations = 0;
 
         // Reset the tile cells back to their default state

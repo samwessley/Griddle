@@ -1994,6 +1994,7 @@ MonoBehaviour:
   soundsOn: 0
   hapticsOn: 0
   adsRemoved: 0
+  tutorialShown: 0
   tileScaleFactors:
   - 2.4666667
   - 2.0555556
@@ -6656,6 +6657,7 @@ GameObject:
   - component: {fileID: 1159702218}
   - component: {fileID: 1159702217}
   - component: {fileID: 1159702216}
+  - component: {fileID: 1159702220}
   m_Layer: 5
   m_Name: About Button
   m_TagString: Untagged
@@ -6739,9 +6741,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 303528614}
-        m_TargetAssemblyTypeName: AboutMenuAnimationScript, Assembly-CSharp
-        m_MethodName: OpenAboutMenu
+      - m_Target: {fileID: 1159702220}
+        m_TargetAssemblyTypeName: ButtonScript, Assembly-CSharp
+        m_MethodName: LoadTutorial
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6789,6 +6791,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1159702212}
   m_CullTransparentMesh: 1
+--- !u!114 &1159702220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1159702212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12ed0e56710a2449ab10c28873d42525, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1164040336
 GameObject:
   m_ObjectHideFlags: 0

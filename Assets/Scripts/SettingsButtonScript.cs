@@ -70,6 +70,7 @@ public class SettingsButtonScript : MonoBehaviour {
         GameManager.Instance.levelsCompleted_8x8 = 0;
         GameManager.Instance.levelsCompleted_9x9 = 0;
 
+        GameManager.Instance.SaveAsJSON();
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 }
