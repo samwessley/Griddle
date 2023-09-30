@@ -25,6 +25,7 @@ public class GameController : MonoBehaviour {
     public GameObject[] gridCells;
     private int numberOfTiles;
     public GameObject[] tiles;
+    public IEnumerator coroutine;
 
     public int boardSize;
     public string distinctChars;
@@ -446,6 +447,11 @@ public class GameController : MonoBehaviour {
                 foreach (GridCell cell in sideCellsToTest) {
                     if (cell.isOccupied && cell.colorOccupying == tile.tileColor) {
                         Debug.Log("Side cell test failed: " + tile.tileCode);
+
+                        // Rumble one of the tiles that failed the test
+                        coroutine = TileRumbleAnimation(tile.gameObject);
+                        StartCoroutine(coroutine);
+
                         return false;
                     }
                 }
@@ -459,10 +465,9 @@ public class GameController : MonoBehaviour {
                 if (!oneCellIsValid) {
                     Debug.Log("Corner cell test failed: " + tile.tileCode);
 
-                    /*foreach (GridCell cell in cornerCellsToTest) {
-                        Debug.Log(cell.xIndex + ", " + cell.yIndex);
-                        Debug.Log(cell.isOccupied + ", " + cell.colorOccupying);
-                    }*/
+                    // Rumble one of the tiles that failed the test
+                    coroutine = TileRumbleAnimation(tile.gameObject);
+                    StartCoroutine(coroutine);
 
                     return false;
                 }
@@ -569,4 +574,21 @@ public class GameController : MonoBehaviour {
     private void GatherGridCells() {
         gridCells = GameObject.FindGameObjectsWithTag("GridCell");
     }
+
+    public void StopRumble() {
+        StopCoroutine(coroutine);
+    }
+
+    IEnumerator TileRumbleAnimation(GameObject tile) {
+        Vector2 tilePosition = new Vector2(tile.transform.position.x, tile.gameObject.transform.position.y);
+        Vector2 tilePositionNegative = new Vector2(tilePosition.x - 0.015f, tilePosition.y);
+        Vector2 tilePositionPositive = new Vector2(tilePosition.x + 0.015f, tilePosition.y);
+
+        while (true) {
+            LeanTween.move(tile, tilePositionNegative, 0.06f).setEase(LeanTweenType.easeInOutBack);
+            yield return new WaitForSeconds(0.06f);
+            LeanTween.move(tile.gameObject, tilePositionPositive, 0.06f).setEase(LeanTweenType.easeInOutBack);
+            yield return new WaitForSeconds(0.06f);
+        }
+    }    
 }

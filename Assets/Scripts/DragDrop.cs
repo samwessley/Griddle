@@ -16,23 +16,28 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     public bool isHighlighted = false;
 
     private Vector2 pointerLocation;
+    private Vector2 tileSize;
 
     private void Start() {
         gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
         canvas = this.gameObject.transform.parent.gameObject.GetComponent<Canvas>();
         touchCatcher = canvas.transform.Find("Touch Catcher").gameObject;
-        //tilePopupTray = canvas.transform.Find("Tile Popup Tray").gameObject;
         rectTransform = GetComponent<RectTransform>();
+        tileSize = rectTransform.sizeDelta;
         canvasGroup = GetComponent<CanvasGroup>();
         if (gameController.boardSize == 5) {
             SetScale(0.8f);
         } else {
             SetScale(0.7f);
         }
+        ScaleUpTileHitbox();
     }
 
     public void OnPointerDown(PointerEventData eventData) {
-
+        
+        if (gameController.coroutine != null)
+        gameController.StopRumble();
+        
         pointerLocation = eventData.position;
 
         // If the tile is on the board when tapped, set it to 'hovering' status
@@ -72,6 +77,13 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         }
         // If it's not on the board when tapped but it is highlighted, put it in 'hovering' status
         else {
+
+            // Scale down the tile cells' transforms to normal size
+            rectTransform.sizeDelta = new Vector2(tileSize.x, tileSize.y);
+            foreach (Transform child in transform) {
+                child.GetComponent<RectTransform>().sizeDelta = new Vector2(90,90);
+            }
+
             // Set the sorting order of the tile to its highlighted value
             TileCell[] tileCells = transform.gameObject.GetComponentsInChildren<TileCell>();
             foreach (TileCell tileCell in tileCells)
@@ -265,9 +277,10 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
         } else {
             SetScale(0.7f);
         }
+
+        ScaleUpTileHitbox();
         
         touchCatcher.GetComponent<CanvasGroup>().blocksRaycasts = false;
-        //tilePopupTray.gameObject.SetActive(false);
         isHighlighted = false;
         isOnBoard = false;
         gameController.activeTile = null;
@@ -343,6 +356,14 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
                     cell.GetComponent<Image>().sprite = Resources.Load<Sprite>("Sprites/GridCellShadow");
                 }
             } 
+        }
+    }
+
+    private void ScaleUpTileHitbox() {
+        // Scale up the tile cells' transforms to make them easier to grab
+        rectTransform.sizeDelta = new Vector2(tileSize.x + 150, tileSize.y + 150);
+        foreach (Transform child in transform) {
+            child.GetComponent<RectTransform>().sizeDelta = new Vector2(90,90);
         }
     }
 }
