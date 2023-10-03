@@ -133,7 +133,7 @@ PlayerSettings:
   vulkanEnableLateAcquireNextImage: 0
   vulkanEnableCommandBufferRecycling: 1
   loadStoreDebugModeEnabled: 0
-  bundleVersion: 1.0.1
+  bundleVersion: 1.1.0
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -709,7 +709,9 @@ PlayerSettings:
   webGLMemoryGeometricGrowthStep: 0.2
   webGLMemoryGeometricGrowthCap: 96
   webGLPowerPreference: 2
-  scriptingDefineSymbols: {}
+  scriptingDefineSymbols:
+    Android: LK_HAS_LION_ANALYTICS
+    iPhone: LK_HAS_LION_ANALYTICS;HAS_LION_ADJUST_SDK;HAS_LION_FIREBASE_SDK;HAS_LION_APPLOVIN_SDK;HAS_LION_FACEBOOK_SDK
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend: {}

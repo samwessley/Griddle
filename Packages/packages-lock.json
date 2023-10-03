@@ -7,6 +7,32 @@
       "dependencies": {},
       "hash": "0fe3ea18d2288b0c60dde2f369a70dc207f152b0"
     },
+    "com.lionstudios.release.lionanalytics": {
+      "version": "2.6.1",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.lionstudios.release.lionkitcore": "2.6.5",
+        "com.lionstudios.release.lionsdkservice": "2.4.10"
+      },
+      "url": "http://packages.lionstudios.cc:4873"
+    },
+    "com.lionstudios.release.lionkitcore": {
+      "version": "2.6.5",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.nuget.newtonsoft-json": "3.0.2"
+      },
+      "url": "http://packages.lionstudios.cc:4873"
+    },
+    "com.lionstudios.release.lionsdkservice": {
+      "version": "2.4.11",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "http://packages.lionstudios.cc:4873"
+    },
     "com.unity.2d.animation": {
       "version": "9.0.3",
       "depth": 0,
@@ -76,6 +102,12 @@
         "com.unity.modules.tilemap": "1.0.0",
         "com.unity.modules.uielements": "1.0.0"
       }
+    },
+    "com.unity.ads.ios-support": {
+      "version": "file:../Assets/com.unity.ads.ios-support",
+      "depth": 0,
+      "source": "local",
+      "dependencies": {}
     },
     "com.unity.ai.navigation": {
       "version": "1.1.3",

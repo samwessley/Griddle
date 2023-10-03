@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using LionStudios.Suite.Debugging; 
 
 public class LevelSelectMenuController : MonoBehaviour {
 
@@ -61,6 +62,10 @@ public class LevelSelectMenuController : MonoBehaviour {
                 SnapToLevel(GameManager.Instance.levelsCompleted_9x9);
             }
         }
+    }
+
+    void Start() {
+        LionDebugger.Hide();
     }
 
     private void SnapToLevel(int currentLevel) {

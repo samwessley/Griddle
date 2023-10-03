@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using LionStudios.Suite.Analytics;
 
 public class ButtonScript : MonoBehaviour {
 
@@ -18,6 +19,10 @@ public class ButtonScript : MonoBehaviour {
     }
 
     public void LoadMainMenuScene() {
+        // Send level abandoned to Lion Analytics
+        Dictionary<string, object> additionalData = new Dictionary<string, object> {{ "Level Pack", GameManager.Instance.currentLevelPack }};
+        LionAnalytics.LevelAbandoned(level: GameManager.Instance.currentLevel, attemptNum: 1, additionalData: additionalData);
+
         SceneManager.LoadScene(0);
     }
 
@@ -61,6 +66,10 @@ public class ButtonScript : MonoBehaviour {
     }
 
     public void RestartLevel() {
+        // Send level restart to Lion Analytics
+        Dictionary<string, object> additionalData = new Dictionary<string, object> {{ "Level Pack", GameManager.Instance.currentLevelPack }};
+        LionAnalytics.LevelRestart(level: GameManager.Instance.currentLevel, attemptNum: 1, additionalData: additionalData);
+
         // Reload scene
         Scene scene = SceneManager.GetActiveScene(); 
         SceneManager.LoadScene(scene.name);

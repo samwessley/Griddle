@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using System.Linq;
+using LionStudios.Suite.Debugging; 
+using LionStudios.Suite.Analytics;
 
 public class GameController : MonoBehaviour {
 
@@ -41,6 +43,14 @@ public class GameController : MonoBehaviour {
         GameManager.Instance.SaveAsJSON();
         UpdateHintsLabel();
         UpdateSkipsLabel();
+    }
+
+    private void Start() {
+        LionDebugger.Hide();
+
+        // Send level start to Lion Analytics
+        Dictionary<string, object> additionalData = new Dictionary<string, object> {{ "Level Pack", GameManager.Instance.currentLevelPack }};
+        LionAnalytics.LevelStart(levelNum: GameManager.Instance.currentLevel, additionalData: additionalData);
     }
 
     public void LevelSetup() {
@@ -103,6 +113,10 @@ public class GameController : MonoBehaviour {
             // Play level complete sound
             if (GameManager.Instance.soundsOn)
             SoundEngine.Instance.PlaySuccessSound();
+
+            // Send level complete to Lion Analytics
+            Dictionary<string, object> additionalData = new Dictionary<string, object> {{ "Level Pack", GameManager.Instance.currentLevelPack }};
+            LionAnalytics.LevelComplete(level: GameManager.Instance.currentLevel, attemptNum: 1, additionalData: additionalData);
         }
     }
 

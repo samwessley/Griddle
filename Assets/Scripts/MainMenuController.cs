@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
+using LionStudios.Suite.Debugging; 
 
 public class MainMenuController : MonoBehaviour {
 
@@ -46,6 +47,9 @@ public class MainMenuController : MonoBehaviour {
         // Set brilliance score
         brillianceScore.GetComponent<Text>().text = (10*GameManager.Instance.levelsCompleted_5x5 + 30*GameManager.Instance.levelsCompleted_6x6 + 60*GameManager.Instance.levelsCompleted_7x7 + 90*GameManager.Instance.levelsCompleted_8x8).ToString("n0");
         LayoutRebuilder.ForceRebuildLayoutImmediate(brillianceScoreContainer.GetComponent<RectTransform>());
+    
+        // Lion Core stuff
+        LionDebugger.Hide();
     }
 
     private void HideShowAdsButton() {

@@ -1,0 +1,86 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d8c0da4a3c42ae9119d046d7598db6, type: 3}
+  m_Name: SdkRuntimeInfos
+  m_EditorClassIdentifier: 
+  defineScriptingSymbols: 1
+  Sdks:
+    Sdks:
+    - ID: 1
+      IsSupported: 1
+      IsInstalled: 1
+      AssetAndPackageRequired: 0
+      AssetPath: Adjust
+      PackageName: 
+      RequiredDirectories: []
+    - ID: 2
+      IsSupported: 1
+      IsInstalled: 1
+      AssetAndPackageRequired: 0
+      AssetPath: Firebase
+      PackageName: 
+      RequiredDirectories: []
+    - ID: 3
+      IsSupported: 1
+      IsInstalled: 0
+      AssetAndPackageRequired: 0
+      AssetPath: GameAnalytics
+      PackageName: com.gameanalytics.sdk
+      RequiredDirectories:
+      - GameAnalytics/Editor
+      - GameAnalytics/Gizmos
+      - GameAnalytics/Plugins
+    - ID: 4
+      IsSupported: 0
+      IsInstalled: 0
+      AssetAndPackageRequired: 0
+      AssetPath: Nakama
+      PackageName: 
+      RequiredDirectories: []
+    - ID: 5
+      IsSupported: 1
+      IsInstalled: 0
+      AssetAndPackageRequired: 0
+      AssetPath: GooglePlayPlugins
+      PackageName: 
+      RequiredDirectories:
+      - GooglePlayPlugins/com.google.play.review
+    - ID: 6
+      IsSupported: 1
+      IsInstalled: 1
+      AssetAndPackageRequired: 0
+      AssetPath: MaxSdk
+      PackageName: 
+      RequiredDirectories: []
+    - ID: 7
+      IsSupported: 1
+      IsInstalled: 0
+      AssetAndPackageRequired: 0
+      AssetPath: DeltaDNA
+      PackageName: 
+      RequiredDirectories:
+      - DeltaDNA/Editor
+      - DeltaDNA/Runtime
+    - ID: 8
+      IsSupported: 1
+      IsInstalled: 1
+      AssetAndPackageRequired: 0
+      AssetPath: FacebookSDK
+      PackageName: 
+      RequiredDirectories: []
+    - ID: 9
+      IsSupported: 1
+      IsInstalled: 0
+      AssetAndPackageRequired: 0
+      AssetPath: AppLovin - Cross Promo
+      PackageName: 
+      RequiredDirectories: []

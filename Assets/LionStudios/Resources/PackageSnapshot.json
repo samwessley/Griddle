@@ -1,0 +1,24 @@
+{
+  "com.lionstudios.release.lionanalytics": {
+    "version": "2.6.1",
+    "dependencies": {
+      "com.lionstudios.release.lionkitcore": {
+        "version": "2.6.5",
+        "dependencies": {
+          "com.unity.nuget.newtonsoft-json": {
+            "version": "3.0.2",
+            "dependencies": null
+          }
+        }
+      },
+      "com.lionstudios.release.lionsdkservice": {
+        "version": "2.4.10",
+        "dependencies": null
+      }
+    }
+  },
+  "com.lionstudios.release.lionsdkservice": {
+    "version": "2.4.11",
+    "dependencies": null
+  }
+}

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using LionStudios.Suite.Debugging; 
 
 public class TutorialController : MonoBehaviour {
 
@@ -17,6 +18,7 @@ public class TutorialController : MonoBehaviour {
     // Start is called before the first frame update
     void Start() {
         SetUpPopup1Tiles();
+        LionDebugger.Hide();
     }
 
     private void SetUpPopup1Tiles() {

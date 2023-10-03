@@ -1,0 +1,31 @@
+{
+  "project_info": {
+    "project_number": "975301656971",
+    "project_id": "griddle-e0a14",
+    "storage_bucket": "griddle-e0a14.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:975301656971:ios:0ec2cf2168b7690a95ef8e",
+        "android_client_info": {
+          "package_name": "com.wessley.griddle"
+        }
+      },
+      "api_key": [
+        {
+          "current_key": "AIzaSyD-ejtzGKOnp0DvOwZahDe_Jm4lTZ8U72s"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 0
+        },
+        "appinvite_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
